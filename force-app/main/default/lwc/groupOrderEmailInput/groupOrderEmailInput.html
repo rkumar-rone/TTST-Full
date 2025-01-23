@@ -1,0 +1,180 @@
+<template>
+
+    <template lwc:if={showWaitlistScreen}>
+
+        <div class="slds-p-around_x-small">
+            <lightning-card variant="base">
+                <div class="slds-p-around_x-small">
+                    <p>{waitlistText}</p>
+                    <template lwc:if={showWaitlistError}>
+                        <br/>
+                        <p style="color: red;">{waitlistError}</p>
+                    </template>
+                    <br/>
+                    <lightning-button style="float: right;" label="Continue" variant="brand" onclick={handleWaitlistContinue}></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+
+    </template>
+
+    <template lwc:else>
+        <template lwc:if={checkingSkip}>
+            <div style="height: 100px;">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+        <template lwc:else>
+            <template if:true={recipientMissmatch}>
+                <h1 style="color: red;">MISSMATCH BETWEEN RCIPIENTS IN BACKEND AND QUANTITY IN CART</h1>
+            </template>
+            <lightning-card variant="base" if:false={isLoading}>
+                <template if:false={isGroupOrder}>
+                    <div slot="title">
+                        Order Recipient
+                    </div>
+                </template>
+                <template if:true={isGroupOrder}>
+                    <div slot="title">
+                        Group Orders
+                    </div>
+                </template>
+                <div class="slds-p-around_x-small">
+                    <template if:false={isGroupOrder}>
+                        <lightning-input 
+                            type="checkbox" 
+                            label="Is this order for someone else?"
+                            class="email slds-p-horizontal_x-small"
+                            disabled={isDisabled}
+                            onchange={handleSameRecipientChange}>
+                        </lightning-input> 
+                    </template>
+                        <template lwc:if={isNotSameRecipient}>
+                            <lightning-accordion class="courses-accordion">
+                            <template iterator:course={recipients}>
+                                <lightning-accordion-section key={course.value.courseName} name={course.value.courseName} label={course.value.courseName}> 
+                                    <!-- <template lwc:if={course.value.startDate}>
+                                        <p class="slds-p-bottom_xx-small">Start Date:&nbsp;&nbsp;<span class="slds-badge">{course.value.startDate}</span></p>
+                                    </template> -->
+                                    <template lwc:if={course.value.city}>
+                                        <p class="slds-p-bottom_xx-small">City:&nbsp;&nbsp;<span class="slds-badge">{course.value.city}</span></p>
+                                    </template>
+                                    <!-- <template lwc:if={course.value.isSelfStudy}>
+                                        <p>Available Seats:&nbsp;&nbsp;<span class="slds-badge slds-theme_success">Yes</span></p></template>
+                                    <template lwc:else>
+                                        <p>Available Seats:&nbsp;&nbsp;<lightning-badge label={course.value.availableSeats}></lightning-badge></p>
+                                    </template> -->
+                                    <template lwc:if={course.value.session}>
+                                        <p class="slds-p-bottom_xx-small">Sessions:</p>
+                                        <template for:each={course.value.session} for:item="session">
+                                            <p key={session} class="slds-p-bottom_xx-small"><span class="slds-badge">{session}</span></p>
+                                        </template>
+                                    </template>
+                                    <template for:each={course.value.recipients} for:item="item">
+                                        <lightning-layout key={item.Cart_Item__c} class="slds-p-bottom_x-small" horizontal-align="spread" multiple-rows="true">
+                                            <lightning-layout-item flexibility="grow" size="12" large-device-size="12" small-device-size="12">
+                                                <h2 class="slds-p-around_x-small slds-text-heading_small">Recipient: {item.itemNumber}</h2>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item flexibility="grow" size="4" large-device-size="4" small-device-size="12">
+                                                
+                                                <lightning-input value={item.First_Name__c} type="text" class="slds-p-around_x-small" label="First Name" placeholder="Enter First Name" data-key={item.key} required onblur={handleFirstNameChange} disabled={item.toDisable}></lightning-input>
+        
+                                            </lightning-layout-item>
+                                            <lightning-layout-item flexibility="grow" size="4" large-device-size="4" small-device-size="12">
+        
+                                                <lightning-input value={item.Last_Name__c} type="text" class="slds-p-around_x-small" label="Last Name" placeholder="Enter Last Name" data-key={item.key} required onblur={handleLastNameChange} disabled={item.toDisable}></lightning-input>
+        
+                                            </lightning-layout-item>
+                                            <lightning-layout-item flexibility="grow" size="4" large-device-size="4" small-device-size="12">
+        
+                                                <lightning-input value={item.Recepient_Email__c} type="email" class="email slds-p-around_x-small" label="Email address" placeholder="Enter email address" data-key={item.key} required onblur={handleEmailChange} disabled={item.toDisable}></lightning-input>
+        
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </template>
+                                    <template if:true={moreThanOneCourse}>
+                                        <template lwc:if={course.first}>
+                                            <lightning-input 
+                                            type="toggle" 
+                                            label="Prepopulate the same recipient information across all courses?"
+                                            class="sameRecipient slds-p-around_x-small"
+                                            variant="brand"
+                                            onchange={handleRecipientPrepopulate}>
+                                            </lightning-input>
+                                        </template>
+                                    </template>
+                                </lightning-accordion-section>
+                            </template>
+                            </lightning-accordion>
+                      </template>
+                      <!--  
+                        <template lwc:else>
+                            <lightning-layout horizontal-align="spread" multiple-rows="true">
+                                <lightning-layout-item flexibility="grow" size="4" large-device-size="4" small-device-size="12">
+                                    <lightning-input 
+                                        type="text" 
+                                        class="slds-p-around_x-small" 
+                                        label="First Name" 
+                                        required
+                                        placeholder="Enter First Name"
+                                        data-cart-item-id=""
+                                        data-key="1"
+                                        onblur={handleFirstNameChange} 
+                                        disabled={isDisabled}>
+                                    </lightning-input>
+                                </lightning-layout-item>
+                                <lightning-layout-item flexibility="grow" size="4" large-device-size="4" small-device-size="12">
+                                    <lightning-input 
+                                        type="text" 
+                                        class="slds-p-around_x-small" 
+                                        label="Last Name" 
+                                        required
+                                        placeholder="Enter Last Name"
+                                        data-cart-item-id=""
+                                        data-key="1"
+                                        onblur={handleLastNameChange} 
+                                        disabled={isDisabled}>
+                                    </lightning-input>
+                                </lightning-layout-item>
+                                <lightning-layout-item flexibility="grow" size="4" large-device-size="4" small-device-size="12">
+                                    <lightning-input 
+                                        type="email" 
+                                        class="email slds-p-around_x-small" 
+                                        label="Email address" 
+                                        placeholder="Enter email address"
+                                        data-cart-item-id=""
+                                        data-key="1" 
+                                        required
+                                        onblur={handleEmailChange} 
+                                        disabled={isDisabled}>
+                                    </lightning-input>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+        
+                        <lightning-button variant="brand" class="slds-p-horizontal_x-small" label="Submit" disabled={isDisabled} onclick={handleEmailAddressSubmit}></lightning-button>-->
+        
+                </div>
+                <lightning-spinner alternative-text="Loading" size="x-small" if:true={isLoading}></lightning-spinner>
+            </lightning-card>
+            <template lwc:if={isNotSameRecipient}>
+                <div class="slds-card__footer slds-p-vertical_x-small">
+                    <lightning-button label={nextButtonLabel}
+                                      variant="brand"
+                                      onclick={handleEmailAddressSubmit}>
+                    </lightning-button>
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="slds-card__footer slds-p-vertical_x-small">
+                    <lightning-button label={nextButtonLabel}
+                                      variant="brand"
+                                      onclick={handleSameRecipientNext}>
+                    </lightning-button>
+                </div>
+            </template>
+        </template>
+    </template>
+
+    
+</template>

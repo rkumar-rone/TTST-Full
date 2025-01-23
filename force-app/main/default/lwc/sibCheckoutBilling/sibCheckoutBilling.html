@@ -1,0 +1,118 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-12-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+    <div class="billing-container">
+        <div class="billing-element" lwc:if={isStencilLoading}>
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="3" padding="around-small">
+                    <c-stencil height="15" width="100%"></c-stencil>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" padding="around-small">
+                    <c-stencil height="30" width="100%"></c-stencil>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <div class="billing-element" lwc:else>
+        <template lwc:if={isBillingReadOnly}>
+            <div class="title">
+                <div>{labels.SIB_LBL_BILLING_HEADING}</div> <span if:true={showEdit} class="billing-edit sib-text-size-14" onclick={handleEdit}>Edit</span>
+            </div>
+            <div lwc:if={billingSelectedLabel}>
+                {billingSelectedLabel}
+            </div>
+        </template>
+        <template lwc:else>
+            <div class="title">{labels.SIB_LBL_BILLING_HEADING}</div>
+            <lightning-radio-group class="radio-buttons" variant="label-hidden" name="billingOptions" options={billingOptions} value={billingSelectedOption} type="radio" onchange={handleBillingChange}></lightning-radio-group>
+            <template if:true={showNewBillingAddressForm}>
+
+                <!--Street Address-->
+                <div class="form-input">
+                    <label for="street-form">{labels.SIB_LBL_BILLING_STREET_HEADING} *</label>
+                    <input
+                        type="text"
+                        id="street-form"
+                        placeholder={labels.SIB_LBL_BILLING_STREET_PLACEHOLDER}
+                        onchange={updateAddressInput}
+                        name="Street"
+                        lwc:ref="Street"
+                        required
+                    />
+                </div>
+
+                <!--city-->
+                <div class="form-input">
+                    <label for="city-form">{labels.SIB_LBL_BILLING_CITY_HEADING} *</label>
+                    <input
+                        type="text"
+                        id="city-form"
+                        placeholder={labels.SIB_LBL_BILLING_CITY_PLACEHOLDER}
+                        onchange={updateAddressInput}
+                        name="City"
+                        lwc:ref="City"
+                        required
+                    />
+                </div>
+
+                <!--country-->
+                <div class="form-input">
+                    <label>{labels.SIB_LBL_BILLING_COUNTRY_HEADING} *</label>
+                    
+                    <div class="select" for="slct">
+                        <select id="slct" lwc:ref="CountryCode" required="required" name="CountryCode" onchange={handleCountryChange}>
+                            <option value={labels.SIB_LBL_BILLING_COUNTRY_PLACEHOLDER} disabled="disabled" selected="selected">{labels.SIB_LBL_BILLING_COUNTRY_PLACEHOLDER}</option>
+                            <template for:each={countries} for:item="country">
+                                <option key={country.label} value={country.value}>{country.label}</option>
+                            </template>
+                        </select>
+                        <span class="chevron"><svg class="chevronsvg" xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                          </svg>
+                        </span>
+                    </div>
+                </div>
+                
+                <!--State-->
+                <div class="form-input">
+                    <label for="last-name-form">{labels.SIB_LBL_BILLING_STATE_HEADING} <span lwc:if={showStateRequired}>*</span></label>
+                    <div class="select" for="state-select">
+                        <select id="state-select" lwc:ref="StateCode" required="required" onchange={handleStateChange} name="StateCode">
+                            <option value={labels.SIB_LBL_BILLING_STATE_PLACEHOLDER} disabled="disabled" selected="selected">{labels.SIB_LBL_BILLING_STATE_PLACEHOLDER}</option>
+                            <template for:each={states} for:item="state">
+                                <option key={state.label} value={state.value}>{state.label}</option>
+                            </template>
+                        </select>
+                        <span class="chevron"><svg class="chevronsvg"  xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                          </svg>
+                        </span>
+                    </div>
+                </div>
+                <!--Zipcode-->
+                <div class="form-input">
+                <label for="zipcode-form">{labels.SIB_LBL_BILLING_ZIP_HEADING} <span lwc:if={showZipCodeRequired}>*</span></label>
+                <input
+                    type="text"
+                    id="zipcode-form"
+                    placeholder={labels.SIB_LBL_BILLING_ZIP_PLACEHOLDER}
+                    onchange={updateAddressInput}
+                    name="PostalCode"
+                    lwc:ref="PostalCode"
+                />
+                </div>
+            </template>
+            <div class="button-block">
+                <a class="btn" onclick={goNext}>Next <span lwc:if={checkForFreeCourse}>Payment</span></a>
+            </div>
+        </template>
+    </div>
+    </div>
+</template>

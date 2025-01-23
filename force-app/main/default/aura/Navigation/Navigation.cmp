@@ -1,0 +1,11 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global">
+   	<aura:handler event="c:LoggedIn" action="{!c.setNav}"/>
+	<ul class="sidebar_menu  slds-show_medium">
+	    <li><a href="profile" aura:id="profile">Profile</a></li>
+        <li><a href="mycourses" aura:id="mycourses">My Courses</a></li>
+        <li><a href="events" aura:id="events">Search by Class Code</a></li>
+        <li><a href="courses" aura:id="courses">Public Course Calendar</a></li>
+        <li><a href="logout">Logout</a></li>
+    </ul>
+    
+</aura:component>

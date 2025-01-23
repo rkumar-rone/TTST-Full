@@ -1,0 +1,47 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global" controller="CourseManagementController">
+    <aura:attribute name="firstName" type="string" />
+    <aura:attribute name="lastName" type="string" />
+    <aura:attribute name="email" type="string" />
+    <aura:attribute name="cost" type="decimal" />
+    <aura:attribute name="status" type="string" />
+    <aurA:attribute name="emails" type="string" />
+    <aura:attribute name="eventName" type="string" />
+    <aura:attribute name="classCode" type="string" />
+    <aura:handler event="c:LoggedIn" action="{!c.doInit}"/>
+    <table>
+        <tr>
+            <td colspan="2"><img src="{!$Resource.TTSConfirmBanner}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-top:20px;">
+                <b>Thank you. We have sent confirmation(s) to:<br />
+                    <aura:unescapedHtml value="{!v.emails}" />
+                </b>
+                <br />
+                <br />
+            </td>
+        </tr>
+        <tr>
+            <td style="width:100px;">First Name:</td><td>{!v.firstName}</td>
+        </tr>
+        <tr>
+            <td style="width:100px;">Last Name:</td><td>{!v.lastName}</td>
+        </tr>
+        <tr>
+            <td style="width:100px;">Email:</td><td>{!v.email}</td>
+        </tr>
+        <tr>
+            <td style="width:100px;">Status:</td><td>{!v.status}</td>
+        </tr>
+        <tr>
+            <td style="width:100px;">Event:</td><td>{!v.eventName}</td>
+        </tr>
+        <tr>
+            <td style="width:100px;">Class Code:</td><td>{!v.classCode}</td>
+        </tr>
+        <tr>
+            <td style="width:100px;">Cost:</td><td><lightning:formattedNumber value="{!v.cost}" currencyCode="USD" style="currency" /></td>
+        </tr>
+        <tr><td colspan="2" style="padding-left:50px;padding-top:20px;"><lightning:button variant="brand" onclick="{!c.goToMyCourses}" label="Go to My Courses"/></td></tr>
+    </table>
+</aura:component>

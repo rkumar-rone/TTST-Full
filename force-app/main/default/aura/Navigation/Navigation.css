@@ -1,0 +1,39 @@
+.THIS .sidebar_menu{
+	background-color: #EAEAEA;
+    margin-bottom: 20px;
+    display: table;
+    /*padding: 0 15px;*/
+    max-width: 450px;
+    /*margin-top:30px;*/
+    margin-right:20px;
+    margin-left:auto;
+    width:100%;
+    font-size:20px;
+    /*margin-left: auto;
+    margin-right: auto;
+    width: 100%;    */
+	
+}
+
+.THIS .selected {
+    font-weight:bold;
+}
+
+.THIS .sidebar_menu li a:hover, .THIS .sidebar_menu li a:focus {
+    text-decoration: none;
+    color: #027d07;
+    /*border: #000000 groove 1px;*/
+    background-color: #c0c0c0;
+    
+}
+.THIS .sidebar_menu li a {
+    padding: 25px 0 25px 15px;
+    border-bottom: #d9d9d9 solid 1px;
+    /*margin-bottom: 10px;*/
+    display: inline-block;
+    width: 100%;
+    transition: all .3s ease-in-out;
+}
+.THIS button lightning-primitive-icon:nth-of-type(2) {
+    display:none;
+}

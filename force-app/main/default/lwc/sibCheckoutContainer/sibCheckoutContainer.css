@@ -1,0 +1,101 @@
+.title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 39px;
+    letter-spacing: -1.28px;
+    text-align: left;
+    color: #242424;
+    margin-bottom: 4px;
+    padding: 20px 0px 20px 0px;
+}
+
+.checkout-container {
+  display: flex;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.checkout-screen {
+  width: 60%;
+}
+
+.summary-screen {
+  width: 40%
+}
+
+.placeOrderBtn {
+  padding: 24px 0;
+}
+/* checkout order summary  */
+.order-title-checkout h2 {
+  font-size: 20px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 140% !important;
+  letter-spacing: -0.4px !important;
+  color: #242424 !important;
+}
+.order-title-checkout{
+  margin-bottom: 29px !important; 
+}
+.order-content-checkout {
+  border-radius: 18px !important;
+  padding: 20px !important;
+}
+.btn-apply{
+  border: 1px solid #038008 !important;
+}
+.promo-input:focus-visible {
+  border: 1px solid rgba(110, 110, 135, 0.2) !important;
+  outline: none;
+}
+.order-line strong{
+  color: #242424;
+  font-size: 16px;
+  font-weight: 700;
+}
+.accordeon  ul li i {
+  position: absolute;
+  -webkit-transform: translate(-6px, 0);
+  -ms-transform: translate(-6px, 0);
+  transform: translate(-6px, 0);
+  margin-top: 0;
+  right: 1em;
+}
+.accordeon  ul li i:before, .accordeon  ul li i:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  background-color: #6c6b74;
+  width: 2px;
+  height: 16px;
+}
+.accordeon  ul li i:before:before, .accordeon  ul li i:before:after {
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+@media only screen and (max-width: 1024px) {
+  .checkout-container {
+    flex-direction: column;
+  }
+  .checkout-screen{
+    width: 100%;
+  }
+  .summary-screen{
+    width: 100%;
+  }
+  .mobile-column{
+
+  }
+}
+@media only screen and (max-width: 500px) {
+  .checkout-container {
+    padding: 0;
+  }
+}

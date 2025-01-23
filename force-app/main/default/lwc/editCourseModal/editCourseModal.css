@@ -1,0 +1,34 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.checkboxSection {
+    margin-left: 1px;
+    margin-right: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.checkboxWrapper{
+    margin-left: 10px;
+}
+.checkboxWrapper lightning-input {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.btn{
+    border-color: rgb(2, 125, 7);
+    background-color: rgb(2, 125, 7);
+    font-size: 13px;
+    color: #31859c;
+    width: 32px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.icon-right {
+    float: right;
+}

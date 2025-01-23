@@ -1,0 +1,6 @@
+/* CSS class for a div containing a lightning-formatted-address component */
+.address-container {
+    padding: var(--lwc-spacingMedium,1rem);
+    border: var(--lwc-borderWidthThin,1px) solid var(--slds-g-color-border-base-1, var(--lwc-colorBorder,rgb(0, 176, 80)));
+    border-radius: var(--lwc-borderRadiusMedium,0.25rem);
+}

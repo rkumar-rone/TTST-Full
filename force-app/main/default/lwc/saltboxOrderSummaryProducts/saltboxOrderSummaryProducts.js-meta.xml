@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Saltbox Order Summary Products</masterLabel>
+    <description>Custom Order Summary Products component</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Theme_Layout</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property 
+                name="recordId" 
+                type="String" 
+                label="Record Id" 
+                default="{!recordId}" 
+                description="Automatically bind the page's record id to the component variable"
+            />
+            <property 
+                name="effectiveAccountId" 
+                type="String"  
+                label="Effective Account Id" 
+                default="{!CurrentUser.effectiveAccountId}" 
+                description="The ID of the account under which the current user is acting"
+            />
+            <property 
+                name="accordionTitle" 
+                type="String"  
+                label="Title" 
+                default="Events" 
+                description="The text to display in the accordion header"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

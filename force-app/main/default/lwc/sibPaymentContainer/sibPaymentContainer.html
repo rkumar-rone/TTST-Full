@@ -1,0 +1,108 @@
+<!--
+    @description       : 
+    @author            : sthakur@rafter.one
+    @group             : 
+    @last modified on  : 10-21-2024
+    @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+
+    <!-- Div styling class to Show/Hide Component -->
+    <div class={isPaymentComponentHidden}>
+        <template lwc:if={paymentReadOnly}>
+            <div class="payment-readonly sib-card">
+                <div class="checkout-section-card">
+                    <div class="payment-readonlycontainer">
+                        <div class="title">
+                            <h4>{labels.SIB_LBL_PAYMENT}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template lwc:else> 
+            <div>
+                <main>
+                    <!--Page Cart-->
+                    <section class="checkout-page">
+                        <div class="content-wrapper">
+                        <div class="d-flex">
+                            <div class="checkout-content" id="checkout-content">
+                            <form id="form-checkout">
+                                <div class="checkout-payment" id="checkout-complete-block">
+                                <div class="box-title">
+                                    <h4 class="title">{labels.SIB_LBL_PAYMENT}</h4>
+                                </div>
+                                <!--Add Payment Block-->
+                                <div  class="payment-new-card active" id="payment-new-card">
+                                    <!-- Purchase Order -->
+                                    <template lwc:if={isDisplayPurchaseOrder}>
+                                        <div if:true={showPurchaseOrderOption} class="radio">
+                                            <input
+                                                id="radio-5"
+                                                type="radio"
+                                                name="order-radio"
+                                                checked={isPurchaseOrderSelected}
+                                                onclick={handleIsPurchaseOrderSelected}
+                                            />
+                                            <label for="radio-5" class="radio-label"
+                                                >{labels.SIB_LBL_PURCHASEORDER}</label
+                                            >
+                                        </div>
+                                        <template if:true={showPurchaseOrderScreen}>
+        
+                                            <!-- Just Purchase Order compoent -->
+                                            <template if:true={showPurchaseOrder}>
+                                                <c-sib-simple-purchase-order payment-config={checkoutConfig} is-free-course={checkForFreeCourses}></c-sib-simple-purchase-order>
+                                            </template>
+                                            <!-- Just Purchase Order compoent end-->
+                                        </template>
+                                    </template>
+
+                                    <!-- Credit Card -->
+                                    <div class="radio">
+                                        <input
+                                            id="radio-4"
+                                            name="credit-card"
+                                            type="radio"
+                                            checked={isCreditCardSelected}
+                                            onclick={handleIsCreditCardSelected}
+                                        />
+                                        <label for="radio-4" class="radio-label" >{labels.SIB_LBL_CREDITCARD}</label>
+                                    
+                                        <template if:true={showAvailablePaymentOption}>    
+                                            <!-- Just Cybersource compoent -->
+                                            <template if:true={showCybersource}>
+                                                <template lwc:if={isDoNotRenderCardOption}>
+                                                    <!--Needs to be empty so that CC element is not rendered in DOM-->
+                                                </template>
+                                                <template lwc:else>
+                                                    <c-sib-cybersource-credit-card payment-config={checkoutConfig} onpaymentsuccess={handlePaymentSuccess} payment-rendered={isPaymentRendered} is-same-as-billing-address={isSameAsBillingAddress}></c-sib-cybersource-credit-card>
+                                                </template>
+                                                <template lwc:if={isRenderPaymentInformation}>
+                                                    <c-sib-payment-information paymentmethod-id={paymentMethodId} paymentgroup-id={paymentGroupId} cart-summary={cartSummary} onpaymentupdated={handleAuthReversal}></c-sib-payment-information>
+                                                </template>
+                                            </template>
+                                            <!-- Just Cybersource compoent end-->
+                                        </template>
+                                    </div>
+                                </div>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </template>
+    </div>
+
+    <div lwc:if={checkForFreeCourses}>
+        <c-sib-simple-purchase-order payment-config={checkoutConfig} is-free-course={checkForFreeCourses}></c-sib-simple-purchase-order>
+    </div>
+    
+</template>

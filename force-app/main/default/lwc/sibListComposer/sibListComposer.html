@@ -1,0 +1,8 @@
+<template>
+    <template lwc:if={isGroupOrder}>
+        <c-sib-related-list record-id={recordId} sobject-api-name={childSobjectApiName} related-field-api-name={relatedfieldname}
+            sorted-by={sortedbylist} sorted-direction={sortedDir} fields={fieldList}
+            columns={objColumns} number-of-records={rowLimit} amount={pageLimit} text-color={textColor} brand-color={brandColor} is-related-list={isRelatedList} search-field-list={searchFieldList} search-available={searchAvailable} detail-page={detailpage}>
+        </c-sib-related-list>
+    </template>
+</template>

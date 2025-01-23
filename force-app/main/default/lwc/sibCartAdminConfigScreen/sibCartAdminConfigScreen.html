@@ -1,0 +1,282 @@
+<template>
+    <template if:true={config}>
+        <article class="slds-card slds-p-around_medium noShadow">
+            <div class="slds-card__body slds-card__body_inner"><!--slds-card__body_scrollable-->
+                <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+                    <lightning-accordion-section class="accordianHeader" name="individualConfigs" label="Individual Configs">
+                        <article class="slds-card">
+                            <div class="slds-card__body slds-card__body_inner">
+                                <div class="slds-form slds-form_compound slds-p-top_large slds-p-bottom_large" >
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show Product Image</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showProductImage" name="showProductImage" checked={showProductImage} aria-describedby="showProductImage" onchange={handleCheckboxChange}/>
+                                                <span id="showProductImage" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show Price Per Unit</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showPricePerUnit" name="showPricePerUnit" checked={showPricePerUnit} aria-describedby="showPricePerUnit" onchange={handleCheckboxChange}/>
+                                                <span id="showPricePerUnit" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show Original Price</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showOriginalPrice" name="showOriginalPrice" checked={showOriginalPrice} aria-describedby="showOriginalPrice" onchange={handleCheckboxChange}/>
+                                                <span id="showOriginalPrice" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show More Items Option</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showMoreItemsOption" name="showMoreItemsOption" checked={showMoreItemsOption} aria-describedby="showMoreItemsOption" onchange={handleCheckboxChange}/>
+                                                <span id="showMoreItemsOption" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show Line Item Total</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showLineItemTotal" name="showLineItemTotal" checked={showLineItemTotal} aria-describedby="showLineItemTotal" onchange={handleCheckboxChange}/>
+                                                <span id="showLineItemTotal" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show Actual Price</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showActualPrice" name="showActualPrice" checked={showActualPrice} aria-describedby="showActualPrice" onchange={handleCheckboxChange}/>
+                                                <span id="showActualPrice" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Hide Quantity Selector</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="hideQuantitySelector" name="hideQuantitySelector" checked={hideQuantitySelector} aria-describedby="hideQuantitySelector" onchange={handleCheckboxChange}/>
+                                                <span id="hideQuantitySelector" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Allow Promo Code</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="allowPromoCode" name="allowPromoCode" checked={allowPromoCode} aria-describedby="allowPromoCode" onchange={handleCheckboxChange}/>
+                                                <span id="allowPromoCode" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show Unique Count</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showUniqueCount" name="showUniqueCount" checked={showUniqueCount} aria-describedby="showUniqueCount" onchange={handleCheckboxChange}/> 
+                                                <span id="showUniqueCount" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show SKU</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showSKU" name="showSKU" checked={showSKU} aria-describedby="showSKU" onchange={handleCheckboxChange}/>
+                                                <span id="showSKU" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show Saved Amount</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showSavedAmount" name="showSavedAmount" checked={showSavedAmount} aria-describedby="showSavedAmount" onchange={handleCheckboxChange}/>
+                                                <span id="showSavedAmount" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Show Remove Item Option</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="showRemoveItemOption" name="showRemoveItemOption" checked={showRemoveItemOption} aria-describedby="showRemoveItemOption" onchange={handleCheckboxChange}/>
+                                                <span id="showRemoveItemOption" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section class="accordianHeader" name="ProductFieldMappingConfig" label="Product Field Mapping Configs">
+                        <article class="slds-card">
+                            <div class="slds-card__header slds-grid">
+                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title slds-truncate subHeader">
+                                        <span>Product Field Mappings</span>
+                                    </h2>
+                                    </div>
+                                    <div class="slds-no-flex">
+                                        <button class="slds-button configAddNewButton" onclick={showModalBox}>+ Add New</button>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="slds-card__body slds-card__body_inner">
+                                <fieldset class="slds-form-element slds-form-element_compound slds-p-bottom_large">
+                                    <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
+                                        <thead class="configTableHeader">
+                                            <tr class="slds-line-height_reset">
+                                                <th class="" scope="col">
+                                                <div class="slds-truncate" title="Show Label">Show Label</div>
+                                                </th>
+                                                <th class="" scope="col">
+                                                <div class="slds-truncate" title="Name">Name</div>
+                                                </th>
+                                                <th class="" scope="col">
+                                                <div class="slds-truncate" title="Label">Label</div>
+                                                </th>
+                                                <th class="" scope="col">
+                                                <div class="slds-truncate" title="Actions">Actions</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template for:each={rowsOfArrayObjects} for:item="row" for:index="index">
+                                                
+                                                <tr key={row.key} class="configTableBodyRow">
+                                                    
+                                                    <template for:each={row} for:item="field">
+                                                        
+                                                        <template if:true={field.isCheckbox}>
+                                                            <td key={field.name}>
+                                                                <lightning-input type="checkbox" data-index={index} data-key={field.name} data-parent={field.parent} data-type={field.type} data-original={field.originalType} id={field.name} checked={field.value} onchange={handleContentMappingChange}></lightning-input>
+                                                            </td>
+                                                        </template>
+                                                        <template if:false={field.isCheckbox}>
+                                                            <td key={field.name}>
+                                                                <lightning-input type={field.type} class="configTableInput" data-index={index} data-key={field.name} data-parent={field.parent} data-type={field.type} data-original={field.originalType} id={field.name} value={field.value} onchange={handleContentMappingChange} disabled={field.isReadOnly}></lightning-input>
+                                                            </td>
+                                                        </template>
+                                                    
+                                                    </template>
+    
+                                                    <td>
+                                                        <lightning-icon icon-name="utility:delete" size="small" label="Delete" onclick={handleDelete} data-index={index} class="deleteIcon" title="Delete Mapping" variant="base"></lightning-icon>
+                                                    </td>
+    
+                                                </tr>
+                                            </template>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </article>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+        </article>
+        <template if:true={isShowModal}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={hideModalBox}>
+                            <lightning-icon class="myIcon" icon-name="utility:close" alternative-text="close"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Product Field Mapping</h2>
+                    </header>
+    
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="slds-form-element slds-form-element_compound">
+                            <div class="slds-form-element slds-form-element_stacked">
+                                <lightning-combobox name="inputName" label="Name" data-id="inputName" options={fieldOptionsForNewMapping} value={inputName} onchange={handleInputChange} required></lightning-combobox>
+                            </div>
+                            <div class="slds-form-element slds-form-element_stacked">
+                                <lightning-input type="text" data-id="inputLabel" value={inputLabel} label="Label" onchange={handleInputChange} required></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-form-element_stacked">
+                                <lightning-input type="checkbox" data-id="inputShowLabel" value={inputShowLabel} label="Show Label" onchange={handleInputChange}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- modal footer start-->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={addNewRow}>Save</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <div class="button-container slds-m-top_medium slds-p-horizontal_medium slds-text-align_center">
+            <lightning-button label="Save" variant="brand" class="slds-p-horizontal_small" onclick={handleSave}></lightning-button>
+            <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+        </div>
+    </template> 
+</template>

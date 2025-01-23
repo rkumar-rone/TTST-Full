@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 05-03-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <c-sib-search-product-grid
+        plp-config={plpConfig}
+        results-layout={resultsLayout}
+        search-results={searchResults}
+        is-pagination-click={isPaginationClick}
+        onaddproducttocart={handleAddToCart}
+        onshowproduct={handleNavigateToProductPage}
+        onpagegoto={handleGotoPageEvent}
+    ></c-sib-search-product-grid>
+</template>

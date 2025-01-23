@@ -1,0 +1,90 @@
+<template>
+    <!--Footer-->
+    <footer class="footer">
+        <div class="col">
+          <div class="top-footer">
+            <div class="container">
+              <div class="d-flex">
+                <!-- COMPANY LOGO -->
+                <div class="footer__logo">
+                  <a href={siteUrl}>
+                    <img src={images.footerLogo} alt={Logo_Image_Alt_Text} />
+                  </a>
+                </div>
+                <!-- TOP SECTION -->
+                <template if:true={footerConfig.topSection.showSection}>
+                  <div class="top-footer-menu">
+                    <template for:each={footerConfig.topSection.subsections} for:item="subsection">
+                      <div if:false={subsection.isSocialMediaSubSection} class="col" key={subsection.SubsectionName}>
+                        <div class="answercont">
+                          <h3 class="question" onclick={toggleAnswer} data-id={subsection.SubsectionName}>{subsection.SubsectionName}</h3>
+                          <div class="answer">
+                            <template for:each={subsection.records} for:item="link">
+                              <a if:true={link.Active} key={link.Label} href={link.URL} target={link.target} class="top-footer__link">{link.Label}</a>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                  <template for:each={footerConfig.topSection.subsections} for:item="subsection">
+                    <div if:true={subsection.isSocialMediaSubSection} class="social" key={subsection.SubsectionName}>
+                      <h3>{subsection.SubsectionName}</h3>
+                      <div class="menu-social">
+                        <div class="div-33">
+                          <div class="div-34">
+                            <img loading="lazy" srcset="..." class="img-2"/>
+                          </div>
+                        </div>
+                        <template for:each={subsection.records} for:item="link">
+                            <a if:true={link.Active} href={link.URL} target={link.target} key={link.Label}>
+                              <template if:true={link.isFacebook}>
+                                <img class="social-Media" src={images.facebook} alt="Facebook" />
+                              </template>
+                              <template if:true={link.isTwitter}>
+                                <img src={images.twitter} alt="Twitter" />
+                              </template>
+                              <template if:true={link.isLinkedIn}>
+                                  <img src={images.linkedin} alt="LinkedIn" />
+                              </template>
+                              <template if:true={link.isYoutube}>
+                                  <img src={images.youtube} alt="YouTube" />
+                              </template>
+                              <template if:true={link.isInstagram}>
+                                  <img src={images.instagram} alt="Instagram" />
+                              </template>
+                            </a>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
+              </template>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom-footer">
+            <div class="container">
+              <div if:true={footerConfig.middleSection.showSection} class="bottom-footer-menu padding-top padding-bottom">
+                <!-- MIDDLE SECTION -->
+                <ul class="middle-section-list bottom-footer-menu-middle-section-padding">
+                  <template for:each={footerConfig.middleSection.records} for:item="record">
+                    <li key={record.URL} class="middle-section-item" if:true={record.Active}>
+                        <a class="bottom-footer__link" href={record.URL} target={record.target}>
+                          <span class="record-label">{record.Label}</span>
+                        </a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <!-- BOTTOM SECTION -->
+              <template if:true={footerConfig.bottomSection.showSection}>
+                <template for:each={footerConfig.bottomSection.records} for:item="record">
+                  <p key={record.Label} class="padding-bottom">{record.Label}</p>
+                </template>
+              </template>
+            </div>
+          </div>
+        </div>
+      </footer>
+</template>

@@ -1,0 +1,85 @@
+<apex:page id="loginPage" showHeader="false" title="Training the Street Login" controller="SiteLoginController">
+    <apex:stylesheet value="{!$Resource.TTS_Style}"/>
+    <body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="{!URLFOR($Resource.login, 'images/background.html')}">
+        
+        <table cellSpacing="0" cellPadding="0"  width="100%" border="0">
+            <tr>
+                <td colspan="2"  id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td class="headercell" align="left"><img src="{!URLFOR($Resource.login, 'images/topBanner.jpg')}" width="864" height="89" border="0" class="logo-image"/></td>
+    </tr>
+</table></td>
+            </tr>
+        </table>
+        <p></p>
+        <table cellSpacing="0" cellPadding="0" width="780"  border="0">
+            
+             
+                            
+                            
+            
+            
+            <tr>
+                <td>
+                    <apex:form id="Form1" forceSSL="true">
+
+
+                        <table cellSpacing="0" cellPadding="5" width="100%" border="0">
+                            <tr>
+                                <td class="field-section-header" colspan="2"></td>
+                                <td class="texthighlightlarge" colspan="2">Login</td>
+                            
+                                <td colspan="2"></td>
+                                <td colspan="3"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td></td>
+                                <td class="fieldlabel" align="right">* Username:</td>
+                                <td><apex:inputText value="{!username}" id="username"/><BR/>
+                                    </td>
+                                <td width="50%" class="bodytext" rowspan="4" valign="top"><b>Instructions</b><BR/>Please fill in username and password and select the login button.  For questions please contact us at <a href="mailto:register@trainingthestreet.com">register@trainingthestreet.com</a>.
+                                    <BR/><BR/>Do not have an account?  Click <a href="SiteRegister">here</a><BR />
+                                    <BR/>Forgot your password?  Click <a href="ForgotPasswordTTS">here</a> 
+                                </td>   
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="fieldlabel" align="right">* Password:</td>
+                                <td><apex:inputSecret value="{!password}"/><BR/><font color="red"><b>{!error}</b></font>
+                                    </td>                                   
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="2"></td>
+                                <td class="bodytextsmall"><b>*</b> - Required Fields</td>
+                            </tr>
+                            <tr>
+                                <td align="right" colspan="3"><apex:commandButton action="{!login}" onMouseOver="this.src = '
+{!URLFOR($Resource.login, 'images/buttons/login-over.gif')}';" onMouseOut="this.src = '{!URLFOR($Resource.login, 'images/buttons/login.gif')}';" image="{!URLFOR($Resource.login, 'images/buttons/login.gif')}" alt="Login" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            </tr>
+                        </table>
+                    </apex:form>
+                </td>
+            </tr>
+            
+            
+        </table>
+        
+<table cellSpacing="0" cellPadding="0"  width="100%" border="0">
+    <tr>  
+         
+        <td class="bodytext">
+          <div id="footer" class="footnote" >
+          	Having trouble? Please contact us at <a href="mailto:Register@trainingthestreet.com">Register@trainingthestreet.com</a> or + 1 800 887 1320
+          	<BR />
+            <p><a href="http://www.trainingthestreet.com/terms.html" target="_blank">Terms of Use</a> | <a href="http://www.trainingthestreet.com/privacy.html" target="_blank">Privacy Policy</a></p>
+            <p class="bodytext">TRAINING THE STREET is a trademark owned by Training The Street, Inc.</p>
+          </div>        
+        </td>
+    </tr>
+</table>
+</body>
+
+</apex:page>

@@ -1,0 +1,26 @@
+public with sharing class ReCAPTCHA {
+    private static String recaptchaSecretKey = '6LeHWCooAAAAAIo4RWQQPXlsPmz7ktiIas3UZoAl';
+         
+    @AuraEnabled
+    public static Boolean verifyRecaptcha(String recaptchaResponse) {
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://www.google.com/recaptcha/api/siteverify');
+        request.setMethod('POST');
+        request.setBody('secret=' + recaptchaSecretKey + '&response=' + recaptchaResponse);
+        HttpResponse response = http.send(request);
+
+        if (response.getStatusCode() == 200) {
+            System.debug(response.getBody());
+            Map<String, Object> result = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+
+            if (result.containsKey('success') && result.get('success') == true) {             
+                return true;
+            } 
+            else {
+                return false;
+            }
+        }
+        return false;
+    }
+}

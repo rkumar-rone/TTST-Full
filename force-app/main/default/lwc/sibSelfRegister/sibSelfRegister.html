@@ -1,0 +1,104 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 04-02-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <div class="wrapper">
+      
+        <main class="page-content">
+        
+            <section class="registration-page">
+        
+                <div class="Register-Lg">
+                    
+                    <div class="Register-Lg-2">
+                        
+                        <div class="Container">
+                            
+                            <div class="Page-Title">
+                                <span class="Page-Title-Label">Register</span>
+                            </div>
+
+                            <div class="Two-Column">
+                                <div class="Summary-tile">
+                                    <div class="Form-Fields">
+                                        <div class="form-input">
+                                            <label for="firstName">First Name*</label>
+                                            <input type="text" id="firstName" required name="firstName" onchange={handleFirstNameChange}/>
+                                            <div if:true={showFirstNameErr} class="errText">First Name cannot be blank.</div>
+                                        </div>
+                                        <div class="form-input">
+                                            <label for="lastName">Last Name*</label>
+                                            <input type="text" id="lastName" required name="lastName" onchange={handleLastNameChange}/>
+                                            <div if:true={showLastNameErr} class="errText">Last Name cannot be blank.</div>
+                                        </div>
+                                        <div class="form-input">
+                                            <label for="email">Email*</label>
+                                            <input type="text" id="email" required name="email" onchange={handleEmailChange}/>
+                                            <div if:true={showEmailErr} class="errText">Please enter the valid email.</div>
+                                        </div> 
+                                        <div class="form-input">
+                                            <label for="company">Company</label>
+                                            <input type="text" id="company" required name="company" onchange={handleCompanyChange}/>
+                                            <div if:true={showCompanyErr} class="errText">Please enter the company.</div>
+                                        </div> 
+                                        <div class="form-input">
+                                            <label for="website">Company Website</label>
+                                            <input type="text" id="website" required name="website" onchange={handleCompanyWebsiteChange}/>
+                                            <div if:true={showCompanyWebErr} class="errText">Please enter company website.</div>
+                                        </div> 
+                                        <div class="form-input">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" id="phone" required name="phone" onchange={handlePhoneChange}/>
+                                            <div if:false={showPhoneErr}>
+                                                <div if:true={showPhoneErrorDetails} class="errText">Please enter a valid phone number.</div>
+                                            </div>
+                                        </div>    
+                                        <div lwc:if={showPassword} class="form-input">
+                                            <label for="password">Password*</label>
+                                            <input type="password" id="password" required name="password" onchange={handlePasswordChange}/>
+                                        </div> 
+                                        <div lwc:if={showPassword} class="Password-Check">
+                                            <div class="Password-Variables">
+                                                <span class="Password-instructions">
+                                                    Minimum 8 characters
+                                                </span>
+                                            </div>
+                                            <span class="Password-instructions">
+                                                {specialCharsInstructionText}
+                                            </span>
+                                            <span class="Password-instructions">
+                                                One or more letters
+                                            </span>
+                                            <span class="Password-instructions-green">
+                                                At least one upper and one lower cased letter
+                                            </span>
+                                            <span class="Password-instructions-red">
+                                                One or more numbers
+                                            </span>
+                                        </div>
+                                        <div lwc:if={showPassword} class="form-input">
+                                            <label for="confirmPassword">Confirm Password*</label>
+                                            <input type="password" id="confirmPassword" required name="confirmPassword" onchange={handleConfirmPasswordChange}/>
+                                        </div>
+                                    </div>
+                                    <div class="Button-CTA">
+                                        <label class="Button-CTA-Label" onclick={handleSignUp}>Create Account</label>
+                                    </div>
+                                    <div class="Log-In">
+                                        <span class="Text-label">Already have an account?</span>
+                                        <span class="Text-label-blue">Log In</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</template>

@@ -1,0 +1,90 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 12-20-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div class="product-page">
+        <div class="banner-background">
+            <slot name="header"></slot>
+        </div>
+    
+        <div class="breadcrumb">
+            <slot name="breadcrumb"></slot>
+        </div>
+    
+        <div class="menubar menu-sticky-section">
+            <slot name="menubar"></slot>
+        </div>
+    
+        <div class="container" style="display: flex;">
+            <div class="product-page__relevant">
+                <div class="sections" data-scroll='overview'>
+                    <slot name="overview"></slot>
+                </div>
+                <div class="sections" data-scroll='whatsIncluded'>
+                    <slot name="whatsIncluded"></slot>
+                </div>
+                <div class="sections" data-scroll='previews'>
+                    <slot name="previews"></slot>
+                </div>
+                <div class="sections" data-scroll='certificate'>
+                    <slot name="certificate"></slot>
+                </div>
+                <div class="sections" data-scroll='prerequistes'>
+                    <slot name="prerequistes"></slot>
+                </div>
+                <div class="sections reviews" data-scroll='reviews'>
+                    <slot name="reviews"></slot>
+                </div> 
+            </div>
+    
+            <div class="product-page__detail right-sticky-section desktopView">
+                <slot name="product-description"></slot>
+                <div class="cart-view">
+                    <slot name="add-to-cart"></slot>
+                    <slot name="rating"></slot>
+                    <slot name="recommendations"></slot>
+                </div>
+               
+            </div>
+            
+        </div>
+
+
+        <div class="">
+            <slot name="footer"></slot>
+        </div>
+
+    </div>
+
+    <!--Responsive Mobile Summary Section-->
+    <div class="product-page_detail right-sticky-section handheldView mobile-summary-section border-top">
+        <div class="summary-heading" onclick={handleSummary}>
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="6">
+                    <span lwc:if={isSelfStudy} class="summary-label">{labels.SUMMARY_HEADING_SELF_STUDY}</span> 
+                    <span lwc:else class="summary-label">{labels.SUMMARY_HEADING}</span> 
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <lightning-icon class="summary-icon" icon-name={summaryIcon} size="x-small" variant="success">
+                    </lightning-icon>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <hr class="summary-divider"/>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <div class="summary-section" if:true={showSummarySection}>
+            <slot name="product-description"></slot>
+            <!-- <slot name="rating"></slot> -->
+            <!-- <slot name="recommendations"></slot> -->
+        </div>
+        <div class="">
+            <slot key={addToCart} name="add-to-cart"></slot> <!--quantity-->
+        </div>
+    </div>
+</template>

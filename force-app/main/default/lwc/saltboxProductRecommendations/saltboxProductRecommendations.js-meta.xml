@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Saltbox Product Recommendation</masterLabel>
+    <description>Product Recommendation</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property required="true" name="effectiveAccountId" type="String" label="Effective Account Id" default="{!CurrentUser.effectiveAccountId}" description="The ID of the account under which the user is acting"/>
+            
+            <property name="titleField" type="String" default="Name" label="Title Field" datasource="apex://Saltbox_ProductFieldSetPicklist" description="Define the Title Field" />
+            <property name="descField" type="String" default="Description" label="Description Field" datasource="apex://Saltbox_ProductFieldSetPicklist" description="Define the Description Field" />
+            <property name="tileLayout" type="String" label="Layout Of Tile" default="Vertical Tile" datasource="Vertical Tile,Horizontal Tile" description="Define how the product tile will display."></property>
+            <property name="buttonLabel" type="String" label="Add to Cart label" default="Add to Cart" description="Define the  button label for Add to Cart"/>
+            <property name="buttonLabel2" type="String" label="View Details label" default="View Details" description="Define the  button label for View Details"/>
+            <property name="type" type="String" label="Feature or Recommendation?" default="Feature" datasource="Feature,Recommendation" description="Define which products need to be display either feature or recommended products"></property>
+            
+            <property name="recommSrc" type="String" label="Recommendation Source" default="Einstein" datasource="Einstein,B2B Recomm Records" description="Define where the recommendations are taken from"></property>
+            <property name="featureType" type="String" label="Einstein Feature Type" default="Recently Viewed " datasource="Recently Viewed, Top Selling, Personalized For Shopper" description="Define the type of recommendation feature."></property>
+            <property name="recommType" type="String" label="Einstein Recomm Type" default="Similar Products" datasource="Similar Products,Complementary Products" description="Define the type of recommendation."></property>
+            
+            <property name="productAttr1FieldName" type="String" label="Product Attribute 1 Field" datasource="apex://Saltbox_ProductFieldSetPicklist" description="Define the field name for Product Attribute 1" />
+            <property name="hideProductAttr1" type="Boolean" label="Hide Product Attrribute 1?" default="false" description="Define hide or show Product Attribute 1"  />
+            <property name="productAttr1ImageId" label="Product Attribute 1 Image" type="ContentReference" filter="cms_image" default="MCZDJKIR4CB5GYVO7NU6QFQJ433U" />
+            
+            <property name="productAttr2FieldName" type="String" label="Product Attribute 2 Field" datasource="apex://Saltbox_ProductFieldSetPicklist" description="Define the field name for Product Attribute 2" />
+            <property name="hideProductAttr2" type="Boolean" label="Hide Product Attrribute 2?" default="false" description="Define hide or show Product Attribute 2"  />
+            <property name="productAttr2ImageId" label="Product Attribute 2 Image" type="ContentReference" filter="cms_image" default="MCZDJKIR4CB5GYVO7NU6QFQJ433U" />
+            
+            <property name="productAttr3FieldName" type="String" label="Product Attribute 3 Field" datasource="apex://Saltbox_ProductFieldSetPicklist" description="Define the field name for Product Attribute 3" />
+            <property name="hideProductAttr3" type="Boolean" label="Hide Product Attrribute 3?" default="false" description="Define hide or show Product Attribute 3"  />
+            <property name="productAttr3ImageId" label="Product Attribute 3 Image" type="ContentReference" filter="cms_image" default="MCZDJKIR4CB5GYVO7NU6QFQJ433U" />
+            <property name="priceTitle" type="String" label="Price Title" default="Starts From:" description="Define Price Title." />
+            <property name="productImageAttr1FieldName" type="String" label="Product Image Attribute 1 Field" datasource="apex://Saltbox_ProductFieldSetPicklist" description="Define the field name for Product Image Attribute 1" />
+            <property name="hideProductImageAttr1" type="Boolean" label="Hide Product Image Attrribute 1?" default="false" description="Define hide or show Product Image  Attribute 1"  />
+            <property name="productImageAttr1ImageId" label="Product Image Attribute 1 Image" type="ContentReference" filter="cms_image" default="MCZDJKIR4CB5GYVO7NU6QFQJ433U" />
+            <property name="productWishlistSelectedImage" label="Product Wishlist Selected" type="ContentReference" filter="cms_image"/>
+            <property name="productWishlistDeselectedImage" label="Product Wishlist Deselected" type="ContentReference" filter="cms_image"/>
+            <property name="hideWishlist" type="Boolean" label="Hide Wishlist" default="false" description="Define hide or show wishlist button." />
+            <property name="hideViewDetail" type="Boolean" label="Hide View Detail" default="false" description="Define hide or show view detail." />
+            <property name="hideAddtoCart" type="Boolean" label="Hide Add to Cart" default="false" description="Define hide or show add to cart."  />
+            <property name="hideCartIcon" type="Boolean" label="Hide Cart Icon" default="false" description="Define hide or show cart icon on add to cart button."  />
+            <property name="hideDescription" type="Boolean" label="Hide Description" default="false" description="Define hide or show description."  />
+            <property name="brandColor" type="Color" default="rgba(42, 143, 86, 1)" label="Brand Color" description="Define the color of brand" />
+             <property name="tilePriceColor" type="Color" default="rgba(40, 125, 240, 1)" label="Tile Price Color" description="Define the color of the price label" />
+            <property name="imageAttrTagBackColor" type="Color" default="rgba(40, 125, 240, 1)" label="Image Attribute background Color" description="Define the background color of image attribute." />
+            <property name="imageAttrTagTextColor" type="Color" default="rgb(255, 255, 255,1)" label="Image Attribute text Color" description="Define the text color of image attribute." />
+            <property name="noOfRecommendations" type="integer" default="3" label="# of Recs" description="Define number of recomendations need to display." />
+        
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

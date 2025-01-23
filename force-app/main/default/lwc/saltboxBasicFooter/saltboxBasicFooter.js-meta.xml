@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Saltbox Basic Footer</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="logoImageId" label="Logo Image" type="ContentReference"
+                filter="cms_image" default="MCA4CCV5QS2BAB5H7YRCRPTCWGZQ" />
+            <property name="backgroundColor" label="Background Color" type="color" default="#000000" />
+            <property name="textColor" label="Text Color" type="color" default="#ffffff" />
+            <property name="Section1Item1" label="Section 1 - Item 1" default="Privacy Policy"
+                type="String" />
+            <property name="Section1Item1Link" label="Section 1 - Item 1 Link" default="#"
+                type="String" />
+
+            <property name="Section1Item2" label="Section 1 - Item 2" default="Terms" type="String" />
+            <property name="Section1Item2Link" label="Section 1 - Item 2 Link" default="#"
+                type="String" />
+
+            <property name="Section2Item1" label="Section 2 - Item 1" default="Item 1" type="String" />
+            <property name="Section2Item1Link" label="Section 2 - Item 1 Link" default="#"
+                type="String" />
+
+            <property name="Section2Item2" label="Section 2 - Item 2" default="Item 2" type="String" />
+            <property name="Section2Item2Link" label="Section 2 - Item 2 Link" default="#"
+                type="String" />
+
+            <property name="Section2Item3" label="Section 2 - Item 3" default="Item 3" type="String" />
+            <property name="Section2Item3Link" label="Section 2 - Item 3 Link" default="#"
+                type="String" />
+
+            <property name="Section2Item4" label="Section 2 - Item 4" default="Item 4" type="String" />
+            <property name="Section2Item4Link" label="Section 2 - Item 4 Link" default="#"
+                type="String" />
+
+            <property name="facebookLink" label="Facebook Link" default="#" type="String" />
+            <property name="instagramLink" label="Instagram Link" default="#" type="String" />
+            <property name="twitterLink" label="Twitter Link" default="#" type="String" />
+            <property name="linkedInLink" label="LinkedIn Link" default="#" type="String" />
+
+            <property name="rights" label="All Rights"
+                default="© 2021 Tiny Homes. All rights reserved." type="String" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

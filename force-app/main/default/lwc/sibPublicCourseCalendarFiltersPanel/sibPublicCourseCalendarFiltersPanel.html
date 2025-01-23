@@ -1,0 +1,38 @@
+<!--
+  @description       : 
+  @author            : pareddy@rafter.one
+  @group             : 
+  @last modified on  : 09-25-2024
+  @last modified by  : Anand
+-->
+<template lwc:render-mode="light">
+    <div class="filter-accordeon">
+        <section id="filter-accordeon">
+            <ul>
+                <template for:each={filters} for:item="filter">
+                    <li class="first-category-filter" key={filter.displayName}>
+                        <input tabindex="0" type="checkbox" onclick={applyCssToSelectedFilters} checked id="check-1" />
+                        <i></i>
+                        <label for="check-1">{filter.displayName}</label>
+                        <article class="panel">
+                            <div class="box">
+                                <ol class="second">
+                                    <template for:each={filter.values} for:item="child">
+                                        <li key={child.label}>
+                                            <div class="selected-category">
+                                                <a class="filter-value" tabindex="0" onclick={handleFacetValueUpdateEvent} onkeydown={handleKeydown}
+                                                    data-filtername={filter.name} data-value={child.value}>
+                                                    {child.label}
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ol>
+                            </div>
+                        </article>
+                    </li>
+                </template>
+            </ul>
+        </section>
+    </div>
+</template>

@@ -1,0 +1,58 @@
+<template>
+    <div class="product-card ">
+        <template if:false={isError}>
+        <div class="slds-grid" style="height: 100%;">
+            <div if:false={properties.hideProductImage} class="slds-col slds-p-around--small slds-size--1-of-3" style="text-align: center;">
+                <img style="border-radius: 4px;height:92px;width: 92px; object-fit: cover;" src={item.productSummary.thumbnailImage.url}>
+            </div>
+            <div class="slds-col slds-size--2-of-3">
+                <div class="slds-grid">
+                    <div class="slds-col">
+                        <span class="product-name slds-m-top--medium">
+                            <div class="slds-grid title-grid">
+                                <div class="slds-grid slds-has-flexi-truncate">
+                                  <span class="slds-truncate">{title}</span>
+                                </div>
+                              </div>
+                           
+                        </span>
+                    </div>
+                    <div if:false={properties.hideDelete} class="slds-col slds-p-around--small">
+                        <svg width="18" onclick={handleRemoveWishlistItem} class="slds-float--right" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 6.75V15.75C15 16.1478 14.842 16.5294 14.5607 16.8107C14.2794 17.092 13.8978 17.25 13.5 17.25H4.5C4.10217 17.25 3.72064 17.092 3.43934 16.8107C3.15804 16.5294 3 16.1478 3 15.75V6.75" stroke="#001022" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"></path>
+                            <path d="M0.75 3.75H17.25" stroke="#001022" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"></path>
+                            <path d="M9 9V13.5" stroke="#001022" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"></path>
+                            <path d="M6 9V13.5" stroke="#001022" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"></path>
+                            <path d="M12 9V13.5" stroke="#001022" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="square"></path>
+                            <path d="M6 3.75V0.75H12V3.75" stroke="#001022" stroke-width="1.5" stroke-miterlimit="10"></path>
+                        </svg>
+                            
+                    </div>
+                </div>
+                <div class="slds-m-top--xx-small">
+                    <span class="price ">${item.salesPrice}</span>
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col slds-size--1-of-2 slds-p-top--large">
+                        <p class="sku-id slds-truncate ">SKU ID:{attribute}</p>
+                    </div>
+                    <div if:false={properties.hideAddTocart} class="slds-col">
+                        <button 
+                            class="slds-button  add-to-cart slds-align--absolute-center"
+                            onclick={handleAddToCart}
+                        >{properties.addToCartText}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </template>
+        <template if:true={isError}>
+             <div class="slds-align--absolute-center">
+                 <span style="color: red;">{item.error.message}</span>
+             </div>
+        </template>
+    </div>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+     </template>
+</template>

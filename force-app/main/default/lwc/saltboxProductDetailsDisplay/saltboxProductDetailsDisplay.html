@@ -1,0 +1,263 @@
+<template>
+    <lightning-breadcrumbs class="slds-p-bottom_medium">
+        <template for:each={_resolvedCategoryPath} for:item="level">
+            <lightning-breadcrumb key={level.name} label={level.name} href={level.url}>
+            </lightning-breadcrumb>
+        </template>
+    </lightning-breadcrumbs>
+    <div class="product-information">
+        <div class="image slds-m-right_small">
+            <figure
+                class="slds-p-around_xx-small slds-border_top slds-border_right slds-border_bottom slds-border_left">
+                <img src={image.url} alt={image.alternativeText} />
+            </figure>
+        </div>
+        <div class="details-area">
+            <div class="heading">
+                <h2 class="slds-text-heading_medium">{productName}</h2>
+                <div class="slds-p-top_x-small">Class Code: {sku}</div>
+                <div class="slds-p-bottom_medium">
+                    <template for:each={_displayableFields} for:item="field">
+                        <div key={field.id} if:true={field.value} class="slds-grid slds-p-top_x-small">
+                            <p class="slds-m-right_xx-small">{field.name}:</p>
+                            <lightning-formatted-rich-text value={field.value}></lightning-formatted-rich-text>
+                        </div>
+                    </template>
+                </div>
+                <!-- <div if:true={inStock} class="slds-p-bottom_small">
+                    <lightning-icon
+                        icon-name="utility:check"
+                        variant="success"
+                    ></lightning-icon>
+                    <span class="slds-p-horizontal_small">In stock</span>
+                </div>
+                <div if:false={inStock} class="slds-p-bottom_small">
+                    <lightning-icon
+                        icon-name="utility:ban"
+                        variant="error"
+                    ></lightning-icon>
+                    <span class="slds-p-horizontal_small">Out of stock</span>
+                </div> -->
+
+                <template lwc:if={deliveryFormat}>
+                    <div class="detailHeading">Location</div>
+                    <template lwc:if={isFormatInPerson}>
+                        <div class="slds-p-bottom_medium locationText">
+                            <p>{trainingLocation.name}</p>
+                            <p>{trainingLocation.street}</p>
+                            <p>{trainingLocation.city} {trainingLocation.state} {trainingLocation.postalCode}</p>
+                        </div>
+                    </template>
+                    <template lwc:else>
+                        <div class="slds-p-bottom_medium locationText">
+                            <p>Virtual Event</p>
+                        </div>
+                    </template>
+                </template>
+
+
+                <div if:true={description}>
+                    <div class="detailHeading" >Description</div>
+                    <div class="slds-p-bottom_medium">{productDescription}</div>
+                </div>
+
+            </div>
+            <template if:true={isPublicCourse}>
+                <div class="slds-form-element__control" style="width:200px;">
+                        <div class="detailHeading">Product options</div>
+
+                        <!--City-->
+                        <label class="slds-form-element__label" for="dateSelector">Event City</label>
+                        <div class="slds-select_container">
+                            <select class="slds-select" 
+                                    name="citySelector" onchange={cityChangeFn} >
+                                <template for:each={eventCityOptions} for:item="city">
+                                    <template lwc:if={city.selected}>
+                                        <option key={city.value} value={city.value} selected>{city.value}</option>
+                                    </template>
+                                    <template lwc:else>
+                                        <template lwc:if={city.disabled}>
+                                            <option key={city.value} value={city.value} disabled>{city.value}</option>
+                                        </template>
+                                        <template lwc:else>
+                                            <option key={city.value} value={city.value}>{city.value}</option>
+                                        </template>
+                                    </template>
+                                </template>
+                            </select>
+                        </div>
+                        <!--City end-->
+
+                        <!--Date-->
+                        <label class="slds-form-element__label" for="dateSelector">Month / Year</label>
+                        <div class="slds-select_container">
+                            <select class="slds-select" 
+                                    name="dateSelector" onchange={dateChangeFn} >
+                                <template for:each={eventDateOptions} for:item="date">
+
+                                    <template lwc:if={date.selected}>
+                                        <option key={date.value} value={date.value} selected>{date.value}</option>
+                                    </template>
+                                    <template lwc:else>
+                                        <template lwc:if={date.disabled}>
+                                            <option key={date.value} value={date.value} disabled>{date.value}</option>
+                                        </template>
+                                        <template lwc:else>
+                                            <option key={date.value} value={date.value}>{date.value}</option>
+                                        </template>
+                                    </template>
+                                    
+                                </template>
+                            </select>
+                        </div>
+                        <!--Date end-->
+                </div>&nbsp;
+
+                <!-- <template if:false={isParentProduct}> -->
+                <div class="sessions" style={displayDiv}>
+                    <template if:true={eventSessions}>
+                        <div class="detailHeading">Sessions</div>
+                        <div class="slds-p-bottom_medium">
+                            <template for:each={eventSessions} for:item="eventSession">
+                                <lightning-input 
+                                    name={eventSession.Name} 
+                                    type="checkbox" 
+                                    label={eventSession.label} 
+                                    data-key={eventSession.Id}
+                                    data-required={eventSession.Required__c}
+                                    checked={eventSession.isChecked}
+                                    key={eventSession.Id} 
+                                    onchange={handleSessionChange}>
+                                </lightning-input>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <div class="price" style={displayDiv}>
+                    <span if:false={hasPrice}>Price Unavailable</span>
+                    <p class="slds-text-heading_small">Per Session Price:
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={priceObjFinal.negotiated} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                    <p if:true={isEarlyBird} style="width:800px" class="slds-text-heading_small">Early Bird Per Session Price:
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={sessionEarlyBirdPrice} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                    <p class="slds-text-heading_small ">Full Registration Price:
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={fullRegistrationPrice} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+
+                    <p if:true={isEarlyBird} style="width:800px" class="slds-text-heading_small">Early Bird Registration Price (Discount will be applied in checkout):
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={fullEarlyBirdPrice} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                    
+                    <p class="slds-text-heading_small slds-p-vertical_small slds-p-top_small slds-border_top">Your Selection Price:
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={selectedSessionPrice} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                </div>
+            </template>
+            <template if:true={isPrivateCourse}>
+                
+                <!-- <template if:false={isParentProduct}> -->
+                <div class="sessions" style={displayDiv}>
+                    <template if:true={eventSessions}>
+                        <div class="detailHeading">Sessions</div>
+                        <div class="slds-p-bottom_medium">
+                            <template for:each={eventSessions} for:item="eventSession">
+                                <lightning-input 
+                                    name={eventSession.Name} 
+                                    type="checkbox" 
+                                    label={eventSession.label} 
+                                    data-key={eventSession.Id}
+                                    data-required={eventSession.Required__c}
+                                    checked={eventSession.isChecked}
+                                    key={eventSession.Id} 
+                                    onchange={handleSessionChange}>
+                                </lightning-input>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <div class="price" style={displayDiv}>
+                    <span if:false={hasPrice}>Price Unavailable</span>
+                    <p class="slds-text-heading_small">Per Session Price:
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={priceObjFinal.negotiated} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                    <p if:true={isEarlyBird} style="width:800px" class="slds-text-heading_small">Early Bird Per Session Price:
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={sessionEarlyBirdPrice} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                    <p class="slds-text-heading_small ">Full Registration Price:
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={fullRegistrationPrice} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+
+                    <p if:true={isEarlyBird} style="width:800px" class="slds-text-heading_small">Early Bird Registration Price (Discount will be applied in checkout):
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={fullEarlyBirdPrice} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                    
+                    <p class="slds-text-heading_small slds-p-vertical_small slds-p-top_small slds-border_top">Your Selection Price:
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={selectedSessionPrice} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                </div>
+            </template>
+            <template if:true={isSelfStudy}>
+                <div class="priceObjFinal" style={displayDiv}>
+                    <span if:false={hasPrice}>Price Unavailable</span>
+                    <p class="slds-text-heading_small slds-p-vertical_small">Price: 
+                        <lightning-formatted-number if:true={hasPrice} currency-code={priceObjFinal.currency}
+                            format-style="currency" value={priceObjFinal.negotiated} class="slds-text-heading_small">
+                        </lightning-formatted-number>
+                    </p>
+                </div>
+            </template>
+                <div if:true={trainingLocation.closeToCapacity}>
+                    <span class="capacitySpan">Close to Capacity</span>
+                </div>
+                <div  style={displayDiv}>
+                    <div class="buttonContainer">
+                        <div class="quantitySelectorContainer">
+                            <span class="slds-m-bottom_small"><span class="quantity-selector slds-grid slds-grid_vertical-align-center">
+                                    <label class="slds-m-right_x-small" for="selector-input">QTY</label>
+                                    <span class="controls slds-m-right_small" role="group" aria-label="Product Quantity">
+                                        <button class="decrement-btn slds-p-horizontal_xx-small slds-p-vertical_x-small" aria-label="Decrease number of items" disabled={disableDecrement} onclick={decrement}><lightning-icon icon-name="utility:dash" size="x-small" alternative-text="Decrease number of items" class="btn-icon"></lightning-icon></button>
+                                            <input class="selector-input" id="selector-input" type="number" name="quantity" value={_quantityFieldValue} min="1" max="9999" step="1" oninput={handleQuantityChange}>
+                                        <button class="increment-btn slds-p-horizontal_xx-small slds-p-vertical_x-small" aria-label="Increase number of items" onclick={increment}><lightning-icon icon-name="utility:add" size="x-small" alternative-text="Increase number of items" class="btn-icon"></lightning-icon></button>
+                                    </span>
+                            </span></span>
+                        </div>
+    
+                        <button class="slds-button slds-button_brand slds-m-left_x-small btns" disabled={_isAddToCartDisabled} type="button" onclick={addToCartFn}>ADD TO CART</button>
+                        <!-- <button class="slds-button slds-button_brand slds-m-left_x-small btns" disabled={_isAddToCartDisabled} type="button" onclick={notifyCreateAndAddToList}>ADD TO LIST</button> -->
+    
+                    </div>
+
+                </div>
+
+            <!-- </template> -->
+
+            <!-- <lightning-accordion active-section-name="description" allow-multiple-sections-open>
+                <lightning-accordion-section name="description" label="Description">
+                    <lightning-formatted-rich-text value={description}></lightning-formatted-rich-text>
+                </lightning-accordion-section>
+            </lightning-accordion> -->
+        </div>
+    </div>
+    <c-saltbox-spinner show-spinner={showLoading}></c-saltbox-spinner>
+</template>

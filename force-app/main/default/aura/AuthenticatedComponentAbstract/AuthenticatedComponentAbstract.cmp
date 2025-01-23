@@ -1,0 +1,11 @@
+<aura:component access="global" abstract="true" extensible="true">
+    <aura:attribute name="username" type="String" />
+    <aura:attribute name="key" type="String" />
+    <aura:attribute name="loggedIn" type="Boolean" default="false"/>
+    <aura:handler event="c:LoggedIn" action="{!c.handleLoggedInEvent}"/>
+    <div>
+    <aura:if isTrue="{!v.loggedIn}">
+        {!v.body}
+    </aura:if>
+	</div>
+</aura:component>

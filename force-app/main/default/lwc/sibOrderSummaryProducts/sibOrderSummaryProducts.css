@@ -1,0 +1,70 @@
+.evnt-stencil{
+    width: 30%;
+}
+.stencil-container{
+    display: flex;
+    background: white;
+    -webkit-box-shadow: 1px 1px 5px 1px rgba(227, 227, 227, 1);
+    -moz-box-shadow: 1px 1px 5px 1px rgba(227, 227, 227, 1);
+    box-shadow: 1px 1px 5px 1px rgba(227, 227, 227, 1);
+    border-radius: 14px;
+    margin: 13px;
+}
+.left-stencil{
+    width: 23%;
+    padding: 19px 3px;
+}
+.right-stencil{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 18px 0;
+}
+.name-stencil, .tax-stencil{
+    width: 30%;
+}
+.qty-stencil{
+    width: 25%;
+}
+.code-stencil{
+    width: 35%;
+}
+.des-stencil{
+    width: 50%;
+}
+.img-con{
+    height: 100px;
+}
+.img-con img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width: 770px) {
+    .container[c-stencil_stencil] {
+        height: 84px !important;
+    }
+    .evnt-stencil {
+        width: 48%;
+    }
+    .left-stencil {
+        width: 30%;
+    }
+    .right-stencil {
+        gap: 10px;
+    }
+    .name-stencil, .tax-stencil {
+        width: 58%;
+    }
+    .des-stencil {
+        width: 92%;
+    }
+    .code-stencil {
+        width: 48%;
+    }
+    .qty-stencil {
+        width: 36%;
+    }
+}

@@ -1,0 +1,88 @@
+<apex:page controller="EventDetails" showHeader="false" sidebar="false" title="Select Classes to Register For" action="{!load}" id="page" cache="false">
+<apex:stylesheet value="{!$Resource.TTS_Style}"/>
+<body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="background:url('{!$Resource.TTS_Background}')">
+<apex:form id="Form1" forceSSL="true">
+        <table cellSpacing="0" cellPadding="0"  width="100%" border="0">
+            <tr>
+                <td colspan="2"  id="masthead" style="background: url('{!$Resource.TTS_Fill}')">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td class="headercell" align="left"><img src="{!URLFOR($Resource.login, 'images/topBanner.jpg')}" width="864" height="89" border="0" class="logo-image"/></td>
+    </tr>
+</table></td>
+            </tr>
+        </table>
+        <p></p>
+        <table cellSpacing="0" cellPadding="0" width="780"  border="0">
+            <tr>
+                <td align="center">
+                <apex:outputPanel id="errs" layout="none">
+                <apex:pageMessages />
+                </apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                <apex:outputPanel rendered="{!loggedIn}" id="tab">
+                        <table cellSpacing="0" cellPadding="5" width="100%" border="0" id="tab1">                       
+                            <!-- <tr>
+                                <td colspan="7" style="font-weight: bold;font-size: 1.2em;color: #027D07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Please select the classes that you wish to register for.</td>
+                            </tr> -->
+                            <!-- <apex:repeat value="{!events}" var="event"> -->
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.5em;color: #464646; font-family: Arial, Helvetica, sans-serif;text-align: left;">{!event.c.Online_Event_NAme__c}</td></tr>
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.4em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><i>Location</i></td></tr>
+                            <tr><td colspan="8" style="font-size: 1.2em; font-family: Arial, Helvetica, sans-serif;text-align: left;color:959595;"><apex:outputPanel rendered="{!ISBLANK(event.c.View_Map__c)}"><a style="color:black;" href="http://www.google.com/maps?hl=en&safe=off&q={!event.c.Training_Location_Street__c},{!event.c.Training_Location_City__c},{!event.c.Training_Location_State__c},{!event.c.Training_Location_Zip_Code__c}&aq=f&aqi=&aql=&oq=&pbx=1&bav=on.2,or.r_gc.r_pw.&fp=a445e974b90b3339" target="_blank">{!event.c.Training_Location_Name__c}, {!event.c.Training_Location_Street__c}, {!event.c.Training_Location_City__c}, {!event.c.Training_Location_State__c}, {!event.c.Training_Location_Zip_Code__c}</a></apex:outputPanel><apex:outputPanel rendered="{!NOT(ISBLANK(event.c.View_Map__c))}"><a style="color:black;" href="{!event.c.View_Map__c}">{!event.c.Training_Location_Name__c}, {!event.c.Training_Location_Street__c}, {!event.c.Training_Location_City__c}, {!event.c.Training_Location_State__c}, {!event.c.Training_Location_Zip_Code__c}</a></apex:outputPanel></td></tr>
+                            
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.4em;color: #027d07;font-family: Arial, Helvetica, sans-serif;text-align: left;"><i>Description</i></td></tr>
+                            <tr><td colspan="8" style="font-size: 1.2em;color: #464646;font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:outputText value="{!event.c.RT_Description__c}" escape="false" /></td></tr>                        
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.4em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><i>Prerequisites</i></td></tr>
+                            <tr><td colspan="8" style="font-size: 1.2em; font-family: Arial, Helvetica, sans-serif;text-align: left;">{!event.c.Pre_requisites__c}</td></tr>
+                            
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.4em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><i>What to Bring</i></td></tr>
+                            <tr><td colspan="8" style="font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;"><ul><apex:repeat value="{!event.bring}" var="bring" ><li>{!bring}</li></apex:repeat></ul></td></tr>
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.4em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><i>What's Included</i></td></tr>
+                            <tr><td colspan="8" style="font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;"><ul><apex:repeat value="{!event.cost}" var="cost" ><li>{!cost}</li></apex:repeat></ul></td></tr>
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.4em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><i>Additional Information</i></td></tr>
+                            <tr><td colspan="8" style="font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;">{!event.c.Additional_Information__c}</td></tr>
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.4em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><i>Cancellation Policy</i></td></tr>
+                            <tr><td colspan="8" style="font-size: 1.2em; font-family: Arial, Helvetica, sans-serif;text-align: left;">{!event.c.Cancellation_Policy__c}</td></tr>
+                            <tr><td colspan="8" style="font-weight: bold;font-size: 1.4em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><i>Course Cost</i></td></tr>
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(event.c.Early_Bird_Registration_Cost__c))}" ><tr><td style="font-size: 1.2em;color: #464646; font-family: Arial, Helvetica, sans-serif;text-align: left;">Early-Bird Registration Cost</td><td colspan="7" style="font-weight: bold;font-size: 1.1em; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:outputText value="{0, number, integer}"><apex:param value="{!event.c.Early_Bird_Registration_Cost__c}" /></apex:outputText>&nbsp;{!event.c.CurrencyIsoCode}</td></tr></apex:outputPanel>
+                            <apex:outputPanel layout="none" rendered="{!NOT(ISBLANK(event.c.Early_Bird_Deadline__c))}" ><tr><td style="font-size: 1.2em;color: #464646; font-family: Arial, Helvetica, sans-serif;text-align: left;">Early-Bird Deadline Register Before</td><td colspan="7" style="font-weight: bold;font-size: 1.1em; font-family: Arial, Helvetica, sans-serif;text-align: left;">{!TEXT(MONTH(DATEVALUE(event.c.Early_Bird_Deadline__c))) & "/" & TEXT(DAY(DATEVALUE(event.c.Early_Bird_Deadline__c))) & "/" & TEXT(YEAR(DATEVALUE(event.c.Early_Bird_Deadline__c)))}</td></tr></apex:outputPanel>
+                            <apex:outputPanel layout="none" rendered="{!NOT(event.c.Only_Show_Sessions__c)}"><tr><td style="font-size: 1.2em;color: #464646; font-family: Arial, Helvetica, sans-serif;text-align: left;">Full Registration Cost</td><td colspan="7" style="font-weight: bold;font-size: 1.1em; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:outputText value="{0, number, integer}"><apex:param value="{!event.c.Full_Registration_Cost__c}" /></apex:outputText>&nbsp;{!event.c.CurrencyIsoCode}</td></tr></apex:outputpanel>
+                            <apex:outputPanel layout="none" rendered="{!NOT(allRequired)}" ><tr><td style="font-size: 1.2em;color: #464646; font-family: Arial, Helvetica, sans-serif;text-align: left;">Per-Session Cost</td><td colspan="7" style="font-weight: bold;font-size: 1.1em; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:outputText value="{0, number, }"><apex:param value="{!ROUND(IF(OR(ISBLANK(event.c.Total_Sessions__c), event.c.Total_Sessions__c = 0), 0, event.c.Partial_Course_Cost__c /event.c.Total_Sessions__c), 2)}" /></apex:outputText>&nbsp;{!event.c.CurrencyIsoCode}</td></tr></apex:outputPanel>
+                            <tr><td colspan="8"><hr /></td></tr>
+                            <apex:outputPanel rendered="{!NOT(event.c.Only_Show_Sessions__c)}" layout="none"><tr><td style="font-weight: bold;font-size: 1.1em;font-family: Arial, Helvetica, sans-serif;text-align: left;">Full Course</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;width:350px;">Event Name</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Class Code</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Start Date</td><td style="font-weight: bold;font-size: 1.1em;color: #027d04; font-family: Arial, Helvetica, sans-serif;text-align: left;">End Date</td><!-- <td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Verdana, Arial, Helvetica, sans-serif;text-align: left;">Instructor</td>--><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Alternate Date/Time</td></tr> <!-- <td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Time Zone</td> -->
+                            <tr><td><apex:inputCheckBox value="{!event.selected}"><apex:actionSupport event="onchange" action="{!event.selectItem}" rerender="tab"/></apex:inputCheckBox></td><td><apex:outputText value="{!event.c.Online_Event_Name__c}" style="font-size:1.1em"/></td><td style="font-size:1.1em">{!event.c.Class_Code__c}</td><td style="font-size:1.1em">{!TEXT(MONTH(event.c.StartDate))& "/" & TEXT(DAY(event.c.StartDate)) & "/" & TEXT(YEAR(event.c.StartDate))}</td><td style="font-size:1.1em">{!TEXT(MONTH(event.c.EndDate)) & "/" & TEXT(DAY(event.c.EndDate)) & "/" & TEXT(YEAR(event.c.EndDate))}</td><!-- <td style="font-size:1.1em">{!event.c.Instructor__r.Name}</td>--><td style="font-size:1.1em"><apex:commandLink value="{!TEXT(MONTH(event.c.Sister_Event__r.StartDate)) & "/" & TEXT(DAY(event.c.Sister_Event__r.StartDate)) & "/" & TEXT(YEAR(event.c.Sister_Event__r.StartDate)) & "-" & TEXT(MONTH(event.c.Sister_Event__r.EndDate)) & "/" & TEXT(DAY(event.c.Sister_Event__r.EndDate)) & "/" & TEXT(YEAR(event.c.Sister_Event__r.EndDate))}" action="{!event.sister}" rendered="{!NOT(ISNULL(event.c.Sister_Event__c))}"/></td></tr><!-- <td style="font-size:1.1em">{!event.c.Event_Time_Zone__c}</td> --></apex:outputPanel>
+                            <tr><td style="font-weight: bold;font-size: 1.1em;font-family: Arial, Helvetica, sans-serif;text-align: left;">Individual Sessions</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Session Name</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Date</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Start Time</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">End Time</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"># Waiting List Members</td></tr> <!-- <td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Instructor</td> -->
+                            <apex:repeat value="{!event.sessions}" var="session"><tr></tr>
+                            <tr><td><apex:outputPanel layout="none" rendered="{!NOT(allRequired)}" ><apex:inputCheckBox value="{!session.selected}" id="cb"><apex:actionSupport event="onchange" action="{!event.anyrelated}" rerender="tab"><apex:param name="selectedSess" value="{!session.s.Id}" assignTo="{!event.selectedSession}"/></apex:actionSupport></apex:inputCheckBox></apex:outputPanel></td><td style="font-size:1.1em">{!session.s.Name}</td><td style="font-size:1.1em">{!TEXT(MONTH(session.s.Session_Date__c)) & "/" & TEXT(DAY(session.s.Session_Date__c)) & "/" & TEXT(YEAR(session.s.Session_Date__c))}</td><td style="font-size:1.1em">{!session.s.Start_Hours__c}:{!session.s.Start_Minutes__c} {!session.s.Start_AM_PM__c}</td><td style="font-size:1.1em">{!session.s.End_Hours__c}:{!session.s.End_Minutes__c} {!session.s.End_AM_PM__c}</td><td style="font-size:1.1em"><apex:outputText value="{0, number, integer}"><apex:param value="{!session.s.Waiting_List_Members__c}"/></apex:outputText></td></tr> <!-- <td style="font-size:1.1em">{!IF(ISBLANK(session.s.Instructor__c), session.s.Event__r.Instructor__r.Name, session.s.Instructor__r.Name)}</td> -->
+                            </apex:repeat>
+                            <tr><td><br /></td></tr><tr><td><br /></td></tr>
+                            <!-- <hr /> -->
+                            <!-- </apex:repeat> -->
+                            <tr><td><apex:commandButton value="Register" action="{!register}" /></td><td><apex:commandButton value="Cancel" action="{!cancel}" /></td></tr>
+                        </table>
+                        </apex:outputPanel>
+                </td>
+            </tr>
+            
+            
+        </table>
+        
+<table cellSpacing="0" cellPadding="0"  width="100%" border="0">
+    <tr>  
+         
+        <td class="bodytext">
+          <div id="footer" class="footnote" style="font-size:1em;"><BR />
+          Having trouble? Please contact us at <a href="mailto:Register@trainingthestreet.com">Register@trainingthestreet.com</a> or + 1 800 887 1320
+            <br />
+            <p><a href="http://www.trainingthestreet.com/terms.html" target="_blank">Terms of Use</a> | <a href="http://www.trainingthestreet.com/privacy.html" target="_blank">Privacy Policy</a></p>
+            <p class="bodytext">TRAINING THE STREET is a trademark owned by Training The Street, Inc.</p>
+          </div>        
+        </td>
+    </tr>
+</table>
+</apex:form>
+</body>
+</apex:page>

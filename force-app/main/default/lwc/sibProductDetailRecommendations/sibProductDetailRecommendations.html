@@ -1,0 +1,57 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-11-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+
+    <div class="stencil-card" lwc:if={isLoading}>
+        <div class="left-stencil">
+            <div class="text-1">
+                <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+            </div>
+
+            <div class="text-2">
+                <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+            </div>
+            <div class="text-3">
+                <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+            </div>
+            <div class="text-4">
+                <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+            </div>
+            
+        </div>
+        <div class="right-stencil">
+            <div class="price-stencil">
+                <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+            </div>
+            <div class="action-stencil">
+                <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+            </div>
+        </div>
+    </div>
+    <div lwc:else>
+        <template for:each={relatedProducts} for:item="eachProduct" for:index="index">
+            <template for:each={eachProduct.recommendedProducts} for:item="relatedProduct" for:index="relatedIndex">
+                <c-sib-product-detail-recommendations-card 
+                    key={relatedProduct.name} 
+                    product={relatedProduct} 
+                    onaddtocart={addToCartAction}
+                    labels={labels}
+                    hide-description={hideDescription}
+                    button-label={buttonLabel}
+                    desc-field={descField}
+                    title-field={titleField}
+                    hide-addto-cart={hideAddtoCart}
+                    product-image-attr={productImageAttr}
+                    product-attr-data={productAttrData}
+                    >
+                </c-sib-product-detail-recommendations-card>
+            </template>
+        </template>
+    </div>
+</template>

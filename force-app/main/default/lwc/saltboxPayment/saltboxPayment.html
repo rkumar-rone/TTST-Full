@@ -1,0 +1,54 @@
+<template>
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading..." variant="brand"></lightning-spinner>
+    </template>
+    <lightning-card variant="base">
+        <div slot="title">
+            Payment
+        </div>
+        <div class="slds-grid slds-grid_align-center slds-p-around_x-small">
+            <div class="slds-col slds-size_5-of-6 slds-grid slds-grid_vertical">
+                <div class="slds-col slds-box slds-m-around_x-small">
+                    <lightning-radio-group name="paymentOptions" label="Payment Options" options={paymentOptions} value={paymentSelectedOption} type="radio" onchange={handlePaymentChange}></lightning-radio-group>
+                    <template if:true={showCreditCardForm}>
+                        <div class="slds-p-horizontal_large slds-p-top_medium">
+                            <p class="slds-form-element__label"><b>Card Information</b></p>
+                            <div class="slds-form-element">
+                                <lightning-input data-id="cardHolderFirstName" name="cardHolderFirstName" label="Cardholder First Name" required=true pattern="^(?!\s*$).+" message-when-pattern-mismatch="Name must not be blank"></lightning-input>
+                            </div>
+                            <div class="slds-form-element">
+                                <lightning-input data-id="cardHolderLastName" name="cardHolderLastName" label="Cardholder Last Name" required=true pattern="^(?!\s*$).+" message-when-pattern-mismatch="Name must not be blank"></lightning-input>
+                            </div>
+                            <iframe src={cybersourceIFramePath} height="auto" width="100%" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
+                        </div>
+                    </template>
+                </div>
+                <!-- <div class="slds-col slds-box slds-m-around_x-small">
+                    <lightning-radio-group name="billingOptions" label="Billing Addresses" options={billingOptions} value={billingSelectedOption} type="radio" onchange={handleBillingChange}></lightning-radio-group>
+                    <template if:true={showNewBillingAddressForm}>
+                        <div class="slds-p-horizontal_large slds-p-vertical_medium">
+                            <lightning-input-address
+                            street-label="Street"
+                            address-label="Address Information"
+                            city-label="City"
+                            country-label="Country"
+                            province-label="State"
+                            postal-code-label="Zip Code"
+                            country-options={countryOptions}
+                            onchange={handleAddressChange}  
+                            country='United States'
+                            province-options={getProvinceOptions}
+                            required
+                            country-disabled >
+                        </lightning-input-address> 
+                        </div>
+                    </template>
+                </div> -->
+                <div style="color:red;">{creditCardError}</div>
+            </div>
+        </div>
+    </lightning-card>
+    <div class="slds-card__footer" style="margin: var(--lwc-spacingNone);padding-top: var(--lwc-spacingSmall);border-top: 1px solid var(--lwc-colorBorder);width: 100%;">
+            <lightning-button variant="brand" label="Place Order" onclick={goNext}></lightning-button>
+    </div>
+</template>

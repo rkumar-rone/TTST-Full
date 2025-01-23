@@ -1,0 +1,211 @@
+<apex:page standardController="Account" extensions="InvoicePDFController" applyHtmlTag="true" showHeader="false" renderAs="PDF">
+    <html>
+    
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"> </meta>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        </head>
+
+        <body style="padding: 0 2rem 1rem 2rem; box-sizing:border-box; font-family: sans-serif !important;">
+            <center>
+                <apex:image url="{!$Resource.TrainingTheStreet_Wide_PNG}" width="90%" height="100px"/>
+            </center>
+
+            <div style="white-space: pre-line" align="right">
+                <!--<p>Training The Street 
+                    200 Providence Rd. 
+                    Suite 102 
+                    Charlotte, NC 28207 
+                    USA 
+                </p>-->
+                Date: {!today}
+            </div>
+            <div style="white-space: pre-line;">
+                Invoice Number: {!orderSummary.OrderNumber}
+                Order Number: {!orderSummary.OrderNumber}
+            </div>
+            <div>
+                <table width="100%">
+                    <tr>
+                        <td valign="top">
+                            <p>To: {!user.Name}<br></br>
+                                {!user.Contact.Account.Name}<br></br>
+                                {!orderSummary.BillingStreet}<br></br>
+                                {!orderSummary.BillingCity}, {!orderSummary.BillingState} {!orderSummary.BillingPostalCode}<br></br>
+                                {!orderSummary.BillingCountry}<br></br>
+                                <span>{!user.Email}</span><br></br>
+                                <span>{!user.Phone}</span>
+                            </p>
+                        </td>
+                        <td valign="top">
+                            <p style="white-space: pre-line;">{!fromAddress}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <p><i>See next page for payment instructions</i></p>
+            <apex:outputpanel rendered="{!isGroupInvoice == true}">
+                <table width="100%" cellspacing="0" cellpadding="4">
+                    <thead>
+                        <tr style="background-color:black">
+                            <th style="color:white; font-size:0.8em;">Participant Name</th>
+                            <th style="color:white; font-size:0.8em;">Course Name</th>
+                            <th style="color:white; font-size:0.8em;">Location</th>
+                            <th style="color:white; font-size:0.8em;">Start Date</th>
+                            <th style="color:white; font-size:0.8em;">Days</th>
+                            <th style="color:white; font-size:0.8em;">Registration Fees</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!groupRecipientsWrapped}" var="grWrap">
+                            <tr style="border: 1px solid black;">
+                                <td style="border: 1px solid black;">{!grWrap.firstName} {!grWrap.lastName}</td>
+                                <td style="border: 1px solid black;">{!grWrap.ttsEventName}</td>
+                                <td style="border: 1px solid black;">{!grWrap.trainingLocationCity}</td>
+                                <td style="border: 1px solid black;">{!grWrap.startDate}</td>
+                                <td style="border: 1px solid black;">{!grWrap.totalDays}</td>
+                                <td style="border: 1px solid black;">{!currencySign}{!grWrap.TotalLineAmount}</td>  
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </apex:outputpanel>
+
+            <apex:outputpanel rendered="{!isGroupInvoice == false}">
+                <table width="100%" cellspacing="0" cellpadding="4">
+                    <thead>
+                        <tr style="background-color:black">
+                            <th style="color:white; font-size:0.8em;">Participant Name</th>
+                            <th style="color:white; font-size:0.8em;">Course Name</th>
+                            <th style="color:white; font-size:0.8em;">Location</th>
+                            <th style="color:white; font-size:0.8em;">Start Date</th>
+                            <th style="color:white; font-size:0.8em;">Days</th>
+                            <th style="color:white; font-size:0.8em;">Registration Fees</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!orderItemsWrapped}" var="product">
+                            <tr style="border: 1px solid black;">
+                                <td style="border: 1px solid black;">{!user.Name}</td>
+                                <td style="border: 1px solid black;">{!product.ttsEventName}</td>
+                                <td style="border: 1px solid black;">{!product.trainingLocationCity}</td>
+                                <td style="border: 1px solid black;">{!product.startDate}</td>
+                                <td style="border: 1px solid black;">{!product.totalDays}</td>
+                                <td style="border: 1px solid black;">{!currencySign}{!product.TotalLineAmount}</td>  
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </apex:outputpanel>
+
+            <table style="float: right; margin-bottom: 1em" cellspacing="4">
+                <tfoot>
+                    <tr>
+                        <td style="text-align: right;">
+                            <b>Registration Fees</b>
+                        </td>
+                        <td style="text-align: right;">
+                        <apex:outputText value="{0,Number,{!currencySign}###,##0.00}">
+                            <apex:param value="{!formattedTotalAdjustedProductAmount}"></apex:param>
+                        </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <b>Discounts</b>
+                        </td>
+                        <td style="text-align: right;">
+                        <apex:outputText value="{0,Number,{!currencySign}###,##0.00}">
+                            <apex:param value="{!formattedTotalProductAdjDistAmount}"></apex:param>
+                        </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <b>Subtotal</b>
+                        </td>
+                        <td style="text-align: right;">
+                        <apex:outputText value="{0,Number,{!currencySign}###,##0.00}">
+                            <apex:param value="{!formattedTotalSubAmount}"></apex:param>
+                        </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <b>Tax</b>
+                        </td>
+                        <td style="text-align: right;">
+                        <apex:outputText value="{0,Number,{!currencySign}###,##0.00}">
+                            <apex:param value="{!formattedTotalTaxAmount}"></apex:param>
+                        </apex:outputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;">
+                            <b style="white-space:nowrap">Total Due ({!currencyIsoCode})</b>
+                        </td>
+                        <td style="text-align: right;">
+                        <apex:outputText value="{0,Number,{!currencySign}###,##0.00}">
+                            <apex:param value="{!formattedTotalAmount}"></apex:param>
+                        </apex:outputText>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <p style="clear: both;"><i>*Cancellations up to 14 calendar days before the first day of the course will receive a full refund. Cancellations within 14 
+                calendar days of the first day of the course will not be refunded. Registration fees cannot be applied to other Training The 
+                Street classes, on-line materials or other services.  All requests for cancellations should be made to
+                register@trainingthestreet.com</i></p>
+
+            <hr style="background-color: green;"/>
+
+            <div style="text-align: center; margin: 0 auto; color: green;">Preparing Financial Professionals for Success</div>
+            <div style="text-align: center; margin: 0 auto; color: orange;">www.trainingthestreet.com</div>
+            <div style="text-align: right; font-size: 10pt;">Page 1 of 2</div>
+
+            <div style="page-break-before: always; text-align: right;">
+                <center>
+                    <apex:image url="{!$Resource.TrainingTheStreet_Wide_PNG}" width="90%" height="100px"/>
+                </center>
+            </div>
+
+            <div style="background-color: yellow;">Full payment must be received 14 days before the start of the first event.</div>
+        
+            <p>
+                <b>Payment Options:</b>
+            </p>
+            <br></br>
+
+            <b>Pay by check:</b>    
+                <p style="white-space: pre-line;">Please make checks payable to “Training The Street”. 
+                    <b>Mailing address:</b> 
+                    {!mailingAddress}
+                </p>
+                <br></br>
+
+            <b>Wiring Instructions For Training The Street:</b>
+            <p style="white-space: pre-line;">{!wiringBankInfo}</p>
+            <br></br>
+
+            <b>{!domesticBankTitle}</b>
+            <p style="white-space: pre-line;">{!domesticBankInfo}</p>
+            <br></br>
+
+            <p style="font-style: italic;">
+                <b>Note:</b> Note: Due to the nature of our Public Courses, TTS is unable to complete vendor forms or accept purchase
+                orders related to Public Course enrollments. The terms and conditions for this transaction are governed by http://trainingthestreet.com/privacy-2/
+                and any client purchase order terms and conditions will not be accepted or applied. However, we are happy to
+                work with your firm to set up profiles with third party payment companies such as Bill.com and Paymode-X.</p>
+
+            <hr style="background-color: green;"/>
+
+            <div style="text-align: center; margin: 0 auto; color: green;">Preparing Financial Professionals for Success</div>
+            <div style="text-align: center; margin: 0 auto; color: orange;">www.trainingthestreet.com</div>
+            <div style="text-align: right; font-size: 10pt;">Page 2 of 2</div>
+        
+        </body>
+
+    </html>
+
+</apex:page>

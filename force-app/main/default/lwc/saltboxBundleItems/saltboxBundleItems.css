@@ -1,0 +1,51 @@
+.mainContainer {
+    padding: 15px;
+}
+
+.title {
+    margin: 15px 0;
+    font-size: 20px;
+}
+
+.heading {
+    display: flex;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.lineItems {
+    display:flex;
+    margin-bottom: 25px;
+}
+
+
+.heading div {
+    font-size: var(--fontSizeBg2);
+}
+
+.lineItems div {
+    font-size: var(--fontSizeBg1);
+}
+
+.name {
+    width: 20%;
+} 
+
+.nameDetail {
+    font-size: 14px;
+    color: var(--brand);
+} 
+
+.code {
+    width: 20%;
+    text-align: center;
+    justify-content: center;
+    margin: 0em 1em 0em 1em;
+}
+
+.description {
+    width: 60%;
+    text-align: left;
+    justify-content: flex-end;
+
+}

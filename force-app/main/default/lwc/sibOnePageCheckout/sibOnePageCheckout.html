@@ -1,0 +1,35 @@
+<!--
+  @description       : 
+  @author            : sthakur@rafter.one
+  @group             : 
+  @last modified on  : 10-15-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+
+    <form class="checkout-onePage">
+      <!-- Customer Information start
+      <c-sib-checkout-customer-info></c-sib-checkout-customer-info>
+      Customer Information end-->
+
+      <!-- Shipping Information start
+      <c-sib-checkout-shipping checkout-config={checkoutConfig}></c-sib-checkout-shipping>
+      Shipping Information end-->
+
+      <!-- Shipping Information start-->
+      <c-sib-payment-container checkout-config={checkoutConfig}></c-sib-payment-container>
+      <!-- Shipping Information end-->
+
+      <!-- Terms and Conditions start
+      <c-sib-checkout-terms-and-co checkout-config={checkoutConfig}></c-sib-checkout-terms-and-co>
+       Terms and Conditions end-->
+
+      <div class="place-order">
+        <slot></slot>
+      </div>
+    </form>
+</template>

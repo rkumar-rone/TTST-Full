@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>60.0</apiVersion>
+	<isExposed>true</isExposed>
+    <masterLabel>SIB Order Summary Products</masterLabel>
+	<targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+	</targets>
+	  <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property 
+                name="recordId" 
+                type="String" 
+                label="Record Id" 
+                default="{!recordId}" 
+                description="Automatically bind the page's record id to the component variable"
+            />
+            <property 
+                name="accordionTitle" 
+                type="String"  
+                label="Title" 
+                default="Events" 
+                description="The text to display in the accordion header"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

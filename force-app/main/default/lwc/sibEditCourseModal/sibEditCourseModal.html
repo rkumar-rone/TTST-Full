@@ -1,0 +1,47 @@
+<template>
+    <template lwc:if={showModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- modal header start -->
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{labels.sessions}</h2>
+                </header>
+
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="model-stencil" lwc:if={isSkeletonLoading}>
+                        <c-stencil height="40" width="100%"></c-stencil>
+                    </div>
+                    <div lwc:else>
+                        <div class="sessions" style={displayDiv}>
+                            <template lwc:if={eventSessions}>
+                                <div class="checkboxSection">
+                                    <template for:each={eventSessions} for:item="eventSession">
+                                        <div key={eventSession.Id} class="checkboxWrapper">
+                                            <lightning-input name={eventSession.Name} type="checkbox"
+                                                label={eventSession.label} data-key={eventSession.Id}
+                                                data-required={eventSession.Required__c}
+                                                checked={eventSession.isChecked}
+                                                data-id={eventSession.Id} onchange={handleSessionChange}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- modal footer start-->
+                <footer class="slds-modal__footer">
+                    <!-- "Cancel Course" Button -->
+                    <button type="button" class="cancel-course-btn" onclick={handleSave}>{labels.save}</button>
+                    <button type="button" class="changed-mind-btn" onclick={closeModal}>{labels.cancelBtn}</button>
+                </footer>
+
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

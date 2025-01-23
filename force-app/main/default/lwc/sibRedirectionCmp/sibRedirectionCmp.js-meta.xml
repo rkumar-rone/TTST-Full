@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>SIB Redirection</masterLabel>
+    <description>Sidebar specifically made for redirection in flows</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen, lightningCommunity__Default">
+            <property label="Redirect URL" name="url" type="String" description="will be redirected to the provided URL" />
+            <property label="Redirect To HomePage" name="redirectToHome" type="Boolean" default="false" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

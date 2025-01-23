@@ -1,0 +1,229 @@
+.billing-container{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px;
+  border-radius: 18px;
+  background-color: var(--sib-checkout-card-background-color);
+}
+
+.radio-buttons{
+  width:100%;
+}
+
+.billing-element{
+  width:100%;
+}
+
+.sib-input-box-error {
+  border: 1px solid red !important;
+}
+
+.chevron {
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Prevents click on the chevron */
+}
+
+.chevronsvg{
+  width:16px !important;
+  height:20px !important;
+  stroke-width: 1px !important;
+  stroke: #242424 !important;
+}
+
+.title {
+  font-size: 21px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: -0.21px;
+  text-align: left;
+  color: #2d2b33;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(110, 110, 135, 0.2);
+  margin-bottom:5px;
+  width: 100%;
+}
+
+.billing-continue-button{
+  outline: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 56px;
+  background: var(--sib-checkout-button-background-color);
+  color: var(--sib-checkout-button-text-color);
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  padding: 16px 24px;
+  white-space: nowrap;
+  letter-spacing: 0.8px;
+  width: 100%;
+  border:none;
+}
+
+.btn{
+  outline: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 56px;
+  background: var(--sib-checkout-button-background-color);
+  color: var(--sib-checkout-button-text-color);
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  padding: 16px 24px;
+  white-space: nowrap;
+  letter-spacing: 0.8px;
+  width: 100%;
+  text-decoration: none;
+}
+
+.button-block{
+  display: block;
+  opacity: 1;
+  width: 100%;
+}
+
+.btn:hover, .btn:focus {
+  color: var(--sib-checkout-button-text-color);
+  background: var(--sib-checkout-button-background-color);
+  -webkit-box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4),
+      0px 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4), 0px 4px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none !important;
+}
+
+.form-input {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.form-input label {
+  font-size: 14px;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #242424;
+  display: block;
+  margin-bottom: 8px;
+}
+.form-input input {
+  padding: 16px;
+  width: 10px;
+  border-radius: 6px;
+  border: solid 1px rgba(110, 110, 135, 0.2);
+  background-color: #fff;
+  height: 44px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #242424;
+  outline: none;
+}
+
+.form-input input::placeholder {
+  color: #7E7E7E;
+  font-size: 16px;
+}
+
+.form-input .select {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 200px;
+  height: 44px;
+  font-size: 16px;
+}
+
+.form-input .select select {
+  -webkit-appearance: none;
+  height: 44px;
+  padding: 11px 40px 12px 12px;
+  width: 100%;
+  border: 1px solid rgba(110, 110, 135, 0.2);
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #242424 !important;
+  -webkit-transition: all 150ms ease;
+  -o-transition: all 150ms ease;
+  transition: all 150ms ease;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version=%271.0%27 encoding=%27utf-8%27%3F%3E%3C%21-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --%3E%3Csvg width=%27800px%27 height=%27800px%27 viewBox=%270 0 24 24%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z%27 fill=%27%232D2B33%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 98% 50%;
+  background-size: 24px 24px;
+}
+
+.form-input .select select:required:invalid {
+  color: #5a667f;
+}
+
+.form-input.select select option[value=""][disabled] {
+  display: none;
+}
+
+.form-input .select select:focus {
+  outline: none;
+  border-color: #2a2640;
+}
+
+.billing-edit{
+  margin-left: auto;
+  text-decoration: underline;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color:var(--sib-plp-description-text-color);
+  cursor: pointer;
+  text-decoration-color: #038008;
+}
+
+.sib-text-size-14 {
+  font-size: 14px;
+}

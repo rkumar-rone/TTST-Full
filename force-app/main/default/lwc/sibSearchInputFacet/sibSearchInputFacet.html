@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 05-06-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template lwc:render-mode="light">
+    <template for:each={displayedValues} for:item="value">
+        <fieldset key={value.nameOrId}>
+            <c-sib-search-facet-item facet-name={facetName} facet-type={facetType} value={value} type="checkbox"
+                focus-on-init={value.focusOnInit}></c-sib-search-facet-item>
+        </fieldset>
+    </template>
+    <template lwc:if={displayShowMore}>
+        <fieldset class="show-more slds-p-top_small">
+            <button class="show-more-less-btn" aria-label={facetAriaLabel} onclick={handleShowMoreOrLess}>{showMoreOrLessLabel}</button>
+        </fieldset>
+    </template>
+</template>

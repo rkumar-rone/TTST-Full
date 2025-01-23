@@ -1,0 +1,448 @@
+aside,
+nav,
+footer,
+header,
+section {
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+html,
+body {
+  color: #232222;
+  background: #ffffff;
+  height: 100%;
+  position: relative;
+  font-family: "Geist", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+}
+aside,
+nav,
+footer,
+header,
+section {
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+  position: relative;
+}
+.header .menu .mobile-user .footer-mobile-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+  }
+  
+  .d-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+/**********************Wrapper***********************/
+.wrapper {
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+  
+  .wrapper > main {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
+  
+  .wrapper > * {
+    min-width: 0;
+  }
+
+
+  /* *************Registration Page css********* */
+  .Register-Lg {
+    background-color: #fff;
+  }
+  .Register-Lg-2 {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    background-color: #fff;
+  }
+  .Container {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    padding: 40px 40px 120px;
+  }
+  .Page-Title {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 0;
+  }
+  .Page-Title-Label {
+    flex-grow: 1;
+    font-family: Geist;
+    font-size: 34px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -1.36px;
+    text-align: left;
+    color: #2d2b33;
+  }
+  .Two-Column {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 0;
+  }
+  .Summary-tile {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    border-radius: 8px;
+    background-color: #f6f5f7;
+    min-width: 668px;
+  }
+  .Password-Check {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+    padding: 0 0 10px 20px;
+  }
+  .Password-Variables {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+  }
+  .Password-instructions{
+    flex-grow: 1;
+    font-family: Geist;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #4d4c54;
+  }
+  .Password-instructions-green{
+    flex-grow: 1;
+    font-family: Geist;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #299f26;
+  }
+  .Password-instructions-red{
+    flex-grow: 1;
+    font-family: Geist;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #da3510;
+  }
+  .Button-CTA {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: #4a4080;
+  }
+  .Button-CTA-Label{
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.8px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .Log-In {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+  }
+  .Text-label{
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000;
+  }
+  .Text-label-blue{
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4a4080;
+  }
+  .Form-Fields {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .Two-Column {
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+        padding: 20px;
+    }
+    .Summary-tile {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 24px;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #f6f5f7;
+        min-width: 335px !important;
+    }
+    .registration-page .form-input input {
+        background-color: #fff;
+        /* height: 44px; */
+        width: 100%;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: left;
+        color: #6c6b74;
+        align-self: stretch;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        padding: 0 16px;
+        border-radius: 8px;
+        border: solid 1px rgba(110, 110, 135, 0.2);
+        background-color: #fff;
+        max-width: 295px !important;
+        display: flex;
+    }
+
+    
+  }
+
+  /* *************Registration Page css********* */
+
+
+  .registration-page .content-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  
+  .registration-page .content-wrapper .btn {
+    outline: none;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 56px;
+    background: rgb(74, 64, 128);
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    padding: 16px 24px;
+    white-space: nowrap;
+    letter-spacing: 0.8px;
+    width: 100%;
+  }
+  
+  .registration-page .content-wrapper .btn:hover,
+  .registration-page .content-wrapper .btn:focus {
+    background-color: #2a2640;
+    -webkit-box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4),
+      0px 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4), 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+ 
+  .registration-page .checkout-content form {
+    max-width: 792px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: -14px;
+  }
+  
+  .registration-page .title h2 {
+    font-size: 42px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: -1.26px;
+    text-align: left;
+    color: #2d2b33;
+  }
+  
+  .registration-page .form-input {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .registration-page .form-input label {
+    font-size: 14px;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: left;
+    color: #4d4c54;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .registration-page .form-input input {
+ 
+    background-color: #fff;
+    height: 44px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #6c6b74;
+
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: solid 1px rgba(110, 110, 135, 0.2);
+    background-color: #fff;
+    max-width: 636px;
+    display: flex;
+  }
+  
+  .registration-page .form-input input::placeholder {
+    color: #6c6b74;
+    font-size: 16px;
+  }
+  
+  
+  .registration-page .form-input .select select:focus {
+    outline: none;
+    border-color: #2a2640;
+  }
+  
+   
+  .registration-page
+    .checkbox-line
+    input[type="checkbox"]:checked
+    + .checkbox-style::after {
+    border-bottom-color: #4a4080;
+    border-left-color: #4a4080;
+  }

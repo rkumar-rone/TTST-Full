@@ -1,0 +1,42 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-22-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div lwc:if={showDetails} class="section-padding">
+        <div class="info-heading">Video Previews</div>
+        
+        <div class="display-view">
+            <div lwc:if={preview1Url} class="iframe-title-video-container">
+                <span class="video-name">{preview1Title}</span>
+                <div class="iframe-preview-container">
+                    <iframe 
+                    src={preview1Url}
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                    style="position: absolute; top: 0; left: 0; width:100%; height:100%; border: 0;" 
+                    title={preview1Title}
+                    ></iframe>
+                </div>
+            </div>
+
+            <div lwc:if={preview2Url} class="iframe-title-video-container">
+                <span class="video-name">{preview2Title}</span>
+                <div class="iframe-preview-container">
+                    <iframe 
+                    src={preview2Url}
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                    style="position: absolute; top: 0; left: 0; width:100%; height:100%; border: 0;" 
+                    title={preview2Title}
+                    ></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

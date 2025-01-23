@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <masterLabel>Product Listing Page</masterLabel>
+    <description>Product Listing Page</description>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="productSearchResults" type="String" default="{!Search.Results}" />
+            <property name="sortRules" type="String" default="{!Search.SortRules}" />
+            <property name="recordId" type="String" label="Record Id" description="The category ID of the results being displayed" default="{!recordId}"/>
+            <property name="term" type="String" label="Search Term" description="Automatically bind the page's search term to the component variable" default="{!term}"/>
+            <!--Gaurang - TATLB-24 - 9 Sep 2024-->
+            <property name="showFilters" type="Boolean" label="Show filters" description="Whether to show filters or not" default="true"/>
+            <property name="showBreadcrumbs" type="Boolean" label="Show breadcrumbs" description="Whether to show breadcrumbs or not" default="true"/>
+            <property name="searchResultId" type="String" label="Choose category" description="The category ID of the results being displayed" datasource="apex://SIB_CategoryPicklist"/>
+            <!--Gaurang - TATLB-24 - 9 Sep 2024-->
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

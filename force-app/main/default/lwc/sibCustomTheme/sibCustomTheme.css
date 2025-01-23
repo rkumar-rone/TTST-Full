@@ -1,0 +1,101 @@
+:host {
+    /* Module- Generic */
+    /* SIB Color Configs*/
+    --sib-primary-button-color: blue;
+    --sib-primary-button-text-color: white;
+    --sib-secondary-button-color: blue;
+    --sib-secondary-button-text-color: white;
+    --sib-h1-text-color: black;
+    --sib-h2-text-color: black;
+    --sib-h3-text-color: black;
+    --sib-h4-text-color: black;
+    --sib-h5-text-color: black;
+    --sib-h6-text-color: black;
+    --sib-p1-text-color: black;
+    --sib-p2-text-color: black;
+    --sib-breadcrumb-text-color: #6c6b74;
+    --sib-card-background-color: #ffffff;
+    --sib-background-color: #f5f5f7;
+
+    /* SIB Typography Configs*/
+    --sib-primary-button-text-font-size: 16px;
+    --sib-primary-button-padding: 16px 24px;
+    --sib-secondary-button-text-font-size: 16px;
+    --sib-secondary-button-padding: 16px 24px;
+    --sib-h1-font-size: 32px;
+    --sib-h1-font-weight: 700;
+    --sib-h2-font-size: 24px;
+    --sib-h2-font-weight: 600;
+    --sib-h3-font-size: 18px;
+    --sib-h3-font-weight: 500;
+    --sib-h4-font-size: 16px;
+    --sib-h4-font-weight: 500;
+    --sib-h5-font-size: 13px;
+    --sib-h5-font-weight: 32px;
+    --sib-h6-font-size: 400px;
+    --sib-h6-font-weight: 32px;
+    --sib-p1-font-size: 13px;
+    --sib-p2-font-size: 11px;
+
+    /* Module- PDP */
+    /* SIB Color Configs*/
+    --sib-pdp-sale-tag-background-color: #fbd927;
+    --sib-pdp-sale-tag-text-color: #2d2b33;
+    --sib-pdp-new-tag-background-color: #f5f5f7;
+    --sib-pdp-new-tag-text-color: #2d2b33;
+    --sib-pdp-popular-tag-background-color: #6c6b74;
+    --sib-pdp-popular-tag-text-color: #ffffff;
+    --sib-pdp-best-seller-tag-background-color: #d24519;
+    --sib-pdp-best-seller-tag-text-color: #ffffff;
+    --sib-pdp-sku-text-color: #6c6b74;
+    --sib-pdp-product-name-text-color: #2d2b33;
+    --sib-pdp-inventory-inStock-tag-color: green;
+    --sib-pdp-inventory-mediumStock-tag-color: yellow;
+    --sib-pdp-inventory-outStock-tag-color: red;
+    --sib-pdp-inventory-message-text-color: #4d4c54;
+    --sib-pdp-inventory-text-color: #6c6b74;
+    --sib-pdp-addToCart-button-background-color: rgb(74, 64, 128);
+    --sib-pdp-addToCart-button-text-color: rgb(255, 255, 255);
+    --sib-pdp-description-text-color: #4d4c54;
+
+    /* SIB Typography Configs*/
+    --sib-pdp-product-name-font-size: 42px;
+    --sib-pdp-addToCart-button-font-size: 16px;
+
+    /* Module- PLP */
+    /* SIB Color Configs*/
+    --sib-plp-filter-button-background-color: #ffffff;
+    --sib-plp-filter-button-text-color: #2d2b33;
+    --sib-plp-filter-heading-text-color: #2d2b33;
+    --sib-plp-name-text-color: #2d2b33;
+    --sib-plp-sku-text-color: #6c6b74;
+    --sib-plp-price-text-color: #4d4c54;
+    --sib-plp-description-text-color: #4d4c54;
+
+    /* SIB Typography Configs*/
+    --sib-plp-name-lines: 1;
+    --sib-plp-description-lines: 3;
+
+    /* Module- Cart */
+    /* SIB Color Configs*/
+    --sib-cart-title-h2-text-color: #2d2b33;
+    --sib-cart-product-title-text-color: #2d2b33;
+    --sib-cart-product-price-saved-background-color: #fbd927;
+    --sib-cart-checkout-btn-background-color: rgb(74, 64, 128);
+    --sib-cart-checkout-btn-text-color: rgb(255, 255, 255);
+
+    /* SIB Typography Configs*/
+    --sib-cart-title-h2-font-size: 42px;
+    --sib-cart-product-title-font-size: 16px;
+
+    /* Module- Checkout */
+    /* SIB Color Configs*/
+    --sib-checkout-title-h2-text-color: #2d2b33;
+    --sib-checkout-button-background-color: rgb(74, 64, 128);
+    --sib-checkout-button-text-color: rgb(255, 255, 255);
+    --sib-checkout-card-background-color: #f5f5f7;
+
+    /* SIB Typography Configs*/
+    --sib-checkout-title-h2-font-size: 42px;
+
+}

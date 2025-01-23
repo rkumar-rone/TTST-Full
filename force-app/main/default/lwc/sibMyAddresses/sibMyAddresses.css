@@ -1,0 +1,431 @@
+.Full-Width{
+    width: 100%;
+  }
+  .Order-History-parent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 24px;
+    padding: 40px 0px 120px 0px;
+  }
+  .Page-Title-Right{
+    align-self: stretch;
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 28px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -0.84px;
+    text-align: left;
+    color: #2d2b33;
+  }
+  .Button-CTA-AddAddress-FW{
+    display: none;
+  }
+  .Two-Column {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0;
+  }
+  .mobile-view{
+    display: none;
+    width: 100%;
+  }
+/* Addresses  */
+.Frame-11363 {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 24px;
+    padding: 0;
+  }
+  .Tab-Bar-Control {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+  }
+  .PD-Layout-Header {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 4px 0 0;
+  }
+  .Frame-11358 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0 0 8px;
+    border-bottom: solid 3px #2d2b33;
+  }
+  .Layout-Title.Active {
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 21px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -0.21px;
+    text-align: left;
+    color: #2d2b33;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0 0 8px;
+    border-bottom: solid 3px #2d2b33;
+  }
+  .Layout-Title {
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 21px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -0.21px;
+    text-align: left;
+    color: #8d8c97;
+    cursor: pointer;
+  }
+  .Button-CTA-AddAddress {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    background-color: #4a4080;
+  }
+  .label-AddAddress {
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  .Frame-11364 {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 24px;
+    padding: 0;
+  }
+  .Shipping {
+    align-self: stretch;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px;
+    border-radius: 12px;
+    background-color: #ededf0;
+  }
+  .Frame-9 {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 0;
+  }
+  .Name {
+    flex-grow: 1;
+    font-family: Geist;
+    font-size: 18px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2d2b33;
+  }
+  .addressBody {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 24px;
+    padding: 0;
+  }
+  .Address-Details{
+      align-self: stretch;
+      flex-grow: 0;
+      font-family: Geist;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 0.5;
+      letter-spacing: normal;
+      text-align: left;
+      color: #2d2b33;
+  }
+  .Badge {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+    border-radius: 2px;
+  }
+  .Badge-Body{
+      flex-grow: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 2px;
+      background-color: #d14725;
+    
+  }
+  .Badge-Content{
+      flex-grow: 0;
+      font-family: Geist;
+      font-size: 12px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.25;
+      letter-spacing: 0.96px;
+      text-align: left;
+      color: #fff;
+      text-transform: uppercase;
+  }
+  .Frame-11390 {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 0;
+  }
+  .Text-Link {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+  }
+  .Label-Underline {
+    flex-grow: 0;
+    display: inline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .CTA-Label{
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #005fb2;
+  }
+  .CTA-Space{
+    margin-left: 24px;
+  }
+  .Address-View {
+    display: -ms-grid;
+    display: grid;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    grid-gap: 0;
+    grid-template-columns: repeat(2, 1fr); 
+    -webkit-column-gap: 24px;
+    -moz-column-gap: 24px;
+    column-gap: 24px;
+    row-gap: 40px;
+    width: 100%;
+  }
+  .Full-Width{
+    width: 100%;
+  }
+  .Button-CTA-AddAddress-FW{
+    display: none;
+  }
+  @media screen and (max-width: 1200px) {
+    .Address-View {
+      display: -ms-grid;
+      display: grid;
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+      -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+      grid-gap: 0;
+      grid-template-columns: repeat(1, 1fr); 
+      -webkit-column-gap: 24px;
+      -moz-column-gap: 24px;
+      column-gap: 24px;
+      row-gap: 24px;
+      width: 100%;
+    }
+    .Address-Details{
+      align-self: stretch;
+      flex-grow: 0;
+      font-family: Geist;
+      font-size: 16px;
+      font-weight: 600;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 0.5;
+      letter-spacing: normal;
+      text-align: left;
+      color: #2d2b33;
+  }
+  .Button-CTA-AddAddress-FW {
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    background-color: #4a4080;
+    width: 100%;
+    text-transform: uppercase;
+  }
+  .Button-CTA-AddAddress{
+    display: none;
+  }
+  .page-filter-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    gap: 24px !important;
+}
+.Col-3 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 24px;
+    min-width: 322px;
+    padding: 0px !important;
+}
+.Page-Title-Lg{
+    display: none;
+}
+.Page-Title {
+    flex-grow: 1;
+    font-family: Geist;
+    font-size: 34px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: -1.02px;
+    text-align: left;
+    color: #2d2b33;
+  }
+  .card-space {
+    gap: 40px;
+    padding: 20px 20px 40px;
+}
+nav {
+    display: none;
+}
+.Two-Column {
+    align-self: stretch;
+    flex-grow: 0;
+    display: block;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0;
+}
+.Order-History-parent {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 24px;
+    padding: 0px 0px 40px 0px;
+}
+.Page-Title-Right{
+    display: none;
+}
+.Col-MP {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 32px;
+    padding: 0;
+  }
+.Sidebar-Mobile{
+    display: block;
+    width: 100% !important;
+}
+.mobile-view{
+    display: block;
+  }
+
+  
+}

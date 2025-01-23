@@ -1,0 +1,43 @@
+.btn-section .btn {
+    outline: none;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 56px;
+    background: rgb(74, 64, 128);
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    padding: 16px 24px;
+    white-space: nowrap;
+    letter-spacing: 0.8px;
+    width: 100%;
+    text-decoration: none;
+}
+.btn-section .btn:hover,
+.btn-section .btn:focus {
+    background-color: #2a2640;
+    -webkit-box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4),
+      0px 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4), 0px 4px 8px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+  }
+.checkout-multiStep{
+    /* max-width: 792px; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

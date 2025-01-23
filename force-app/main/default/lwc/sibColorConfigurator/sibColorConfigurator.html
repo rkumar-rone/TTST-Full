@@ -1,0 +1,425 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 04-23-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template>
+
+    <lightning-layout multiple-rows="true">
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+            class="slds-p-around_small">
+            <div class="sibConfigHeader">Button Colors</div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="8"
+            class="slds-p-around_small">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Primary Button Color</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" name="sibPrimaryButtonColor" value={container.sibPrimaryButtonColor} onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Primary Button Text Color</div>
+                    <lightning-input variant="label-hidden"  required="true" type="color" name="sibPrimaryButtonTextColor" value={container.sibPrimaryButtonTextColor}
+                        onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Secondary Button Color</div>
+                    <lightning-input variant="label-hidden"  required="true" type="color" value={container.sibSecondaryButtonColor} name="sibSecondaryButtonColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Secondary Button Text Color</div>
+                    <lightning-input variant="label-hidden"  required="true" type="color" name="sibSecondaryButtonTextColor" value={container.sibSecondaryButtonTextColor}
+                        onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+            class="slds-p-around_small">
+            <div class="sibDivider"></div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+            class="slds-p-around_small">
+            <div class="sibConfigHeader">Text Colors</div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="8"
+            class="slds-p-around_small">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Heading 1</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibH1Color} name="sibH1Color" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Heading 2</div>
+                    <lightning-input variant="label-hidden"  required="true" type="color" name="sibH2Color" value={container.sibH2Color} onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Heading 3</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibH3Color} name="sibH3Color" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Heading 4</div>
+                    <lightning-input variant="label-hidden"  required="true" type="color" name="sibH4Color" value={container.sibH4Color} onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Heading 5</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibH5Color} name="sibH5Color" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Heading 6</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibH6Color} name="sibH6Color" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Paragraph 1</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibP1Color} name="sibP1Color" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Paragraph 2</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibP2Color} name="sibP2Color" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+            class="slds-p-around_small">
+            <div class="sibDivider"></div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+            class="slds-p-around_small">
+            <div class="sibConfigHeader">Generic</div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="8"
+            class="slds-p-around_small">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibBackgroundColor} name="sibBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Card Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCardBackgroundColor} name="sibCardBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Breadcrumb Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibBreadcrumbTextColor} name="sibBreadcrumbTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+                
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+            class="slds-p-around_small">
+            <div class="sibDivider"></div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+            class="slds-p-around_small">
+            <div class="sibConfigHeader">Product Detail Page</div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="8"
+            class="slds-p-around_small">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Product SKU</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPSkuTextColor} name="sibPDPSkuTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Product Name</div>
+                    <lightning-input variant="label-hidden"  required="true" type="color" name="sibPDPProductNameTextColor" value={container.sibPDPProductNameTextColor} onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Add To Cart Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPAddToCartButtonBackgroundColor} name="sibPDPAddToCartButtonBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Add To Cart Text</div>
+                    <lightning-input variant="label-hidden"  required="true" type="color" name="sibPDPAddToCartButtonTextColor" value={container.sibPDPAddToCartButtonTextColor} onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Product Description</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPDescriptionTextColor} name="sibPDPDescriptionTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Sale Tag Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPSaleTagBackgroundColor} name="sibPDPSaleTagBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Sale Tag Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPSaleTagTextColor} name="sibPDPSaleTagTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">New Tag Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPNewTagBackgroundColor} name="sibPDPNewTagBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">New Tag Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPNewTagTextColor} name="sibPDPNewTagTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Popular Tag Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPPopularTagBackgroundColor} name="sibPDPPopularTagBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Popular Tag Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPPopularTagTextColor} name="sibPDPPopularTagTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Best Seller Tag Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPBestSellerTagBackgroundColor} name="sibPDPBestSellerTagBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Best Seller Tag Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPBestSellerTagTextColor} name="sibPDPBestSellerTagTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Inventory In Stock Tag</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPInventoryInStockTagColor} name="sibPDPInventoryInStockTagColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Inventory Medium Stock Tag</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPInventoryMediumStockTagColor} name="sibPDPInventoryMediumStockTagColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Inventory Out of Stock Tag</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPInventoryOutofStockTagColor} name="sibPDPInventoryOutofStockTagColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Inventory Message</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPInventoryMessageTextColor} name="sibPDPInventoryMessageTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Inventory</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPDPInventoryTextColor} name="sibPDPInventoryTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+            class="slds-p-around_small">
+            <div class="sibDivider"></div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+            class="slds-p-around_small">
+            <div class="sibConfigHeader">Product List Page</div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="8"
+            class="slds-p-around_small">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Filter Button Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPLPFilterButtonBackgroundColor} name="sibPLPFilterButtonBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Filter Button Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPLPFilterButtonTextColor} name="sibPLPFilterButtonTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Filter Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPLPFilterTextColor} name="sibPLPFilterTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Product Name</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPLPProductNameTextColor} name="sibPLPProductNameTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Product SKU</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPLPProductSKUTextColor} name="sibPLPProductSKUTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Price</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPLPPriceTextColor} name="sibPLPPriceTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Product Description</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibPLPProductDescriptionTextColor} name="sibPLPProductDescriptionTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+                
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+            class="slds-p-around_small">
+            <div class="sibDivider"></div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+            class="slds-p-around_small">
+            <div class="sibConfigHeader">Cart</div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="8"
+            class="slds-p-around_small">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Cart Title</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCartTitleTextColor} name="sibCartTitleTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Product Name</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCartProductNameTextColor} name="sibCartProductNameTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Price Saved Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCartPriceSavedBackgroundColor} name="sibCartPriceSavedBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Checkout Button Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCartCheckoutButtonBackgroundColor} name="sibCartCheckoutButtonBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Checkout Button Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCartCheckoutButtonTextColor} name="sibCartCheckoutButtonTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+                
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+            class="slds-p-around_small">
+            <div class="sibDivider"></div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+            class="slds-p-around_small">
+            <div class="sibConfigHeader">Checkout</div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="8"
+            class="slds-p-around_small">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Checkout Title</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCheckoutTitleTextColor} name="sibCheckoutTitleTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Checkout Buttons Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCheckoutButtonBackgroundColor} name="sibCheckoutButtonBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Checkout Buttons Text</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCheckoutButtonTextColor} name="sibCheckoutButtonTextColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                    <div class="sibInputsMargin">Checkout Cards Background</div>
+                    <lightning-input variant="label-hidden" required="true" type="color" value={container.sibCheckoutCardBackgroundColor} name="sibCheckoutCardBackgroundColor" onchange={onChangeConfig}>
+                    </lightning-input>
+                </lightning-layout-item>
+                
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <div class="slds-align_absolute-center slds-p-top_medium">
+            <button class="slds-button slds-button_brand" onclick={validateSaveConfig}>Save</button>
+            <button class="slds-button slds-button_neutral" onclick={handleCloseCompConfig}>Cancel</button>
+        </div>
+
+    </lightning-layout>
+
+</template>

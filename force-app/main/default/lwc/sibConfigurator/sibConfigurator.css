@@ -1,0 +1,18 @@
+.sibConfigWrapper{
+    background-color:white;
+    padding: 1.2rem;
+}
+.sibWrapperHeader{
+    font-size:23px;
+    font-weight:600;
+}
+.sibWrapperDesc{
+    font-size:16px;
+    color:#8C8C8C;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.slds-tabs_default__nav, .slds-tabs--default__nav {
+    border-bottom-color: #d3d3d3 !important;
+}

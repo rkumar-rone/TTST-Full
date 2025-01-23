@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Selected Session Event" >
+    <aura:attribute name="sessionid" type="Id" />
+    <aura:attribute name="checked" type="Boolean" />
+</aura:event>

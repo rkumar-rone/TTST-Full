@@ -1,0 +1,55 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 03-03-2024
+  @last modified by  : Anand Kumar Reddy
+-->
+<template>
+    <div class="order-items" id="checkout-complete-block">
+        <div class="receipt-box">
+            <div class="receipt-box__title">
+                <h3>{orderDetailsHeader}</h3>
+            </div>
+
+            <div class="receipt-box__info order-number">
+                <h3>{labels.orderNumberText}</h3>
+                <p>{orderNumber}</p>
+            </div>
+            <div class="receipt-box__info order-date">
+                <h3>{labels.orderDateText}</h3>
+                <p>
+                    {getOrderDate}
+                </p>
+            </div>
+
+            <div lwc:if={clientName} class="receipt-box__info">
+                <h3>{labels.clientText}</h3>
+                <p>{clientName}</p>
+            </div>
+
+            <template lwc:if={showCCPayment}>
+                <div class="receipt-box__info">
+                    <h3>{labels.paymentText}</h3>
+                    <p>{paymentMethod} - {paymentSummaryMethodName}</p>
+                </div>
+            </template>
+            <template lwc:else>
+                <template lwc:if={isNoChargePayment}>
+                    <div class="receipt-box__info">
+                        <h3>{labels.paymentText}</h3>
+                        <p>{poNumber}</p>
+                    </div>
+                </template>
+            </template>
+
+            <!-- Billing Address -->
+            <div class="receipt-box__info billing-address">
+                <h3>{labels.billingAddressText}</h3>
+                <p>{billingStreet}</p>
+                <p>{billingCity}, {billingState} {billingPincode}</p>
+                <p>{billingCountry}</p>
+            </div>
+        </div>
+    </div>
+</template>

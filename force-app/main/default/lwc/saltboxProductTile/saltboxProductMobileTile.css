@@ -1,0 +1,141 @@
+.product-card {
+    background: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    width: 390px;
+    min-height: 433px;
+  }
+  
+  .product-body {
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  
+  .wishlist {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+  }
+  .wishlist-img {
+    width: 20.9px;
+    height: 18.23px;
+  }
+  
+  .img-body {
+    height: 260px;
+  
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .product-image {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .product-title {
+    font-family: Karla, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 18px;
+    /* identical to box height, or 100% */
+  
+    /* Seconday-color-2 */
+  
+    color: #001022;
+  }
+  
+  .sub-title {
+    font-family: Karla, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+  
+    /* Seconday-color-2 */
+  
+    color: #001022;
+  
+    opacity: 0.7;
+  }
+  
+  .amount-title {
+    font-family: Karla, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 16px;
+    /* identical to box height, or 89% */
+  
+    /* Primary-color 2 */
+  
+    color: black;
+  }
+  
+  .view-details {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    cursor: pointer;
+  
+    color: var(--brand);
+  }
+  
+  .add-to-cart {
+    width: 132.45px;
+    height: 36px;
+  
+    /* Primary-color 2 */
+  
+    background: var(--brand) !important;
+    /* Primary-color 2 */
+    font-size: 14px;
+    color: white;
+    border: 1px solid var(--brand) !important;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  
+  .footer {
+    /* padding-top: 20px !important;    */
+    /* disabled-button-color */
+    border-top: 1px solid rgba(217, 217, 224, 0.4);
+  }
+  
+  .tag {
+    width: 120px;
+    height: 42px;
+    position: absolute;
+    top: 29px;
+    color: var(--tagTextColor);
+    background: var(--tagBackgroundColor);
+    border-radius: 0px 2px 2px 0px;
+  }
+  
+  .cart-icon {
+    width: 21.21px;
+    height: 15px;
+    margin-left: 10px;
+  }
+  
+  .product-img-attr-img {
+    width: 23.47px;
+    height: 16px;
+  }
+  
+  @media (max-width: 460px) {
+    .product-card {
+      width: auto;
+      margin-top: 20px;
+    }
+  
+    .tag {
+      color: var(--tagTextColor);
+      background: var(--tagBackgroundColor);
+    }
+  }

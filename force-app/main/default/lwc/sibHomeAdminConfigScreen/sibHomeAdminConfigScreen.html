@@ -1,0 +1,41 @@
+<template>
+    <template if:true={config}>
+        <lightning-card class="slds-p-around_medium">
+            <fieldset class="slds-form-element slds-form-element_compound">
+                <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_header-hidden">
+                    <tbody>
+                        <template for:each={rowsOfStringAndNumbers} for:item="row">
+                            <tr key={row.key}>
+                                <template for:each={row} for:item="field">
+                                    <td key={field.name}>
+                                        <lightning-input type={field.type} data-key={field.name} data-type={field.type} data-original={field.originalType} id={field.name} label={field.name} value={field.value} onchange={handleChange} title={field.toolTipText} tooltip></lightning-input>
+                                    </td>
+                                </template>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </fieldset>
+            <fieldset class="slds-form-element slds-form-element_compound">
+                <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_header-hidden">
+                    <tbody>
+                        <template for:each={rowsOfCheckboxes} for:item="row">
+                            <tr key={row.key}>
+                                <template for:each={row} for:item="field">
+                                    <td key={field.name}>
+                                        <label class="slds-form-element__label">{field.name}</label>
+                                        <lightning-input type="checkbox" data-key={field.name} data-type={field.type} data-original-type={originalType} id={field.name} checked={field.value} onchange={handleChange}></lightning-input>
+                                    </td>
+                                </template>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </fieldset>
+            <div class="slds-m-top_medium slds-p-horizontal_medium slds-text-align_center">
+                <lightning-button label="Save" variant="brand" class="slds-p-horizontal_small" onclick={handleSave}></lightning-button>
+                <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+            </div>
+        </lightning-card>
+    </template> 
+</template>

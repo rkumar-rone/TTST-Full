@@ -1,0 +1,9 @@
+.slds-tabs_default__nav, .slds-tabs--default__nav {
+  border-bottom: 2px solid #d3d3d3;
+}
+.slds-radio .slds-form-element__label {
+  font-size: 14px !important;
+}
+.slds-tabs_default .slds-tabs_default__item{
+  font-size: 16px !important;
+}

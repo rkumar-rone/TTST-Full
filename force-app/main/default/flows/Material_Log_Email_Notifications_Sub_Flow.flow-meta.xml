@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_to_Checklist_Checked_By</name>
+        <label>Send Email to Checklist Checked By</label>
+        <locationX>50</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Parent_Opp_Checklist_Checked_by</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Parent_Opp_Checklist_Checked_by</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Checklist_Checked_by_Contact</name>
+        <label>Send Email to Checklist Checked by Contact</label>
+        <locationX>314</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Checklist_Checked_by</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Checklist_Checked_by</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Checklist_Prepared_by_Contact</name>
+        <label>Send Email to &quot;Checklist Prepared by&quot; Contact</label>
+        <locationX>1634</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Checklist_Requested</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Checklist_Requested</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Checklist_Prepared_by_Related_Contact</name>
+        <label>Send Email to &quot;Checklist Prepared by&quot; Contact</label>
+        <locationX>1898</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Parent_Opp_Checklist_Requested</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Parent_Opp_Checklist_Requested</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_DELTA_Class_Built_by</name>
+        <label>Send Email to DELTA Class Built by</label>
+        <locationX>4274</locationX>
+        <locationY>278</locationY>
+        <actionName>Materials_Log__c.DELTA_Class_Built_by</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.DELTA_Class_Built_by</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Materials_Assigned_to</name>
+        <label>Send Email to &quot;Materials Assigned to&quot;</label>
+        <locationX>842</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Checklist_Received</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Send_Email_to_Opportunity_Owner</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Checklist_Received</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Materials_Assigned_to_Contact</name>
+        <label>Send Email to &quot;Materials Assigned to&quot; Contact</label>
+        <locationX>1106</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Parent_Opp_Checklist_Received</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Send_Email_to_Opportunity_Owner_1</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Parent_Opp_Checklist_Received</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>User: Materials Team
+Related Contact: Lead Trainer
+Related User: Opportunity Owner</description>
+        <name>Send_Email_to_Materials_Team_Lead_Trainer_Opp_Owner</name>
+        <label>Send Email to Materials Team, Lead Trainer &amp; Opp Owner</label>
+        <locationX>3218</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Materials_Uploaded_on_DELTA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Materials_Uploaded_on_DELTA</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Materials_Team_Lead_Trainer_Opp_Owner_1</name>
+        <label>Send Email to Materials Team, Lead Trainer &amp; Opp Owner</label>
+        <locationX>3482</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Parent_Opp_Materials_Uploaded_on_DELTA</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Parent_Opp_Materials_Uploaded_on_DELTA</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Opportunity_Owner</name>
+        <label>Send Email to Opportunity Owner</label>
+        <locationX>842</locationX>
+        <locationY>518</locationY>
+        <actionName>Materials_Log__c.Checklist_Received_CSM</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Checklist_Received_CSM</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Opportunity_Owner_1</name>
+        <label>Send Email to Opportunity Owner</label>
+        <locationX>1106</locationX>
+        <locationY>518</locationY>
+        <actionName>Materials_Log__c.Parent_Opp_Checklist_Received_CSM</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Parent_Opp_Checklist_Received_CSM</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Opportunity_Owner_2</name>
+        <label>Send Email to Opportunity Owner</label>
+        <locationX>2426</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Materials_Sent_to_Printer</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Materials_Sent_to_Printer</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Opportunity_Owner_3</name>
+        <label>Send Email to Opportunity Owner</label>
+        <locationX>2690</locationX>
+        <locationY>398</locationY>
+        <actionName>Materials_Log__c.Parent_Opp_Materials_Sent_to_Printer</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Parent_Opp_Materials_Sent_to_Printer</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Opportunity_Owner_4</name>
+        <label>Send Email to Opportunity Owner</label>
+        <locationX>4010</locationX>
+        <locationY>278</locationY>
+        <actionName>Materials_Log__c.Publications_Ordered</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>MaterialLogRecord.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Publications_Ordered</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>Copy_1_of_Type_of_Course</name>
+        <label>Copy 1 of Type of Course</label>
+        <locationX>1106</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_1_of_Non_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Materials_Assigned_to</targetReference>
+            </connector>
+            <label>Copy 1 of Non-Public Course Opportunity</label>
+        </rules>
+        <rules>
+            <name>Copy_1_of_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Materials_Assigned_to_Contact</targetReference>
+            </connector>
+            <label>Copy 1 of Public Course Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_2_of_Type_of_Course</name>
+        <label>Copy 2 of Type of Course</label>
+        <locationX>1898</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_2_of_Non_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Checklist_Prepared_by_Contact</targetReference>
+            </connector>
+            <label>Copy 2 of Non-Public Course Opportunity</label>
+        </rules>
+        <rules>
+            <name>Copy_2_of_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Checklist_Prepared_by_Related_Contact</targetReference>
+            </connector>
+            <label>Copy 2 of Public Course Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_3_of_Type_of_Course</name>
+        <label>Copy 3 of Type of Course</label>
+        <locationX>2690</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_3_of_Non_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Opportunity_Owner_2</targetReference>
+            </connector>
+            <label>Copy 3 of Non-Public Course Opportunity</label>
+        </rules>
+        <rules>
+            <name>Copy_3_of_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Opportunity_Owner_3</targetReference>
+            </connector>
+            <label>Copy 3 of Public Course Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Copy_5_of_Type_of_Course</name>
+        <label>Copy 5 of Type of Course</label>
+        <locationX>3482</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Copy_5_of_Non_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Materials_Team_Lead_Trainer_Opp_Owner</targetReference>
+            </connector>
+            <label>Copy 5 of Non-Public Course Opportunity</label>
+        </rules>
+        <rules>
+            <name>Copy_5_of_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Materials_Team_Lead_Trainer_Opp_Owner_1</targetReference>
+            </connector>
+            <label>Copy 5 of Public Course Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Determine_the_Stage_of_Material_Log</name>
+        <label>Determine the Stage of Material Log</label>
+        <locationX>2426</locationX>
+        <locationY>158</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Checklist_to_check</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Checklist to check</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Type_of_Course</targetReference>
+            </connector>
+            <label>Checklist to check</label>
+        </rules>
+        <rules>
+            <name>Checklist_Received</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Checklist received</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_1_of_Type_of_Course</targetReference>
+            </connector>
+            <label>Checklist Received</label>
+        </rules>
+        <rules>
+            <name>Checklist_Requested</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Checklist requested</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_2_of_Type_of_Course</targetReference>
+            </connector>
+            <label>Checklist Requested</label>
+        </rules>
+        <rules>
+            <name>Materials_sent_to_printer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Materials sent to printer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_3_of_Type_of_Course</targetReference>
+            </connector>
+            <label>Materials sent to printer</label>
+        </rules>
+        <rules>
+            <name>Materials_uploaded_on_DELTA_CSM_Trainer_s_TA_s_informed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Materials uploaded on DELTA (CSM, Trainer(s), TA(s) informed)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Copy_5_of_Type_of_Course</targetReference>
+            </connector>
+            <label>Materials uploaded on DELTA (CSM, Trainer(s), TA(s) informed)</label>
+        </rules>
+        <rules>
+            <name>Publications_ordered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Publications ordered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Opportunity_Owner_4</targetReference>
+            </connector>
+            <label>Publications ordered</label>
+        </rules>
+        <rules>
+            <name>DELTA_class_to_build</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>DELTA class to build</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_DELTA_Class_Built_by</targetReference>
+            </connector>
+            <label>DELTA class to build</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Type_of_Course</name>
+        <label>Type of Course</label>
+        <locationX>314</locationX>
+        <locationY>278</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Non_Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Checklist_Checked_By</targetReference>
+            </connector>
+            <label>Non-Public Course Opportunity</label>
+        </rules>
+        <rules>
+            <name>Public_Course_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>MaterialLogRecord.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Checklist_Checked_by_Contact</targetReference>
+            </connector>
+            <label>Public Course Opportunity</label>
+        </rules>
+    </decisions>
+    <description>Used to Send Email Notifications.</description>
+    <environments>Default</environments>
+    <interviewLabel>Material Log Email Notifications Sub Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Material Log Email Notifications Sub Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>2300</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Determine_the_Stage_of_Material_Log</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>MaterialLogRecord</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Materials_Log__c</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,141 @@
+<template lwc:render-mode="light">
+    <article class={articleClass}>
+        <div class="cardfront">
+            <div lwc:if={isCourseInActive} class="inactivebanner">{labels.lmsInactive}</div>
+            <div class="slds-card__header slds-grid background-container">
+            </div>
+            <div class="slds-card__body course-info-sec">
+                <span class="courseTitle" title={course.cm.Campaign.Online_Event_Name__c}>
+                    {course.cm.Campaign.Online_Event_Name__c}
+                </span>
+
+                <template lwc:if={showProgressBar}>
+                    <div class="progressBar">
+                        <div class="progressFraction">
+                            {labels.progressText}&nbsp;
+                            <lightning-formatted-number value={course.cm.Number_of_Completed_Activities__c}
+                                maximum-fraction-digits="0"></lightning-formatted-number>
+                            {labels.progressTextSuffix}
+                            <lightning-formatted-number value={course.cm.Number_of_Activities__c}
+                                maximum-fraction-digits="0"></lightning-formatted-number>
+                        </div>
+                        <div class="progressPercent">
+                            <lightning-formatted-number value={progressPercentage} format-style="percent"
+                                maximum-fraction-digits="0"></lightning-formatted-number>
+                        </div>
+                        <lightning-progress-bar value={course.cm.Progress_Percentage__c} variant="circular"
+                            size="medium"></lightning-progress-bar>
+                    </div>
+                </template>
+
+                <lightning-layout-item padding="around-small" size="12" class="center">
+                    <template lwc:if={showGoToCourseButton}>
+                        <button type="button" class="go-to-course-btn" onclick={viewMoodle}
+                            value={course.cm.Moodle_URL__c}> {labels.goToCourseBtn} </button>
+                    </template>
+                    <button type="button" class="go-to-course-btn" onclick={toggle}>{labels.moreBtn}</button>
+                </lightning-layout-item>
+            </div>
+        </div>
+
+        <div class="cardback">
+            <div class="slds-card__body">
+                <span class="courseTitle" title={course.cm.Campaign.Online_Event_Name__c}>
+                    {course.cm.Campaign.Online_Event_Name__c}
+                </span>
+                <div class="back" onclick={toggleBack}>←</div>
+                <div class="topline"></div>
+
+                <a class="item" href={courseDetailUrl}>
+                    <div>{labels.courseDetailsOrStatus}</div>
+                </a>
+
+                <template lwc:if={course.hasSessionsToReg}>
+                    <div class="item seession-sec" onclick={addSessions} data-value={course.cm.CampaignId}>
+                        {SessionText}
+                    </div>
+                </template>
+
+                <template lwc:if={canShowSessions}>
+                    <div class="item seession-sec" onclick={handleShowEdit}
+                        data-onlycourse={course.cm.Campaign.Only_Show_Sessions__c}>
+                        {labels.edit}
+                    </div>
+                </template>
+
+                <template lwc:if={canShowCancel}>
+                    <div class="item" onclick={handleShowModal} data-value={course.cm.Id}
+                        data-coursename={course.cm.Campaign.Online_Event_Name__c}>
+                        <div>{labels.cancelBtn}</div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </article>
+
+    <template lwc:if={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- modal header start -->
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{labels.cancelCourse}</h2>
+                </header>
+
+                <!-- modal body start -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="model-stencil" lwc:if={isSkeletonLoading}>
+                        <c-stencil height="40" width="100%"></c-stencil>
+                    </div>
+                    <div lwc:else>
+                        <template lwc:if={showAfterDeadline}>
+                            {labels.afterDeadLineText}
+                            <lightning-formatted-date-time value={deadlineDate}></lightning-formatted-date-time>
+                            &nbsp;{deadlineHour}:{deadlineMinutes} {deadlineAmpm}.
+                            {labels.afterDeadLinePolicyText}<br />
+                            <span style="font-style:italic">{policy}</span><br /><br />
+                            <lightning-input type="checkbox" checked={checked}
+                                label={labels.acknowledge}></lightning-input>
+
+                            <!-- Display error if not empty -->
+                            <template lwc:if={error}>
+                                <div class="slds-has-error slds-m-left--medium">
+                                    <div class="slds-form-element__help">
+                                        {error}
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+
+                        <!-- Before Deadline and Not on Waitlist -->
+                        <template lwc:if={showBeforeDeadline}>
+                            {labels.beforeDeadLineText}
+                        </template>
+
+                        <!-- On Waitlist -->
+                        <template lwc:if={waitlist}>
+                            {labels.waitlistText}
+                        </template>
+                    </div>
+                </div>
+
+                <!-- modal footer start-->
+                <footer class="slds-modal__footer">
+                    <!-- "Cancel Course" Button -->
+                    <button type="button" class="cancel-course-btn" onclick={handleConfirm}
+                        disabled={isButtonDisabled}>{labels.cancelCourseBtn}
+                    </button>
+
+                    <button type="button" class="changed-mind-btn" onclick={handleCancel}
+                        disabled={isButtonDisabled}>{labels.changedMindBtn}
+                    </button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template lwc:if={canShowSessions}>
+        <c-sib-edit-course-modal is-one-course={onlyonecourse} record-id={course.productId} registration={course.regs}>
+        </c-sib-edit-course-modal>
+    </template>
+</template>

@@ -1,0 +1,14 @@
+.sibConfigHeader{
+    font-size: 18px;
+    margin-top:10%;
+}
+.sibDivider{
+    border:1px solid #d3d3d3;
+}
+.slds-form-element__label {
+    visibility: hidden !important;
+}
+.sibInputsMargin{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

@@ -1,0 +1,70 @@
+<template>
+    <article class="slds-card product-card">
+        <div class="slds-card__body slds-card__body_inner product-body">
+            <div class="img-body">
+                <div class="wishlist" if:false={hideWishlist} onclick={handleWishListModal}>
+                    <img class="wishlist-img" src={wishListUrl} >
+                </div>
+                <img class="product-image" src={product.defaultImage.url}>
+                <div if:false={mutProductImageAttr.hideProductAttr} class="tag slds-p-around--small">
+                   <img class="product-img-attr-img" src={productImageAttrImg}></img>&nbsp; <span style="position: absolute;" class="slds-m-top--xxx-small slds-m-left--x-small">{mutProductImageAttr.productAttrValue} </span>
+                </div>
+
+            </div>
+            <div class="slds-p-around--large">
+                <div class="product-title">
+                    <div class="slds-grid" >
+                        <div class="slds-grid slds-has-flexi-truncate">
+                          <span class="slds-truncate">{title}</span>
+                        </div>
+                      </div>
+                </div>
+                <!--
+                <div class="sub-title slds-m-top--x-small">
+                    <span>2854 Meadow View Drive, Hartford, USA</span>
+                </div> -->
+                <div class="slds-m-top--medium">
+                    <div >
+                        <span class="sub-title" >{priceTitle}</span>&nbsp; <span class="amount-title" if:false={isGuestUser}>${product.prices.unitPrice}</span> <span class="amount-title" if:true={isGuestUser}>Unavailable</span>
+                       
+                    </div>
+                </div>
+                <div class="slds-m-top--medium">
+                    <div class="description">
+                        <span if:false={hideDescription} class="slds-line-clamp_small">{description}</span>
+                    </div>
+                </div>
+                <div class="slds-m-top--medium">
+                    <div class="slds-grid">
+                        <template for:each={mutProductAttrData} for:item="attr" >
+                            <div key={attr.productAttrFieldName} if:false={attr.hideProductAttr} class="slds-col slds-size--4-of-12">
+                                <c-saltbox-product-attribute-item product-attr-detail={attr} ></c-saltbox-product-attribute-item>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+        <footer if:false={hideFooter} class="slds-card__footer footer">
+          <div class="slds-grid slds-m-left--small slds-m-right--small">
+            <div class="slds-col slds-align-middle">
+                <span if:false={hideViewDetail} onclick={handleViewDetail} class="slds-float--left view-details">View Details</span>
+            </div>
+            <div class="slds-col">
+                <button if:false={hideAddtoCart} onclick={addItemToCart} class="slds-button slds-float--right add-to-cart slds-align--absolute-center">{buttonLabel}
+                    <svg focusable="false"  data-key="cart" aria-hidden="true" viewBox="0 0 52 52" class="slds-icon cart-icon slds-icon_small"><g><g><path d="M20.1 26H44c.7 0 1.4-.5 1.5-1.2l4.4-15.4c.3-1.1-.5-2-1.5-2H11.5l-.6-2.3C10.6 4 9.6 3.3 8.6 3.3h-4c-1.3 0-2.5 1-2.6 2.3C1.9 7 3.1 8.2 4.4 8.2h2.3l7.6 25.7c.3 1.1 1.2 1.8 2.3 1.8h28.2c1.3 0 2.5-1 2.6-2.3.1-1.4-1.1-2.6-2.4-2.6H20.2c-1.1 0-2-.7-2.3-1.7V29c-.5-1.5.7-3 2.2-3z"></path><circle cx="20.6" cy="44.6" r="4"></circle><circle cx="40.1" cy="44.6" r="4"></circle></g></g></svg>
+                </button>
+            </div>
+          </div>
+        </footer>
+    </article>
+
+    <!--Comment this piece out if needing to deploy without wishlist functionality-->
+    <!-- <template if:true={showWishListModal}>
+        <c-saltbox-wishlist-modal-comp
+                effective-account-id={effectiveAccountId}
+                community-id={communityId}
+        ></c-saltbox-wishlist-modal-comp>
+    </template> -->
+</template>

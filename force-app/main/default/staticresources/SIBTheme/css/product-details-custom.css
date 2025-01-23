@@ -1,0 +1,10 @@
+.product-details-container{
+    padding: 20px;
+    background-color: #EDEDF0;
+    text-align: center;
+}
+
+.add-to-cart-btn{
+    background-color: rgb(153, 153, 248);
+    border-radius: 25px;
+}

@@ -1,0 +1,151 @@
+<!--
+  @description       : 
+  @author            : Jassimran Virdi
+  @group             : 
+  @last modified on  : 03-27-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template lwc:render-mode="light">
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+    <section if:false={isLoading} class="filter-page-product">
+        <div class="filter-content">
+            <div class="container card-space">
+                <div class="page-filter-flex">
+                    <div class="Product-List">
+                        <div class="mobile-view">
+                            <c-sib-my-account-navigation></c-sib-my-account-navigation>
+                        </div>
+                        <div class="Full-Width">
+                            <div class="Order-History-parent">
+                                <span class="Page-Title-Right">
+                                    Addresses
+                                </span>
+                                <div class="Frame-11363">
+                                    <div class="Tab-Bar-Control">
+                                        <div class="PD-Layout-Header">
+                                            <span class="Layout-Title Active" data-id="shipping" onclick={displayShippingAddresses}>
+                                                Shipping
+                                            </span>
+                                            <span class="Layout-Title" data-id="billing" onclick={displayBillingAddresses}>
+                                                Billing
+                                            </span>
+                                        </div>
+                                        <div class="Button-CTA-AddAddress" onclick={goToAddAddress}>
+                                            <label class="label-AddAddress">
+                                                Add Address
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div if:true={showShipping}>
+                                        <div if:true={shippingAddresses}>
+                                            <div class="Frame-11364 Address-View">
+                                                <template for:each={shippingAddresses} for:item="address">
+                                                    <div key={address.Id} class="Shipping">
+                                                        <div class="Frame-9">
+                                                            <span if:true={address.CompanyName} class="Name">
+                                                                {address.CompanyName}
+                                                            </span>
+                                                            <span if:false={address.CompanyName} class="Name">
+                                                                {address.Name}
+                                                            </span>
+                                                            <div if:true={address.IsDefault} class="Badge">
+                                                                <div class="Badge-Body">
+                                                                    <span class="Badge-Content">
+                                                                        Default
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="addressBody">
+                                                            <span class="Address-Details">
+                                                                {address.Street},
+                                                            </span>
+                                                            <span class="Address-Details">
+                                                                {address.City}, {address.State} {address.PostalCode}
+                                                            </span>
+                                                            <span class="Address-Details">
+                                                                {address.Country}
+                                                            </span>
+                                                        </div>
+                                                        <div class="Frame-11390">
+                                                            <div class="Text-Link">
+                                                                <div class="Label-Underline">
+                                                                    <label class="CTA-Label" data-id={address.Id} onclick={goToEditAddress}>
+                                                                        Edit
+                                                                    </label>
+                                                                    <label class="CTA-Label CTA-Space">
+                                                                        Delete
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <div if:false={shippingAddresses}>
+                                            No shipping addresses
+                                        </div>
+                                    </div>
+                                    <div if:true={showBilling}>
+                                        <div if:true={billingAddresses}>
+                                            <div class="Frame-11364 Address-View">
+                                                <template for:each={billingAddresses} for:item="address">
+                                                    <div key={address.Id} class="Shipping">
+                                                        <div class="Frame-9">
+                                                            <span if:true={address.CompanyName} class="Name">
+                                                                {address.CompanyName}
+                                                            </span>
+                                                            <span if:false={address.CompanyName} class="Name">
+                                                                {address.Name}
+                                                            </span>
+                                                            <div if:true={address.IsDefault} class="Badge">
+                                                                <div class="Badge-Body">
+                                                                    <span class="Badge-Content">
+                                                                        Default
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="addressBody">
+                                                            <span class="Address-Details">
+                                                                {address.Street},
+                                                            </span>
+                                                            <span class="Address-Details">
+                                                                {address.City}, {address.State} {address.PostalCode}
+                                                            </span>
+                                                            <span class="Address-Details">
+                                                                {address.Country}
+                                                            </span>
+                                                        </div>
+                                                        <div class="Frame-11390">
+                                                            <div class="Text-Link">
+                                                                <div class="Label-Underline">
+                                                                    <label class="CTA-Label" onclick={goToEditAddress}>
+                                                                        Edit
+                                                                    </label>
+                                                                    <label class="CTA-Label CTA-Space">
+                                                                        Delete
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <div if:false={billingAddresses}>
+                                            No billing addresses
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

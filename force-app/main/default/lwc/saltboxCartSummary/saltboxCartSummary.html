@@ -1,0 +1,117 @@
+<template>
+    <div class="slds-grid slds-grid_vertical summary-container">
+        <!-- Cart Summary Header -->
+        <div class="slds-col summary-header-container">
+            <h2 class="summary-header">
+                Cart Summary
+            </h2>
+        </div>
+        <!-- ORIGINAL PRICE INFO -->
+        <!-- <lightning-formatted-number 
+            if:true={showOriginal}
+            class="original-price slds-p-right_medium slds-text-heading_small" 
+            aria-label={ariaLabelForOriginalPrice}
+            format-style="currency" currency-code={currencyCode} 
+            currency-display-as="symbol"
+            maximum-fraction-digits="2" 
+            value={prices.originalPrice}>
+        </lightning-formatted-number> -->
+
+        <!-- SUBTOTAL PRICE INFO -->
+        <div class="slds-col slds-grid slds-wrap price-container">
+            <div class="slds-col slds-large-size_8-of-12 slds-medium-size_8-of-12 slds-size_8-of-12 slds-text-align_left">
+                <span class="">
+                    {labels.subtotal}
+                </span>
+            </div>
+            <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_4-of-12 slds-text-align_right">
+                <lightning-formatted-number 
+                    class="total-amount" 
+                    format-style="currency"
+                    currency-code={currencyCode} 
+                    currency-display-as="symbol" 
+                    maximum-fraction-digits="2"
+                    value={prices.subtotalPrice}
+                ></lightning-formatted-number>
+            </div>
+        </div>
+
+        <!-- PROMO AMOUNT INFO -->
+        <template if:true={showPromotions}>
+            <div class="slds-col slds-grid slds-wrap price-container">
+                <div class="slds-col slds-large-size_8-of-12 slds-medium-size_8-of-12 slds-size_8-of-12 slds-text-align_left">
+                    <span class="">
+                        {labels.promo}
+                    </span>
+                </div>
+                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_4-of-12 slds-text-align_right">
+                    <lightning-formatted-number 
+                        class="total-amount" 
+                        format-style="currency"
+                        currency-code={currencyCode} 
+                        currency-display-as="symbol" 
+                        maximum-fraction-digits="2"
+                        value={prices.promoAmount}
+                    ></lightning-formatted-number>
+                </div>
+            </div>
+        </template>
+
+        <!-- Taxes AMOUNT INFO -->
+        <template if:true={showTaxes}>
+            <div class="slds-col slds-grid slds-wrap price-container">
+                <div class="slds-col slds-large-size_8-of-12 slds-medium-size_8-of-12 slds-size_8-of-12 slds-text-align_left">
+                    <span class="">
+                        {labels.tax}
+                    </span>
+                </div>
+                <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_4-of-12 slds-text-align_right">
+                    <lightning-formatted-number 
+                        class="total-amount" 
+                        format-style="currency"
+                        currency-code={currencyCode} 
+                        currency-display-as="symbol" 
+                        maximum-fraction-digits="2"
+                        value={prices.taxes}
+                    ></lightning-formatted-number>
+                </div>
+            </div>
+        </template>
+
+        
+        <!-- FINAL PRICE INFO -->
+        <div class="slds-col slds-grid slds-wrap price-container finalPriceContainer">
+            <div class="slds-col slds-large-size_8-of-12 slds-medium-size_8-of-12 slds-size_8-of-12 slds-text-align_left">
+                <span class="">
+                    {labels.total}
+                </span>
+            </div>
+            <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_4-of-12 slds-text-align_right">
+                <lightning-formatted-number 
+                    class="total-amount" 
+                    format-style="currency"
+                    currency-code={currencyCode} 
+                    currency-display-as="symbol" 
+                    maximum-fraction-digits="2"
+                    value={prices.finalPriceWithTaxes}
+                ></lightning-formatted-number>
+            </div>
+
+            <!-- <div class="slds-col slds-large-size_4-of-12 slds-medium-size_4-of-12 slds-size_4-of-12 slds-text-align_right">
+                <lightning-formatted-number 
+                    class="total-amount" 
+                    format-style="currency"
+                    currency-code={currencyCode} 
+                    currency-display-as="symbol" 
+                    maximum-fraction-digits="2"
+                    value={prices.finalPrice}
+                ></lightning-formatted-number>
+            </div> -->
+        </div>
+
+       
+        <!-- Update pricing message -->
+        <div class="slds-form-element__help pricing-update-helptext">* Final tax will be updated in checkout</div>
+    </div>
+
+</template>

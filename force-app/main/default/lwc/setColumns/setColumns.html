@@ -1,0 +1,47 @@
+<template>
+    <label> Columns: </label>
+    <div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <lightning-combobox
+                name="ObjectType"
+                onchange={onObjectTypeChange}
+                options={objectTypeList}
+                placeholder="Object Type"
+                value="All"
+                >
+                </lightning-combobox>
+            </div>
+            <div class="slds-col">
+                <lightning-combobox
+                name="ObjectList"
+                onchange={onObjectChange}
+                options={objectList}
+                placeholder="Select Object"
+                value={objectName}
+                >
+                </lightning-combobox>
+            </div>
+        </div>
+        <template if:true={showFields}>        
+            <lightning-combobox
+            name="progress"
+            label="Select the label of the record detail link"
+            value={fieldLinkName}
+            placeholder="Select Link name"
+            options={fieldList}
+            onchange={onLabelSelection} ></lightning-combobox>
+            <p>Linkage in field above is disabled.</p><br/>
+    <template if:true={showChekbox}>        
+    <label class="slds-m-vertical_small">Select fields for the data table columns</label> 
+    <div class="slds-scrollable_y" style="height:10rem;" tabindex="0">
+        <template for:each={fieldList} for:item="fieldItem">
+            <div key={fieldItem.label} class="">
+                <lightning-input type="checkbox" data-sectionid={fieldItem.label} label={fieldItem.label} checked={fieldItem.checked} disabled={fieldItem.disabled} value={fieldItem.value} onchange={handleColumnList}></lightning-input>
+            </div>
+        </template>
+    </div>
+    </template>
+    </template>
+    </div>
+</template>

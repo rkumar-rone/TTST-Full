@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Data_Dashboard_Notification</name>
+        <label>Data Dashboard Notification</label>
+        <locationX>50</locationX>
+        <locationY>360</locationY>
+        <actionName>Request__c.Data_Dashboard_Needed</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Request__c.Data_Dashboard_Needed</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <name>Check_event_end_date</name>
+        <label>Check event end date</label>
+        <locationX>182</locationX>
+        <locationY>252</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_end_date_less_than_3_days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DaysUntilEndDate</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>-3.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Data_Dashboard_Notification</targetReference>
+            </connector>
+            <label>Is end date less than 3 days</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>DaysUntilEndDate</name>
+        <dataType>Number</dataType>
+        <expression>TODAY() - {!$Record.Event_End_Date__c}</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>eLearning team notification for data dashboard {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>eLearning team notification for data dashboard</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_event_end_date</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Upgrade_Data_Dashboard__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Request__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2024-01-16</startDate>
+            <startTime>02:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

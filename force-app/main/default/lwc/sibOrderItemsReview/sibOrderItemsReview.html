@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : Jassimran Virdi
+  @group             : 
+  @last modified on  : 10-09-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <div class="summary-items">
+        <div class="order-title">
+            <h2>Your Items</h2>
+            <p class="items" lwc:if={productCount}>{productCount} Items</p>
+        </div>
+        <div class="box-items">
+            <c-sib-cart-content read-only={readOnly} cart-items={cartItems} cart-details={cartDetails}
+                cart-config={cartConfig}></c-sib-cart-content>
+        </div>
+    </div>
+</template>

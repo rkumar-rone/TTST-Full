@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <decisions>
+        <name>Delivery_Format_is_Virtutal</name>
+        <label>Delivery Format is Virtual</label>
+        <locationX>446</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Update_w_External_Tax_Code</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Virual</defaultConnectorLabel>
+        <rules>
+            <name>Delivery_Format_is_VirtualYes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Delivery_Format2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Virtual (Instructor-led)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Virtual_Tax_Code</targetReference>
+            </connector>
+            <label>Delivery Format is Virtual</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Delivery_Format_In_Person</name>
+        <label>Is Delivery Format In Person</label>
+        <locationX>248</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Delivery_Format_is_Virtutal</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not In-Person</defaultConnectorLabel>
+        <rules>
+            <name>Delivery_Format_is_In_PersonYes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Delivery_Format2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>In-person</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_In_Person_Tax_Code</targetReference>
+            </connector>
+            <label>Delivery Format is In Person</label>
+        </rules>
+    </decisions>
+    <description>6.10.24</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Is Sales invoice Line Item being inserted</description>
+        <name>IsNew</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>LPC Update Tax Code on SIN based on Delivery Format {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>LPC Update Tax Code on SIN based on Delivery Format</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Tax_Code_from_Product_Record</name>
+        <label>Get Tax Code from Product Record</label>
+        <locationX>248</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Is_Delivery_Format_In_Person</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.c2g__Product__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Product2</object>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>c2g__CODASalesTaxRule__c</queriedFields>
+        <queriedFields>In_Person_Tax_Code__c</queriedFields>
+        <queriedFields>Virtual_Tax_Code__c</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_In_Person_Tax_Code</name>
+        <label>Update In Person Tax Code</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>LPC_Tax_Code__c</field>
+            <value>
+                <elementReference>Get_Tax_Code_from_Product_Record.In_Person_Tax_Code__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Virtual_Tax_Code</name>
+        <label>Update Virtual Tax Code</label>
+        <locationX>314</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>LPC_Tax_Code__c</field>
+            <value>
+                <elementReference>Get_Tax_Code_from_Product_Record.Virtual_Tax_Code__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_w_External_Tax_Code</name>
+        <label>Update w External Tax Code</label>
+        <locationX>578</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>LPC_Tax_Code__c</field>
+            <value>
+                <elementReference>Get_Tax_Code_from_Product_Record.c2g__CODASalesTaxRule__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Tax_Code_from_Product_Record</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Delivery_Format2__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>c2g__codaInvoiceLineItem__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

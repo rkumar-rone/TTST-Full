@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <decisions>
+        <name>Portal_Default_Tile_Image</name>
+        <label>Portal Default Tile Image</label>
+        <locationX>2030</locationX>
+        <locationY>503</locationY>
+        <defaultConnector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Image_for_Academics</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012G0000000WcfkIAC</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_image</targetReference>
+            </connector>
+            <label>Image for Academics</label>
+        </rules>
+        <rules>
+            <name>Image_for_Corporate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUwGIAU</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_Corp_Image</targetReference>
+            </connector>
+            <label>Image for Corporate</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_Core</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Core Comprehensive</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_Core_image</targetReference>
+            </connector>
+            <label>Image for PC Core</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_FT</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fast Track: Financial Modeling</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_FT_image</targetReference>
+            </connector>
+            <label>Image for PC FT</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_FSA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Financial Statement Analysis</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_FSA_image</targetReference>
+            </connector>
+            <label>Image for PC FSA</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_Capital_Mkts</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Capital Markets</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_Cap_Mkts_image</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Image for PC Capital Mkts</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_Applied_Excel</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Applied Excel</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_AE_image</targetReference>
+            </connector>
+            <label>Image for PC Applied Excel</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_Advanced</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Advanced Topics</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_Advanced_image</targetReference>
+            </connector>
+            <label>Image for PC Advanced</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_Evening</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Evening Essentials</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_PC_evening_image</targetReference>
+            </connector>
+            <label>Image for PC Evening</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_UG_BC</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.Id</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>UG Boot Camp</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_UG_BC</targetReference>
+            </connector>
+            <label>Image for PC UG BC</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_Enhanced</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Enhanced Core</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_default_Enhanced</targetReference>
+            </connector>
+            <label>Image for PC Enhanced</label>
+        </rules>
+        <rules>
+            <name>Image_for_PC_Private_Equity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Private Equity Transition</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_defualt_Private_Equity</targetReference>
+            </connector>
+            <label>Image for PC Private Equity</label>
+        </rules>
+        <rules>
+            <name>Image_for_Real_Estate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Real Estate</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Image_for_Real_Estate</targetReference>
+            </connector>
+            <label>Image for Real Estate</label>
+        </rules>
+        <rules>
+            <name>Image_for_Python</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Python</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Image_for_Python</targetReference>
+            </connector>
+            <label>Image for Python</label>
+        </rules>
+        <rules>
+            <name>Image_for_Software_Analysis</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>012A0000000pUw6IAE</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Event_Description__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Software Analysis</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Tile_Image_URL__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Image_for_Software_Analysis</targetReference>
+            </connector>
+            <label>Image for Software Analysis</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Update_PRIOR_values_for_RC_fields</name>
+        <label>Update PRIOR values for RC fields</label>
+        <locationX>2030</locationX>
+        <locationY>803</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ISCHANGED_Specified_fields</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Resource_Center_Features__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.VBSS_Courses__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Teaching_Modules_Sections__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_PRIORs</targetReference>
+            </connector>
+            <label>ISCHANGED - Specified fields</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>PRIORTeachingModules</name>
+        <dataType>String</dataType>
+        <expression>PRIORVALUE({!$Record.Teaching_Modules_Sections__c})</expression>
+    </formulas>
+    <formulas>
+        <name>PRIORTechUpgrades</name>
+        <dataType>String</dataType>
+        <expression>PRIORVALUE({!$Record.Resource_Center_Features__c})</expression>
+    </formulas>
+    <formulas>
+        <name>PRIORVBSSCourses</name>
+        <dataType>String</dataType>
+        <expression>PRIORVALUE({!$Record.VBSS_Courses__c})</expression>
+    </formulas>
+    <formulas>
+        <name>SetTileImage</name>
+        <dataType>String</dataType>
+        <expression>IF( 
+({!$Record.RecordTypeId} = &apos;012G0000000WcfkIAC&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;), &apos;https://portal.trainingthestreet.com/resource/PortalAcademicGeneric&apos;, 
+IF( 
+({!$Record.RecordTypeId} = &apos;012A0000000pUwGIAU&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;), &apos;https://portal.trainingthestreet.com/resource/PortalCorporateThemeImage&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos; &amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Core Comprehensive&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCCore&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos; &amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Fast Track: Financial Modeling&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCFastTrack&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos; &amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Financial Statement Analysis&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCFSAAcct&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Capital Markets&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCCapitalMarkets&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Applied Excel&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCAppliedExcel&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Advanced Topics&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCAdvancedTopics&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Evening Essentials&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCEvening&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;UG Boot Camp&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCUGBootcamp&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Enhanced Core&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCEnhanced&apos;,
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Private Equity Transition&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPCPrivateEquity&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Real Estate&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalCommercialRealEstate&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Python&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalPython&apos;, 
+IF(
+({!$Record.RecordTypeId} = &apos;012A0000000pUw6IAE&apos; &amp;&amp; {!$Record.Tile_Image_URL__c} = &apos;&apos;&amp;&amp; ISPICKVAL({!$Record.Event_Description__c}, &apos;Software Analysis&apos;)), &apos;https://portal.trainingthestreet.com/resource/PortalSoftwareIndustryAnalysisandModeling&apos;, 
+&apos; Blank&apos;
+)
+)
+)
+)
+)
+)
+)
+)
+)
+)
+)
+)
+)
+)
+)</expression>
+    </formulas>
+    <interviewLabel>TTS Event Field Updates Before Save {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>TTS Event Field Updates Before Save</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Flip_Record_Type_Portal_Reg_Content_Only</name>
+        <label>Flip Record Type - Portal Reg Content Only</label>
+        <locationX>2030</locationX>
+        <locationY>287</locationY>
+        <connector>
+            <targetReference>SmartPath_Hide_Progress_Bar</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012G0000000WcfjIAC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Registration_System__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>TTS Portal - Content Only</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <stringValue>012G0000000WcfkIAC</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_Advanced_image</name>
+        <label>Set default Advanced image</label>
+        <locationX>1898</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCAdvancedTopics</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_AE_image</name>
+        <label>Set default AE image</label>
+        <locationX>1634</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCAppliedExcel</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_Cap_Mkts_image</name>
+        <label>Set default Cap Mkts image</label>
+        <locationX>1370</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCCapitalMarkets</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_Core_image</name>
+        <label>Set default Core image</label>
+        <locationX>578</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCCore</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_Corp_Image</name>
+        <label>Set default Corp Image</label>
+        <locationX>314</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalCorporateThemeImage</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_Enhanced</name>
+        <label>Set default Enhanced</label>
+        <locationX>2690</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCEnhanced</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_FSA_image</name>
+        <label>Set default FSA image</label>
+        <locationX>1106</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCFSAAcct</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_FT_image</name>
+        <label>Set default FT image</label>
+        <locationX>842</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCFastTrack</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_image</name>
+        <label>Set default image</label>
+        <locationX>50</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalAcademicGeneric</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_PC_evening_image</name>
+        <label>Set default PC evening image</label>
+        <locationX>2162</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCEvening</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_default_UG_BC</name>
+        <label>Set default UG BC</label>
+        <locationX>2426</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCUGBootcamp</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_defualt_Private_Equity</name>
+        <label>Set defualt Private Equity</label>
+        <locationX>2954</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPCPrivateEquity</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_Image_for_Python</name>
+        <label>Set Image for Python</label>
+        <locationX>3482</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalPython</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_Image_for_Real_Estate</name>
+        <label>Set Image for Real Estate</label>
+        <locationX>3218</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalCommercialRealEstate</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_Image_for_Software_Analysis</name>
+        <label>Set Image for Software Analysis</label>
+        <locationX>3746</locationX>
+        <locationY>611</locationY>
+        <connector>
+            <targetReference>Update_PRIOR_values_for_RC_fields</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Tile_Image_URL__c</field>
+            <value>
+                <stringValue>https://portal.trainingthestreet.com/resource/PortalSoftwareIndustryAnalysisandModeling</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>SmartPath_Hide_Progress_Bar</name>
+        <label>SmartPath - Hide Progress Bar</label>
+        <locationX>2030</locationX>
+        <locationY>395</locationY>
+        <connector>
+            <targetReference>Portal_Default_Tile_Image</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND (3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9)</filterLogic>
+        <filters>
+            <field>What_is_Pre_Work__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Accounting SmartPath</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>What_is_Pre_Work__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Accounting SmartPath + CV E-Book &amp; Assessment</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012G0000000WcfkIAC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012A0000000pUwGIAU</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0124w000001NUNTAA4</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0124w000000Wj58AAC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012A0000000pUw6IAE</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0124w000000Wiz5AAC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012G0000000WKEFIA4</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Hide_Progress_Bar__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_PRIORs</name>
+        <label>Update PRIORs</label>
+        <locationX>1898</locationX>
+        <locationY>911</locationY>
+        <inputAssignments>
+            <field>PRIOR_Teaching_Modules__c</field>
+            <value>
+                <elementReference>PRIORTeachingModules</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRIOR_Tech_Upgrades__c</field>
+            <value>
+                <elementReference>PRIORTechUpgrades</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRIOR_VBSS_Courses__c</field>
+            <value>
+                <elementReference>PRIORVBSSCourses</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1904</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Flip_Record_Type_Portal_Reg_Content_Only</targetReference>
+        </connector>
+        <object>Campaign</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

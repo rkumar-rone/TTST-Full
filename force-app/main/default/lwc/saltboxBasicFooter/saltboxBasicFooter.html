@@ -1,0 +1,66 @@
+<template>
+    <div class="slds-grid slds-wrap slds-p-top_large slds-p-bottom_large background text-color basicFooter">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-12"></div>
+
+        <div
+            class="slds-col slds-size_1-of-1 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-p-horizontal_medium sectionPadding">
+            <div class="slds-clearfix">
+                <div class="">
+                    <img src={logoImage}>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12 slds-p-horizontal_medium">
+            <div class="slds-grid slds-wrap slds-border_bottom slds-p-bottom_large">
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-clearfix">
+                        <div class="">
+                            <ul class="slds-list_horizontal slds-has-inline-block-links_space">
+                                <li>
+                                    <a href={Section1Item1Link} target="_blank">{Section1Item1}</a>
+                                </li>
+                                <li>
+                                    <a href={Section1Item2Link} target="_blank">{Section1Item2}</a>
+                                </li>
+                                <li>
+                                    <a href={twitterLink} target="_blank"><img src={twitterIcon}
+                                            class="socialIcons"></a>
+                                    <a href={facebookLink} target="_blank"><img src={facebookIcon}
+                                            class="socialIcons"></a>
+                                    <a href={instagramLink} target="_blank"><img src={instagramIcon}
+                                            class="socialIcons"></a>
+                                    <a href={linkedInLink} target="_blank"><img src={linkedInIcon}
+                                            class="socialIcons"></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-grid slds-wrap slds-p-top_large">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_9-of-12 sectionPadding">
+                    <div class="slds-clearfix">
+                        <ul class="slds-list_horizontal slds-has-inline-block-links_space">
+                            <li>
+                                <a href={Section2Item1Link} target="_blank">{Section2Item1}</a>
+                            </li>
+                            <li>
+                                <a href={Section2Item2Link} target="_blank">{Section2Item2}</a>
+                            </li>
+                            <li>
+                                <a href={Section2Item3Link} target="_blank">{Section2Item3}</a>
+                            </li>
+                            <li>
+                                <a href={Section2Item4Link} target="_blank">{Section2Item4}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-12">
+                    <p>{rights}</p>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-12"></div>
+    </div>
+</template>

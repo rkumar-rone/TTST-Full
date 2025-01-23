@@ -1,0 +1,15 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:handler event="c:LoggedIn" action="{!c.loggedIn}"/>
+	<nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
+	<div class="container-fluid"> 
+		<!-- Brand and toggle get grouped for better mobile display --> 
+
+		<!-- Collection of nav links and other content for toggling --> 
+        <span class="slds-hide_medium"><c:NavigationMobile /></span>
+        <a class="navbar-brand page-scroll" id="logonav" href="/s/">
+            <img src="{!$Resource.TTSCommunity + '/TTS_Portal_green.jpg'}" />
+		</a>
+	</div>
+</nav>
+    <div style="height:58px" >&nbsp;</div>
+</aura:component>

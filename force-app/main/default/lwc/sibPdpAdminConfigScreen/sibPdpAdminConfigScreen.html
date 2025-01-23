@@ -1,0 +1,437 @@
+<template>
+    <template if:true={config}>
+        <article class="slds-card slds-p-around_medium noShadow">
+            <div class="slds-card__body slds-card__body_inner"><!--slds-card__body_scrollable-->
+                <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+                    <lightning-accordion-section class="accordianHeader" name="individualConfigs" label="Individual Configs">
+                        <article class="slds-card">
+                            <div class="slds-card__body slds-card__body_inner">
+                                <div class="slds-form slds-form_compound slds-p-top_x-small slds-p-bottom_x-small" >
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Custom PDP</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" class="configInput" data-id="customPDP" name="customPDP" checked={customPDP} aria-describedby="customPDP" onchange={handleIndividualConfigChange}/>
+                                                <span id="showProductImage" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section class="accordianHeader" name="MappingConfigs" label="Product Type List Configs">
+                        <article class="slds-card">
+                            <div class="slds-card__body slds-card__body_inner">
+                                    <lightning-accordion allow-multiple-sections-open>
+                                        
+                                        <template for:each={configObjectsList} for:item="row" for:index="rowIndex">
+                                            
+                                            <lightning-accordion-section class="sectionHeader" key={row} name={row.accordianName} label={row.accordianName}>
+                                                
+                                                <article class="slds-card">
+                                                    <div class="slds-card__body slds-card__body_inner">
+                                                        <div class="slds-form slds-form_compound slds-p-top_large slds-p-bottom_large" >
+                                                            <template if:true={row.indvidualConfigs}>
+                                                                <div class="slds-form slds-form_compound" >
+                                                                    <template for:each={row.indvidualConfigs} for:item="configObj">
+                                                                        <template if:true={configObj.layoutLevelOne}>
+                                                                            <template if:false={configObj.isCheckbox}>
+                                                                                <div key={configObj.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                    <label class="slds-form-element__label configLabel">{configObj.label}</label>
+                                                                                    <div class="slds-form-element__control">
+                                                                                        <lightning-input type="text" class="configInput" data-id={configObj.name} data-type={configObj.type} data-row-index={rowIndex} value={configObj.value} onchange={handleProductTypeConfigChange}></lightning-input>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </template>
+                                                                            <template if:true={configObj.isCheckbox}>
+                                                                                <div key={configObj.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                    <label class="slds-form-element__label configLabel">{configObj.label}</label>
+                                                                                    <div class="slds-form-element__control">
+                                                                                        <label class="slds-checkbox_toggle slds-grid">
+                                                                                            <input type="checkbox" class="configInput" data-id={configObj.name} name={configObj.name} data-type={configObj.type} data-row-index={rowIndex} checked={configObj.value} aria-describedby={configObj.name} onchange={handleProductTypeConfigChange}/>
+                                                                                            <span id={configObj.name} class="slds-checkbox_faux_container">
+                                                                                            <span class="slds-checkbox_faux"></span>
+                                                                                            <span class="slds-checkbox_on">Enabled</span>
+                                                                                            <span class="slds-checkbox_off">Disabled</span>
+                                                                                            </span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </template>
+                                                                        </template>
+                                                                    </template>
+                                                                </div>
+                                                            </template>
+                                                            <template if:true={row.tierPricingConfigFields}>
+                                                                <lightning-accordion-section class="subSectionHeader" name="tierPricingConfig" label="Tier Pricing Configs">
+                                                                    <article class="slds-card innerCard">
+                                                                        <div class="slds-card__body slds-card__body_inner">
+                                                                            <div class="slds-form slds-form_compound slds-p-top_x-small slds-p-bottom_x-small" >
+                                                                                <template for:each={row.tierPricingConfigFields} for:item="field" for:index="fieldIndex">
+                                                                                    <!--<article key={field.name} class="slds-card">
+                                                                                        <div class="slds-card__body slds-card__body_inner">-->
+                                                                                            <template if:false={field.isCheckbox}>
+                                                                                                <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                    <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                    <div class="slds-form-element__control">
+                                                                                                        <lightning-input type="text" class="configInput" data-id={field.name} data-type={field.type} data-row-index={rowIndex} data-field-index={fieldIndex} value={field.value} onchange={handleTierPricingConfigChange}></lightning-input>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </template>
+                                                                                            <template if:true={field.isCheckbox}>
+                                                                                                <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                    <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                    <div class="slds-form-element__control">
+                                                                                                        <label class="slds-checkbox_toggle slds-grid">
+                                                                                                            <input type="checkbox" name={field.name} data-id={field.name} data-type={field.type} data-row-index={rowIndex} data-field-index={fieldIndex} checked={field.value} aria-describedby={field.name} onchange={handleTierPricingConfigChange}/>
+                                                                                                            <span id={field.name} class="slds-checkbox_faux_container">
+                                                                                                            <span class="slds-checkbox_faux"></span>
+                                                                                                            <span class="slds-checkbox_on">Enabled</span>
+                                                                                                            <span class="slds-checkbox_off">Disabled</span>
+                                                                                                            </span>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </template>
+                                                                                        <!--</div>
+                                                                                    </article>-->
+                                                                                </template>
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+                                                                </lightning-accordion-section>
+                                                            </template>
+                                                            <template if:true={row.indvidualConfigs}>
+                                                                <div class="slds-form slds-form_compound" >
+                                                                    <template for:each={row.indvidualConfigs} for:item="configObj">
+                                                                        <template if:true={configObj.layoutLevelTwo}>
+                                                                            <template if:false={configObj.isCheckbox}>
+                                                                                <div key={configObj.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                    <label class="slds-form-element__label configLabel">{configObj.label}</label>
+                                                                                    <div class="slds-form-element__control">
+                                                                                        <lightning-input type="text" class="configInput" data-id={configObj.name} data-type={configObj.type} data-row-index={rowIndex} value={configObj.value} onchange={handleProductTypeConfigChange}></lightning-input>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </template>
+                                                                            <template if:true={configObj.isCheckbox}>
+                                                                                <div key={configObj.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                    <label class="slds-form-element__label configLabel">{configObj.label}</label>
+                                                                                    <div class="slds-form-element__control">
+                                                                                        <label class="slds-checkbox_toggle slds-grid">
+                                                                                            <input type="checkbox" data-id={configObj.name} name={configObj.name} data-type={configObj.type} data-row-index={rowIndex} checked={configObj.value} aria-describedby={configObj.name} onchange={handleProductTypeConfigChange}/>
+                                                                                            <span id={configObj.name} class="slds-checkbox_faux_container">
+                                                                                            <span class="slds-checkbox_faux"></span>
+                                                                                            <span class="slds-checkbox_on">Enabled</span>
+                                                                                            <span class="slds-checkbox_off">Disabled</span>
+                                                                                            </span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </template>
+                                                                        </template>
+                                                                    </template>
+                                                                </div>
+                                                            </template>
+                                                            <template if:true={row.relatedProductTypes}>
+                                                                <lightning-accordion-section class="subSectionHeader" name="RelatedProductTypeConfig" label="Related Product Type Config">
+                                                                    <article class="slds-card innerCard">
+                                                                        <div class="slds-card__header slds-grid">
+                                                                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                                                                <div class="slds-media__body">
+                                                                                <h2 class="slds-card__header-title slds-truncate subHeader">
+                                                                                    <span>Related Product Type Config Mappings</span>
+                                                                                </h2>
+                                                                                </div>
+                                                                                <div class="slds-no-flex">
+                                                                                    <button class="slds-button configAddNewButton" data-row-index={rowIndex} onclick={showRelatedTypeConfigModalBox}>+ Add New</button>
+                                                                                </div>
+                                                                            </header>
+                                                                        </div>
+                                                                        <div class="slds-card__body slds-card__body_inner">
+                                                                            <div class="slds-form slds-form_compound slds-p-bottom_medium" >
+                                                                                <template for:each={row.relatedProductTypes} for:item="itrObj" for:index="indexItr">
+                                                                                    <article key={itrObj.name} class="slds-card">
+                                                                                        <div class="slds-card__body slds-card__body_inner">
+                                                                                            <div class="slds-form slds-form_compound slds-p-top_x-small slds-p-bottom_x-small" >
+                                                                                                <div class="delete-button-container">
+                                                                                                    <lightning-button-icon icon-name="utility:delete" data-row-index={rowIndex} data-field-index={indexItr} label="Delete" title="Delete Mapping" variant="base" onclick={deleteRelatedTypeConfig}></lightning-button-icon>
+                                                                                                </div>
+                                                                                                <template for:each={itrObj} for:item="field" for:index="fieldIndex">
+                                                                                                    <!--<article key={field.name} class="slds-card innerCard">
+                                                                                                        <div class="slds-card__body slds-card__body_inner">-->
+                                                                                                            <template if:false={field.isCheckbox}>
+                                                                                                                <template if:false={field.isCombobox}>
+                                                                                                                    <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                                        <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                                        <div class="slds-form-element__control configInputWidth">
+                                                                                                                            <lightning-input type="text" class="configInput" data-id={field.name} data-type={field.type} data-row-index={rowIndex} data-inner-row-index={indexItr} value={field.value} onchange={handleRelatedTypesConfigChange}></lightning-input>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </template>
+                                                                                                                <template if:true={field.isCombobox}>
+                                                                                                                    <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                                        <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                                        <div class="slds-form-element__control configInputPaddingLeft configInputWidth">
+                                                                                                                            <lightning-combobox name={field.name} class="configInput" data-id={field.name} data-type={field.type} data-row-index={rowIndex} data-inner-row-index={indexItr} options={relatedfieldAPINameOptions} value={field.value} onchange={handleRelatedTypesConfigChange}></lightning-combobox>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </template>  
+                                                                                                            </template>
+                                                                                                            <template if:true={field.isCheckbox}>
+                                                                                                                <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                                    <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                                    <div class="slds-form-element__control">
+                                                                                                                        <label class="slds-checkbox_toggle slds-grid">
+                                                                                                                            <input type="checkbox" data-id={field.name} name={field.name} data-type={field.type} data-row-index={rowIndex} data-inner-row-index={indexItr} checked={field.value} aria-describedby={field.name} onchange={handleRelatedTypesConfigChange}/>
+                                                                                                                            <span id={field.name} class="slds-checkbox_faux_container">
+                                                                                                                            <span class="slds-checkbox_faux"></span>
+                                                                                                                            <span class="slds-checkbox_on">Enabled</span>
+                                                                                                                            <span class="slds-checkbox_off">Disabled</span>
+                                                                                                                            </span>
+                                                                                                                        </label>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </template>
+                                                                                                        <!--</div>
+                                                                                                    </article>-->
+                                                                                                </template>
+                                                                                            </div>
+                                                                                            
+                                                                                        </div>
+                                                                                    </article>
+                                                                                </template>
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+                                                                </lightning-accordion-section>
+                                                            </template>
+                                                            <template if:true={row.indvidualConfigs}>
+                                                                <div class="slds-form slds-form_compound" >
+                                                                    <template for:each={row.indvidualConfigs} for:item="configObj">
+                                                                        <template if:true={configObj.layoutLevelThree}>
+                                                                            <template if:false={configObj.isCheckbox}>
+                                                                                <template if:true={configObj.isCombobox}>
+                                                                                    <div key={configObj.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                        <label class="slds-form-element__label configLabel">{configObj.label}</label>
+                                                                                        <div class="slds-form-element__control configInputPaddingLeft configInputWidth">
+                                                                                            <lightning-combobox name={configObj.name} class="configInput" data-id={configObj.name} data-type={configObj.type} data-row-index={rowIndex} options={pageSectionStyleOptions} value={configObj.value} onchange={handlePageSectionStyleConfigChange}></lightning-combobox>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </template>
+                                                                                <template if:false={configObj.isCombobox}>
+                                                                                    <div key={configObj.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                        <label class="slds-form-element__label configLabel">{configObj.label}</label>
+                                                                                        <div class="slds-form-element__control">
+                                                                                            <lightning-input type="text" class="configInput" data-id={configObj.name} data-type={configObj.type} data-row-index={rowIndex} value={configObj.value} onchange={handleProductTypeConfigChange}></lightning-input>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </template>
+                                                                            </template>
+                                                                            <template if:true={configObj.isCheckbox}>
+                                                                                <div key={configObj.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                    <label class="slds-form-element__label configLabel">{configObj.label}</label>
+                                                                                    <div class="slds-form-element__control">
+                                                                                        <label class="slds-checkbox_toggle slds-grid">
+                                                                                            <input type="checkbox" data-id={configObj.name} name={configObj.name} data-type={configObj.type} data-row-index={rowIndex} checked={configObj.value} aria-describedby={configObj.name} onchange={handleProductTypeConfigChange}/>
+                                                                                            <span id={configObj.name} class="slds-checkbox_faux_container">
+                                                                                            <span class="slds-checkbox_faux"></span>
+                                                                                            <span class="slds-checkbox_on">Enabled</span>
+                                                                                            <span class="slds-checkbox_off">Disabled</span>
+                                                                                            </span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </template>
+                                                                            
+                                                                        </template>
+                                                                    </template>
+                                                                </div>
+                                                            </template>
+                                                            <template if:true={row.pageSections}>
+                                                                <lightning-accordion-section class="subSectionHeader" name="pageSectionsConfig" label="Page Sections Config">
+                                                                    <article class="slds-card innerCard">
+                                                                        <div class="slds-card__header slds-grid">
+                                                                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                                                                <div class="slds-media__body">
+                                                                                <h2 class="slds-card__header-title subHeader">
+                                                                                    <a href="#" class="slds-card__header-link slds-truncate" title="Page Section Config Mappings">
+                                                                                        <span>Page Section Config Mappings</span>
+                                                                                    </a>
+                                                                                </h2>
+                                                                                </div>
+                                                                                <div class="slds-no-flex">
+                                                                                    <button class="slds-button configAddNewButton" data-row-index={rowIndex} onclick={showPageSectionConfigModalBox}>+ Add New</button>
+                                                                                </div>
+                                                                            </header>
+                                                                        </div>
+                                                                        <div class="slds-card__body slds-card__body_inner">
+                                                                            <div class="slds-form slds-form_compound slds-p-bottom_medium" >
+                                                                                <template for:each={row.pageSections} for:item="itrObj" for:index="indexItr">
+                                                                                    <article key={itrObj.name} class="slds-card">
+                                                                                        <div class="slds-card__body slds-card__body_inner">
+                                                                                            <div class="slds-form slds-form_compound slds-p-top_x-small slds-p-bottom_x-small" >
+                                                                                                <div class="delete-button-container">
+                                                                                                    <lightning-button-icon slot="actions" icon-name="utility:delete" data-row-index={rowIndex} data-field-index={indexItr} label="Delete" title="Delete Mapping" variant="base" onclick={deletePageSectionConfig}></lightning-button-icon>
+                                                                                                </div>
+                                                                                                <template for:each={itrObj} for:item="field" for:index="index">
+                                                                                                    <!--<article key={field.name} class="slds-card innerCard">
+                                                                                                        <div class="slds-card__body slds-card__body_inner">-->
+                                                                                                            <template if:false={field.isCheckbox}>
+                                                                                                                <template if:false={field.isCombobox}>
+                                                                                                                    <template if:true={field.apiNameDisabled}>
+                                                                                                                        <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                                            <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                                            <div class="slds-form-element__control configInputWidth">
+                                                                                                                                <lightning-input type="text" class="configInput" data-id={field.name} data-type={field.type} data-row-index={rowIndex} data-inner-row-index={indexItr} value={field.value} disabled></lightning-input>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </template>
+                                                                                                                    <template if:false={field.apiNameDisabled}>
+                                                                                                                        <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                                            <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                                            <div class="slds-form-element__control configInputWidth">
+                                                                                                                                <lightning-input type="text" class="configInput" data-id={field.name} data-type={field.type} data-row-index={rowIndex} data-inner-row-index={indexItr} value={field.value} onchange={handlePageSectionsConfigChange}></lightning-input>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </template>
+                                                                                                                </template>
+                                                                                                                <template if:true={field.isCombobox}>
+                                                                                                                    <template if:false={field.hideFieldAPINameInput}>
+                                                                                                                        <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                                            <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                                            <div class="slds-form-element__control configInputPaddingLeft configInputWidth">
+                                                                                                                                <lightning-combobox name={field.name} class="configInput" data-id={field.name} data-type={field.type} data-row-index={rowIndex} data-inner-row-index={indexItr} options={productfieldAPINameOptions} value={field.value} onchange={handlePageSectionsConfigChange}></lightning-combobox>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </template>
+                                                                                                                </template>  
+                                                                                                            </template>
+                                                                                                            <template if:true={field.isCheckbox}>
+                                                                                                                <div key={field.name} class="slds-form-element slds-form-element_horizontal">
+                                                                                                                    <label class="slds-form-element__label configLabel">{field.label}</label>
+                                                                                                                    <div class="slds-form-element__control">
+                                                                                                                        <label class="slds-checkbox_toggle slds-grid">
+                                                                                                                            <input type="checkbox" data-id={field.name} name={field.name} data-type={field.type} data-row-index={rowIndex} data-inner-row-index={indexItr} checked={field.value} aria-describedby={field.name} onchange={handlePageSectionsConfigChange}/>
+                                                                                                                            <span id={field.name} class="slds-checkbox_faux_container">
+                                                                                                                            <span class="slds-checkbox_faux"></span>
+                                                                                                                            <span class="slds-checkbox_on">Enabled</span>
+                                                                                                                            <span class="slds-checkbox_off">Disabled</span>
+                                                                                                                            </span>
+                                                                                                                        </label>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </template>
+                                                                                                        <!--</div>
+                                                                                                    </article>-->
+                                                                                                </template>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </article>
+                                                                                </template>
+                                                                            </div>
+                                                                        </div>
+                                                                    </article>
+                                                                </lightning-accordion-section>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            </lightning-accordion-section>
+    
+                                        </template>               
+                                    </lightning-accordion>
+                                </div>
+                        </article>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+            <template if:true={isShowRelatedTypeProductConfigModal}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- modal header start -->
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close" onclick={hideRelatedTypeConfigModalBox}>
+                                <lightning-icon class="myIcon" icon-name="utility:close" alternative-text="close"
+                                    size="small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">New Related Type Product Config Mapping</h2>
+                        </header>
+        
+                        <!-- modal body start -->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                            <div class="slds-form-element slds-form-element_compound">
+                                <div class="slds-form-element slds-form-element_stacked">
+                                    <lightning-combobox name="inputApiName" label="Api Name" data-id="inputApiName" options={relatedfieldAPINameOptions} value={inputApiName} onchange={handleNewRelatedTypeProductConfigChange} required></lightning-combobox>
+                                </div>
+                                <div class="slds-form-element slds-form-element_stacked">
+                                    <lightning-input type="text" data-id="inputDisplayName" value={inputDisplayName} label="Display Name" onchange={handleNewRelatedTypeProductConfigChange} required></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- modal footer start-->
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={hideRelatedTypeConfigModalBox}>Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={addNewRelatedTypeConfig}>Save</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            <template if:true={isShowPageSectionConfigModal}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <!-- modal header start -->
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                title="Close" onclick={hidePageSectionConfigModalBox}>
+                                <lightning-icon class="myIcon" icon-name="utility:close" alternative-text="close"
+                                    size="small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">New Page Section Mapping</h2>
+                        </header>
+        
+                        <!-- modal body start -->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                            <div class="slds-form-element slds-form-element_compound">
+                                <div class="slds-form-element slds-form-element_stacked">
+                                    <lightning-combobox name="inputFieldApiNameForPageSection" label="Field API Name" data-id="inputFieldApiNameForPageSection" options={productfieldAPINameOptions} value={inputFieldApiNameForPageSection} onchange={handleNewPageSectionConfigChange} required></lightning-combobox>
+                                </div>
+                                <div class="slds-form-element slds-form-element_stacked">
+                                    <lightning-input type="text" data-id="inputApiNameForPageSection" value={inputApiNameForPageSection} label="API Name" onchange={handleNewPageSectionConfigChange} required></lightning-input>
+                                </div>
+                                <div class="slds-form-element slds-form-element_stacked">
+                                    <lightning-input type="text" data-id="inputTitle" value={inputTitle} label="Title" onchange={handleNewPageSectionConfigChange} required></lightning-input>
+                                </div>
+                                <div class="slds-form-element slds-form-element_stacked">
+                                    <lightning-input type="checkbox" data-id="inputShowOnlyIfApplicable" value={inputShowOnlyIfApplicable} label="Show Only When Applicable" onchange={handleNewPageSectionConfigChange}></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- modal footer start-->
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={hidePageSectionConfigModalBox}>Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={addNewPageSectionConfig}>Save</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            <div class="button-container slds-m-top_medium slds-p-horizontal_medium slds-text-align_center">
+                <lightning-button label="Save" variant="brand" class="slds-p-horizontal_small" onclick={handleSave}></lightning-button>
+                <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+            </div>
+        </article>
+    </template> 
+</template>

@@ -1,0 +1,46 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 03-06-2024
+  @last modified by  : Anand Kumar Reddy
+-->
+<template>
+    <div class="item-container">
+        <div class="item">
+            <div class="item-img">
+                <img src={imgUrl} alt={item.Name} />
+            </div>
+            <div class="item-info">
+                <p class="sku">{labels.classCodeText} <span>{item.SKU}</span></p>
+                <a class="slds-text-link_reset title"
+                    onkeydown={handleKeydown} 
+                    onclick={handleProductDetailPageNavigation}>
+                    <h3 title={productName}>{item.Name}</h3>
+                </a>
+                <div class="qty">{labels.quantityText} <span>{item.Quantity}</span></div>
+            </div>
+            <div class="item-price">
+                <p>
+                    <lightning-formatted-number
+                        value={item.TotalPrice}
+                        format-style="currency" 
+                        currency-code={currencyCode}
+                        minimum-fraction-digits="2" 
+                        maximum-fraction-digits="2"
+                    ></lightning-formatted-number>
+                </p>
+                <p if:true={item.ListPrice} class="sale">
+                    <lightning-formatted-number
+                        class="original-price"
+                        value={item.ListPrice}
+                        format-style="currency" 
+                        currency-code={currencyCode}
+                        minimum-fraction-digits="2" 
+                        maximum-fraction-digits="2"
+                    ></lightning-formatted-number>
+                </p>
+            </div>
+        </div>
+    </div>
+</template>

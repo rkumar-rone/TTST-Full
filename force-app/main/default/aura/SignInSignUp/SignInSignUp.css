@@ -1,0 +1,49 @@
+div.THIS {
+    background-image: url(/resource/TTSCommunity/background_city_new.jpg);
+    background-size: cover;
+    height: 900px;
+    background-repeat: no-repeat, repeat;
+    font-family: 'ROBOTO', sans-serif;
+    padding-top:14px;
+    padding-bottom:none;
+}
+
+
+
+@font-face {
+    font-family: "BankGothic";
+    src: url(/resource/BankFont);
+}
+.THIS .form {
+	background: rgba(224, 226, 226, 0.92);
+	padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.THIS .tab-group {
+	list-style: none;
+    padding: 0;
+    margin: 0 0 100px 0;
+}
+
+.THIS .tab-group .active a {
+    background: #027d07;
+    color: #ffffff;
+}
+
+.THIS .tab-group li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(160, 179, 176, 0.25);
+    color: #027d07;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s ease;
+}

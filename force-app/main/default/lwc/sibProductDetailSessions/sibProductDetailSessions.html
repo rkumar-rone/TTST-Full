@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-10-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <div class="sessions" if:true={eventSessions}>
+        <div class="">
+            <template for:each={eventSessions} for:item="eventSession">
+                <div key={eventSession.Id} class="sessions">
+                    <lightning-input 
+                        class="session-name"
+                        name={eventSession.Name} 
+                        type="checkbox" 
+                        label={eventSession.label} 
+                        data-key={eventSession.Id}
+                        data-required={eventSession.Required__c}
+                        checked={eventSession.isChecked}
+                        onchange={handleSessionChange}>
+                    </lightning-input>
+
+                    <div class="session-time">
+                        {eventSession.sessionTime}
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

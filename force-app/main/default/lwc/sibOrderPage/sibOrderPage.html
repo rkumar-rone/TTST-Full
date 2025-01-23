@@ -1,0 +1,162 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 08-22-2024
+  @last modified by  : Anand Kumar Reddy
+-->
+<template lwc:render-mode="light">
+
+    <!-- Stencil -->
+    <template if:true={isLoading}>
+        <main class="page-content">
+            <section class="order-confirmation-page">
+                <div class="content-wrapper">
+                    <div class="receipt-title stencil-title">
+                        <c-stencil class="stencil-title-width" height="40" width="100%"></c-stencil>
+                        <c-stencil class="stencil-desc-width" height="25" width="100%"></c-stencil>
+                    </div>
+                    <div class="d-flex">
+                        <div class="checkout-content">
+                            <div class="receipt-box">
+                                <c-stencil class="stencil-width-25" height="30" width="100%"></c-stencil>
+                                <div class="stencil-order-fields">
+                                    <c-stencil class="stencil-width-30" height="25" width="100%"></c-stencil>
+                                    <c-stencil class="stencil-width-40" height="25" width="100%"></c-stencil>
+                                </div>
+                                <div class="stencil-order-fields">
+                                    <c-stencil class="stencil-width-30" height="25" width="100%"></c-stencil>
+                                    <c-stencil class="stencil-width-40" height="25" width="100%"></c-stencil>
+                                </div>
+                                <div class="stencil-order-fields">
+                                    <c-stencil class="stencil-width-30" height="25" width="100%"></c-stencil>
+                                    <c-stencil class="stencil-width-40" height="25" width="100%"></c-stencil>
+                                </div>
+                                <div class="stencil-order-fields">
+                                    <c-stencil class="stencil-width-30" height="25" width="100%"></c-stencil>
+                                    <c-stencil class="stencil-width-40" height="25" width="100%"></c-stencil>
+                                </div>
+                                <div class="stencil-order-fields">
+                                    <c-stencil class="stencil-width-30" height="25" width="100%"></c-stencil>
+                                    <c-stencil class="stencil-width-40" height="25" width="100%"></c-stencil>
+                                </div>
+                                <div class="stencil-order-fields">
+                                    <c-stencil class="stencil-width-25" height="25" width="100%"></c-stencil>
+                                    <c-stencil class="stencil-width-40" height="25" width="100%"></c-stencil>
+                                    <c-stencil class="stencil-width-25" height="25" width="100%"></c-stencil>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="order-items-summary">
+                            <div class="order-items-container">
+                                <div class="receipt-box">
+                                    <c-stencil class="stencil-width-30" height="30" width="100%"></c-stencil>
+                                    <div class="item-container">
+                                        <div class="item stencil-item">
+                                            <div class="stencil-img">
+                                                <c-stencil height="80" width="100%"></c-stencil>
+                                            </div>
+                                            <div class="item-info">
+                                                <c-stencil class="stencil-width-50" height="21" width="100%"></c-stencil>
+                                                <c-stencil class="stencil-width-50" height="21" width="100%"></c-stencil>
+                                                <c-stencil class="stencil-width-25" height="21" width="100%"></c-stencil>
+                                            </div>
+                                            <div class="item-price stencil-price">
+                                                <c-stencil class="stencil-width-25" height="25" width="50"></c-stencil>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout-summary">
+                                <div class="receipt-box">
+                                    <c-stencil class="stencil-width-30" height="30" width="100%"></c-stencil>
+                                    <div class="receipt-box-order">
+                                        <div class="stencil-prices stencil-price-box">
+                                            <c-stencil class="stencil-width-30" height="21" width="100%"></c-stencil>
+                                        </div>
+                                        <div class="stencil-prices stencil-price-box">
+                                            <c-stencil class="stencil-width-40" height="21" width="100%"></c-stencil>
+                                            <c-stencil class="stencil-width-25" height="21" width="100%"></c-stencil>
+                                        </div>
+                                        <div class="stencil-prices">
+                                            <c-stencil class="stencil-width-30" height="21" width="100%"></c-stencil>
+                                            <c-stencil class="stencil-width-25" height="21" width="100%"></c-stencil>
+                                        </div>
+                                    </div>
+                                    <div class="receipt-box-order">
+                                        <div class="stencil-prices">
+                                            <c-stencil class="stencil-width-30" height="21" width="100%"></c-stencil>
+                                            <c-stencil class="stencil-width-25" height="21" width="100%"></c-stencil>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stencil-btn">
+                                    <c-stencil height="56" width="100%"></c-stencil>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </template>
+    <!-- Stencil End -->
+
+    <template if:false={questStore}>
+        <div lwc:if={displayOrderData}>
+            <main class="page-content">
+                <section class="order-confirmation-page">
+                    <div class="content-wrapper">
+                        <!-- <div class="d-flex"> -->
+                        <div lwc:if={isOrderConfirmationPage} class="receipt-title">
+                            <h2>{orderConfirmationHeader}</h2>
+                            <p>{orderConfirmationSubHeader}</p>
+                        </div>
+                        <div class="d-flex">
+                            <div class="checkout-content" id="checkout-content">
+                                <form id="form-checkout">                                 
+                                    <!--Receipt-->
+                                    <c-sib-order-detail
+                                        order-details={orderDetails}
+                                        order-config={orderConfig}
+                                        order-data={orderData}
+                                    ></c-sib-order-detail>
+                                </form>    
+                            </div>
+                            <div class="order-items-summary">
+                                <!--Order Items-->
+                                <div class="order-items-container" id="checkout-complete-block">
+                                    <div class="receipt-box">
+                                        <div class="receipt-box__title">
+                                            <h3>{labels.yourItemsName}</h3>
+                                        </div>
+                                        <template for:each={orderData.orderItems} for:item="item">
+                                            <c-sib-order-items
+                                                class="order-items"
+                                                key={item.Product2Id}
+                                                order-details={orderDetails}
+                                                order-config={orderConfig}
+                                                order-data={orderData}
+                                                order-item={item}
+                                                onshowproduct={handleNavigateToProductPage}
+                                            ></c-sib-order-items>
+                                        </template>
+                                    </div>
+                                </div>
+                                <!-- Cart Order Summary-->
+                                <c-sib-order-summary
+                                    order-details={orderDetails}
+                                    order-config={orderConfig}
+                                    order-data={orderData}
+                                    show-subscriptions={showSubscriptions}
+                                    subscription-list={subscriptionList}
+                                ></c-sib-order-summary>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </template>
+</template>

@@ -1,0 +1,33 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="wlsessions" type="Object[]" />
+    <aura:attribute name="waitlisted" type="Boolean" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<lightning:card >
+    	<aura:set attribute="title">
+            <h3>Thank You</h3>
+        </aura:set>
+        <div style="margin-left:15px;">
+        Thank you for registering.<br />
+        You will be receiving an email confirmation for each session you have registered for.<br />
+
+        <aura:if isTrue="{!v.waitlisted}">
+        	<div class="slds-has-error">
+            	<div class="slds-form-element__help">
+					You have been waitlisted for the following sessions:
+                    <table>
+                        <thead>
+                        	<tr><th>Session Name</th><th>Position</th></tr>
+                        </thead>
+                        <tbody>
+                    	<aura:iteration items="{!v.wlsessions}" var="s">
+                        	<tr><td>{!s.name}</td><td>{!s.position}</td></tr>
+                        </aura:iteration>
+                        </tbody>
+                    </table>        	   		
+    	    	</div>                       
+      		</div>
+    	</aura:if>
+        </div>
+    </lightning:card>
+    
+</aura:component>

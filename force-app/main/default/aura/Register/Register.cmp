@@ -1,0 +1,758 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global" controller="CourseManagementController">
+	<aura:attribute name="course" type="Object" />
+    <aura:attribute name="courseid" type="Id" />
+    <aura:attribute name="fullcourse" type="Boolean" />
+    <aura:attribute name="bring" type="String[]" />
+    <aura:attribute name="included" type="String[]" />
+    <aura:attribute name="errormessage" type="String" />
+    <aura:attribute name="couponerror" type="String" />
+    <aura:attribute name="confirmwaitlist" type="Boolean" default="false"/>
+    <aura:attribute name="coupon" type="String" />
+    <aura:attribute name="firstname" type="String" />
+    <aura:attribute name="lastname" type="String" />
+    <aura:attribute name="address" type="String" />
+    <aura:attribute name="city" type="String" />
+    <aura:attribute name="state" type="String" />
+    <aura:attribute name="zip" type="String" />
+    <aura:attribute name="country" type="String" />
+    <aura:attribute name="phone" type="String" />
+    <aura:attribute name="cardno" type="String" />
+    <aura:attribute name="cvv" type="String" />
+    <aura:attribute name="month" type="String" />
+    <aura:attribute name="year" type="String" />
+    <aura:attribute name="total" type="Decimal" default="0"/>
+    <aura:attribute name="discount" type="Decimal"/>
+    <aura:attribute name="earlydiscount" type="Decimal"/>
+    <aura:attribute name="alreadypaid" type="Decimal"/>
+    <aura:attribute name="grandtotal" type="Decimal" />
+    <aura:attribute name="same" type="Boolean" default="true" />
+    <aura:attribute name="cholderemail" type="String" />
+    <aura:attribute name="email" type="String" />
+    <aura:attribute name="years" type="List" access="PRIVATE" />
+    <aura:attribute name="showAffirm" type="Boolean" default="false" />
+    <aura:attribute name="customquestion" type="String" />
+    <aura:attribute name="affirm" type="Boolean" default="false" />
+    <aura:handler event="c:LoggedIn" action="{!c.doInit}"/>
+    <aura:handler name="sessionSelected" event="c:sessionSelected" action="{!c.selectSession}" />
+    <aura:handler event="c:RegisterWaitlistConfirm" action="{!c.handleWaitlist}"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:if isTrue="{!and(v.loggedIn, not(empty(v.course.history)))}">
+            	<lightning:card class="slds-p-vertical_medium grey">
+    				<aura:set attribute="title">
+                        <aura:iteration items="{!v.course.history}" var="h">
+                        	<strong>Current Status: {!h.newValue} on <lightning:formattedDateTime value="{!h.dt}" year="numeric" day="2-digit" month="long" hour="2-digit" minute="2-digit" timeZone="{!$Locale.timezone}"/></strong>
+                        </aura:iteration>
+        			</aura:set>
+<!--                    <p class="slds-p-horizontal_medium">
+	                    <aura:iteration items="{!v.course.history}" var="h">
+                        	<aura:if isTrue="{!h.firstRecord}">{!h.name} registration created on <lightning:formattedDateTime value="{!h.dt}" year="numeric" day="2-digit" month="long" hour="2-digit" minute="2-digit" /> with status {!h.newValue}<br /></aura:if>
+                        	<aura:if isTrue="{!not(h.firstRecord)}">{!h.name} status changed from {!h.oldValue} to {!h.newValue} on <lightning:formattedDateTime value="{!h.dt}" year="numeric" day="2-digit" month="long" hour="2-digit" minute="2-digit" /><br /></aura:if>
+	                	</aura:iteration>
+                    </p>-->
+                </lightning:card>
+            </aura:if>
+	<lightning:card class="noborder">
+    	<aura:set attribute="title">
+            <h3>{!v.course.c.Online_Event_Name__c}</h3>
+        </aura:set>
+        <lightning:layout verticalAlign="start" multipleRows="true">
+          	<!--<lightning:layoutItem padding="horizontal-medium" size="12">
+            	<strong>Location</strong>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+            	<aura:if isTrue="{!or(v.course.c.View_Map__c == null, v.course.c.View_Map__c == '')}"><lightning:formattedUrl value="{!'http://www.google.com/maps?hl=en&amp;safe=off&amp;q=' + v.course.c.Training_Location_Street__c + ',' + v.course.c.Training_Location_City__c + ',' + v.course.c.Training_Location_State__c + ',' + v.course.c.Training_Location_Zip_Code__c + '&amp;aq=f&amp;aqi=&amp;aql=&amp;oq=&amp;pbx=1&amp;bav=on.2,or.r_gc.r_pw.&amp;fp=a445e974b90b3339'}" target="_blank" label="{!v.course.c.Training_Location_Name__c + ', ' + v.course.c.Training_Location_Street__c + ', ' + v.course.c.Training_Location_City__c + ', ' + v.course.c.Training_Location_State__c + ', ' + v.course.c.Training_Location_Zip_Code__c}"/></aura:if>
+                <aura:if isTrue="{!and(v.course.c.View_Map__c != null, v.course.c.View_Map__c != '')}"><lightning:formattedUrl value="{!v.course.c.View_Map__c}" label="{!v.course.c.Training_Location_Name__c + ', ' + v.course.c.Training_Location_Street__c + ', ' + v.course.c.Training_Location_City__c + ', ' + v.course.c.Training_Location_State__c + ', ' + v.course.c.Training_Location_Zip_Code__c}" /></aura:if>
+            </lightning:layoutItem>-->
+            <aura:if isTrue="{!v.course.c.Sister_Event__c != null}">
+            	<lightning:layoutItem padding="horizontal-medium" size="12">
+                    <strong>Alternate Date/Time</strong>
+            	</lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="12">
+                    <a href="view-event?id={v.course.c.Sister_Event__c}"><ui:outputDate value="{!v.course.c.Sister_Event__r.StartDate}" format="M/d/yyyy" /> - <ui:outputDate value="{!v.course.c.Sister_Event__r.EndDate}" format="M/d/yyyy" /></a>
+            	</lightning:layoutItem>
+            </aura:if>
+            <!--<lightning:layoutItem padding="around-medium" size="12">
+                <lightning:formattedRichText value="{!v.course.c.RT_Description__c}" />
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <strong>Prerequisites</strong>
+            </lightning:layoutItem>-->
+            <!--<lightning:layoutItem padding="horizontal-medium" size="12">
+                {!v.course.c.Pre_requisites__c}
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                    <strong>What to Bring</strong>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <ul style="list-style: disc;" class="slds-p-left_large">
+                	<aura:iteration items="{!v.bring}" var="b">
+                        <li>{!b}</li>
+                    </aura:iteration>
+                </ul>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                    <strong>What's Included</strong>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+               	<ul style="list-style: disc;" class="slds-p-left_large">
+                	<aura:iteration items="{!v.included}" var="i">
+                        <li>{!i}</li>
+                    </aura:iteration>
+                </ul>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Additional Information</strong>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                {!v.course.c.Additional_Information__c}
+            </lightning:layoutItem>-->
+            <aura:if isTrue="{!not(empty(v.course.c.Cancellation_Policy__c))}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Cancellation Policy</strong>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                {!v.course.c.Cancellation_Policy__c}
+            </lightning:layoutItem>
+            </aura:if>
+            <!--<lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Course Cost</strong>
+                </div>
+            </lightning:layoutItem>
+            <aura:if isTrue="{!v.course.c.Early_Bird_Registration_Cost__c != null}" >
+            	<lightning:layoutItem padding="horizontal-medium" size="12">
+                	Early-Bird Registration Cost <lightning:formattedNumber value="{!v.course.c.Early_Bird_Registration_Cost__c}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+            	</lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!v.course.c.Early_Bird_Deadline__c != null}" >
+                <lightning:layoutItem padding="horizontal-medium" size="12">
+                    Early-Bird Deadline Register Before <ui:outputDate value="{!v.course.c.Early_Bird_Deadline__c}" format="M/d/yyyy" />
+            	</lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(v.course.c.Only_Show_Sessions__c)}">
+                <lightning:layoutItem padding="horizontal-medium" size="12" >
+                	 Full Registration Cost <lightning:formattedNumber value="{!v.course.c.Full_Registration_Cost__c}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+            	</lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(v.course.allRequired)}">
+                <lightning:layoutItem padding="horizontal-medium" size="12">
+                	 Per-Session Cost <lightning:formattedNumber value="{!v.course.perSession}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+            	</lightning:layoutItem>
+            </aura:if>   -->
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Registration Options</strong>
+                </div>
+            </lightning:layoutItem>
+            <aura:if isTrue="{!not(v.course.c.Only_Show_Sessions__c)}">
+                <lightning:layoutItem padding="none" size="1">
+                    <div style="text-align:right;width:100%"><lightning:input aura:id="full" class="slds-p-left_small" style="display:inline-block" type="checkbox" checked="{!v.fullcourse}" onchange="{!c.selectFull}" />&nbsp;</div>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="11">
+                	{!v.course.c.Online_Event_Name__c}
+                </lightning:layoutItem>
+                <!--<lightning:layoutItem padding="horizontal-medium" size="3">
+                	{!v.course.c.Class_Code__c}&nbsp;
+                </lightning:layoutItem>-->
+                <!--<lightning:layoutItem padding="horizontal-medium" size="2">
+                	<ui:outputDate value="{!v.course.c.StartDate}" format="M/d/yyyy" />
+                </lightning:layoutItem>-->
+                <!--<lightning:layoutItem padding="horizontal-medium" size="2">
+                    <ui:outputDate value="{!v.course.c.EndDate}" format="M/d/yyyy" />
+                </lightning:layoutItem>-->
+            </aura:if>
+			<aura:if isTrue="{!not(v.course.c.Do_Not_Display_Sessions__c)}">
+            <aura:iteration items="{!v.course.sessions}" var="sess">
+                <lightning:layoutItem padding="horizontal-medium" size="2" mediumDeviceSize="1">
+                    <div style="width:100%;text-align:right;height:28px;">
+                	<aura:if isTrue="{!sess.waitlisted}">
+                        <div class="waitlist" onmouseout="{!c.hoverOutWait}" onmouseover="{!c.hoverWait}" onclick="{!c.hoverWait}">W</div>
+                        <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left hidetip tip" role="tooltip" id="help">
+    						<div class="slds-popover__body">This Session is Waitlisted.</div>
+                        </div>
+                    </aura:if>
+                    <aura:if isTrue="{!not(sess.waitlisted)}">&nbsp;</aura:if>
+                    </div>
+                </lightning:layoutItem>
+				<aura:if isTrue="{!not(v.course.allRequired)}">
+                    <lightning:layoutItem mediumDeviceSize="7" size="10" padding="horizontal-medium">
+                    	<c:SessionCheckbox id="{!sess.session.Id}" aura:id="sess" checked="{!sess.checked}" label="{!sess.session.Name}" required="{!sess.session.Required__c}" disabled="{!sess.disabled}" waitlisted="{!sess.waitlisted}"/>
+                    </lightning:layoutItem>
+                </aura:if>
+                <aura:if isTrue="{!v.course.allRequired}">
+                    <lightning:layoutItem padding="horizontal-medium" size="10" mediumDeviceSize="7">
+                        {!sess.session.Name}
+                    </lightning:layoutItem>
+                </aura:if>
+                <lightning:layoutItem padding="horizontal-medium" size="10" mediumDeviceSize="4" class="slds-show_medium smallerfont">
+                    <ui:outputDate value="{!sess.session.Session_Date__c}" format="M/d/yyyy" />&nbsp;
+                    {!sess.session.Start_Hours__c}:{!sess.session.Start_Minutes__c} {!sess.session.Start_AM_PM__c} - {!sess.session.End_Hours__c}:{!sess.session.End_Minutes__c} {!sess.session.End_AM_PM__c}
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="2" class="slds-hide_medium">
+                    &nbsp;
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="10" class="slds-hide_medium smallerfont padleft">
+                    <ui:outputDate value="{!sess.session.Session_Date__c}" format="M/d/yyyy" />
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="2" class="slds-hide_medium">
+                    &nbsp;
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="10" class="slds-hide_medium smallerfont padleft">
+                    {!sess.session.Start_Hours__c}:{!sess.session.Start_Minutes__c} {!sess.session.Start_AM_PM__c} - {!sess.session.End_Hours__c}:{!sess.session.End_Minutes__c} {!sess.session.End_AM_PM__c}
+                </lightning:layoutItem>
+           	</aura:iteration>
+            </aura:if>
+            <aura:if isTrue="{!not(v.course.c.Do_Not_Display_Pricing__c)}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Total</strong>&nbsp;<lightning:formattedNumber value="{!v.total}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+                </div>
+            </lightning:layoutItem>
+            <aura:if isTrue="{!v.earlydiscount != null}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Early Discount</strong>&nbsp;<lightning:formattedNumber value="{!v.earlydiscount}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+                </div>
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!v.discount != null}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Coupon Code</strong>&nbsp;<lightning:formattedNumber value="{!v.discount}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+                </div>
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!v.alreadypaid != null}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Already Billed</strong>&nbsp;<lightning:formattedNumber value="{!v.alreadypaid}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+                </div>
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!v.grandtotal != null}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Grand Total</strong>&nbsp;<lightning:formattedNumber value="{!v.grandtotal}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+                </div>
+            </lightning:layoutItem>
+            </aura:if>
+            
+            <!--<lightning:layoutItem padding="horizontal-medium" size="6">
+                    <div class="accordion collapsed">
+                    <a href="#" onclick="{!c.toggleAccordion}">
+                        <div class="accordionheader">
+                        	Add a Coupon Code
+	                    </div>
+                    </a>
+                    <div class="accordionbody">-->
+
+            <lightning:layoutItem size="12" smallDeviceSize="6"  class="slds-p-horizontal_medium slds-p-vertical_small">
+                <span onkeypress="{!c.checkKeyPressCoupon}">
+             		<lightning:input placeholder="Have a Coupon Code?"
+                             name="coupon"
+                             value="{!v.coupon}"
+							 aura:id="coupon"
+                             class="coupon blank" onchange="{!c.changeColor}"/>
+                    </span>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-horizontal_medium slds-p-vertical_small" size="12" smallDeviceSize="6">
+                    <lightning:button label="Apply Coupon" 
+                              variant="neutral"
+                              aura:id="addcoupon"
+                              class="coupbutt"
+                              onclick="{!c.getTotalCoupon}"/>
+            </lightning:layoutItem>
+                <lightning:layoutItem size="12">
+                <aura:if isTrue="{!not(empty(v.couponerror))}">
+                        	<div class="slds-has-error slds-m-left--medium">
+            					<div class="slds-form-element__help">
+        	   						{!v.couponerror}
+    	    					</div>                       
+      						</div>
+                        </aura:if>
+                </lightning:layoutItem>
+                    <!--    </div>
+                    </div>
+                </lightning:layoutItem>-->
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Payment Information</strong>
+                </div>
+            </lightning:layoutItem>   
+                
+            <lightning:layoutItem padding="horizontal-medium" size="6">&nbsp;
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <lightning:input type="checkbox" label="Same as Participant" onchange="{!c.changeCheck}" checked="{!v.same}"/>
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.course.c.Custom_Picklist_Label__c))}">
+                	<lightning:layoutItem padding="horizontal-medium" size="12">
+                        <lightning:select name="customquestion" label="{!v.course.c.Custom_Picklist_Label__c}" value="{!v.customquestion}" required="true">
+                         	<aura:iteration items="{!v.course.customChoices}" var="option">
+            					<option text="{!option}" value="{!option}" />
+        					</aura:iteration>
+                        </lightning:select>
+                    </lightning:layoutItem>
+            </aura:if>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+            	<aura:if isTrue="{!not(v.same)}">                    
+            		<lightning:input label="Cardholder Email" type="text" value="{!v.cholderemail}"/>
+            	</aura:if>
+                <aura:if isTrue="{!v.same}">
+                    <label class="slds-form-element__label" >
+      						Participant Email
+                        </label>
+                    <lightning:helptext content="If you need to edit your email address please go to your profile." class="htext"/>
+                	<lightning:input type="text" class="nolabel" disabled="true" value="{!v.email}"/>
+                </aura:if>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="First Name"
+                             name="firstname"
+                             value="{!v.firstname}"
+                             required="true"
+                             /> 
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="Last Name"
+                             name="lastname"
+                             value="{!v.lastname}"
+                             required="true"
+                             /> 
+            </lightning:layoutItem>
+            <aura:if isTrue="{!or(and(v.grandtotal != 0.00, v.total != 0.00), and(v.course.c.Cancellation_Fee__c != null, v.course.c.Cancellation_Fee__c != 0.00), and(v.course.c.No_Show_Fee__c == null, v.course.c.No_Show_Fee__c != 0.00))}">
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="Address"
+                             name="address"
+                             value="{!v.address}"
+                             required="true"
+                             /> 
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!or(and(v.grandtotal != 0.00, v.total != 0.00), and(v.course.c.Cancellation_Fee__c != null, v.course.c.Cancellation_Fee__c != 0.00), and(v.course.c.No_Show_Fee__c == null, v.course.c.No_Show_Fee__c != 0.00))}">
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="City"
+                             name="city"
+                             value="{!v.city}"
+                             required="true"
+                             /> 
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!or(and(v.grandtotal != 0.00, v.total != 0.00), and(v.course.c.Cancellation_Fee__c != null, v.course.c.Cancellation_Fee__c != 0.00), and(v.course.c.No_Show_Fee__c == null, v.course.c.No_Show_Fee__c != 0.00))}">
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="State/Province/Region"
+                             name="state"
+                             value="{!v.state}"
+                             /> 
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!or(and(v.grandtotal != 0.00, v.total != 0.00), and(v.course.c.Cancellation_Fee__c != null, v.course.c.Cancellation_Fee__c != 0.00), and(v.course.c.No_Show_Fee__c == null, v.course.c.No_Show_Fee__c != 0.00))}">
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="Postal Code"
+                             name="zip"
+                             value="{!v.zip}"
+                             required="true"
+                             /> 
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!or(and(v.grandtotal != 0.00, v.total != 0.00), and(v.course.c.Cancellation_Fee__c != null, v.course.c.Cancellation_Fee__c != 0.00), and(v.course.c.No_Show_Fee__c == null, v.course.c.No_Show_Fee__c != 0.00))}">
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:select label="Country"
+                             name="country"
+                             value="{!v.country}"
+                             required="true"
+                             > 
+                    <option value=""></option>
+<option value="US">United States</option>
+<option value="AF">Afghanistan</option>
+<option value="AX">Åland Islands</option>
+<option value="AL">Albania</option>
+<option value="DZ">Algeria</option>
+<option value="AS">American Samoa</option>
+<option value="AD">Andorra</option>
+<option value="AO">Angola</option>
+<option value="AI">Anguilla</option>
+<option value="AQ">Antarctica</option>
+<option value="AG">Antigua and Barbuda</option>
+<option value="AR">Argentina</option>
+<option value="AM">Armenia</option>
+<option value="AW">Aruba</option>
+<option value="AU">Australia</option>
+<option value="AT">Austria</option>
+<option value="AZ">Azerbaijan</option>
+<option value="BS">Bahamas</option>
+<option value="BH">Bahrain</option>
+<option value="BD">Bangladesh</option>
+<option value="BB">Barbados</option>
+<option value="BY">Belarus</option>
+<option value="BE">Belgium</option>
+<option value="BZ">Belize</option>
+<option value="BJ">Benin</option>
+<option value="BM">Bermuda</option>
+<option value="BT">Bhutan</option>
+<option value="BO">Bolivia, Plurinational State of</option>
+<option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+<option value="BA">Bosnia and Herzegovina</option>
+<option value="BW">Botswana</option>
+<option value="BV">Bouvet Island</option>
+<option value="BR">Brazil</option>
+<option value="IO">British Indian Ocean Territory</option>
+<option value="BN">Brunei Darussalam</option>
+<option value="BG">Bulgaria</option>
+<option value="BF">Burkina Faso</option>
+<option value="BI">Burundi</option>
+<option value="KH">Cambodia</option>
+<option value="CM">Cameroon</option>
+<option value="CA">Canada</option>
+<option value="CV">Cape Verde</option>
+<option value="KY">Cayman Islands</option>
+<option value="CF">Central African Republic</option>
+<option value="TD">Chad</option>
+<option value="CL">Chile</option>
+<option value="CN">China</option>
+<option value="CX">Christmas Island</option>
+<option value="CC">Cocos (Keeling) Islands</option>
+<option value="CO">Colombia</option>
+<option value="KM">Comoros</option>
+<option value="CG">Congo</option>
+<option value="CD">Congo, the Democratic Republic of the</option>
+<option value="CK">Cook Islands</option>
+<option value="CR">Costa Rica</option>
+<option value="CI">Côte d'Ivoire</option>
+<option value="HR">Croatia</option>
+<option value="CU">Cuba</option>
+<option value="CW">Curaçao</option>
+<option value="CY">Cyprus</option>
+<option value="CZ">Czech Republic</option>
+<option value="DK">Denmark</option>
+<option value="DJ">Djibouti</option>
+<option value="DM">Dominica</option>
+<option value="DO">Dominican Republic</option>
+<option value="EC">Ecuador</option>
+<option value="EG">Egypt</option>
+<option value="SV">El Salvador</option>
+<option value="GQ">Equatorial Guinea</option>
+<option value="ER">Eritrea</option>
+<option value="EE">Estonia</option>
+<option value="ET">Ethiopia</option>
+<option value="FK">Falkland Islands (Malvinas)</option>
+<option value="FO">Faroe Islands</option>
+<option value="FJ">Fiji</option>
+<option value="FI">Finland</option>
+<option value="FR">France</option>
+<option value="GF">French Guiana</option>
+<option value="PF">French Polynesia</option>
+<option value="TF">French Southern Territories</option>
+<option value="GA">Gabon</option>
+<option value="GM">Gambia</option>
+<option value="GE">Georgia</option>
+<option value="DE">Germany</option>
+<option value="GH">Ghana</option>
+<option value="GI">Gibraltar</option>
+<option value="GR">Greece</option>
+<option value="GL">Greenland</option>
+<option value="GD">Grenada</option>
+<option value="GP">Guadeloupe</option>
+<option value="GU">Guam</option>
+<option value="GT">Guatemala</option>
+<option value="GG">Guernsey</option>
+<option value="GN">Guinea</option>
+<option value="GW">Guinea-Bissau</option>
+<option value="GY">Guyana</option>
+<option value="HT">Haiti</option>
+<option value="HM">Heard Island and McDonald Islands</option>
+<option value="VA">Holy See (Vatican City State)</option>
+<option value="HN">Honduras</option>
+<option value="HK">Hong Kong</option>
+<option value="HU">Hungary</option>
+<option value="IS">Iceland</option>
+<option value="IN">India</option>
+<option value="ID">Indonesia</option>
+<option value="IR">Iran, Islamic Republic of</option>
+<option value="IQ">Iraq</option>
+<option value="IE">Ireland</option>
+<option value="IM">Isle of Man</option>
+<option value="IL">Israel</option>
+<option value="IT">Italy</option>
+<option value="JM">Jamaica</option>
+<option value="JP">Japan</option>
+<option value="JE">Jersey</option>
+<option value="JO">Jordan</option>
+<option value="KZ">Kazakhstan</option>
+<option value="KE">Kenya</option>
+<option value="KI">Kiribati</option>
+<option value="KP">Korea, Democratic People's Republic of</option>
+<option value="KR">Korea, Republic of</option>
+<option value="KW">Kuwait</option>
+<option value="KG">Kyrgyzstan</option>
+<option value="LA">Lao People's Democratic Republic</option>
+<option value="LV">Latvia</option>
+<option value="LB">Lebanon</option>
+<option value="LS">Lesotho</option>
+<option value="LR">Liberia</option>
+<option value="LY">Libya</option>
+<option value="LI">Liechtenstein</option>
+<option value="LT">Lithuania</option>
+<option value="LU">Luxembourg</option>
+<option value="MO">Macao</option>
+<option value="MK">Macedonia, the former Yugoslav Republic of</option>
+<option value="MG">Madagascar</option>
+<option value="MW">Malawi</option>
+<option value="MY">Malaysia</option>
+<option value="MV">Maldives</option>
+<option value="ML">Mali</option>
+<option value="MT">Malta</option>
+<option value="MH">Marshall Islands</option>
+<option value="MQ">Martinique</option>
+<option value="MR">Mauritania</option>
+<option value="MU">Mauritius</option>
+<option value="YT">Mayotte</option>
+<option value="MX">Mexico</option>
+<option value="FM">Micronesia, Federated States of</option>
+<option value="MD">Moldova, Republic of</option>
+<option value="MC">Monaco</option>
+<option value="MN">Mongolia</option>
+<option value="ME">Montenegro</option>
+<option value="MS">Montserrat</option>
+<option value="MA">Morocco</option>
+<option value="MZ">Mozambique</option>
+<option value="MM">Myanmar</option>
+<option value="NA">Namibia</option>
+<option value="NR">Nauru</option>
+<option value="NP">Nepal</option>
+<option value="NL">Netherlands</option>
+<option value="NC">New Caledonia</option>
+<option value="NZ">New Zealand</option>
+<option value="NI">Nicaragua</option>
+<option value="NE">Niger</option>
+<option value="NG">Nigeria</option>
+<option value="NU">Niue</option>
+<option value="NF">Norfolk Island</option>
+<option value="MP">Northern Mariana Islands</option>
+<option value="NO">Norway</option>
+<option value="OM">Oman</option>
+<option value="PK">Pakistan</option>
+<option value="PW">Palau</option>
+<option value="PS">Palestinian Territory, Occupied</option>
+<option value="PA">Panama</option>
+<option value="PG">Papua New Guinea</option>
+<option value="PY">Paraguay</option>
+<option value="PE">Peru</option>
+<option value="PH">Philippines</option>
+<option value="PN">Pitcairn</option>
+<option value="PL">Poland</option>
+<option value="PT">Portugal</option>
+<option value="PR">Puerto Rico</option>
+<option value="QA">Qatar</option>
+<option value="RE">Réunion</option>
+<option value="RO">Romania</option>
+<option value="RU">Russian Federation</option>
+<option value="RW">Rwanda</option>
+<option value="BL">Saint Barthélemy</option>
+<option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+<option value="KN">Saint Kitts and Nevis</option>
+<option value="LC">Saint Lucia</option>
+<option value="MF">Saint Martin (French part)</option>
+<option value="PM">Saint Pierre and Miquelon</option>
+<option value="VC">Saint Vincent and the Grenadines</option>
+<option value="WS">Samoa</option>
+<option value="SM">San Marino</option>
+<option value="ST">Sao Tome and Principe</option>
+<option value="SA">Saudi Arabia</option>
+<option value="SN">Senegal</option>
+<option value="RS">Serbia</option>
+<option value="SC">Seychelles</option>
+<option value="SL">Sierra Leone</option>
+<option value="SG">Singapore</option>
+<option value="SX">Sint Maarten (Dutch part)</option>
+<option value="SK">Slovakia</option>
+<option value="SI">Slovenia</option>
+<option value="SB">Solomon Islands</option>
+<option value="SO">Somalia</option>
+<option value="ZA">South Africa</option>
+<option value="GS">South Georgia and the South Sandwich Islands</option>
+<option value="SS">South Sudan</option>
+<option value="ES">Spain</option>
+<option value="LK">Sri Lanka</option>
+<option value="SD">Sudan</option>
+<option value="SR">Suriname</option>
+<option value="SJ">Svalbard and Jan Mayen</option>
+<option value="SZ">Swaziland</option>
+<option value="SE">Sweden</option>
+<option value="CH">Switzerland</option>
+<option value="SY">Syrian Arab Republic</option>
+<option value="TW">Taiwan, Province of China</option>
+<option value="TJ">Tajikistan</option>
+<option value="TZ">Tanzania, United Republic of</option>
+<option value="TH">Thailand</option>
+<option value="TL">Timor-Leste</option>
+<option value="TG">Togo</option>
+<option value="TK">Tokelau</option>
+<option value="TO">Tonga</option>
+<option value="TT">Trinidad and Tobago</option>
+<option value="TN">Tunisia</option>
+<option value="TR">Turkey</option>
+<option value="TM">Turkmenistan</option>
+<option value="TC">Turks and Caicos Islands</option>
+<option value="TV">Tuvalu</option>
+<option value="UG">Uganda</option>
+<option value="UA">Ukraine</option>
+<option value="AE">United Arab Emirates</option>
+<option value="GB">United Kingdom</option>
+<option value="UM">United States Minor Outlying Islands</option>
+<option value="UY">Uruguay</option>
+<option value="UZ">Uzbekistan</option>
+<option value="VU">Vanuatu</option>
+<option value="VE">Venezuela, Bolivarian Republic of</option>
+<option value="VN">Viet Nam</option>
+<option value="VG">Virgin Islands, British</option>
+<option value="VI">Virgin Islands, U.S.</option>
+<option value="WF">Wallis and Futuna</option>
+<option value="EH">Western Sahara</option>
+<option value="YE">Yemen</option>
+<option value="ZM">Zambia</option>
+<option value="ZW">Zimbabwe</option>
+                </lightning:select>
+            </lightning:layoutItem>
+            </aura:if>
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="Mobile Phone"
+                             name="phone"
+                             value="{!v.phone}"
+                             required="true"
+                             /> 
+            </lightning:layoutItem>
+            <aura:if isTrue="{!or(and(v.grandtotal != 0.00, v.total != 0.00), and(v.course.c.Cancellation_Fee__c != null, v.course.c.Cancellation_Fee__c != 0.00), and(v.course.c.No_Show_Fee__c == null, v.course.c.No_Show_Fee__c != 0.00))}">
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="Card Number"
+                             name="cardno"
+                             value="{!v.cardno}"
+                             required="true"
+                             /> 
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:input label="CV Code"
+                             name="cvv"
+                             value="{!v.cvv}"
+                             title="The CV code is the three digit code on the back of your card or four digits on the front for Amex."
+                             required="true"
+                             /> 
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:select label="Expiration Month"
+                             name="month"
+                             value="{!v.month}"
+                             required="true"
+                             > 
+                    <option value=""></option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                <lightning:select label="Expiration Year"
+                             name="year"
+                             value="{!v.year}"
+                             required="true"
+                             > 
+                    <option value=""></option>
+                    <aura:iteration items="{!v.years}" var="year">
+            			<option text="{!year}" value="{!year}"/>
+        			</aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+                </aura:if>
+            <lightning:layoutItem padding="horizontal-medium" size="12" >
+                <aura:if isTrue="{!not(v.same)}">
+                    <label class="slds-form-element__label" >
+      						Participant Email
+                        </label>
+                    <lightning:helptext content="If you need to edit your email address please go to your profile." class="htext"/>
+                	<lightning:input type="text" class="nolabel" disabled="true" value="{!v.email}"/>
+            	</aura:if>
+                <aura:if isTrue="{!v.same}">
+                	<lightning:input type="text" label="Additional Confirmation Emails To?" value="{!v.cholderemail}"/>
+                </aura:if>
+             </lightning:layoutItem>
+            <aura:if isTrue="{!or(and(v.total != 0.00, v.grandtotal != 0.00), and(v.course.c.Cancellation_Fee__c != null, v.course.c.Cancellation_Fee__c != 0.00), and(v.course.c.No_Show_Fee__c == null, v.course.c.No_Show_Fee__c != 0.00))}">
+                <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                    &nbsp;
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.course.c.Affirmation_Statement__c))}">
+                <lightning:layoutItem padding="horizontal-medium" size="12">
+                <!--<lightning:input type="checkbox" label="{!v.course.c.Affirmation_Statement__c}" required="true" checked="{!v.affirm}" messageWhenValueMissing="You must check the affirmation statement to register." aura:id="validitycheck"/>-->
+                <div class="{!'slds-form-element' + if(v.showAffirm, ' slds-has-error', '')}" lightning-input_input-host="">
+                    <span lightning-input_input="" data-aria="" class="slds-assistive-text"></span>
+                    <div lightning-input_input="" class="slds-form-element__control slds-grow">
+                        <span lightning-input_input="" class="slds-checkbox">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" aura:id="agreeTerms" onchange="{!c.changeTerms}"/>
+                                <label lightning-input_input="" class="slds-checkbox__label" for="agreeTerms">
+                                    <span lightning-input_input="" class="slds-checkbox_faux"></span>
+                                    <span lightning-input_input="" class="slds-form-element__label"><aura:unescapedHtml value="{!v.course.c.Affirmation_Statement__c}" /></span>
+                                </label>
+                        </span>
+                    </div>
+                    <aura:if isTrue="{!v.showAffirm}"><div lightning-input_input="" id="help-message-28" data-help-message="" role="alert" class="slds-form-element__help">You must check the affirmation statement to register.</div></aura:if>
+                </div>
+                </lightning:layoutItem>
+            </aura:if>
+            <lightning:layoutItem padding="horizontal-medium" size="12" class="slds-p-horizontal_medium slds-p-vertical_small slds-hide_small">
+                <lightning:button label="Back" 
+                              variant="neutral"
+                              onclick="{!c.cancel}" class="fill-button"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" class="slds-p-horizontal_medium slds-p-vertical_small slds-hide_small">
+            <lightning:button label="Register" 
+                              variant="brand"
+                              onclick="{!c.registerClick}" class="fill-button"/>
+            </lightning:layoutItem>
+                <lightning:layoutItem size="12" class="slds-p-horizontal_medium slds-p-vertical_small slds-show_small">
+                    <lightning:button label="Back" 
+                              variant="neutral"
+                              onclick="{!c.cancel}"/>
+                    <lightning:button label="Register" 
+                              variant="brand"
+                              onclick="{!c.registerClick}"/>
+            </lightning:layoutItem>
+            
+            
+            
+                <lightning:layoutItem padding="horizontal-medium" size="12" smallDeviceSize="6">
+                    &nbsp;
+            </lightning:layoutItem>
+            <aura:if isTrue="{!v.errormessage != null}">
+	        	<lightning:layoutItem class="slds-has-error slds-p-horizontal_medium" size="12">
+	            	<div class="slds-form-element__help">
+	        	   		{!v.errormessage}
+	    	    	</div>                       
+                </lightning:layoutItem>
+    		</aura:if>
+<!--<tr><td><apex:inputCheckBox value="{!event.selected}"><apex:actionSupport event="onchange" action="{!event.selectItem}" rerender="tab"/></apex:inputCheckBox></td><td><apex:outputText value="" style="font-size:1.1em"/></td><td style="font-size:1.1em"></td><td style="font-size:1.1em">/td><td style="font-size:1.1em">/td><td style="font-size:1.1em">/td></tr></apex:outputPanel>
+                            <tr><td style="font-weight: bold;font-size: 1.1em;font-family: Arial, Helvetica, sans-serif;text-align: left;">Individual Sessions</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Session Name</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Date</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Start Time</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">End Time</td><td style="font-weight: bold;font-size: 1.1em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"># Waiting List Members</td></tr> 
+                            <apex:repeat value="{!event.sessions}" var="session"><tr></tr>
+                            <tr><td><apex:outputPanel layout="none" rendered="{!NOT(allRequired)}" ><apex:inputCheckBox value="{!session.selected}" id="cb"><apex:actionSupport event="onchange" action="{!event.anyrelated}" rerender="tab"><apex:param name="selectedSess" value="{!session.s.Id}" assignTo="{!event.selectedSession}"/></apex:actionSupport></apex:inputCheckBox></apex:outputPanel></td><td style="font-size:1.1em">{!session.s.Name}</td><td style="font-size:1.1em">{!TEXT(MONTH(session.s.Session_Date__c)) & "/" & TEXT(DAY(session.s.Session_Date__c)) & "/" & TEXT(YEAR(session.s.Session_Date__c))}</td><td style="font-size:1.1em">{!session.s.Start_Hours__c}:{!session.s.Start_Minutes__c} {!session.s.Start_AM_PM__c}</td><td style="font-size:1.1em">{!session.s.End_Hours__c}:{!session.s.End_Minutes__c} {!session.s.End_AM_PM__c}</td><td style="font-size:1.1em"><apex:outputText value="{0, number, integer}"><apex:param value="{!session.s.Waiting_List_Members__c}"/></apex:outputText></td></tr> 
+                            </apex:repeat>-->
+        </lightning:layout>
+    </lightning:card>
+    
+</aura:component>

@@ -1,0 +1,135 @@
+:host{
+  --Dividers: #6E6E8733;
+}
+
+.sib-font-size-14{
+  font-size: 14px;
+}
+
+.sib-payment-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/** Flex microform : begin */
+.flex-microform {
+  height: 20px;
+  background: #fff;
+  -webkit-transition: background 200ms;
+  transition: background 200ms;
+  color: black;
+}
+
+.flex-microform-invalid	{
+  color: red;
+}
+
+/** Flex microform : end */
+
+.sib-input-container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.sib-label-text {
+  color: var(--sib-plp-description-text-color);
+  font-feature-settings: 'ss01' on, 'ss03' on, 'ss04' on, 'ss05' on, 'ss06' on;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+}
+
+.sib-input-box {
+  padding: var(--spacing16, 16px);
+  border-radius:  8px;
+  border: 1px solid var(--Dividers, rgba(110, 110, 135, 0.20));
+  background:  #FFF;
+  width: 100%;
+  height: 44px;
+  outline: none;
+}
+
+.slct-country{
+  height: 44px;
+}
+
+.sib-input-box-error {
+  border: 1px solid red !important;
+}
+
+.sib-select-box {
+  padding: 10px 16px;
+  border-radius:  8px;
+  border: 1px solid var(--Dividers, rgba(110, 110, 135, 0.20));
+  background:  #FFF;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version=%271.0%27 encoding=%27utf-8%27%3F%3E%3C%21-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --%3E%3Csvg width=%27800px%27 height=%27800px%27 viewBox=%270 0 24 24%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z%27 fill=%27%232D2B33%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 98% 50%;
+  background-size: 24px 24px;
+}
+
+.sib-select-placeholder {
+  color: #7E7E7E;
+}
+
+.sib-flex-parent-container {
+  height: 45px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--Dividers, rgba(110, 110, 135, 0.20));
+  line-height: 0px;
+}
+
+.sib-position-relative {
+  position: relative;
+}
+
+.sib-cc-image {
+  position: absolute;
+  right: 10px;
+  top: 23%;
+}
+
+.sib-cc-card-image {
+  height: 30px;
+    width: 30px;
+}
+
+.sib-cta-btn {
+  outline: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 56px;
+  background: var(--sib-checkout-button-background-color);
+  color: var(--sib-checkout-button-text-color);
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-transition: all 0.6s ease;
+  -o-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  padding: 16px 24px;
+  white-space: nowrap;
+  letter-spacing: 0.8px;
+  width: 100%;
+  text-decoration: none;
+}
+
+.sib-display-content-none {
+  display: none !important;
+}

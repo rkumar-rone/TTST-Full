@@ -1,0 +1,24 @@
+<template>
+    <div class="mainContainer">
+        <template if:true={hasItems}>
+            <div class="title">{title}</div>
+            <div class="heading">
+                <div class="name">{name}</div>
+                <div class="code">{code}</div>
+                <div class="description">{description}</div>
+            </div>
+            
+            <template for:each={items} for:item="prod">
+                <div class="lineItems" key={prod.Id}>
+                    <div class="name nameDetail">{prod.Name}</div>
+                    <div class="code">{prod.StockKeepingUnit}</div>
+                    <div class="description">
+                        <template if:true={prod.Description}>
+                            <lightning-formatted-rich-text value={prod.Description}></lightning-formatted-rich-text>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

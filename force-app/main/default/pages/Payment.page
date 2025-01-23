@@ -1,0 +1,397 @@
+<apex:page controller="Payment" showHeader="false" sidebar="false" title="Enter Payment Information" action="{!load}" cache="false">
+<apex:stylesheet value="{!$Resource.TTS_Style}"/>
+<body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="background:url('{!$Resource.TTS_Background}')">
+        <table cellSpacing="0" cellPadding="0"  width="100%" border="0">
+            <tr>
+                <td colspan="2"  id="masthead" style="background: url('{!$Resource.TTS_Fill}')">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td class="headercell" align="left"><img src="{!URLFOR($Resource.login, 'images/topBanner.jpg')}" width="864" height="89" border="0" class="logo-image"/></td>
+    </tr>
+</table></td>
+            </tr>
+        </table>
+        <p></p>
+        <table cellSpacing="0" cellPadding="0" width="780"  border="0">
+            <tr>
+                <td align="center">
+                    <apex:form id="Form1" forceSSL="true">
+                        <apex:outputPanel id="tab"><apex:outputPanel id="errs"><apex:pageMessages /></apex:outputPanel><table cellSpacing="0" cellPadding="5" width="100%" border="0">                      
+                            <apex:outputPanel rendered="{!loggedIn}" id="tab2">
+                            <tr><td colspan="10" style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">You are registering for the following event/sessions:</td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Event:</td><td style="font-weight: bold;font-size: 1.3em;color: #000000; font-family: Arial, Helvetica, sans-serif;text-align: left;">{!event.Online_Event_Name__c}</td></tr>
+                            <!-- <tr><td colspan="4" style="font-weight: bold;font-size: 1.2em;color: #7C9C3D; font-family: Arial, Helvetica, sans-serif;text-align: left;">Description:</td><td colspan="2" style="font-weight: bold;font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;">{!event.description}</td></tr> -->
+                            
+                            
+                            <apex:repeat value="{!sessions}" var="ses" >
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Session:</td><td style="font-weight: bold;font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;">{!ses.name}</td></tr>
+                            <tr><td style="font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Start time:</td><td style="font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;">{!TEXT(MONTH(ses.Session_Date__c)) & "/" & TEXT(DAY(ses.Session_Date__c)) & "/" & TEXT(YEAR(ses.Session_Date__c))} {!ses.Start_Hours__c}:{!ses.Start_Minutes__c} {!ses.Start_AM_PM__c}</td><td style="font-size: 1.2em;color: #027D07; font-family: Arial, Helvetica, sans-serif;text-align: left;">End time:</td><td style="font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;">{!TEXT(MONTH(ses.Session_Date__c)) & "/" & TEXT(DAY(ses.Session_Date__c)) & "/" & TEXT(YEAR(ses.Session_Date__c))} {!ses.End_Hours__c}:{!ses.End_Minutes__c} {!ses.End_AM_PM__c}</td></tr>
+                            </apex:repeat>
+                            <tr><td colspan="4"></td></tr>
+                            <tr><td colspan="4"></td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Total Cost:</td><td style="font-weight: bold;font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;">{!TEXT(cost)}&nbsp;{!event.CurrencyISOCode}</td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Coupon Code:</td><td style="font-weight: bold;font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!couponCode}" /></td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:commandButton value="Apply Coupon" action="{!applyCoupon}"/></td></tr>
+                            <tr><td colspan="4"></td></tr>
+                            <tr><td colspan="4"></td></tr>
+                            <apex:outputPanel rendered="{!OR(cost > 0, noShowCancel)}">
+                            <tr><td colspan="6" style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Please enter your payment details (all fields required).  TTS accepts Visa, Master Card, Discover, and American Express.</td></tr>
+                            <tr><td colspan="4"></td></tr>
+                            <tr><td colspan="4"></td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">First Name:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!first}" /></td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Last Name:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!last}" /></td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Address:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!street}" /></td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">City:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!city}" /></td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">State:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:selectList value="{!state}" size="1" multiSelect="false" >
+                            <apex:selectOption itemValue="" itemLabel="" />
+                            <apex:SelectOption itemValue="AL" itemLabel="Alabama" />
+<apex:SelectOption itemValue="AK" itemLabel="Alaska" />
+<apex:SelectOption itemValue="AB" itemLabel="Alberta" />
+<apex:SelectOption itemValue="AS" itemLabel="American Samoa" />
+<apex:SelectOption itemValue="AZ" itemLabel="Arizona" />
+<apex:SelectOption itemValue="AR" itemLabel="Arkansas" />
+<apex:SelectOption itemValue="BC" itemLabel="British Columbia" />
+<apex:SelectOption itemValue="CA" itemLabel="California" />
+<apex:SelectOption itemValue="CO" itemLabel="Colorado" />
+<apex:SelectOption itemValue="CT" itemLabel="Connecticut" />
+<apex:SelectOption itemValue="DE" itemLabel="Delaware" />
+<apex:SelectOption itemValue="DC" itemLabel="District of Columbia" />
+<apex:SelectOption itemValue="FL" itemLabel="Florida" />
+<apex:SelectOption itemValue="FM" itemLabel="Federated States of Micronesia" />
+<apex:SelectOption itemValue="GA" itemLabel="Georgia" />
+<apex:SelectOption itemValue="GU" itemLabel="Guam" />
+<apex:SelectOption itemValue="HI" itemLabel="Hawaii" />
+<apex:SelectOption itemValue="ID" itemLabel="Idaho" />
+<apex:SelectOption itemValue="IL" itemLabel="Illinois" />
+<apex:SelectOption itemValue="IN" itemLabel="Indiana" />
+<apex:SelectOption itemValue="IA" itemLabel="Iowa" />
+<apex:SelectOption itemValue="KS" itemLabel="Kansas" />
+<apex:SelectOption itemValue="KY" itemLabel="Kentucky" />
+<apex:SelectOption itemValue="LA" itemLabel="Louisiana" />
+<apex:SelectOption itemValue="ME" itemLabel="Maine" />
+<apex:SelectOption itemValue="MB" itemLabel="Manitoba" />
+<apex:SelectOption itemValue="MH" itemLabel="Marshall Islands" />
+<apex:SelectOption itemValue="MD" itemLabel="Maryland" />
+<apex:SelectOption itemValue="MA" itemLabel="Massachusetts" />
+<apex:SelectOption itemValue="MI" itemLabel="Michigan" />
+<apex:SelectOption itemValue="MN" itemLabel="Minnesota" />
+<apex:SelectOption itemValue="MS" itemLabel="Mississippi" />
+<apex:SelectOption itemValue="MO" itemLabel="Missouri" />
+<apex:SelectOption itemValue="MT" itemLabel="Montana" />
+<apex:SelectOption itemValue="NE" itemLabel="Nebraska" />
+<apex:SelectOption itemValue="NV" itemLabel="Nevada" />
+<apex:SelectOption itemValue="NB" itemLabel="New Brunswick" />
+<apex:SelectOption itemValue="NH" itemLabel="New Hampshire" />
+<apex:SelectOption itemValue="NJ" itemLabel="New Jersey" />
+<apex:SelectOption itemValue="NM" itemLabel="New Mexico" />
+<apex:SelectOption itemValue="NY" itemLabel="New York" />
+<apex:SelectOption itemValue="NL" itemLabel="Newfoundland and Labrador" />
+<apex:SelectOption itemValue="NC" itemLabel="North Carolina" />
+<apex:SelectOption itemValue="ND" itemLabel="North Dakota" />
+<apex:SelectOption itemValue="MP" itemLabel="Northern Mariana Islands" />
+<apex:SelectOption itemValue="NS" itemLabel="Nova Scotia" />
+<apex:SelectOption itemValue="NT" itemLabel="Northwest Territories" />
+<apex:SelectOption itemValue="NU" itemLabel="Nunavut" />
+<apex:SelectOption itemValue="OH" itemLabel="Ohio" />
+<apex:SelectOption itemValue="OK" itemLabel="Oklahoma" />
+<apex:SelectOption itemValue="ON" itemLabel="Ontario" />
+<apex:SelectOption itemValue="OR" itemLabel="Oregon" />
+<apex:SelectOption itemValue="PW" itemLabel="Palau" />
+<apex:SelectOption itemValue="PA" itemLabel="Pennsylvania" />
+<apex:SelectOption itemValue="PE" itemLabel="Prince Edward Island" />
+<apex:SelectOption itemValue="PR" itemLabel="Puerto Rico" />
+<apex:SelectOption itemValue="QC" itemLabel="Québec" />
+<apex:SelectOption itemValue="RI" itemLabel="Rhode Island" />
+<apex:SelectOption itemValue="SK" itemLabel="Saskatchewan" />
+<apex:SelectOption itemValue="SC" itemLabel="South Carolina" />
+<apex:SelectOption itemValue="SD" itemLabel="South Dakota" />
+<apex:SelectOption itemValue="TN" itemLabel="Tennessee" />
+<apex:SelectOption itemValue="TX" itemLabel="Texas" />
+<apex:SelectOption itemValue="UM" itemLabel="U.S. Minor Outlying Islands" />
+<apex:SelectOption itemValue="UT" itemLabel="Utah" />
+<apex:SelectOption itemValue="VT" itemLabel="Vermont" />
+<apex:SelectOption itemValue="VI" itemLabel="Virginia" />
+<apex:SelectOption itemValue="VA" itemLabel="Virgin Islands of the U.S." />
+<apex:SelectOption itemValue="WA" itemLabel="Washington" />
+<apex:SelectOption itemValue="WV" itemLabel="West Virginia" />
+<apex:SelectOption itemValue="WI" itemLabel="Wisconsin" />
+<apex:SelectOption itemValue="WY" itemLabel="Wyoming" />
+<apex:SelectOption itemValue="YT" itemLabel="Yukon" />
+                            </apex:selectList></td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Postal Code:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!zip}" /></td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Country:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:selectList value="{!country}" size="1" multiselect="false"><apex:selectOption itemValue="" itemLabel="" /><apex:SelectOption itemValue="US" itemLabel="United States" />
+                            <apex:SelectOption itemValue="AF" itemLabel="Afghanistan" />
+<apex:SelectOption itemValue="AX" itemLabel="Åland Islands" />
+<apex:SelectOption itemValue="AL" itemLabel="Albania" />
+<apex:SelectOption itemValue="DZ" itemLabel="Algeria" />
+<apex:SelectOption itemValue="AS" itemLabel="American Samoa" />
+<apex:SelectOption itemValue="AD" itemLabel="Andorra" />
+<apex:SelectOption itemValue="AO" itemLabel="Angola" />
+<apex:SelectOption itemValue="AI" itemLabel="Anguilla" />
+<apex:SelectOption itemValue="AQ" itemLabel="Antarctica" />
+<apex:SelectOption itemValue="AG" itemLabel="Antigua and Barbuda" />
+<apex:SelectOption itemValue="AR" itemLabel="Argentina" />
+<apex:SelectOption itemValue="AM" itemLabel="Armenia" />
+<apex:SelectOption itemValue="AW" itemLabel="Aruba" />
+<apex:SelectOption itemValue="AU" itemLabel="Australia" />
+<apex:SelectOption itemValue="AT" itemLabel="Austria" />
+<apex:SelectOption itemValue="AZ" itemLabel="Azerbaijan" />
+<apex:SelectOption itemValue="BS" itemLabel="Bahamas" />
+<apex:SelectOption itemValue="BH" itemLabel="Bahrain" />
+<apex:SelectOption itemValue="BD" itemLabel="Bangladesh" />
+<apex:SelectOption itemValue="BB" itemLabel="Barbados" />
+<apex:SelectOption itemValue="BY" itemLabel="Belarus" />
+<apex:SelectOption itemValue="BE" itemLabel="Belgium" />
+<apex:SelectOption itemValue="BZ" itemLabel="Belize" />
+<apex:SelectOption itemValue="BJ" itemLabel="Benin" />
+<apex:SelectOption itemValue="BM" itemLabel="Bermuda" />
+<apex:SelectOption itemValue="BT" itemLabel="Bhutan" />
+<apex:SelectOption itemValue="BO" itemLabel="Bolivia, Plurinational State of" />
+<apex:SelectOption itemValue="BQ" itemLabel="Bonaire, Sint Eustatius and Saba" />
+<apex:SelectOption itemValue="BA" itemLabel="Bosnia and Herzegovina" />
+<apex:SelectOption itemValue="BW" itemLabel="Botswana" />
+<apex:SelectOption itemValue="BV" itemLabel="Bouvet Island" />
+<apex:SelectOption itemValue="BR" itemLabel="Brazil" />
+<apex:SelectOption itemValue="IO" itemLabel="British Indian Ocean Territory" />
+<apex:SelectOption itemValue="BN" itemLabel="Brunei Darussalam" />
+<apex:SelectOption itemValue="BG" itemLabel="Bulgaria" />
+<apex:SelectOption itemValue="BF" itemLabel="Burkina Faso" />
+<apex:SelectOption itemValue="BI" itemLabel="Burundi" />
+<apex:SelectOption itemValue="KH" itemLabel="Cambodia" />
+<apex:SelectOption itemValue="CM" itemLabel="Cameroon" />
+<apex:SelectOption itemValue="CA" itemLabel="Canada" />
+<apex:SelectOption itemValue="CV" itemLabel="Cape Verde" />
+<apex:SelectOption itemValue="KY" itemLabel="Cayman Islands" />
+<apex:SelectOption itemValue="CF" itemLabel="Central African Republic" />
+<apex:SelectOption itemValue="TD" itemLabel="Chad" />
+<apex:SelectOption itemValue="CL" itemLabel="Chile" />
+<apex:SelectOption itemValue="CN" itemLabel="China" />
+<apex:SelectOption itemValue="CX" itemLabel="Christmas Island" />
+<apex:SelectOption itemValue="CC" itemLabel="Cocos (Keeling) Islands" />
+<apex:SelectOption itemValue="CO" itemLabel="Colombia" />
+<apex:SelectOption itemValue="KM" itemLabel="Comoros" />
+<apex:SelectOption itemValue="CG" itemLabel="Congo" />
+<apex:SelectOption itemValue="CD" itemLabel="Congo, the Democratic Republic of the" />
+<apex:SelectOption itemValue="CK" itemLabel="Cook Islands" />
+<apex:SelectOption itemValue="CR" itemLabel="Costa Rica" />
+<apex:SelectOption itemValue="CI" itemLabel="Côte d'Ivoire" />
+<apex:SelectOption itemValue="HR" itemLabel="Croatia" />
+<apex:SelectOption itemValue="CU" itemLabel="Cuba" />
+<apex:SelectOption itemValue="CW" itemLabel="Curaçao" />
+<apex:SelectOption itemValue="CY" itemLabel="Cyprus" />
+<apex:SelectOption itemValue="CZ" itemLabel="Czech Republic" />
+<apex:SelectOption itemValue="DK" itemLabel="Denmark" />
+<apex:SelectOption itemValue="DJ" itemLabel="Djibouti" />
+<apex:SelectOption itemValue="DM" itemLabel="Dominica" />
+<apex:SelectOption itemValue="DO" itemLabel="Dominican Republic" />
+<apex:SelectOption itemValue="EC" itemLabel="Ecuador" />
+<apex:SelectOption itemValue="EG" itemLabel="Egypt" />
+<apex:SelectOption itemValue="SV" itemLabel="El Salvador" />
+<apex:SelectOption itemValue="GQ" itemLabel="Equatorial Guinea" />
+<apex:SelectOption itemValue="ER" itemLabel="Eritrea" />
+<apex:SelectOption itemValue="EE" itemLabel="Estonia" />
+<apex:SelectOption itemValue="ET" itemLabel="Ethiopia" />
+<apex:SelectOption itemValue="FK" itemLabel="Falkland Islands (Malvinas)" />
+<apex:SelectOption itemValue="FO" itemLabel="Faroe Islands" />
+<apex:SelectOption itemValue="FJ" itemLabel="Fiji" />
+<apex:SelectOption itemValue="FI" itemLabel="Finland" />
+<apex:SelectOption itemValue="FR" itemLabel="France" />
+<apex:SelectOption itemValue="GF" itemLabel="French Guiana" />
+<apex:SelectOption itemValue="PF" itemLabel="French Polynesia" />
+<apex:SelectOption itemValue="TF" itemLabel="French Southern Territories" />
+<apex:SelectOption itemValue="GA" itemLabel="Gabon" />
+<apex:SelectOption itemValue="GM" itemLabel="Gambia" />
+<apex:SelectOption itemValue="GE" itemLabel="Georgia" />
+<apex:SelectOption itemValue="DE" itemLabel="Germany" />
+<apex:SelectOption itemValue="GH" itemLabel="Ghana" />
+<apex:SelectOption itemValue="GI" itemLabel="Gibraltar" />
+<apex:SelectOption itemValue="GR" itemLabel="Greece" />
+<apex:SelectOption itemValue="GL" itemLabel="Greenland" />
+<apex:SelectOption itemValue="GD" itemLabel="Grenada" />
+<apex:SelectOption itemValue="GP" itemLabel="Guadeloupe" />
+<apex:SelectOption itemValue="GU" itemLabel="Guam" />
+<apex:SelectOption itemValue="GT" itemLabel="Guatemala" />
+<apex:SelectOption itemValue="GG" itemLabel="Guernsey" />
+<apex:SelectOption itemValue="GN" itemLabel="Guinea" />
+<apex:SelectOption itemValue="GW" itemLabel="Guinea-Bissau" />
+<apex:SelectOption itemValue="GY" itemLabel="Guyana" />
+<apex:SelectOption itemValue="HT" itemLabel="Haiti" />
+<apex:SelectOption itemValue="HM" itemLabel="Heard Island and McDonald Islands" />
+<apex:SelectOption itemValue="VA" itemLabel="Holy See (Vatican City State)" />
+<apex:SelectOption itemValue="HN" itemLabel="Honduras" />
+<apex:SelectOption itemValue="HK" itemLabel="Hong Kong" />
+<apex:SelectOption itemValue="HU" itemLabel="Hungary" />
+<apex:SelectOption itemValue="IS" itemLabel="Iceland" />
+<apex:SelectOption itemValue="IN" itemLabel="India" />
+<apex:SelectOption itemValue="ID" itemLabel="Indonesia" />
+<apex:SelectOption itemValue="IR" itemLabel="Iran, Islamic Republic of" />
+<apex:SelectOption itemValue="IQ" itemLabel="Iraq" />
+<apex:SelectOption itemValue="IE" itemLabel="Ireland" />
+<apex:SelectOption itemValue="IM" itemLabel="Isle of Man" />
+<apex:SelectOption itemValue="IL" itemLabel="Israel" />
+<apex:SelectOption itemValue="IT" itemLabel="Italy" />
+<apex:SelectOption itemValue="JM" itemLabel="Jamaica" />
+<apex:SelectOption itemValue="JP" itemLabel="Japan" />
+<apex:SelectOption itemValue="JE" itemLabel="Jersey" />
+<apex:SelectOption itemValue="JO" itemLabel="Jordan" />
+<apex:SelectOption itemValue="KZ" itemLabel="Kazakhstan" />
+<apex:SelectOption itemValue="KE" itemLabel="Kenya" />
+<apex:SelectOption itemValue="KI" itemLabel="Kiribati" />
+<apex:SelectOption itemValue="KP" itemLabel="Korea, Democratic People's Republic of" />
+<apex:SelectOption itemValue="KR" itemLabel="Korea, Republic of" />
+<apex:SelectOption itemValue="KW" itemLabel="Kuwait" />
+<apex:SelectOption itemValue="KG" itemLabel="Kyrgyzstan" />
+<apex:SelectOption itemValue="LA" itemLabel="Lao People's Democratic Republic" />
+<apex:SelectOption itemValue="LV" itemLabel="Latvia" />
+<apex:SelectOption itemValue="LB" itemLabel="Lebanon" />
+<apex:SelectOption itemValue="LS" itemLabel="Lesotho" />
+<apex:SelectOption itemValue="LR" itemLabel="Liberia" />
+<apex:SelectOption itemValue="LY" itemLabel="Libya" />
+<apex:SelectOption itemValue="LI" itemLabel="Liechtenstein" />
+<apex:SelectOption itemValue="LT" itemLabel="Lithuania" />
+<apex:SelectOption itemValue="LU" itemLabel="Luxembourg" />
+<apex:SelectOption itemValue="MO" itemLabel="Macao" />
+<apex:SelectOption itemValue="MK" itemLabel="Macedonia, the former Yugoslav Republic of" />
+<apex:SelectOption itemValue="MG" itemLabel="Madagascar" />
+<apex:SelectOption itemValue="MW" itemLabel="Malawi" />
+<apex:SelectOption itemValue="MY" itemLabel="Malaysia" />
+<apex:SelectOption itemValue="MV" itemLabel="Maldives" />
+<apex:SelectOption itemValue="ML" itemLabel="Mali" />
+<apex:SelectOption itemValue="MT" itemLabel="Malta" />
+<apex:SelectOption itemValue="MH" itemLabel="Marshall Islands" />
+<apex:SelectOption itemValue="MQ" itemLabel="Martinique" />
+<apex:SelectOption itemValue="MR" itemLabel="Mauritania" />
+<apex:SelectOption itemValue="MU" itemLabel="Mauritius" />
+<apex:SelectOption itemValue="YT" itemLabel="Mayotte" />
+<apex:SelectOption itemValue="MX" itemLabel="Mexico" />
+<apex:SelectOption itemValue="FM" itemLabel="Micronesia, Federated States of" />
+<apex:SelectOption itemValue="MD" itemLabel="Moldova, Republic of" />
+<apex:SelectOption itemValue="MC" itemLabel="Monaco" />
+<apex:SelectOption itemValue="MN" itemLabel="Mongolia" />
+<apex:SelectOption itemValue="ME" itemLabel="Montenegro" />
+<apex:SelectOption itemValue="MS" itemLabel="Montserrat" />
+<apex:SelectOption itemValue="MA" itemLabel="Morocco" />
+<apex:SelectOption itemValue="MZ" itemLabel="Mozambique" />
+<apex:SelectOption itemValue="MM" itemLabel="Myanmar" />
+<apex:SelectOption itemValue="NA" itemLabel="Namibia" />
+<apex:SelectOption itemValue="NR" itemLabel="Nauru" />
+<apex:SelectOption itemValue="NP" itemLabel="Nepal" />
+<apex:SelectOption itemValue="NL" itemLabel="Netherlands" />
+<apex:SelectOption itemValue="NC" itemLabel="New Caledonia" />
+<apex:SelectOption itemValue="NZ" itemLabel="New Zealand" />
+<apex:SelectOption itemValue="NI" itemLabel="Nicaragua" />
+<apex:SelectOption itemValue="NE" itemLabel="Niger" />
+<apex:SelectOption itemValue="NG" itemLabel="Nigeria" />
+<apex:SelectOption itemValue="NU" itemLabel="Niue" />
+<apex:SelectOption itemValue="NF" itemLabel="Norfolk Island" />
+<apex:SelectOption itemValue="MP" itemLabel="Northern Mariana Islands" />
+<apex:SelectOption itemValue="NO" itemLabel="Norway" />
+<apex:SelectOption itemValue="OM" itemLabel="Oman" />
+<apex:SelectOption itemValue="PK" itemLabel="Pakistan" />
+<apex:SelectOption itemValue="PW" itemLabel="Palau" />
+<apex:SelectOption itemValue="PS" itemLabel="Palestinian Territory, Occupied" />
+<apex:SelectOption itemValue="PA" itemLabel="Panama" />
+<apex:SelectOption itemValue="PG" itemLabel="Papua New Guinea" />
+<apex:SelectOption itemValue="PY" itemLabel="Paraguay" />
+<apex:SelectOption itemValue="PE" itemLabel="Peru" />
+<apex:SelectOption itemValue="PH" itemLabel="Philippines" />
+<apex:SelectOption itemValue="PN" itemLabel="Pitcairn" />
+<apex:SelectOption itemValue="PL" itemLabel="Poland" />
+<apex:SelectOption itemValue="PT" itemLabel="Portugal" />
+<apex:SelectOption itemValue="PR" itemLabel="Puerto Rico" />
+<apex:SelectOption itemValue="QA" itemLabel="Qatar" />
+<apex:SelectOption itemValue="RE" itemLabel="Réunion" />
+<apex:SelectOption itemValue="RO" itemLabel="Romania" />
+<apex:SelectOption itemValue="RU" itemLabel="Russian Federation" />
+<apex:SelectOption itemValue="RW" itemLabel="Rwanda" />
+<apex:SelectOption itemValue="BL" itemLabel="Saint Barthélemy" />
+<apex:SelectOption itemValue="SH" itemLabel="Saint Helena, Ascension and Tristan da Cunha" />
+<apex:SelectOption itemValue="KN" itemLabel="Saint Kitts and Nevis" />
+<apex:SelectOption itemValue="LC" itemLabel="Saint Lucia" />
+<apex:SelectOption itemValue="MF" itemLabel="Saint Martin (French part)" />
+<apex:SelectOption itemValue="PM" itemLabel="Saint Pierre and Miquelon" />
+<apex:SelectOption itemValue="VC" itemLabel="Saint Vincent and the Grenadines" />
+<apex:SelectOption itemValue="WS" itemLabel="Samoa" />
+<apex:SelectOption itemValue="SM" itemLabel="San Marino" />
+<apex:SelectOption itemValue="ST" itemLabel="Sao Tome and Principe" />
+<apex:SelectOption itemValue="SA" itemLabel="Saudi Arabia" />
+<apex:SelectOption itemValue="SN" itemLabel="Senegal" />
+<apex:SelectOption itemValue="RS" itemLabel="Serbia" />
+<apex:SelectOption itemValue="SC" itemLabel="Seychelles" />
+<apex:SelectOption itemValue="SL" itemLabel="Sierra Leone" />
+<apex:SelectOption itemValue="SG" itemLabel="Singapore" />
+<apex:SelectOption itemValue="SX" itemLabel="Sint Maarten (Dutch part)" />
+<apex:SelectOption itemValue="SK" itemLabel="Slovakia" />
+<apex:SelectOption itemValue="SI" itemLabel="Slovenia" />
+<apex:SelectOption itemValue="SB" itemLabel="Solomon Islands" />
+<apex:SelectOption itemValue="SO" itemLabel="Somalia" />
+<apex:SelectOption itemValue="ZA" itemLabel="South Africa" />
+<apex:SelectOption itemValue="GS" itemLabel="South Georgia and the South Sandwich Islands" />
+<apex:SelectOption itemValue="SS" itemLabel="South Sudan" />
+<apex:SelectOption itemValue="ES" itemLabel="Spain" />
+<apex:SelectOption itemValue="LK" itemLabel="Sri Lanka" />
+<apex:SelectOption itemValue="SD" itemLabel="Sudan" />
+<apex:SelectOption itemValue="SR" itemLabel="Suriname" />
+<apex:SelectOption itemValue="SJ" itemLabel="Svalbard and Jan Mayen" />
+<apex:SelectOption itemValue="SZ" itemLabel="Swaziland" />
+<apex:SelectOption itemValue="SE" itemLabel="Sweden" />
+<apex:SelectOption itemValue="CH" itemLabel="Switzerland" />
+<apex:SelectOption itemValue="SY" itemLabel="Syrian Arab Republic" />
+<apex:SelectOption itemValue="TW" itemLabel="Taiwan, Province of China" />
+<apex:SelectOption itemValue="TJ" itemLabel="Tajikistan" />
+<apex:SelectOption itemValue="TZ" itemLabel="Tanzania, United Republic of" />
+<apex:SelectOption itemValue="TH" itemLabel="Thailand" />
+<apex:SelectOption itemValue="TL" itemLabel="Timor-Leste" />
+<apex:SelectOption itemValue="TG" itemLabel="Togo" />
+<apex:SelectOption itemValue="TK" itemLabel="Tokelau" />
+<apex:SelectOption itemValue="TO" itemLabel="Tonga" />
+<apex:SelectOption itemValue="TT" itemLabel="Trinidad and Tobago" />
+<apex:SelectOption itemValue="TN" itemLabel="Tunisia" />
+<apex:SelectOption itemValue="TR" itemLabel="Turkey" />
+<apex:SelectOption itemValue="TM" itemLabel="Turkmenistan" />
+<apex:SelectOption itemValue="TC" itemLabel="Turks and Caicos Islands" />
+<apex:SelectOption itemValue="TV" itemLabel="Tuvalu" />
+<apex:SelectOption itemValue="UG" itemLabel="Uganda" />
+<apex:SelectOption itemValue="UA" itemLabel="Ukraine" />
+<apex:SelectOption itemValue="AE" itemLabel="United Arab Emirates" />
+<apex:SelectOption itemValue="GB" itemLabel="United Kingdom" />
+<apex:SelectOption itemValue="UM" itemLabel="United States Minor Outlying Islands" />
+<apex:SelectOption itemValue="UY" itemLabel="Uruguay" />
+<apex:SelectOption itemValue="UZ" itemLabel="Uzbekistan" />
+<apex:SelectOption itemValue="VU" itemLabel="Vanuatu" />
+<apex:SelectOption itemValue="VE" itemLabel="Venezuela, Bolivarian Republic of" />
+<apex:SelectOption itemValue="VN" itemLabel="Viet Nam" />
+<apex:SelectOption itemValue="VG" itemLabel="Virgin Islands, British" />
+<apex:SelectOption itemValue="VI" itemLabel="Virgin Islands, U.S." />
+<apex:SelectOption itemValue="WF" itemLabel="Wallis and Futuna" />
+<apex:SelectOption itemValue="EH" itemLabel="Western Sahara" />
+<apex:SelectOption itemValue="YE" itemLabel="Yemen" />
+<apex:SelectOption itemValue="ZM" itemLabel="Zambia" />
+<apex:SelectOption itemValue="ZW" itemLabel="Zimbabwe" />
+</apex:selectList></td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Phone:</td><td><apex:inputText value="{!phone}" /></td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Card Number:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!cardno}" /></td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">CV Code:</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!cv}" /></td><td>The CV code is the three digit code on the back of your card or four digits on the front for Amex.</td></tr>
+                            <tr><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Expiration Month (MM):</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!expm}" /></td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;">Expiration Year (YYYY):</td><td style="font-weight: bold;font-size: 1.2em;color: #027d07; font-family: Arial, Helvetica, sans-serif;text-align: left;"><apex:inputText value="{!expy}" /></td></tr>
+                            </apex:outputPanel>
+                            <tr><td><apex:commandButton value="Submit" action="{!submitPayment}" /></td><td><apex:commandButton value="Cancel" action="{!cancel}" /></td></tr>
+                            </apex:outputPanel>
+                        </table>
+                        </apex:outputPanel>
+                    </apex:form>
+                </td>
+            </tr>
+            
+            
+        </table>
+        
+<table cellSpacing="0" cellPadding="0"  width="100%" border="0">
+    <tr>  
+         
+        <td class="bodytext">
+          <div id="footer" class="footnote" style="font-size:1em"><BR />
+          Having trouble? Please contact us at <a href="mailto:Register@trainingthestreet.com">Register@trainingthestreet.com</a> or + 1 800 887 1320
+            <br />
+            <p><a href="http://www.trainingthestreet.com/terms.html" target="_blank">Terms of Use</a> | <a href="http://www.trainingthestreet.com/privacy.html" target="_blank">Privacy Policy</a></p>
+            <p class="bodytext">TRAINING THE STREET is a trademark owned by Training The Street, Inc.</p>
+          </div>        
+        </td>
+    </tr>
+</table>
+</body>
+</apex:page>

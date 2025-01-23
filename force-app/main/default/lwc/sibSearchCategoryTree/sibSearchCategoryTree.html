@@ -1,0 +1,42 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 05-04-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template lwc:render-mode="light">
+    <template for:each={_ancestorCategories} for:item="category">
+        <strong style="cursor: pointer; display: flex;" key={category.id}>
+            <lightning-button-icon icon-name="utility:chevronleft" alternative-text={category.backActionAssistiveText}
+                variant="bare" icon-class="slds-m-bottom_xx-small slds-m-right_xx-small" size="small"
+                onclick={handleCategoryUpdate} data-categoryid={category.id}>
+            </lightning-button-icon>
+            <div onclick={handleCategoryUpdate} onkeydown={handleKeydown} data-categoryid={category.id}
+                aria-hidden="true">
+                {category.categoryName} ({category.productCount})
+            </div>
+        </strong>
+    </template>
+
+    <template if:true={_isSelectedCategoryVisible}>
+        <ol class="second">
+            <li>
+                <div class="selected-category">
+                    <div class="selected-category-tag"></div>
+                    <span class="parent-category">{_selectedCategory.name} ({_selectedCategory.productCount})</span>
+                </div>
+            </li>
+            <ul class="last">
+                <template for:each={selectedCategoryItems} for:item="child">
+                    <li key={child.id}>
+                        <a tabindex="0" onclick={handleCategoryUpdate} onkeydown={handleKeydown}
+                            data-categoryid={child.id}>
+                            {child.name}
+                        </a>
+                    </li>
+                </template>
+            </ul>
+        </ol>
+    </template>
+</template>

@@ -1,0 +1,185 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes"
+	access="global" controller="CourseManagementController">
+	<aura:attribute name="courses" type="Object[]" />
+	<aura:attribute name="errormessage" type="String" />
+	<aura:attribute name="hasonline" type="Boolean" default="false" />
+	<aura:attribute name="moodleURL" type="String" />
+	<aura:attribute name="coursetype" type="String[]" default="Active and Inactive,Active Only,Inactive Only" />
+	<aura:attribute name="selectedtype" type="String" default="Active and Inactive" />
+	<aura:attribute name="coursestudytype" type="String[]" default="All Course Types,Self-Study,Training Programs" />
+	<aura:attribute name="selectedstudytype" type="String" default="All Course Types" />
+	<lightning:overlayLibrary aura:id="overlayLib" />
+	<aura:handler event="c:LoggedIn" action="{!c.doInit}" />
+	<aura:attribute name="onlyonecourse" type="Boolean" default="false" />
+
+	<lightning:card class="noborder setdropDownPos">
+		<aura:set attribute="title">
+			<h3>
+				<lightning:select name="type" value="{!v.selectedstudytype}" onchange="{!c.doInit}" label=""
+					class="selectleft">
+					<aura:iteration items="{!v.coursestudytype}" var="ct">
+						<option value="{!ct}" selected="{!ct==v.selectedstudytype}">{!ct}</option>
+					</aura:iteration>
+				</lightning:select>
+				<lightning:select name="type" value="{!v.selectedtype}" onchange="{!c.doInit}" label=""
+					class="selectright">
+					<aura:iteration items="{!v.coursetype}" var="ct">
+						<option value="{!ct}" selected="{!ct==v.selectedtype}">{!ct}</option>
+					</aura:iteration>
+				</lightning:select>
+				<aura:if isTrue="{!v.hasonline}"><a href="{!v.moodleURL + 'my/?saml=on'}" class="slds-show_large"
+						style="margin-left:15px;">
+						<lightning:button label="All Online Content" class="greenbutton" />
+					</a></aura:if>
+			</h3>
+		</aura:set>
+		<aura:if isTrue="{!v.errormessage != null}">
+			<div class="slds-has-error">
+				<div class="slds-form-element__help">
+					{!v.errormessage}
+				</div>
+			</div>
+		</aura:if>
+		<lightning:layout verticalAlign="center" multipleRows="true">
+			<aura:if isTrue="{!v.hasonline}">
+				<lightning:layoutItem padding="horizontal-medium" size="12" class="slds-hide_large"><a
+						href="{!v.moodleURL + 'my/?saml=on'}">
+						<lightning:button label="All Online Content" class="greenbutton" />
+					</a><br /><br /></lightning:layoutItem>
+			</aura:if>
+			<!--	<lightning:layoutItem padding="horizontal-medium" size="4" class="slds-show_large">
+                    	<strong>Event</strong>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="2" class="slds-show_large">
+                    	<strong>Status</strong>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="1" class="slds-show_large">
+                    	<strong>Code</strong>
+                </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="5" class="slds-show_large">
+
+                </lightning:layoutItem>-->
+			<div class="slds-grid slds-wrap slds-grid_align-left" style="width:100%;">
+				<aura:iteration items="{!v.courses}" var="course">
+					<article
+						class="{!'slds-card courseTile slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-m-around_small' + (course.isActive ? '' : ' inactive')}">
+						<div class="cardfront">
+							<div class="inactivebanner">Inactive</div>
+							<div class="slds-card__header slds-grid"
+								style="{!'background-image: url(' + course.cm.Campaign.Tile_Image_URL__c + ');'}">
+								<header class="slds-media slds-media_center slds-has-flexi-truncate">
+									<div class="slds-media__body">
+										<h2 class="slds-card__header-title">
+											<span class="slds-text-heading_small slds-truncate">
+											</span>
+										</h2>
+									</div>
+								</header>
+							</div>
+							<div class="slds-card__body">
+								<span class="courseTitle" title="{!course.cm.Campaign.Online_Event_Name__c}">
+									{!course.cm.Campaign.Online_Event_Name__c}<!--<a href="{!'view-event?id=' + course.cm.CampaignId}"></a>-->
+								</span>
+								<!--<span class="ellipses" onclick="{!c.toggle}">
+	                            &nbsp;&#x22EE;
+	                        </span>-->
+								<!--<div class="slds-p-right_medium slds-p-left_medium slds-size_12-of-12 slds-large-size_2-of-12" >{!course.cm.Attendee_Status__c}</div>
+	                        <div class="slds-p-right_medium slds-p-left_medium slds-size_12-of-12 slds-large-size_1-of-12">{!course.cm.Campaign.Class_Code__c}</div>-->
+								<div class="progressBar" aura:id="progressBar">
+									<aura:if
+										isTrue="{!and(and(and(course.cm.Completion_Enabled__c, not(empty(course.cm.Number_of_Activities__c))), course.cm.Number_of_Activities__c != 0), not(course.cm.Campaign.Hide_Progress_Bar__c))}">
+										<div class="progressFraction">
+											Progress
+											<lightning:formattedNumber
+												value="{!course.cm.Number_of_Completed_Activities__c}"
+												maximumFractionDigits="0" />/
+											<lightning:formattedNumber value="{!course.cm.Number_of_Activities__c}"
+												maximumFractionDigits="0" />
+										</div>
+										<div class="progressPercent">
+											<lightning:formattedNumber value="{!course.cm.Progress_Percentage__c / 100}"
+												style="percent" maximumFractionDigits="0" />
+										</div>
+										<lightning:progressBar value="{!course.cm.Progress_Percentage__c}"
+											variant="circular" size="medium" />
+									</aura:if>
+								</div>
+								<lightning:layoutItem padding="around-small" size="12" class="center">
+									<aura:if
+										isTrue="{!course.showGoTo &amp;&amp; course.cm.Attendee_Status__c == 'Registered' &amp;&amp; course.cm.Campaign.Visible_on_LMS__c &amp;&amp; course.cm.Campaign.Sync_to_LMS__c &amp;&amp; not(empty(course.cm.Campaign.LMS_ID__c))}">
+										<lightning:button variant="brand" onclick="{!c.viewMoodle}"
+											value="{!course.cm.Moodle_URL__c}" class="slds-m-around--xxx-small goto">Go
+											to Course</lightning:button>
+									</aura:if>
+
+									<lightning:button variant="brand" onclick="{!c.toggle}"
+										class="slds-m-around--xxx-small more">More</lightning:button>
+
+								</lightning:layoutItem>
+								<!--<aura:if isTrue="{!and(course.cm.Attendee_Status__c == 'Registered', course.cm.Campaign.Visible_on_LMS__c, course.cm.Campaign.Sync_to_LMS__c, not(empty(course.cm.LMS_ID__c)))}">
+	    	                <lightning:layoutItem padding="around-small" size="12" class="slds-hide_large slds-m-bottom_x-small center">
+		                        <lightning:button variant="brand" onclick="{!c.viewMoodle}" value="{!course.cm.Moodle_URL__c}" class="slds-m-around-xxx-small">Go to Course</lightning:button>
+	                	    </lightning:layoutItem>
+	                    </aura:if>-->
+
+
+								<!--<aura:if isTrue="{!course.hasSessionsToReg}">
+	                        <lightning:layoutItem padding="horizontal-medium" size="12" class="slds-hide_large slds-m-bottom_x-small">
+	                            <lightning:button variant="neutral" onclick="{!c.addSessions}" value="{!course.cm.CampaignId}" class="slds-m-around-xxx-small"><aura:if isTrue="{!course.cm.Campaign.Only_Show_Sessions__c}">Switch Sessions</aura:if><aura:if isTrue="{!not(course.cm.Campaign.Only_Show_Sessions__c)}">Add Sessions</aura:if></lightning:button>
+	                        </lightning:layoutItem>
+	                    </aura:if>-->
+								<!--<aura:if isTrue="{!and(course.showCancel, course.cm.Attendee_Status__c != 'Cancelled', not(empty(course.cm.Campaign.Cancellation_Deadline__c)))}">
+	                        <lightning:layoutItem padding="horizontal-medium" size="12" class="slds-hide_large slds-m-bottom_x-small">
+	                    	    <lightning:button variant="neutral" onclick="{!c.handleShowModal}" value="{!course.cm.Id}" class="slds-m-around-xxx-small">Cancel</lightning:button>
+	                        </lightning:layoutItem>
+	                    </aura:if>-->
+								<div class="slds-hide_large slds-size_12-of-12">
+									&nbsp;
+								</div>
+							</div>
+						</div>
+						<div class="cardback">
+							<div class="slds-card__body">
+								<span class="courseTitle" title="{!course.cm.Campaign.Online_Event_Name__c}">
+									{!course.cm.Campaign.Online_Event_Name__c}<!--<a href="{!'view-event?id=' + course.cm.CampaignId}"></a>-->
+								</span>
+								<div onclick="{!c.toggleback}" class="back">←</div>
+								<div class="topline"></div>
+								<!--<a class="item" target="_blank"
+									href="{!'https://' + course.cm.Campaign.RC_Course_Link__c}">
+									<div>Go to Course</div>
+								</a>-->
+								<a class="item" href="{!'course-detail?CourseCode=' + course.cm.Campaign.Class_Code__c + '&amp;CourseId=' + course.cm.CampaignId}">
+									<div>Course Details/Status</div>
+								</a>
+								<aura:if isTrue="{!course.hasSessionsToReg}">
+									<div class="item" onclick="{!c.addSessions}" data-value="{!course.cm.CampaignId}">
+										<div>
+											<aura:if isTrue="{!course.cm.Campaign.Only_Show_Sessions__c}">Switch
+												Sessions</aura:if>
+											<aura:if isTrue="{!not(course.cm.Campaign.Only_Show_Sessions__c)}">Add
+												Sessions</aura:if>
+										</div>
+									</div>
+								</aura:if>
+								<aura:if
+								isTrue="{!course.cm.Campaign.Only_Show_Sessions__c &amp;&amp; course.cm.Attendee_Status__c != 'Cancelled'}">
+								<div class="item" data-onlycourse="{!course.cm.Campaign.Only_Show_Sessions__c}" onclick="{!c.handleShowEdit}">
+									<c:editCourseModal isOneCourse="{!v.onlyonecourse}" recordId="{!course.productId}" registration="{!course.regs}" aura:id="childlwc"></c:editCourseModal>
+									<div>Edit</div>
+								</div>
+								</aura:if>
+								<aura:if
+									isTrue="{!course.showCancel &amp;&amp; course.cm.OrderType__c == 'Individual' &amp;&amp; course.cm.Attendee_Status__c != 'Cancelled' &amp;&amp; not(empty(course.cm.Campaign.Cancellation_Deadline__c))}">
+									<div class="item" data-value="{!course.cm.Id}" data-coursename="{!course.cm.Campaign.Online_Event_Name__c}" onclick="{!c.handleShowModal}">
+										<div>Cancel</div>
+									</div>
+								</aura:if>
+							</div>
+						</div>
+					</article>
+				</aura:iteration>
+			</div>
+		</lightning:layout>
+	</lightning:card>
+</aura:component>

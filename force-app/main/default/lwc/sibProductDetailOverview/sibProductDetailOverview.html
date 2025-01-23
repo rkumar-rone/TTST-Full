@@ -1,0 +1,44 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-19-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div lwc:if={showDetails}>
+        <div lwc:if={whyTakeThisCourse} class="section-padding">
+            <div class="info-heading">Why take this course?</div>
+    
+            <div class="background-white">
+                <lightning-formatted-rich-text 
+                    value={whyTakeThisCourse}
+                ></lightning-formatted-rich-text>
+            </div>
+        </div>
+    
+        <div lwc:if={productOverviewUrl} class="section-padding">
+            <div class="iframe-container">
+                <iframe 
+                    src={productOverviewUrl}
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                    style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" 
+                    title={productName}
+                ></iframe>
+            </div>
+        </div>
+    
+        <div lwc:if={whoIsThisCourseFor} class="section-padding">
+            <div class="info-heading">Who is this course for?</div>
+            
+            <div>
+                <lightning-formatted-rich-text 
+                    value={whoIsThisCourseFor}
+                ></lightning-formatted-rich-text>
+            </div>
+        </div>
+    </div>
+
+</template>

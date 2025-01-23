@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 02-22-2024
+  @last modified by  : asood@rafter.one
+-->
+<template>
+    <lightning-modal-body>
+        <c-sib-search-filters-modal-panel
+            search-results={normalizedDisplayData}
+            display-count={totalItemCount}
+            page-ref={pageRef}
+            onclosesearchfiltersmodal={handleClose}></c-sib-search-filters-modal-panel>
+    </lightning-modal-body>
+</template>

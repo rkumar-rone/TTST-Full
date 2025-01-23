@@ -1,0 +1,145 @@
+.filter-page-product .container {
+    max-width: 1380px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+  }
+  .card-space{
+    gap: 40px;
+    padding: 0px 40px 120px;
+  }
+.Col-3 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 24px;
+    padding: 40px 0px 0px 40px;
+    min-width: 322px;
+  }
+  nav {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0;
+  }
+.Account-Tab {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    max-width: 322px;
+    cursor: pointer;
+    
+  }
+.active-tab{
+    background-color: #fbd927;
+}
+.sidebar-label{
+        flex-grow: 1;
+        font-family: Geist;
+        font-size: 16px;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: left;
+        color: #4d4c54;
+        cursor: pointer;
+}
+.User-Interface-Arrow-Right {
+    flex-grow: 0;
+    object-fit: contain;
+  }
+.User-Interface-Star {
+    flex-grow: 0;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.Page-Title {
+    align-self: stretch;
+    flex-grow: 0;
+    font-family: Geist;
+    font-size: 42px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: -1.26px;
+    text-align: left;
+    color: #2d2b33;
+}
+.mobile-view{
+  display: none;
+  width: 100%;
+}
+.sidebar-select-md select {
+  appearance: none;
+  padding: 15px 40px 10px 12px;
+  width: 100%;
+  border: 1px solid rgba(110, 110, 135, 0.2);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 1px 3px -2px #9098a9;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  -o-transition: all 150ms ease;
+  transition: all 150ms ease;
+  background-image: url("data:image/svg+xml,%3C%3Fxml version=%271.0%27 encoding=%27utf-8%27%3F%3E%3C%21-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --%3E%3Csvg width=%27800px%27 height=%27800px%27 viewBox=%270 0 24 24%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z%27 fill=%27%232D2B33%27/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 90% 50%;
+  background-size: 24px 24px;
+  flex-grow: 1;
+  font-family: Geist;
+  font-size: 21px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: -0.21px;
+  text-align: left;
+  color: #2d2b33;
+}
+@media screen and (max-width: 1200px) {
+    .Page-Title {
+        flex-grow: 1;
+        font-family: Geist;
+        font-size: 34px;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.15;
+        letter-spacing: -1.02px;
+        text-align: left;
+        color: #2d2b33;
+    }
+
+    /* .Col-3 {
+      display: none;
+    } */
+
+    .My-List{
+      display: none;
+  }
+  .mobile-view{
+    display: block;
+  }
+}

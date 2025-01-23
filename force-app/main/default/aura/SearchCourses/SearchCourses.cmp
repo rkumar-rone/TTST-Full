@@ -1,0 +1,32 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" extends="c:AuthenticatedComponentAbstract" controller="CourseManagementController">
+	<aura:attribute name="coursecode" type="String" />
+    <aura:attribute name="errormessage" type="String" />
+    <lightning:card class="noborder">
+    	<aura:set attribute="title">
+        	Search Courses
+        </aura:set>
+        <lightning:layout >
+          	<lightning:layoutItem padding="around-medium" size="8">
+            	<form class="slds-form--stacked">
+                    <span onkeypress="{!c.changeNumber}">
+                    <lightning:input aura:id="logform" label="Please enter a Class Code"
+                             name="classcode"
+                             value="{!v.coursecode}"
+                             required="true" type="text" maxlength="6"/>  <!--min="0" max="999999"-->
+                        </span>
+                    <aura:if isTrue="{!v.errormessage != null}">
+                    	<div class="slds-has-error">
+                            <div class="slds-form-element__help">
+                            	{!v.errormessage}
+                            </div>                       
+                    	</div>
+                    </aura:if>
+                    <lightning:button label="Search" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.searchClick}"/>
+                </form>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

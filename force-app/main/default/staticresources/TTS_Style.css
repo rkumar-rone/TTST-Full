@@ -1,0 +1,307 @@
+/* STANDARD STYLES ---------------------------------------- */
+body { padding: 0; margin: 0; height: 100%; background: url('../images/background.jpg'); line-height: 1.6em; }
+body, tr, td, input, textarea, div, fieldset legend { /*font-size: 8pt;*/  font: 11px Arial, Helvetica, sans-serif; color:#333; }
+
+/* links */
+a { color: #027d07; text-decoration: underline; }
+
+#footer a { color: #999; text-decoration: none; }
+
+#footer a:hover { color: #027d07; }
+
+html .global a { color: #666666; text-decoration: none; font-size: 10px; }
+
+html .global a:hover { color: #027d07; }
+
+html .global a.on { color: #027d07; text-decoration: none; } 
+
+/* page headings and paragraphs */
+h1 { font-size: 175%; }
+
+h1 img { font-size: 100%; border-bottom: 1px solid #ccc; }
+
+h2 { font-size: 120%; }
+h3 { font-size: 110%; color: #027d07; text-transform: uppercase; }
+h4 { font-size: 100%; color: #027d07; font-weight: bold; text-transform:uppercase }
+h4.negibttm { margin-bottom: -1em; _margin-bottom: -1.6em;
+	font-size: 95%;
+	color: #027d07;
+	font-weight: bold;
+	text-transform:uppercase
+}
+h5 { font-size: 80%;  }
+h6 { font-size: 60%;  }
+p, ul, li, fieldset, legend { line-height: 1.6em; }
+blockquote { margin: 20px 5px; }
+
+.hdr3 em { color: #027d07; font-style: normal; font-weight: bold; }
+
+.hdr3 em em { font-style: italic; }
+
+#footer { font-size: 9px; }
+
+.hdrwhite { color: #ffffff; font-style: normal; font-weight: bold; }
+
+/* misc. */
+img { border: none; }
+
+/* layout */
+#container    { border-collapse: collapse; padding: 0; margin: 0; width: 100%; }
+#container td { border-collapse: collapse; padding: 0; margin: 0; }
+#masthead  { height: 89px; background: url(../images/masthead-fill.jpg) 0 0 repeat-x; }
+#topNav { background: url(../images/topnav-rightfill.jpg) top right;  }
+#nav    { background: url(../images/nav-rightfill.jpg) top right repeat-x; } 
+#footer { padding: 0 20px 0 0; margin: 10px 0 0 40px; width: 720px; border-top: 1px solid #ccc; } /* layout */
+
+#content { margin-top:2.4em; margin-bottom:3.6em  }
+#update p, #update h4, #update fieldset { padding: 0 0 0 15px; font: sans-serif; }
+
+hr { color: #ccc; height: 1px; }
+
+/* classes */
+
+p.global { margin-top: -1em; }
+
+* html p.global { margin-top: -1.6em; }
+
+.italic-grey a, .padme td a, #bio a { color: #666666; font-style: italic; }
+
+table.padme {
+	margin-bottom: 1.6em;
+}
+
+table.padme ul.nobullet { list-style: none; margin-left: -54px; }
+
+ul.nobullet, ul.bullet, ul.really { margin: 1em 0 0 -40px; }
+/** html ul.really { margin: 1em 0 0 0; }*/
+
+ul.really { list-style-type: none; }
+
+p.hdr3 + ul.nobullet, h3.hdr3 + ul.nobullet { margin-top: -1em; }
+* html ul.nobullet { margin-top: -1.6em; }
+* html div.italic-grey ul.nobullet/*, * html div.italic-grey ul.bullet*/  { margin: 0 0 0 -14px; }
+* html div.italic-grey ul.bullet { margin: 1.6em 0 0 0; }
+
+/*table.padme ul, table.padme ul, */ul.nobullet li, ul.bullet li { position: relative; margin: 0 0 0 1.4em; line-height:1.6em }
+
+html body ul.notop { margin-top: 0 !important; }
+
+* html body div ul.really/*, html body div ul[class].really li*/ { list-style-type: none; margin-left: 0; }
+
+/** html table.padme ul li, * html ul.nobullet li, * html table.padme ul, table.padme ul.nobullet li { margin: 0 0 0 1.4em; }*/
+
+li ul {
+	list-style-type: normal;
+	margin-left: 10px;
+}
+
+.padme td {
+	line-height: 1.6em;
+	vertical-align: top;
+}
+
+.padme th { 
+	font-weight: normal;
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 3px;
+}
+
+.padme th.upcase { 
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #999;
+	border: none;
+	padding: 0;
+	letter-spacing: .5;
+}
+
+.notopmargi { margin-top: 0; }
+
+.lefty { float: left; clear: both; }
+
+.righty { float: right; clear: both; }
+
+.righty ul.nobullet { list-style: none; margin: 0px; }
+
+.green { color: #7c9c3d; }
+
+.footnote { /*font-style: italic;*/ font-size: 9px; }
+
+.clearme { clear: both; height: 0; }
+
+.setme { margin: 1em auto; float: left; clear: right; width: 14em; overflow: hidden; }
+
+ul.left {
+	float: left;
+	width: 14em; 
+	margin: 1em 0 0 0;
+	padding: 0px;
+	border: 0px none; 
+	list-style-position: inside;
+	list-style-type: square;
+	position: relative;
+	left: 0;
+	white-space: nowrap;
+}
+  
+ul.right {
+	float: right;
+	width: 14em; 
+	margin: 1em 0 0 0;
+	padding: 0px;
+	border: 0px none; 
+	list-style-position: inside;
+	list-style-type: square;
+}
+	
+ul.left50 {
+	float: left;
+	width: 45%; 
+	margin: 0;
+	padding: 0;
+	border: none;
+	list-style-position: outside;
+	list-style-type: disc;
+	position: relative;
+	left: 0;
+}
+  
+ul.right50 {
+	float: right;
+	width: 45%; 
+	margin: 0;
+	padding: 0;
+	border: none; 
+	list-style-position: outside;
+	list-style-type: disc;
+}
+
+ul.left50 li, ul.right50 li {
+	list-style-type: disc;
+	margin-left: 1.4em;
+	width: auto;
+}
+
+ul.left75 {
+	float: left;
+	width: 65%; 
+	margin: 0;
+	padding: 0;
+	border: none; 
+	list-style-position: outside;
+	list-style-type: disc;
+	position: relative;
+	left: 0;
+}
+
+ul.left75 li {
+	list-style-type: disc;
+	margin-left: 1.4em;
+	width: auto;
+}
+
+body .no-space {
+	margin: 0px;
+	padding: 0px;
+}
+
+ul li.listhdr {
+	margin: 1em 0 0 0;
+	font-weight: bold;
+	list-style-type: none;
+	list-style-position: inside;
+}
+
+* html ul li.listhdr {
+	margin: 1em 0 0 -1.5em;
+}
+
+.div {
+	position: relative;
+	margin-bottom: 1em;
+	line-height: 1.6em;
+	height: auto;
+	width: 491px;
+	clear: both;
+	background: non/*lightgray*/;
+}
+
+div.bulleted { 
+	/*position: relative;*/
+	margin-bottom: 1.6em;
+	padding: 0 1em;
+	line-height: 1.6em;
+	height: 130px;
+	width: auto;
+	background: url(../images/bg_bulletedlist.gif) 0 0 repeat-x;
+}
+
+* html div.bulleted {
+	/* background: orange; */
+	width: 441px;
+}
+
+body div.bull-left, body div.bull-right { 
+	width: 48%; 
+	margin: 0;
+	border: none;
+	padding: 0;
+	text-align: center;
+	height: 24px;
+}
+body div.bull-left {
+	float: left;
+}
+body div.bull-right { 
+	float: right;
+}
+
+div.div img.learn { position: absolute; float: right; right: 30px; bottom: 14px; }
+
+div.bulleted img.learn { float: right; margin: -20px 20px 15px 320px; }
+
+div.bull-left img, div.bull-right img { float: none; }
+
+body div.bull-left img.learn, body div.bull-right img.learn { float: none; margin: 40px auto; }
+
+/** html div.bulleted img.learn { position: relative; float: right; top: 80px; right: 10px; left: 10px; }*/
+
+div.div a { font-weight: bold; color: #666666; font-style: normal; }
+
+
+.toppy { border-top: 1px dashed gray; }
+
+.justy { text-align: justify; }
+
+.button { width: 130px; }
+
+/* Forms ------------------------------------------------------ */
+
+form {
+	margin-top: 0;
+}
+
+/* TTS in the News page */
+
+.mediatitle {
+	padding-top: 10px;
+	font-weight: 400;
+}
+.mediarelease {
+	padding-top: 8px;
+	font-family: arial, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	color: #333;
+}
+.medialink {
+	padding-top: 8px;
+	padding-bottom: 8px;
+	font-family: arial, sans-serif;
+	font-size: 11px;
+	line-height: 18px;
+	color: #333;
+}
+

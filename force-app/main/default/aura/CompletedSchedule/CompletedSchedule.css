@@ -1,0 +1,7 @@
+.THIS .slds-button_neutral {
+	border-color: token(colorBrand);
+}
+
+.THIS .slds-button {
+    width:130px;
+}

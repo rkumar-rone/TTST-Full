@@ -1,0 +1,15 @@
+<aura:component>
+    <aura:attribute name="campaignMemberId" type="Id" />
+    <aura:attribute name="isButtonDisabled" type="Boolean" default="false" />
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:registerEvent name="loggedInEvent" type="c:CloseModal"/>
+    <lightning:button name="CancelCourse" label="Cancel Course" variant="brand" onclick="{!c.handleConfirm}" disabled="{!v.isButtonDisabled}"/>    
+    <lightning:button name="ChangedMind" label="I've Changed My Mind" variant="neutral" onclick="{!c.handleCancel}" disabled="{!v.isButtonDisabled}"/>
+
+    <aura:attribute name="showSpinner" type="boolean" default="false"/>
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="slds-spinner_container slds-is-relative">
+            <lightning:spinner aura:id="spinner" variant="brand" size="medium"/>
+        </div>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,71 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-10-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    
+    <div lwc:if={hasPrice}>
+        <template lwc:if={isAllEventsAreRequired}> 
+        </template>
+        <template lwc:else> 
+            <div lwc:if={negotiatedPrice} class="price">
+                Per Session Price:
+                <lightning-formatted-number 
+                    currency-code={currencyCode}
+                    format-style="currency" 
+                    value={negotiatedPrice} 
+                    class=""
+                ></lightning-formatted-number>
+            </div>
+
+            <hr style="margin: 0 0;"/>
+
+            <div lwc:if={isEarlyBird} class="price">
+                Early Bird Per Session Price:
+                <lightning-formatted-number
+                    currency-code={currencyCode}
+                    format-style="currency" 
+                    value={sessionEarlyBirdPrice} 
+                    class=""
+                ></lightning-formatted-number>
+            </div>
+        </template>
+
+        <div lwc:if={fullRegistrationPrice} class="price">
+            Full Registration Price:
+            <lightning-formatted-number 
+                currency-code={currencyCode}
+                format-style="currency" 
+                value={fullRegistrationPrice} 
+                class=""
+            ></lightning-formatted-number>
+        </div>
+
+        <div lwc:if={isEarlyBird} class="price">
+            Early Bird Registration Price:
+            <lightning-formatted-number 
+                currency-code={currencyCode}
+                format-style="currency" 
+                value={fullEarlyBirdPrice} 
+                class=""
+            ></lightning-formatted-number>
+        </div>
+
+        <div class="price">
+            Your Selection Price:
+            <lightning-formatted-number 
+                currency-code={currencyCode}
+                format-style="currency" 
+                value={selectedSessionPrice} 
+                class=""
+            ></lightning-formatted-number>
+        </div>
+
+    </div>
+    <div lwc:else>
+        <span>Price Unavailable</span>
+    </div>
+</template>

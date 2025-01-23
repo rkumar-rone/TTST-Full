@@ -1,0 +1,163 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-12-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+    <div class="product-item-card">
+        <div lwc:if={showProductImage} class={productImageBgColorClass}>
+            <div if:false={readOnly}>
+                <div class="product-popular-tag-section" lwc:if={mostPopularTag}>
+                    <span class="product-popular-text">{labels.mostPopularName}</span>
+                </div>
+                <div class="product-newCourse-tag-section" lwc:if={newCourseTag}>
+                    <span class="product-newCourse-text">{labels.newCourseName}</span>
+                </div>
+            </div>
+            <span if:false={readOnly} class="course-type">{courseType}</span>
+            <div class="item-img">
+                <img src={imgUrl} alt={imgAltText} onclick={handleProductRedirection} />
+            </div>
+        </div>
+        <div class="mobile-column">
+            <div class="variant-product">
+                <div>
+                    <div lwc:if={showSKU} class="line sku">
+                        <span>{labels.classCode} </span>
+                        <span>
+                            <lightning-formatted-rich-text value={productSku}></lightning-formatted-rich-text>
+                        </span>
+                    </div>
+                    <h2 class="title" onclick={handleProductRedirection}>{productName}</h2>
+
+                    <div if:false={readOnly} class="line color">
+                        <span>
+                            <lightning-formatted-rich-text value={shortDescription}></lightning-formatted-rich-text>
+                        </span>
+                    </div>
+                    
+                </div>
+                <div class="quantity" if:false={readOnly}>
+                    <div class="price-item hide-mobile">
+                        <p lwc:if={showPricePerUnit}>
+                            <span>
+                                <lightning-formatted-number
+                                format-style="currency"
+                                currency-code={currencyCode}
+                                currency-display-as="symbol"
+                                maximum-fraction-digits="2"
+                                value={productSalesPrice}>
+                                </lightning-formatted-number>
+                            </span> / {labels.item}
+                        </p>
+                        <div class="price-saved" lwc:if={ItemDiscountAmount}>
+                            <p>
+                                {labels.saved}
+                                &nbsp;
+                                <span>
+                                    <lightning-formatted-number
+                                        format-style="currency"
+                                        currency-code={currencyCode}
+                                        currency-display-as="symbol"
+                                        maximum-fraction-digits="2"
+                                        value={ItemDiscountAmount}>
+                                    </lightning-formatted-number>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div lwc:if={hideQuantitySelector} class="product-quantity js-quantity-counter">
+                        <button 
+                            class="button-quantity less js-quantity-counter-prev"
+                            disabled={stopDecreaseQuantity}
+                            onclick={decreaseQty}
+                            >
+                            &#8722;
+                        </button>
+                        <input
+                            type="tel"
+                            id="input-quantity"
+                            class="input-quantity js-quantity-counter-input"
+                            lwc:ref="quantitySelector" 
+                            formatter="decimal"
+                            onblur={handleQtyChange}
+                            step={incrementStep}
+                            min={minQuantity} 
+                            max={maxQuantity}
+                            value={quantity}
+                            maxlength="2"
+                            required 
+                            disabled = {isCartStatusCheckout}/>
+                        <button 
+                            class="button-quantity more js-quantity-counter-next" 
+                            disabled={stopIncreaseQuantity}
+                            onclick={increaseQty}>
+                            &#43;
+                        </button>
+                    </div>
+                    <div class="quantity" if:true={isLocked}>
+                        <div class="qty">
+                            {labels.qty} <span>{quantity}</span>
+                        </div>
+                    </div>
+                    <button lwc:if={showRemoveItemOption} class="card-remove" onclick={handleDelete} disabled = {isCartStatusCheckout}>{labels.remove}</button>
+                </div>
+                <div class="quantity" lwc:if={readOnly}>
+                    <div class="qty">
+                        {labels.qty} <span>{quantity}</span>
+                    </div>
+                </div>
+            </div>
+            <div lwc:if={showLineItemTotal} class="price-card-total">
+                <div class="price-item hide-desk">
+                    <p lwc:if={showPricePerUnit}>
+                        <span>
+                            <lightning-formatted-number
+                            format-style="currency"
+                            currency-code={currencyCode}
+                            currency-display-as="symbol"
+                            maximum-fraction-digits="2"
+                            value={productSalesPrice}>
+                            </lightning-formatted-number>
+                        </span> / {labels.item}
+                    </p>
+                    <div class="price-saved" lwc:if={ItemDiscountAmount}>
+                        <p>
+                            {labels.saved}
+                            &nbsp;
+                            <span>
+                                <lightning-formatted-number
+                                    format-style="currency"
+                                    currency-code={currencyCode}
+                                    currency-display-as="symbol"
+                                    maximum-fraction-digits="2"
+                                    value={ItemDiscountAmount}>
+                                </lightning-formatted-number>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <p lwc:if={showActualPrice} class="add-strike-line">
+                    <lightning-formatted-number
+                    format-style="currency"
+                    currency-code={currencyCode}
+                    currency-display-as="symbol"
+                    maximum-fraction-digits="2"
+                    value={calculatedTotalUnitPrice}>
+                    </lightning-formatted-number>
+                </p>
+                <p>
+                    <lightning-formatted-number
+                    format-style="currency"
+                    currency-code={currencyCode}
+                    currency-display-as="symbol"
+                    maximum-fraction-digits="2"
+                    value={productPrice}>
+                    </lightning-formatted-number>
+                </p>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+.THIS {
+    margin-top:10px;
+}
+
+.THIS .noborder {
+    border: none;
+  }
+
+.THIS .nolabel {
+    padding-top: 0;
+}
+.THIS .nolabel label {
+    display:none;
+
+}
+
+.THIS .overridelabel {
+    padding-left: .75rem;
+}
+
+.THIS .slds-button_neutral {
+	border-color: token(colorBrand);
+}

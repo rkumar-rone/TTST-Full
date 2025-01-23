@@ -1,0 +1,43 @@
+<!--
+  @description       : 
+  @author            : sthakur@rafter.one
+  @group             : 
+  @last modified on  : 10-09-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+    <div class="empty-cart" lwc:if={userHadNoCart}>
+    </div>
+    <div class="checkout-container" lwc:else>
+        <div class="checkout-screen">
+        <div class="title">
+            <h2>Checkout</h2>
+        </div>
+
+        <!-- One-Page Layout start-->
+        <template if:true={showOnePageLayout}>
+            <c-sib-one-page-checkout checkout-details={checkoutDetails} checkout-config={checkoutConfig}></c-sib-one-page-checkout>
+            <div class="placeOrderBtn">
+                <slot name="onePagePlaceOrderBtn"></slot>
+            </div>
+        </template>
+        <!-- One-Page Layout end-->
+    
+        <!-- Multi-Step Layout start-->
+        <template if:true={showMultiPageLayout}>
+            <c-sib-multi-step-checkout cart-details={cartDetails} checkout-details={checkoutDetails} checkout-config={checkoutConfig}></c-sib-multi-step-checkout>
+            <div if:true={showPlaceOrder} class="placeOrderBtn">
+                <slot name="multiStepPlaceOrderBtn"></slot>
+            </div>
+        </template>
+        <!-- Multi-Step Layout end-->
+
+        </div>
+        <div lwc:if={isConfigLoaded} class="summary-screen">
+            <c-sib-checkout-order-summary checkout-config={checkoutConfig}></c-sib-checkout-order-summary>
+        </div>
+    </div>
+</template>

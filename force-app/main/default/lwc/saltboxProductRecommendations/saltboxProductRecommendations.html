@@ -1,0 +1,81 @@
+<template>
+  <template if:true={productList}>
+    <h1 class="slds-text-heading_large slds-p-bottom_medium">
+      {headerTitleName} Courses
+    </h1>
+  </template>
+  <div>
+    <div class="slds-grid slds-wrap product-grid slds-gutters">
+      <template if:true={productList}>
+        <template for:each={productList} for:item="product">
+          <template if:true={isVertical}>
+            <div
+              key={product.id}
+              class="slds-col slds-size--1-of-1 slds-medium-size_6-of-12 slds-large-size--4-of-12 slds-p-around--xx-small"
+            >
+              <c-saltbox-product-tile
+                price-title={priceTitle}
+                hide-wishlist={hideWishlist}
+                hide-description={hideDescription}
+                wish-list-url={wishListUrl}
+                button-label={buttonLabel}
+                button-label2={buttonLabel2}
+                desc-field={descField}
+                title-field={titleField}
+                hide-view-detail={hideViewDetail}
+                hide-addto-cart={hideAddtoCart}
+                hide-cart-icon={hideCartIcon}
+                product-image-attr={productImageAttr1Details}
+                product-attr-data={productAttrData}
+                tile-layout={tileLayout}
+                product={product}
+                selected-wishlist-image={productWishlistSelectedImageId}
+                deselected-wishlist-image={productWishlistDeselectedImageId}
+
+                feaure-type={featureType}
+                recomm-type={recommType}
+
+                effective-account-id={effectiveAccountId}
+                community-id={communityId}
+
+              ></c-saltbox-product-tile>
+            </div>
+          </template>
+          <template if:false={isVertical}>
+            <div
+              key={product.id}
+              class="slds-col slds-size--1-of-1 slds-medium-size_1-of-1 slds-large-size--6-of-12 slds-p-around--xx-small"
+            >
+              <c-saltbox-product-tile
+                price-title={priceTitle}
+                hide-wishlist={hideWishlist}
+                hide-description={hideDescription}
+                wish-list-url={wishListUrl}
+                button-label={buttonLabel}
+                button-label2={buttonLabel2}
+                desc-field={descField}
+                title-field={titleField}
+                hide-view-detail={hideViewDetail}
+                hide-addto-cart={hideAddtoCart}
+                hide-cart-icon={hideCartIcon}
+                product-image-attr={productImageAttr1Details}
+                product-attr-data={productAttrData}
+                tile-layout={tileLayout}
+                product={product}
+                selected-wishlist-image={productWishlistSelectedImageId}
+                deselected-wishlist-image={productWishlistDeselectedImageId}
+
+                feaure-type={featureType}
+                recomm-type={recommType}
+
+                effective-account-id={effectiveAccountId}
+                community-id={communityId}
+
+              ></c-saltbox-product-tile>
+            </div>
+          </template>
+        </template>
+      </template>
+    </div>
+  </div>
+</template>

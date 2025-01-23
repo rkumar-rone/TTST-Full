@@ -1,0 +1,483 @@
+<template>
+
+    <div class="sibConfigWrapper">
+
+        <lightning-tabset active-tab-value="Catalog Management">
+
+            <lightning-tab value="Catalog Management" label="Catalog Management">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Catalog Config</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div style="margin-top:20px;" class="sibInputsMargin">Type</div>
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control" style="margin-left: 70px;">
+                                    <template for:each={prodOptions} for:item="option">
+                                        <label key={option.value} class="slds-radio">
+                                            <input type="radio" id ={option.value} data-id ={option.label} data-config ="productService" name="productService" value={option.value} onchange={handleCatalogConfigChange} checked={option.checked} />
+                                            <span class="slds-radio_faux" style="margin-right: 0.5rem !important;"></span>
+                                            <span class="slds-form-element__label">{option.label}</span>
+                                        </label>
+                                    </template>
+                                    <template if:true={isCustomForCatalogEnabled}>
+                                        <div class="slds-form-element__control">
+                                            <lightning-input type="text" label={customTextBoxLabel} data-config ="productService" class="configInput" value={customServiceValue} onchange={handleCustomForCatalogChange}></lightning-input>
+                                        </div>
+                                    </template>
+                                </div>   
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:50px" class="sibConfigHeader">Supported Product types</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div class="sibInputsMargin">Bundle Products</div>
+                            <lightning-input style="margin-left: 60px;" variant="label-hidden"
+                                type="toggle" data-id="isSupportedProductTypeBundle" checked={isSupportedProductTypeBundle} onchange={handleSupportedProductTypeChange}></lightning-input>
+                        </div>
+                        <div style="display:flex">
+                            <div class="sibInputsMargin">Subscription Products</div>
+                            <lightning-input style="margin-left: 20px;" variant="label-hidden"
+                                type="toggle" data-id="isSupportedProductTypeSubscriptionProduct" checked={isSupportedProductTypeSubscriptionProduct} onchange={handleSupportedProductTypeChange}></lightning-input>
+                        </div>
+                        <div style="display:flex">
+                            <div class="sibInputsMargin">Usage Products</div>
+                            <lightning-input style="margin-left: 60px;" variant="label-hidden"
+                                type="toggle" data-id="isSupportedProductTypeUsageProduct" checked={isSupportedProductTypeUsageProduct} onchange={handleSupportedProductTypeChange}></lightning-input>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Search Management</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div style="margin-top:20px;" class="sibInputsMargin">Type</div>
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control" style="margin-left: 70px;">
+                                    <template for:each={searchOptions} for:item="option">
+                                        <label key={option.value} class="slds-radio">
+                                            <input type="radio" id ={option.value} data-id ={option.label} data-config ="productSearchService" name="productSearchService" value={option.value} onchange={handleSearchConfigChange} checked={option.checked} />
+                                            <span class="slds-radio_faux" style="margin-right: 0.5rem !important;"></span>
+                                            <span class="slds-form-element__label">{option.label}</span>
+                                        </label>
+                                    </template>
+                                    <template if:true={isCustomForSearchEnabled}>
+                                        <div class="slds-form-element__control">
+                                            <lightning-input type="text" label={customTextBoxLabel} data-config ="productSearchService" value={customServiceValueForSearch} class="configInput" onchange={handleCustomForSearchChange}></lightning-input>
+                                        </div>
+                                    </template>
+                                </div>   
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Cart Management</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div style="margin-top:20px;" class="sibInputsMargin">Type</div>
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control" style="margin-left: 70px;">
+                                    <template for:each={cartOptions} for:item="option">
+                                        <label key={option.value} class="slds-radio">
+                                            <input type="radio" id ={option.value} data-id ={option.label} data-config ="cartService" name="cartService" value={option.value} onchange={handleCartConfigChange} checked={option.checked} />
+                                            <span class="slds-radio_faux" style="margin-right: 0.5rem !important;"></span>
+                                            <span class="slds-form-element__label">{option.label}</span>
+                                        </label>
+                                    </template>
+                                    <template if:true={isCustomForCartEnabled}>
+                                        <div class="slds-form-element__control">
+                                            <lightning-input type="text" label={customTextBoxLabel} data-config ="cartService" value={customServiceValueForCart} class="configInput" onchange={handleCustomForCartChange}></lightning-input>
+                                        </div>
+                                    </template>
+                                </div>   
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Related Product Management</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div style="margin-top:20px;" class="sibInputsMargin">Type</div>
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control" style="margin-left: 70px;">
+                                    <template for:each={relatedProductOptions} for:item="option">
+                                        <label key={option.value} class="slds-radio">
+                                            <input type="radio" id ={option.value} data-id ={option.label} data-config ="relatedProductService" name="relatedProductService" value={option.value} onchange={handleRelatedProductConfigChange} checked={option.checked} />
+                                            <span class="slds-radio_faux" style="margin-right: 0.5rem !important;"></span>
+                                            <span class="slds-form-element__label">{option.label}</span>
+                                        </label>
+                                    </template>
+                                    <template if:true={isCustomForCartEnabled}>
+                                        <div class="slds-form-element__control">
+                                            <lightning-input type="text" label={customTextBoxLabel} data-config ="relatedProductService" value={customServiceValueForRelatedProduct} class="configInput" onchange={handleCustomForRelatedProductChange}></lightning-input>
+                                        </div>
+                                    </template>
+                                </div>   
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Product Catalog</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <lightning-input type="file" label="Upload product catalog" accept="image/png, .zip"
+                            onchange={handleFilesChange} multiple></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="slds-align_absolute-center slds-p-top_medium">
+                            <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+                            <button class="slds-button slds-button_neutral">Cancel</button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-tab>
+
+            <lightning-tab label="Pricing Management">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Pricing Config</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div style="margin-top: 20px;" class="sibInputsMargin">Type</div>
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control" style="margin-left: 70px;">
+                                    <template for:each={priceOptions} for:item="option">
+                                        <label key={option.value} class="slds-radio">
+                                            <input type="radio" id ={option.value} data-id ={option.label} data-config ="pricingService" name="pricingService" value={option.value} onchange={handlePricingConfigTypeChange} checked={option.checked} />
+                                            <span class="slds-radio_faux" style="margin-right: 0.5rem !important;"></span>
+                                            <span class="slds-form-element__label">{option.label}</span>
+                                        </label>
+                                    </template>
+                                    <template if:true={isCustomForPricingEnabled}>
+                                        <div class="slds-form-element__control">
+                                            <lightning-input type="text" label={customTextBoxLabel} data-config ="pricingService" value={externalPricingEngine} class="configInput" onchange={handleCustomPricingConfigTypeChange}></lightning-input>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="slds-align_absolute-center slds-p-top_medium">
+                            <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+                            <button class="slds-button slds-button_neutral">Cancel</button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-tab>
+
+            <lightning-tab label="Subscription Management">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Subscriptions</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div style="margin-top:20px" class="sibInputsMargin">Type</div>
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control" style="margin-left: 70px;">
+                                    <template for:each={subOptions} for:item="option">
+                                        <label key={option.value} class="slds-radio">
+                                            <input type="radio" id ={option.value} data-id ={option.label} data-config ="subscriptionService" name="subscriptionService" value={option.value} onchange={handleSubscriptionTypeChange} checked={option.checked} />
+                                            <span class="slds-radio_faux" style="margin-right: 0.5rem !important;"></span>
+                                            <span class="slds-form-element__label">{option.label}</span>
+                                        </label>
+                                    </template>
+                                    <template if:true={isCustomForSubscriptionEnabled}>
+                                        <div class="slds-form-element__control">
+                                            <lightning-input type="text" label={customTextBoxLabel} data-config ="subscriptionService" value={customServiceValueForSubscription} class="configInput" onchange={handleCustomSubscriptionTypeChange}></lightning-input>
+                                        </div>
+                                    </template>
+                                </div>   
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Quotes</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div style="margin-top:20px" class="sibInputsMargin">Type</div>
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control" style="margin-left: 70px;">
+                                    <template for:each={quoteOptions} for:item="option">
+                                        <label key={option.value} class="slds-radio">
+                                            <input type="radio" id ={option.value} data-id ={option.label} data-config ="quoteService" name="quoteService" value={option.value} onchange={handleQuoteConfigChange} checked={option.checked} />
+                                            <span class="slds-radio_faux" style="margin-right: 0.5rem !important;"></span>
+                                            <span class="slds-form-element__label">{option.label}</span>
+                                        </label>
+                                    </template>
+                                    <template if:true={isCustomForQuoteEnabled}>
+                                        <div class="slds-form-element__control">
+                                            <lightning-input type="text" label={customTextBoxLabel} data-config ="quoteService" value={customServiceValueForSubscription} class="configInput" onchange={handleCustomForQuoteChange}></lightning-input>
+                                        </div>
+                                    </template>
+                                </div>   
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Subscription Actions</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex;">
+                            <div style="margin-top:30px" class="sibInputsMargin">Action Type</div>
+                            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                                large-device-size="9" class="slds-p-around_small">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control" style="margin-left: 10px;">
+                                        <div style="display:flex">
+                                            <div class="sibInputsMargin">New</div>
+                                            <lightning-input style="margin-left: 60px;" variant="label-hidden"
+                                                type="toggle" data-id="isSubscriptionActionTypeNew" checked={isSubscriptionActionTypeNew} onchange={handleSubActionTypeChange}></lightning-input>
+                                        </div>
+                                        <div style="display:flex">
+                                            <div class="sibInputsMargin">Amend</div>
+                                            <lightning-input style="margin-left: 43px;" variant="label-hidden"
+                                                type="toggle" data-id="isSubscriptionActionTypeAmend" checked={isSubscriptionActionTypeAmend} onchange={handleSubActionTypeChange}></lightning-input>
+                                        </div>
+                                        <div style="display:flex">
+                                            <div class="sibInputsMargin">Renew</div>
+                                            <lightning-input style="margin-left: 46px;" variant="label-hidden"
+                                                type="toggle" data-id="isSubscriptionActionTypeRenew" checked={isSubscriptionActionTypeRenew} onchange={handleSubActionTypeChange}></lightning-input>
+                                        </div>
+                                        <div style="display:flex">
+                                            <div class="sibInputsMargin" style="width: 30px;">Cancellation Support</div>
+                                            <lightning-input style="margin-left: 60px;" variant="label-hidden"
+                                                type="toggle" data-id="isSubscriptionActionTypeCancellationSupport" checked={isSubscriptionActionTypeCancellationSupport} onchange={handleSubActionTypeChange}></lightning-input>
+                                        </div>
+                                        <div style="display:flex">
+                                            <div style="margin-top:22px;width: 30px;" class="sibInputsMargin">Automated Renewals?</div>
+                                            <lightning-input style="margin-left: 60px; margin-top: 25px;" variant="label-hidden"
+                                                type="toggle" data-id="subscriptionAutomatedRenewals" checked={subscriptionAutomatedRenewals} onchange={onChangeRenewal}></lightning-input>
+                                        </div>
+                                        <template if:true={autoRenewal}>
+                                            <div style="display:flex">
+                                                <div style="margin-top:22px;width: 30px;" class="sibInputsMargin">Renewal Period </div>
+                                                <lightning-input style="margin-left: 60px; margin-top: 25px;" data-id="automatedRenewalPeriod" variant="label-hidden" value={automatedRenewalPeriod} onchange={handleRenewalPeriodChange}>
+                                                </lightning-input>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="slds-align_absolute-center slds-p-top_medium">
+                            <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+                            <button class="slds-button slds-button_neutral">Cancel</button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-tab>
+            <lightning-tab label="Inventory Management">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Inventory Config</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div style="margin-top: 20px;" class="sibInputsMargin">Type</div>
+
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control" style="margin-left: 70px;">
+                                    <template for:each={inventoryOptions} for:item="option">
+                                        <label key={option.value} class="slds-radio">
+                                            <input type="radio" id ={option.value} data-id ={option.label} data-config ="inventoryService" name="inventoryService" value={option.value} onchange={handleInventoryConfigTypeChange} checked={option.checked} />
+                                            <span class="slds-radio_faux" style="margin-right: 0.5rem !important;"></span>
+                                            <span class="slds-form-element__label">{option.label}</span>
+                                        </label>
+                                    </template>
+                                    <template if:true={isCustomForInventoryEnabled}>
+                                        <div class="slds-form-element__control">
+                                            <lightning-input type="text" label={customTextBoxLabel} data-config ="inventoryService" value={customServiceValueForInventory} class="configInput" onchange={handleCustomInventoryConfigTypeChange}></lightning-input>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="slds-align_absolute-center slds-p-top_medium">
+                            <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+                            <button class="slds-button slds-button_neutral">Cancel</button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-tab>
+            <lightning-tab label="Billing and Invoicing ">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:50px" class="sibConfigHeader">Billing Config</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex">
+                            <div class="sibInputsMargin">Type</div>
+                            <lightning-radio-group style="margin-left: 160px;" variant="label-hidden" name="radioGroup"
+                                options={billingOptions} value={billingValue} type="radio" onchange={handleBillingConfigTypeChange}></lightning-radio-group>
+                        </div>
+                        <div style="display:flex;margin-top: 50px;">
+                            <div class="sibInputsMargin">Revenue Recognition</div>
+                            <lightning-checkbox-group style="margin-left: 50px;" variant="label-hidden"
+                                name="radioGroup" options={revRecOptions} value={revRecValue}
+                                type="radio" onchange={handleRevenueRecognitionChange}></lightning-checkbox-group>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="slds-align_absolute-center slds-p-top_medium">
+                            <button class="slds-button slds-button_brand" onclick={saveBillingAndInvoicingConfig}>Save</button>
+                            <button class="slds-button slds-button_neutral">Cancel</button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-tab>
+
+            <lightning-tab label="Metrics">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:50px" class="sibConfigHeader">Metric Measure</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex;margin-top:20px">
+                            <div style="margin-top:25px" class="sibInputsMargin">Type</div>
+                            <lightning-radio-group style="margin-left: 50px;" variant="label-hidden" name="radioGroup"
+                                options={metricOptions} value={metricValue} type="radio"></lightning-radio-group>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="slds-align_absolute-center slds-p-top_medium">
+                            <button class="slds-button slds-button_brand">Save</button>
+                            <button class="slds-button slds-button_neutral">Cancel</button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-tab>
+
+            <lightning-tab label="Integration">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Payment</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex;margin-top:20px">
+                            <div style="margin-top: 10px;" class="sibInputsMargin">Please Select</div>
+                            <lightning-radio-group style="margin-left: 50px;" variant="label-hidden" name="radioGroup"
+                                options={paymentOptions} value={paymentValue} type="radio"></lightning-radio-group>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Tax</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex;margin-top:20px">
+                            <div style="margin-top: 10px;" class="sibInputsMargin">Please Select</div>
+                            <lightning-radio-group style="margin-left: 50px;" variant="label-hidden" name="radioGroup"
+                                options={taxOptions} value={taxValue} type="radio"></lightning-radio-group>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="sibDivider"></div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="3" class="slds-p-around_small">
+                        <div style="margin-top:20px" class="sibConfigHeader">Shipping</div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="9" class="slds-p-around_small">
+                        <div style="display:flex;margin-top:20px">
+                            <div style="margin-top: 20px;" class="sibInputsMargin">Please Select</div>
+                            <lightning-checkbox-group style="margin-left: 50px;" variant="label-hidden" name="checkboxGroup"
+                                options={shippingOptions} value={shippingValue} type="checkbox"></lightning-checkbox-group>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="12"
+                        large-device-size="12" class="slds-p-around_small">
+                        <div class="slds-align_absolute-center slds-p-top_medium">
+                            <button class="slds-button slds-button_brand">Save</button>
+                            <button class="slds-button slds-button_neutral">Cancel</button>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-tab>
+
+        </lightning-tabset>
+    </div>
+</template>

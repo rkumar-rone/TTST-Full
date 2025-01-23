@@ -1,0 +1,7 @@
+.promotionsSection {
+    padding-top: var(--lwc-spacingXSmall,0.5rem);
+    overflow: visible;
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}

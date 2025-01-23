@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-19-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div lwc:if={showDetails} class="section-padding">
+        <div class="info-heading">Prerequisites & Cancellations</div>
+    
+        <div class="">
+            <lightning-formatted-rich-text 
+                value={prerequisite}
+            ></lightning-formatted-rich-text>
+        </div>
+
+        <hr style="margin: 15px 0px;" />
+
+        <div class="">
+            <lightning-formatted-rich-text 
+                value={cancelPolicy}
+            ></lightning-formatted-rich-text>
+        </div>
+    </div>
+    
+</template>

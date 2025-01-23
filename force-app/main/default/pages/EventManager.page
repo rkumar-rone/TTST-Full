@@ -1,0 +1,536 @@
+<apex:page sidebar="false" standardStylesheets="true" controller="EventMgrController">
+    <!-- Jquery and Bootstrap Scripts/CSS -->
+    <apex:includeScript value="{!$Resource.Jquery11}" />
+    <apex:includeScript value="{!URLFOR($Resource.Bootstrap, 'bootstrap-3.3.4-dist/js/bootstrap.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Jquery_Datatable, 'media/js/jquery.dataTables.js')}"/>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.Bootstrap,'bootstrap-3.3.4-dist/css/bootstrap.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Bootstrap,'bootstrap-3.3.4-dist/css/bootstrap-theme.min.css')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Jquery_Datatable, 'media/css/jquery.dataTables.css')}"/>
+    <style>
+        #contentLoading{
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            position: fixed;
+            display: block;
+            opacity: 0.7;
+            background-color: #fff;
+            z-index: 10001;
+            text-align: center;
+        }
+        
+        #contentLoading1{
+            position: absolute;
+            top:300px;
+            z-index: 10000;
+        }
+    </style>
+    <style>
+        .lid
+        {
+            background-color:#d3d3d3;
+        }
+        
+        .rid
+        {
+            background-color:#33CC33;
+        }
+        .pbs{
+            background : red;
+        }
+        .apexp .bPageBlock .detailList{padding-bottom:25px;}
+        
+        input[type="checkbox"]{width:18px; height:18px;}
+        
+        input[type="submit"]{
+            background:#fff !important;
+        }
+        
+        body .bPageBlock .pbBody .labelCol, body .print .topics-label {
+        color: #18181A;
+        }
+        
+        
+        body .bEditBlock .pbBody .pbSubheader{
+                padding: 10px;
+                margin-bottom: 40px;
+        }
+        
+        body .bPageBlock .pbBody tr th{
+            padding:7px 5px; 
+            font-size:14px;
+            font-weight:normal;
+                 vertical-align:middle;
+        }
+        
+        
+        body .bPageBlock .pbBody tr td{
+            padding:7px 5px; 
+            font-size:12px;
+             font-weight:normal;
+             vertical-align:middle;
+             
+        }
+        
+        
+        
+        
+        .bEditBlock input{
+                        background: #ccc;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+                        }
+                        
+                        
+                        
+        
+        body .bPageBlock .pbBody tr th+td > input{
+                        background: #ccc;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+         }
+         
+        
+        body .bPageBlock .pbBody tr th+td > select{
+                        background: #ccc;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+                        width:177px;
+         }
+         
+        
+        body .bPageBlock .pbBody tr th+td > .dateInput.dateOnlyInput input {
+        
+        
+                        background: #ccc;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+                        width:168px;   
+        }
+        body .bPageBlock .pbBody tr th+td > .dateInput input {
+                           background: #ccc;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+        
+        }
+        
+        
+        
+        
+        body .bPageBlock .pbBody  tr td:last-child input{
+                        background: #C4F5C4;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+        }
+        body .bPageBlock .pbBody tr th+td:last-child select{
+                        background: #C4F5C4;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+                         width:177px;
+         }
+         
+        
+        body .bPageBlock .pbBody tr th+td+th+td > .dateInput.dateOnlyInput  input{
+                        background: #C4F5C4;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+        }
+        
+        body .bPageBlock .pbBody tr th+td+th+td > .dateInput input {
+                            background: #C4F5C4;
+                        border: 1px solid #ccc;
+                        padding: 4px;
+        
+        }
+    </style>
+    <script>
+        $(document).ready(function(){         
+            $('#EventTable').DataTable({
+                "data": {!JsonData},
+                "columns": [
+                   { "data": "Event Schedule Name" },
+                   { "data": "Type" },
+                   { "data": "Start Date" },
+                   { "data": "End Date" },
+                   { "data": "Status" },
+                   { "data": "Next Due Date" },
+                   { "data": "Overdue Items" }
+                ],
+                "order": [[ 2, "asc" ]]
+            });
+        });
+        
+        /** Function for loading image **/
+        function loading(val) {
+            if (val) {
+                document.getElementById('contentLoading').style.display = 'inline-block';
+            }
+            else {
+                document.getElementById('contentLoading').style.display = 'none';
+            }
+        }
+        /** Function for showing details of an event-Event Schedule **/
+        var old = '';
+        function ShowEvent(ESId){
+            console.log(' --Event Schedule ID-- '+ESId);
+            
+            if(ESId == '' || ESId == undefined || ESId == 'null'){
+                var b=document.getElementById('Es').style.display;
+                if(b=="block" || b==""){
+                    showSegment();
+                }
+                alert('There is no event schedule associated with this event');
+            }
+            else{
+                loading(true);
+                ShowEventSchedule(ESId);
+            }
+        }
+        
+        function ShowEventSchedule(ESId){
+            var b=document.getElementById('Es').style.display;
+            console.log(old+' --------- '+ESId);
+            if(b=="block" || b==""){
+                if(old==ESId){
+                    showSegment();
+                    loading(false);
+                }
+                else{
+                    showSegment();
+                    old=ESId;
+                    prepareEvent(ESId);
+                }
+            }
+            else{
+                old=ESId;
+                prepareEvent(ESId);
+            }
+        }
+        
+        function showSegment(){
+          $( "#Es" ).animate({
+            //opacity: 0.25,
+            //left: "+=50",
+            height: "toggle"
+            }, 1000, function() {
+            // Animation complete.
+          }); 
+        }
+        
+        function ProcessComplete(){
+            loading(false);
+        }
+        
+        function gotoevent(Id){
+            window.open('/'+Id,'_blank');
+        }
+        
+        function gotoeventsch(Id){
+            window.open('/'+Id,'_blank');
+        }
+    </script>
+    <apex:form >
+        <apex:actionFunction name="prepareEvent" action="{!getEventDet}" reRender="segOP,msgs" oncomplete="showSegment();ProcessComplete();">
+            <apex:param name="parm1" value="" assignTo="{!eventScheduleId}"/>
+        </apex:actionFunction>
+        
+        <!-- Action Status -->
+        <apex:actionStatus id="loading" onstart="loading(true)" onstop="loading(false)" />
+        <div id="contentLoading" style="display:none; ">
+            <img id="contentLoading1" src="/img/loading32.gif" alt="Loading graphic" />
+        </div>
+        
+        <!-- Page Messages -->
+        <apex:pageMessages id="msgs"></apex:pageMessages>
+        
+        <!-- Event List for Current User -->
+        <table id="EventTable" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Event Schedule Name</th>
+                    <th>Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Overall Status</th>
+                    <th>Next Due Date</th>
+                    <th>Overdue Items</th>
+                </tr>
+            </thead>
+        </table>
+        
+    <!-- Event Schedule Detail Section --->
+        <div id="Es" style="display:none;height:auto;" >
+            <apex:outputPanel id="segOP">
+                <br/>
+                <h4><span class="label label-primary">{!workingEventSchedule.name}</span></h4>
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <apex:pageBlock mode="edit" title="Event Schedule Edit">
+                            <apex:pageBlockButtons >
+                                <apex:commandButton value="Save" action="{!save}" status="loading" reRender="segOP,Eventlst,msgs" oncomplete="return false;"/>
+                                <apex:commandButton value="Cancel" action="{!cancel}" status="loading" reRender="Eventlst,segOP,msgs" oncomplete="return false;"/>
+                                <apex:commandButton value="Go To Event Schedule" oncomplete="gotoeventsch('{!workingEventSchedule.Id}');return false;" status="loading" reRender="Eventlst,msgs"/>
+                                <apex:commandButton value="Go To Event" oncomplete="gotoevent('{!CampObj.Id}');return false;" status="loading"/>
+                            </apex:pageBlockButtons>
+                            
+                            <apex:pageBlockSection title="Event Summary" columns="2">
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Event Name"></apex:outputLabel>
+                                    <apex:inputText value="{!CampObj.Name}" styleClass="dis"/>
+                                </apex:pageBlockSectionItem>
+                                
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Start Date"></apex:outputLabel>
+                                    <apex:inputField value="{!workingEventSchedule.Start_Date__c}" styleClass="dis" style="background-color: #ccc;"/>
+                                </apex:pageBlockSectionItem>
+                                
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Event Schedule Name"></apex:outputLabel>
+                                    <apex:inputText value="{!workingEventSchedule.Name}" styleClass="dis"/>
+                                </apex:pageBlockSectionItem>
+                                                                
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="End Date"></apex:outputLabel>
+                                    <apex:inputField value="{!workingEventSchedule.End_Date__c}" styleClass="dis" style="background-color: #ccc;"/>
+                                </apex:pageBlockSectionItem>
+                                
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Stage"></apex:outputLabel>
+                                    <apex:inputText value="{!workingEventSchedule.Stage__c}" styleClass="dis"/>
+                                </apex:pageBlockSectionItem>
+                                
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Instructor"></apex:outputLabel>
+                                    <apex:inputField value="{!workingEventSchedule.Owner.Name}" styleClass="dis"/>
+                                </apex:pageBlockSectionItem>
+                                
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputLabel value="Relationship Manager"></apex:outputLabel>
+                                    <apex:inputField value="{!workingEventSchedule.Event_Relationship_Manager__r.Name}" styleClass="dis"/>
+                                </apex:pageBlockSectionItem>
+                                
+                            </apex:pageBlockSection>
+                            
+                        <!-- Where Event Schedule Recordtype != Academic Event - Client Registration & Recordtype != Academic Event - Salesforce Registration & Recordtype != Corporate Event -->
+                            <apex:outputPanel id="isDefault" rendered="{!IsDefaultEvent}">  
+                                <apex:variable var="count" value="{!1}"/>   
+                                <apex:pageBlockSection title="Relative Dates (Other Dates Based on These)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.RelativeDates}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                     <script>
+                                         $(".dis").prop('disabled', true);
+                                     </script>
+                                </apex:pageBlockSection> 
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Training Initiation (Training Confirmation Date + x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.TrainingInitiation}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Logistics & Setup (Earliest Date/Time - x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Logistics_Setup}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Delivery Prep (Start Date (of Training) - x Days)" columns="2" >
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.DeliveryPrep}" var="fieldValue" >
+                                        <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Training Wrap-up (End Date (of Training) + x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Training}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                            
+                        <!-- Where Event Schedule Recordtype = Academic Event - Client Registration -->
+                            <apex:outputPanel id="IsAcademicClientEvent" rendered="{!IsAcademicClientEvent}"> 
+                                <apex:variable var="count" value="{!1}"/>    
+                                <apex:pageBlockSection title="Relative Dates (Other Dates Based on These)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_RelativeDates}" var="fieldValue">
+                                         <apex:inputField value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                     <script>
+                                         $(".dis").prop('disabled', true);
+                                     </script>
+                                </apex:pageBlockSection> 
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Training Initiation (Training Confirmation Date + x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_TrainingInitiation}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                                <!--
+                                <apex:pageBlockSection title="Logistics & Setup (Earliest Date/Time - x Days)" columns="2">
+                                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_Logistics_Setup}" var="fieldValue">
+                                     <apex:Inputfield value="{!workingEventSchedule[fieldValue]}"/>
+                                 </apex:repeat>
+                                </apex:pageBlockSection>
+                                -->
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Delivery Prep (Start Date (of Training) - x Days)" columns="2" >
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_DeliveryPrep}" var="fieldValue" >
+                                        <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Training Wrap-up (End Date (of Training) + x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_TrainingWrapup}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel> 
+                            
+                        <!-- Where Event Schedule Recordtype = Academic Event - Salesforce Registration -->
+                            <apex:outputPanel id="IsAcademicSalesforceEvent" rendered="{!IsAcademicSalesforceEvent}">     
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Relative Dates (Other Dates Based on These)" columns="2"> 
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_RelativeDates}" var="fieldValue">
+                                         <apex:inputField value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                     </apex:repeat>
+                                     <script>
+                                         $(".dis").prop('disabled', true);
+                                     </script>
+                                </apex:pageBlockSection> 
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Training Initiation (Training Confirmation Date + x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_TrainingInitiation}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Logistics & Setup (Earliest Date/Time - x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_Logistics_Setup}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Delivery Prep (Start Date (of Training) - x Days)" columns="2" >
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_DeliveryPrep}" var="fieldValue" >
+                                        <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                            <apex:variable var="count" value="{!count+1}"/>
+                                        </apex:inputField>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Training Wrap-up (End Date (of Training) + x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_TrainingWrapup}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                             
+                        <!-- Where Event Schedule Recordtype = Corporate Event -->
+                            <apex:outputPanel id="isCorporate" rendered="{!IsCorporateEvent}">  
+                                <apex:variable var="count" value="{!1}"/>   
+                                <apex:pageBlockSection title="Relative Dates (Other Dates Based on These)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_RelativeDates}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                    </apex:repeat>
+                                    <script>
+                                        $(".dis").prop('disabled', true);
+                                    </script>
+                                </apex:pageBlockSection> 
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Training Initiation (Training Confirmation Date + x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_TrainingInitiation}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Logistics & Setup (Earliest Date/Time - x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_Logistics_Setup}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                         
+                                         <apex:pageBlockSectionItem rendered="{!fieldValue== 'Book_Delivered_to_Student_E_book_Live__c'}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:pageBlockSectionItem>
+                                         <apex:pageBlockSectionItem rendered="{!fieldValue== 'Case_Study_Pre_reading_Opened_Delivered__c'}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:pageBlockSectionItem>
+                                         <apex:pageBlockSectionItem rendered="{!fieldValue== 'Is_Self_study__c'}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:pageBlockSectionItem>
+                                         <apex:pageBlockSectionItem rendered="{!fieldValue== 'Using_Resource_Center_Schedule__c'}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:pageBlockSectionItem>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Delivery Prep (Start Date (of Training) - x Days)" columns="2" >
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_DeliveryPrep}" var="fieldValue" >
+                                        <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                                
+                                <apex:variable var="count" value="{!1}"/>
+                                <apex:pageBlockSection title="Training Wrap-up (End Date (of Training) + x Days)" columns="2">
+                                    <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_TrainingWrapup}" var="fieldValue">
+                                         <apex:Inputfield value="{!workingEventSchedule[fieldValue]}" styleClass="{!if(MOD(count,2)>0,'dis','en')}">
+                                             <apex:variable var="count" value="{!count+1}"/>
+                                         </apex:inputField>
+                                    </apex:repeat>
+                                </apex:pageBlockSection>
+                            </apex:outputPanel>
+                        </apex:pageBlock>
+                    </div>
+                </div>
+            </apex:outputPanel>
+        </div> 
+    </apex:form>
+</apex:page>

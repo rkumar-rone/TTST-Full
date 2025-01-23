@@ -1,0 +1,200 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 11-26-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div lwc:if={showDetails} class="detail-description">
+        <div lwc:if={productSku}>
+            <span class="productSku">Class Code: {productSku}</span>
+        </div>
+    
+        <div lwc:if={productName}>
+            <span class="productName">{productName}</span>
+        </div>
+    
+        <template lwc:if={isNonParent}>
+            <div lwc:if={showUnitPrice}>
+                <span class="price">
+                    <lightning-formatted-number
+                        currency-code={currencyCode}
+                        format-style="currency" 
+                        value={unitPrice}
+                        class=""
+                    ></lightning-formatted-number>
+                </span>
+                <span lwc:if={showListPrice} class="discounted-price">
+                    <lightning-formatted-number
+                        currency-code={currencyCode}
+                        format-style="currency" 
+                        value={listPrice}
+                        class=""
+                    ></lightning-formatted-number>
+                </span>
+            </div> 
+        </template>
+        <template lwc:else>
+            <span class="price">
+                {parentPrice}
+            </span>
+        </template>
+        
+
+        <template lwc:if={isNonParent}>
+            <div lwc:if={productDeliveryFormat}>
+                <div class="location-label">{labels.LocationLabel}:</div>
+                <div lwc:if={isFormatInPerson} class="loc-details">
+                    <p>{trainingLocationName}</p>
+                    <lightning-formatted-address
+                        street={trainingLocationStreet}
+                        city={trainingLocationCity}
+                        province={trainingLocationState}
+                        postal-code={trainingLocationCountry}
+                        country={trainingLocationZip}
+                        disabled
+                    ></lightning-formatted-address>
+                </div>
+                <div lwc:else>
+                    <p>{labels.VirtualEventLabel}</p>
+                </div>
+            </div>
+        </template>
+        
+        <div class="detail-desc">
+            <div>
+                <template lwc:if={isBundleProduct}>
+                    <div class="bottom-spacing" lwc:if={bundleChildNames}>
+                        <lightning-icon 
+                            class="icon-color-green right-spacing"
+                            icon-name="utility:education" 
+                            alternative-text="education" 
+                            size="small" 
+                            title="education">
+                        </lightning-icon>
+    
+                        Courses included:
+                        <ul lwc:if={bundleChildNames} class="custom-list">
+                            <template for:each={bundleChildNames} for:item="childName">
+                                <li key={childName} class="custom-list-item">{childName}</li>
+                            </template>
+                        </ul>
+                    </div>
+    
+                </template>
+                <template lwc:if={isSelfStudyProduct}>
+                    <div lwc:if={topicCovered} class="bottom-spacing">
+                        <div class="flex-sec">
+                            <lightning-icon 
+                                class="icon-color-green right-spacing"
+                                icon-name="utility:education" 
+                                alternative-text="education" 
+                                size="small" 
+                                title="education">
+                            </lightning-icon>
+                            <div class="content remove-mar">
+                                <div class="pc-header">
+                                    <span>
+                                        Topic included:
+                                    </span>
+                                </div>
+                                <lightning-formatted-rich-text 
+                                    value={topicCovered}
+                                ></lightning-formatted-rich-text>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <div lwc:if={hoursOfVideoContent} class="bottom-spacing">
+                    <lightning-icon 
+                        class="icon-color-green right-spacing"
+                        icon-name="utility:clock" 
+                        alternative-text="clock" 
+                        size="small" 
+                        title="Courses Pending">
+                    </lightning-icon>
+
+                    {hoursOfVideoContent} hours of video content
+                </div>
+                    
+    
+                <div lwc:if={hoursToComplete} class="bottom-spacing">
+                    <lightning-icon 
+                        class="icon-color-green right-spacing"
+                        icon-name="utility:hourglass" 
+                        alternative-text="hourglass" 
+                        size="small" 
+                        title="Courses Pending">
+                    </lightning-icon>
+
+                    {hoursToComplete} hours to complete
+                </div>
+    
+                <div lwc:if={totalDays} class="bottom-spacing">
+                    <lightning-icon 
+                        class="icon-color-green right-spacing"
+                        icon-name="utility:date_input" 
+                        alternative-text="date_input" 
+                        size="small" 
+                        title="Courses Pending">
+                    </lightning-icon>
+
+                    {totalDays}
+                </div>
+
+                <template lwc:if={isNonParent}>
+                </template>
+                <template lwc:else>
+                    <div class="bottom-spacing" lwc:if={totalDaysForPc}>
+                        <lightning-icon 
+                            class="icon-color-green right-spacing"
+                            icon-name="utility:date_input" 
+                            alternative-text="date_input" 
+                            size="small" 
+                            title="Courses Pending">
+                        </lightning-icon>
+    
+                    {totalDaysForPc} 
+                    </div>
+                </template>
+                
+                <div class="bottom-spacing">
+                    <lightning-icon 
+                        class="icon-color-green right-spacing"
+                        icon-name="utility:contract_doc" 
+                        alternative-text="contract_doc" 
+                        size="small" 
+                        title="Courses Pending">
+                    </lightning-icon>
+
+                    Certificate upon completion
+                </div>
+
+                <template for:each={productAttachments} for:item="attachment">
+                    <div lwc:if={productAttachments} class="bottom-spacing" key={attachment.id}>
+                        <lightning-icon 
+                            class="icon-color-green right-spacing"
+                            icon-name="utility:file" 
+                            alternative-text={attachment.alternateText} 
+                            size="small" 
+                            title={attachment.title}>
+                        </lightning-icon>
+
+                        <span 
+                            data-name={attachment.title}
+                            data-url={attachment.url}
+                            class="attachments"  
+                            onclick={handleFile}>
+                            {attachment.title}
+                        </span>
+                    </div>
+                </template>   
+               
+            </div>
+        </div>
+
+        <hr class="prod-detail-desc-hr" style="margin: 0;"/>
+    </div>    
+</template>

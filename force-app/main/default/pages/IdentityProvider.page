@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<apex:page contentType="text/xml" showHeader="false" sidebar="false" controller="IdentityProviderController">
+	<apex:outputText value="{!xml}" escape="false" />
+</apex:page>

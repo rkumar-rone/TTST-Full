@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : Jassimran Virdi
+  @group             : 
+  @last modified on  : 10-11-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+    <template if:true={displayCartPage}>
+        <div style="background-color: var(--sib-background-color);">
+                <c-sib-cart-page if:false={questStore}></c-sib-cart-page>
+                
+                <div class="related-products">
+                    <slot name="recommendations"></slot>
+                </div>
+            </div>
+    </template>
+</template>

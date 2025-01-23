@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-01-2024
+  @last modified by  : Gaurang Arora
+-->
+<template lwc:render-mode="light">
+
+    <div class="container">
+        <div class="product-detail-bar">
+            <template lwc:if={menuItem} for:each={menuItem} for:item="item">
+                <div key={item.slotName} class="menu-items menubar-hide" data-id={item.slotName} onclick={scrollToSection}>
+                    <span>{item.label}</span>
+                </div>
+            </template>
+            <div class="white-placeholder">
+                
+            </div>
+        </div>
+    </div>
+
+</template>

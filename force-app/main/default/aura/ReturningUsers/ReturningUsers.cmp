@@ -1,0 +1,47 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="UserAuthenticationController">
+    <aura:attribute name="username" type="String" />
+    <aura:attribute name="password" type="String" />
+    <aura:attribute name="origURL" type="String" default="/mycourses"/>
+    <aura:attribute name="errormessage" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.getParams}"/>
+	<span onkeypress="{!c.checkKey}" class="noback">
+    <lightning:card >
+    	<aura:set attribute="title">
+        	Returning Users
+        </aura:set>
+        <aura:set attribute="footer">
+            <a href="reset-password">Forgot Password?</a><br />
+            <a href="forgot-username">Forgot Username?</a>
+        </aura:set>
+        <lightning:layout class="slds-align_absolute-center">
+          	<lightning:layoutItem padding="around-small" size="8">
+            	<form class="slds-form--stacked">
+                    <label class="slds-form-element__label" >
+      						<abbr class="slds-required" title="required">*</abbr>Username
+                        </label>
+                    <lightning:helptext content="Username should be lowercase." class="htext"/>
+                    <lightning:input aura:id="logform" label="Username"
+                             name="username"
+                             value="{!v.username}"
+                             required="true" class="nolabel lowercase"/> 
+                    <lightning:input type="password" aura:id="logform" label="Password"
+                             name="password"
+                             value="{!v.password}"
+                             required="true"/>
+                    <aura:if isTrue="{!v.errormessage != null}">
+                    	<div class="slds-has-error">
+                            <div class="slds-form-element__help">
+                            	{!v.errormessage}
+                            </div>                       
+                    	</div>
+                    </aura:if>
+                    <lightning:button label="Log In" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.loginClick}"/>
+                </form>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+        </span>
+</aura:component>

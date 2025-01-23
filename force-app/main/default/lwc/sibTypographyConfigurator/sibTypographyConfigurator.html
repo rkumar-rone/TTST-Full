@@ -1,0 +1,161 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 04-23-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template>
+
+    <lightning-layout multiple-rows="true">
+      
+        <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12" class="slds-p-around_small">
+            <lightning-accordion active-section-name="Heading 1">
+
+                <lightning-accordion-section name="Heading 1" label="Heading 1">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Size</div>
+                        <lightning-slider value={container.sibH1FontSize}  style="width: 70%;" variant="label-hidden" required="true"  name="sibH1FontSize" step="1" min="10" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Weight</div>
+                        <lightning-slider value={container.sibH1FontWeight}  style="width: 70%;" variant="label-hidden" required="true"  name="sibH1FontWeight" step="100" min="100" max="700" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Heading 2" label="Heading 2">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Size</div>
+                        <lightning-slider value={container.sibH2FontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibH2FontSize" step="1" min="10" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Weight</div>
+                        <lightning-slider value={container.sibH2FontWeight} style="width: 70%;" variant="label-hidden" required="true"  name="sibH2FontWeight" step="100" min="100" max="700" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Heading 3" label="Heading 3">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Size</div>
+                        <lightning-slider value={container.sibH3FontSize}  style="width: 70%;" variant="label-hidden" required="true"  name="sibH3FontSize" step="1" min="10" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Weight</div>
+                        <lightning-slider value={container.sibH3FontWeight}  style="width: 70%;" variant="label-hidden" required="true"  name="sibH3FontWeight" step="100" min="100" max="700" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Heading 4" label="Heading 4">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Size</div>
+                        <lightning-slider value={container.sibH4FontSize}  style="width: 70%;" variant="label-hidden" required="true"  name="sibH4FontSize" step="1" min="10" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Weight</div>
+                        <lightning-slider value={container.sibH4FontWeight} style="width: 70%;" variant="label-hidden" required="true"  name="sibH4FontWeight" step="100" min="100" max="700" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Heading 5" label="Heading 5">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Size</div>
+                        <lightning-slider value={container.sibH5FontSize}  style="width: 70%;" variant="label-hidden" required="true"  name="sibH5FontSize" step="1" min="10" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Weight</div>
+                        <lightning-slider value={container.sibH5FontWeight}  style="width: 70%;" variant="label-hidden" required="true"  name="sibH5FontWeight" step="100" min="100" max="700" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Heading 6" label="Heading 6">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Size</div>
+                        <lightning-slider value={container.sibH6FontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibH6FontSize" step="1" min="10" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Weight</div>
+                        <lightning-slider value={container.sibH6FontWeight} style="width: 70%;" variant="label-hidden" required="true"  name="sibH6FontWeight" step="100" min="100" max="700" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Primary Button" label="Primary Button">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Size</div>
+                        <lightning-slider value={container.sibPrimaryButtonFontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibPrimaryButtonFontSize" step="1" min="10" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Top-Bottom Padding</div>
+                        <lightning-slider value={container.sibPrimaryButtonTopBottomPadding} style="width: 70%;" variant="label-hidden" required="true"  name="sibPrimaryButtonTopBottomPadding" step="1" min="1" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Left-Right Padding</div>
+                        <lightning-slider value={container.sibPrimaryButtonLeftRightPadding} style="width: 70%;" variant="label-hidden" required="true"  name="sibPrimaryButtonLeftRightPadding" step="1" min="1" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Secondary Button" label="Secondary Button">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Font Size</div>
+                        <lightning-slider value={container.sibSecondaryButtonFontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibSecondaryButtonFontSize" step="1" min="10" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Top-Bottom Padding</div>
+                        <lightning-slider value={container.sibSecondaryButtonTopBottomPadding} style="width: 70%;" variant="label-hidden" required="true"  name="sibSecondaryButtonTopBottomPadding" step="1" min="1" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Left-Right Padding</div>
+                        <lightning-slider value={container.sibSecondaryButtonLeftRightPadding} style="width: 70%;" variant="label-hidden" required="true"  name="sibSecondaryButtonLeftRightPadding" step="1" min="1" max="50" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Product Detail Page" label="Product Detail Page">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Product Name Font Size</div>
+                        <lightning-slider value={container.sibPDPProductNameFontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibPDPProductNameFontSize" step="1" min="10" max="80" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Add To Cart Font Size</div>
+                        <lightning-slider value={container.sibPDPAddToCartFontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibPDPAddToCartFontSize" step="1" min="10" max="80" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Product List Page" label="Product List Page">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Product Name Lines</div>
+                        <lightning-slider value={container.sibPLPProductNameLines} style="width: 70%;" variant="label-hidden" required="true"  name="sibPLPProductNameLines" step="1" min="1" max="20" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Product Description Lines</div>
+                        <lightning-slider value={container.sibPLPProductDescriptionLines} style="width: 70%;" variant="label-hidden" required="true"  name="sibPLPProductDescriptionLines" step="1" min="1" max="20" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Cart" label="Cart">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Cart Title Font Size</div>
+                        <lightning-slider value={container.sibCartTitleFontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibCartTitleFontSize" step="1" min="10" max="80" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Product Name Font Size</div>
+                        <lightning-slider value={container.sibCartProductNameFontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibCartProductNameFontSize" step="1" min="10" max="80" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="Checkout" label="Checkout">
+                    <div class="sibFlexDisplay">
+                        <div class="sibInputsMargin">Checkout Title Font Size</div>
+                        <lightning-slider value={container.sibCheckoutTitleFontSize} style="width: 70%;" variant="label-hidden" required="true"  name="sibCheckoutTitleFontSize" step="1" min="10" max="80" onchange={onChangeConfig}></lightning-slider>
+                    </div>
+                </lightning-accordion-section>
+
+            </lightning-accordion>
+        </lightning-layout-item>
+
+        <div class="slds-align_absolute-center slds-p-top_medium">
+            <button class="slds-button slds-button_brand" onclick={validateSaveConfig}>Save</button>
+            <button class="slds-button slds-button_neutral" onclick={handleCloseCompConfig}>Cancel</button>
+        </div>
+
+    </lightning-layout>
+
+</template>

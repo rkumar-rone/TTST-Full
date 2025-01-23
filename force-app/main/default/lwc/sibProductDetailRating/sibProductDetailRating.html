@@ -1,0 +1,17 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-22-2024
+  @last modified by  : Gaurang Arora
+-->
+<template>
+    <div>
+      <span lwc:if={showReview} class="rating-stars">
+        <template for:each={stars} for:item="star">
+            <span key={star} class={star.class}>
+            </span>
+        </template> {avgRating} ({totalRatings} reviews) 
+      </span>
+    </div>
+</template>

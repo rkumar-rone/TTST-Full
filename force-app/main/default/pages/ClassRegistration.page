@@ -1,0 +1,38 @@
+<apex:page controller="RegisterForClassController">
+
+<h1>Class Registration Page</h1>
+<br/>
+<apex:pageMessages />
+<apex:form forceSSL="true">
+<apex:pageBlock title="Available Sessions">
+
+<apex:pageBlockButtons >
+                <apex:commandButton action="{!Submit}" value="Submit"/>
+            </apex:pageBlockButtons>
+<apex:pageBlockTable value="{!regs}" var="reg">
+
+            
+            
+            <apex:column value="{!reg.sess.name}" headerValue="Name"/>
+            <apex:column value="{!reg.sess.Seats_Available__c}" headerValue="Seats Available"/> 
+            <apex:column value="{!reg.sess.Required__c}" headerValue="Required?"/>
+            
+            <apex:column headerValue="Coupon Code"><apex:inputText value="{!reg.coupon_code}" /></apex:column> 
+            
+            <apex:column value="{!reg.Status}" headerValue="Status"/>
+            
+            <apex:column headerValue="Register?">
+            <apex:inputCheckbox value="{!reg.isChecked}"/>
+            </apex:column>
+            
+            
+            
+
+</apex:pageBlockTable> 
+
+
+
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

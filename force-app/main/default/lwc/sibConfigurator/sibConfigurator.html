@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 04-16-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+    <div class="sibConfigWrapper">
+        <div class="sibWrapperHeader">Configure</div>
+        <div class="sibWrapperDesc">Choose the Experience you love </div>
+        <lightning-tabset active-tab-value="Store Details">
+            <lightning-tab label="Store Details" value="Store Details"> 
+                <c-sib-template-configurator></c-sib-template-configurator>
+            </lightning-tab>
+            <lightning-tab label="Headers"> </lightning-tab>
+            <lightning-tab label="Navigation"> </lightning-tab>
+            <lightning-tab label="Colors" value="Colors">
+                <c-sib-color-configurator></c-sib-color-configurator>
+            </lightning-tab>
+            <lightning-tab label="Typography">
+                <c-sib-typography-configurator></c-sib-typography-configurator>
+             </lightning-tab>
+            <lightning-tab label="Buttons"> </lightning-tab>
+            <lightning-tab label="Footer"> </lightning-tab>
+            <!-- <lightning-tab label="Integration"> 
+                <c-sib-integration-configurator></c-sib-integration-configurator>
+            </lightning-tab> -->
+        </lightning-tabset>
+    </div>
+</template>

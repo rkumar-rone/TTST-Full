@@ -1,0 +1,37 @@
+<!--
+  @description       : 
+  @author            : sthakur@rafter.one
+  @group             : 
+  @last modified on  : 09-26-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+
+    <form class="checkout-multiStep">
+
+        <!-- Group order information: begin-->
+        <template if:true={showGroupOrders}>
+            <c-sib-group-orders cart-details={cartDetails} checkout-config={checkoutConfig} checkout-details={checkoutDetails}></c-sib-group-orders>
+        </template>
+        <!-- Group order information: end-->
+
+        <!-- billing information: begin-->
+        <template if:true={showBilling}>
+            <c-sib-checkout-billing cart-details={cartDetails} checkout-config={checkoutConfig} checkout-details={checkoutDetails}></c-sib-checkout-billing>
+        </template>
+        <!-- billing information: end-->
+
+        <!-- Shipping Information start-->
+        <template if:true={showPayment}>
+          <c-sib-payment-container checkout-config={checkoutConfig} checkout-details={checkoutDetails}></c-sib-payment-container>
+        </template>
+        <!-- Shipping Information end-->
+
+        <!-- Form Buttons start-->
+        <!-- Form Buttons end-->
+    </form>
+</template>

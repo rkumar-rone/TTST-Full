@@ -1,0 +1,138 @@
+<!--
+  @description       : 
+  @author            : sthakur@rafter.one
+  @group             : 
+  @last modified on  : 10-29-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <!-- Spinner start -->
+    <div lwc:if={isShowSpinner} class="add-to-cart-spinner">
+        <c-sib-spinner message-state={spinnerMsg}></c-sib-spinner>
+    </div>
+    <!-- Spinner End -->
+
+    <div class="add-to-cart" lwc:if={isProductDataAvailable}>
+        <div lwc:if={summarySectionExpanded}>
+            <div lwc:if={isPublicCourse}>
+                <div lwc:if={showEventCityOptions} class="padding-bottom">
+                    <div class="detailHeading">{chooseYourCourse}:</div>
+                    <div class="select">
+                        <select id="slct" required="required" name="EventDate" onchange={cityChangeFn}>
+                            <template lwc:if={isNonParentProduct}></template>
+                            <option lwc:else selected>Select an option</option>
+                            <template for:each={eventCityOptions} for:item="item">
+                                <template lwc:if={item.selected}>
+                                    <option style="color:black" key={item.value} value={item.value} selected>{item.label}</option>
+                                </template>
+                                <template lwc:else>
+                                    <template lwc:if={item.disabled}>
+                                        <option style="color:grey" key={item.value} value={item.value} disabled>{item.label}</option>
+                                    </template>
+                                    <template lwc:else>
+                                        <option style="color:black" key={item.value} value={item.value}>{item.label}</option>
+                                    </template>
+                                </template>
+                            </template>
+                        </select>
+                        <span class="chevron"><svg class="chevronsvg" xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-pricing-bottom event-sessions" lwc:if={isNonParentProduct}>
+                <c-sib-product-detail-sessions
+                    lwc:if={showPricesAndEvents}
+                    event-sessions={eventSessions}
+                    session-flag={sessionFlag}
+                    onselectionevent={handleSelectionEvent}
+                ></c-sib-product-detail-sessions>
+
+                <c-sib-product-detail-pricing
+                    lwc:if={showPricesAndEvents}
+                    event-sessions={eventSessions}
+                    selected-sessions-json={selectedSessionsJson}
+                    product-detail={product}
+                ></c-sib-product-detail-pricing>
+            </div>
+
+            <div lwc:if={closeToCapacity} class="closeCapacity">
+                Close To Capacity
+            </div>
+            <div class="line padding-bottom desktopView add-to-cart-viewport" lwc:if={isNonParentProduct}>
+                <div class="quantity">
+                    <div class="product-quantity js-quantity-counter">
+                            <button 
+                                class="button-quantity less js-quantity-counter-prev"
+                                disabled={stopDecreaseQuantity}
+                                onclick={decreaseQty}
+                                >
+                                &#8722;
+                            </button>
+                            <input
+                                type="tel"
+                                id="input-quantity"
+                                class="input-quantity js-quantity-counter-input"
+                                lwc:ref="quantitySelector" 
+                                formatter="decimal"
+                                onchange={qtyChange}
+                                step={incrementStep}
+                                value={qty}
+                                maxlength="2"
+                                required />
+                            <button 
+                                class="button-quantity more js-quantity-counter-next" 
+                                disabled={stopIncreaseQuantity}
+                                onclick={increaseQty}>
+                                &#43;
+                            </button>
+                    </div>
+                </div>
+                <button type="submit" onclick={handleAddToCart} class="btn-disabled" lwc:if={addToCartDisabled} disabled>Add to Cart</button>
+                <button type="submit" onclick={handleAddToCart} class="btn" lwc:else>Add to Cart</button>
+            </div>
+        </div>
+        <div class="handheldView bottom-layer" lwc:if={isNonParentProduct}>
+            <lightning-layout>
+                <lightning-layout-item size="6" class="slds-grid_vertical-align-center">
+                <div lwc:if={showStrikethroughPricing}>
+                    <div lwc:if={unitPrice}>
+                        <span class="price">
+                            <lightning-formatted-number
+                                currency-code={currencyCode}
+                                format-style="currency" 
+                                value={unitPrice}
+                                class=""
+                            ></lightning-formatted-number>
+                        </span>
+                        <span lwc:if={showListPrice} class="discounted-price">
+                            <lightning-formatted-number
+                                currency-code={currencyCode}
+                                format-style="currency" 
+                                value={listPrice}
+                                class=""
+                            ></lightning-formatted-number>
+                        </span>
+                    </div> 
+                </div> 
+                <div lwc:else>
+                    <lightning-formatted-number 
+                    currency-code={currencyCode}
+                    format-style="currency" 
+                    value={selectedSessionPrice} 
+                    class="bottom-price"
+                ></lightning-formatted-number>
+                </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <button type="submit" onclick={handleAddToCart} class="mobile-atc-btn-disabled" lwc:if={addToCartDisabled} disabled>Add to Cart</button>
+                    <button type="submit" onclick={handleAddToCart} class="mobile-atc-btn" lwc:else>Add to Cart</button>
+                </lightning-layout-item>                    
+            </lightning-layout>
+        </div>
+    </div>    
+</template>

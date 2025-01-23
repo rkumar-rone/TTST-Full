@@ -1,0 +1,74 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 08-14-2024
+  @last modified by  : Anand Kumar Reddy
+-->
+<template>
+    <div class="checkout-summary">       
+        <div class="receipt-box">
+            <div class="receipt-box__title">
+                <h3>{labels.orderSummaryText}</h3>
+            </div>
+            <div class="receipt-box-order">
+                <div class="order-box-title">
+                    <h3>{labels.subTotalText}</h3>
+                </div>
+                <div>
+                    <div class="order-line">
+                        <p>{labels.productsText}</p>
+                        <strong>
+                            <lightning-formatted-number
+                                value={productTotalAmt} 
+                                format-style="currency" 
+                                currency-code={currencyCode}
+                                minimum-fraction-digits="2" 
+                                maximum-fraction-digits="2"
+                            ></lightning-formatted-number>
+                        </strong>
+                    </div>
+                    <div lwc:if={showTax} class="order-line">
+                        <p>{labels.taxesText}</p>
+                        <strong>
+                            <lightning-formatted-number
+                                value={taxAmt} 
+                                format-style="currency" 
+                                currency-code={currencyCode}
+                                minimum-fraction-digits="2" 
+                                maximum-fraction-digits="2"
+                            ></lightning-formatted-number>
+                        </strong>
+                    </div>
+                    <div lwc:if={showDiscountAmt} class="order-line loyalty">
+                        <p>{labels.discountsText}</p>
+                        <strong>
+                            <lightning-formatted-number
+                                value={discountAmt} 
+                                format-style="currency" 
+                                currency-code={currencyCode}
+                                minimum-fraction-digits="2" 
+                                maximum-fraction-digits="2"
+                            ></lightning-formatted-number>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+            <div class="receipt-box-order total">
+                <div class="order-line">
+                    <p>{labels.totalText}</p>
+                    <strong>
+                        <lightning-formatted-number
+                            value={totalAmt} 
+                            format-style="currency" 
+                            currency-code={currencyCode}
+                            minimum-fraction-digits="2" 
+                            maximum-fraction-digits="2"
+                        ></lightning-formatted-number>
+                    </strong>
+                </div>
+            </div>
+        </div>
+        <a class="receipt-btn" onclick={handleContinueShopping}>{labels.continueShoppingText}</a>
+    </div>
+</template>

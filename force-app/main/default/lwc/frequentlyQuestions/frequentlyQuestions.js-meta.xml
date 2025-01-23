@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Frequently Questions</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <!-- Configuring the design attributes -->
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="textTitle" type="String" default="Frequently Questions" label="Text Title" description="Text specification for the title of the component." />
+            <property name="textTitleSize" type="String" default="1.5rem" label="Text Title Size" description="Text specification for the title size of the component." />
+            <property name="textSize" type="String" default="1rem" label="Text Size" description="CSS specification for the size of the text (Examples: 30rem, calc(50vh - 100px).)" />
+            <property name="textColor" type="Color" default="#191919" label="Text Color" description="CSS specification for the color of the text (Examples: #3030B1, green, black, etc.)." />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

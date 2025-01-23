@@ -1,0 +1,142 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-09-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+    <template if:true={config}>
+        <article class="slds-card slds-p-around_medium noShadow">
+            <div class="slds-card__body slds-card__body_inner"><!--slds-card__body_scrollable-->
+                <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+                    <lightning-accordion-section class="accordianHeader" name="individualConfigs" label="Individual Configs">
+                        <article class="slds-card">
+                            <div class="slds-card__body slds-card__body_inner">
+                                <div class="slds-form slds-form_compound slds-p-top_large slds-p-bottom_large" >
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Display Layout</label>
+                                        <div class="slds-form-element__control">
+                                            <template for:each={displayLayoutOptions} for:item="option">
+                                                <label key={option.value} class="slds-radio">
+                                                    <input type="radio" id ={displayLayout} data-id ="displayLayout" name="displayLayout" value={option.value} onclick={handleRadioChange} checked={option.checked} />
+                                                    <span class="slds-radio_faux"></span>
+                                                    <span class="slds-form-element__label radioLabel">{option.label}</span>
+                                                </label>
+                                            </template>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Available Payment Methods</label>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-grid slds-wrap">
+                                                <template for:each={availablePaymentOptions} for:item="option">
+                                                    <div key={option.key} class="slds-checkbox">
+                                                        <input type="checkbox" id={option.value} data-id ="availablePaymentMethods" name="availablePaymentMethods" value={option.value} checked={option.checked} onclick={handleCheckboxChange} />
+                                                        <label class="slds-checkbox__label" for={option.value}>
+                                                          <span class="slds-checkbox_faux"></span>
+                                                          <span class="slds-form-element__label checkboxLabel">{option.label}</span>
+                                                        </label>
+                                                      </div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <template if:true={isCreditCardOptionEnabled}>
+                                        <div class="slds-form-element slds-form-element_horizontal">
+                                            <label class="slds-form-element__label configLabel">Credit Card Gateway</label>
+                                            <div class="slds-form-element__control">
+                                                <template for:each={creditCardGatewayOptions} for:item="option">
+                                                    <label key={option.value} class="slds-radio">
+                                                        <input type="radio" id ={creditCardGateway} data-id ="creditCardGateway" name="creditCardGateway" value={option.value} checked={option.checked} onclick={handleRadioChange} />
+                                                        <span class="slds-radio_faux"></span>
+                                                        <span class="slds-form-element__label radioLabel">{option.label}</span>
+                                                    </label>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Allow Promo Code</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="allowPromoCode" name="allowPromoCode" checked={allowPromoCode} aria-describedby="allowPromoCode" onchange={handlePromoChange}/>
+                                                <span id="allowPromoCode" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                <span class="slds-checkbox_on">Enabled</span>
+                                                <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Shipping Provider Needed?</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="isShippingProviderEnabled" name="isShippingProviderEnabled" checked={isShippingProviderEnabled} onchange={handleProviderChange}/>
+                                                <span id={isShippingProviderEnabled} class="slds-checkbox_faux_container">
+                                                    <span class="slds-checkbox_faux"></span>
+                                                    <span class="slds-checkbox_on">Enabled</span>
+                                                    <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <template if:true={isShippingProviderEnabled}>
+                                        <div class="slds-form-element slds-form-element_horizontal">
+                                            <label class="slds-form-element__label configLabel">Shipping Providers</label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-grid slds-wrap">
+                                                    <template for:each={shippingProviderOptions} for:item="option">
+                                                        <div key={option.key} class="slds-checkbox">
+                                                            <input type="checkbox" id ={option.value} data-id ="shippingProvider" name="shippingProvider" value={option.value} checked={option.checked} onclick={handleCheckboxChange}/>
+                                                            <label class="slds-checkbox__label" for={option.value}>
+                                                            <span class="slds-checkbox_faux"></span>
+                                                            <span class="slds-form-element__label checkboxLabel">{option.label}</span>
+                                                            </label>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <div class="slds-form-element slds-form-element_horizontal">
+                                        <label class="slds-form-element__label configLabel">Tax Provider Needed?</label>
+                                        <div class="slds-form-element__control">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <input type="checkbox" data-id="isTaxProviderEnabled" name="isTaxProviderEnabled" checked={isTaxProviderEnabled}  onchange={handleProviderChange}/>
+                                                <span id={isTaxProviderEnabled} class="slds-checkbox_faux_container">
+                                                    <span class="slds-checkbox_faux"></span>
+                                                    <span class="slds-checkbox_on">Enabled</span>
+                                                    <span class="slds-checkbox_off">Disabled</span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <template if:true={isTaxProviderEnabled}>
+                                        <div class="slds-form-element slds-form-element_horizontal">
+                                            <label class="slds-form-element__label configLabel">Tax Provider</label>
+                                            <div class="slds-form-element__control">
+                                                <template for:each={taxProviderOptions} for:item="option">
+                                                    <label key={option.value} class="slds-radio">
+                                                        <input type="radio" id ={option.value} data-id ="taxProvider" name="taxProvider" value={option.value} checked={option.checked} onclick={handleRadioChange} />
+                                                        <span class="slds-radio_faux"></span>
+                                                        <span class="slds-form-element__label radioLabel">{option.label}</span>
+                                                    </label>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </article>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+        </article>
+        <div class="button-container slds-m-top_medium slds-p-horizontal_medium slds-text-align_center">
+            <lightning-button label="Save" variant="brand" class="slds-p-horizontal_small" onclick={handleSave}></lightning-button>
+            <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+        </div>
+    </template> 
+</template>

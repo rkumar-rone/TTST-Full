@@ -1,0 +1,70 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-11-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <template lwc:if={isLoading}>
+        <div class="recommended-cart">
+            <div class="content">
+                <div class="stnecil-related-title">
+                    <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                </div>
+                <div class="product-container">
+                    <div class="left-section-image">
+                        <c-stencil height="180" width="100%" class="stencil"></c-stencil>
+                    </div>
+                    <div class="realted-right-section">
+                        <div class="realted-product-info">
+                            <div class="prod-name">
+                                <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                            </div>
+                            <div class="prod-des">
+                                <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                            </div>
+                        </div>
+                        <div class="realted-product-price-action">
+                            <div class="realted-product-price">
+                                <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                            </div>
+                            <div class="action-btn">
+                                <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </template>
+    <template lwc:else>
+        <div lwc:if={showRelated} class="recommended-cart">
+            <div class="content">
+                <div class="add-border"></div>
+                <div class="related-title">
+                   {labels.frequentlyBoughtTogether}
+                </div>
+                <template for:each={relatedProducts} for:item="eachProduct" for:index="index">
+                    <template for:each={eachProduct.recommendedProducts} for:item="relatedProduct" for:index="relatedIndex">
+                        <c-sib-related-product-cart-card
+                            key={relatedProduct.name} 
+                            product={relatedProduct} 
+                            onaddtocart={addToCartAction}
+                            labels={labels} 
+                            hide-description={hideDescription}
+                            button-label={buttonLabel}
+                            desc-field={descField}
+                            title-field={titleField}
+                            hide-addto-cart={hideAddtoCart}
+                            product-image-attr={productImageAttr}
+                            product-attr-data={productAttrData}>
+                        </c-sib-related-product-cart-card>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>

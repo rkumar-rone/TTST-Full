@@ -1,0 +1,49 @@
+<!--
+    @description       : 
+    @author            : vramachandran@rafter.one   
+    @group             : 
+    @last modified on  : 10-15-2024
+    @last modified by  : vramachandran@rafter.one
+-->
+<template lwc:render-mode="light">
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message lwc:ref="showtoast"></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+
+    <template lwc:if={isStencilLoading}>
+        <div class="slds-grid slds-wrap" >
+            <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                <c-stencil height="50" width="100%"></c-stencil>
+            </div>
+            <div class="slds-col slds-size--1-of-3 slds-p-around_x-small">
+                <c-stencil height="30" width="100%"></c-stencil>
+            </div>
+            <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                <c-stencil height="50" width="100%"></c-stencil>
+            </div>
+        </div>
+    </template>
+    <template lwc:else>
+        <div class="sib-padding-25">
+            <div>
+                <div class="sib-header">{labels.SIB_LBL_PAYMENTINFORMATION}</div>
+            </div>
+            <div class="sib-flex-row">
+                <div class="sib-card-info-box">
+                    <div class="sib-full-width sib-flex-row">
+                        <div class="">{labels.SIB_LBL_CARD}:</div>
+                        <div>{labels.SIB_LBL_MASKEDCARDDIGITS} {cardLastFour}</div>
+                    </div>
+                    <div class="sib-width-60 sib-flex-row">
+                        <div >{labels.SIB_LBL_TYPE}:</div>
+                        <div >{cardType}</div>
+                    </div>
+                </div>
+                <div class="sib-remove-btn-box">
+                    <div ><a onclick={revertAuthorization}>{labels.SIB_LBL_REMOVE}</a></div>
+                </div>
+                
+            </div>
+        </div>
+    </template>
+</template>

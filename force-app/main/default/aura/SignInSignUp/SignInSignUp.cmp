@@ -1,0 +1,21 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="login" type="Boolean" default="true" />
+    <div>
+        <div class="form">
+            <!-- Hide TTS Portal from top of log in box <div style="font-size:24px;width;100%;text-align:center;padding-bottom:20px;font-family:BankGothic;">TTS &nbsp;Portal</div> -->
+        	<ul class="tab-group">
+        		<li aura:id="logintab" class="tab active"><a onclick="{!c.login}">Log In</a></li>
+        		<li aura:id="signuptab" class="tab"><a onclick="{!c.signup}">Sign Up</a></li>
+      		</ul>
+            <aura:if isTrue="{!not(v.login)}">
+                <c:NewUserRegistration />
+            </aura:if>
+            <aura:if isTrue="{!v.login}">
+                <c:ReturningUsers />
+            </aura:if>
+            <div style="width:100%;text-align:center;">
+            <a href="https://ttsacademy.com/account/login">Looking for TTS Academy? Click here to log in</a>
+            </div>
+        </div>
+    </div>
+</aura:component>

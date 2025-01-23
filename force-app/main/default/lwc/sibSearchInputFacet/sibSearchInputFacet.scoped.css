@@ -1,0 +1,18 @@
+.show-more {
+    text-decoration: underline;
+    text-decoration-color: var(--dxp-g-brand);
+}
+
+.show-more-less-btn {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #038008;
+    background: none;
+}
+
+.show-more-less-btn:hover {
+    text-decoration: underline;
+}

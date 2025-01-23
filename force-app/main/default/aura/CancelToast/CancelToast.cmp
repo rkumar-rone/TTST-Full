@@ -1,0 +1,4 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global" controller="CourseManagementController">
+    <ltng:require styles="{!$Resource.ToastMulti}" />
+    <aura:handler event="c:LoggedIn" action="{!c.doInit}"/>
+</aura:component>

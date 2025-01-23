@@ -1,0 +1,24 @@
+.stencil-container{
+    display: flex;
+    background: white;
+    -webkit-box-shadow: 1px 1px 5px 1px rgba(227, 227, 227, 1);
+    -moz-box-shadow: 1px 1px 5px 1px rgba(227, 227, 227, 1);
+    box-shadow: 1px 1px 5px 1px rgba(227, 227, 227, 1);
+    border-radius: 14px;
+    margin: 13px;
+    flex-direction: column;
+    padding: 20px 0;
+}
+.header-stencil{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.name-stencil{
+    width: 40%;
+}
+.footer-stencil{
+    width: 43%;
+    margin: auto;
+    padding-top: 33px;
+}

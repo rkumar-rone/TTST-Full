@@ -1,0 +1,116 @@
+<!--
+  @description       : 
+  @author            : Jassimran Virdi
+  @group             : 
+  @last modified on  : 03-26-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template>
+    <section class="filter-page-product">
+        <div class="container card-space">
+            <div class="page-filter-flex">
+                <div class="Col-3">
+                    <span class="Page-Title">
+                    Account
+                    </span>
+                    <div class="My-List">
+                        <nav>
+                            <div class="Account-Tab" data-id={pageName_Profile} onclick={navigateToItem}>
+                                <!-- <img src="img/dashboard/Profile.svg" class="User-Interface-Star"> -->
+                                <svg data-id={pageName_Profile} xmlns="http://www.w3.org/2000/svg" class="User-Interface-Star" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 16a3 3 0 0 0-3 3 1 1 0 0 0 1 1h10a1 1 0 0 0 1-1 3 3 0 0 0-3-3H9zm-5 3a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5 3 3 0 0 1-3 3H7a3 3 0 0 1-3-3zM12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM7 7a5 5 0 1 1 10 0A5 5 0 0 1 7 7z" fill="#4D4C54"/>
+                                </svg>
+                                <label class="sidebar-label" data-id={pageName_Profile}>My Profile</label>
+                                <!-- <img src="img/dashboard/arrowRight.svg" class="User-Interface-Arrow-Right"> -->
+                                <svg if:true={profileActivated} data-id={pageName_Profile} class="User-Interface-Arrow-Right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="m16.58 11.006-4.29-4.287a.99.99 0 0 1 0-1.42c.39-.399 1.02-.399 1.42 0l6 5.995a1.004 1.004 0 0 1-.11 1.509L13.7 18.7c-.19.18-.45.29-.71.29L13 19c-.27 0-.53-.11-.71-.29a.998.998 0 0 1-.01-1.419v-.01l4.28-4.277H5c-.56 0-1-.45-1-.999 0-.56.44-1 1-1h11.58z" fill="#4D4C54"/>
+                                </svg>
+                            </div>
+                            <div class="Account-Tab" data-id={pageName_OrderHistory} onclick={navigateToItem}>
+                                <!-- <img src="img/dashboard/OrderHistory.svg" class="User-Interface-Star"> -->
+                                <svg data-id={pageName_OrderHistory} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4 3h16v15.492c0 2.056-2.345 3.233-3.994 2.005l-.704-.525a.5.5 0 0 0-.599 0l-.303.228a4 4 0 0 1-4.8 0l-.303-.227a.5.5 0 0 0-.599-.001l-.704.525C6.344 21.725 4 20.548 4 18.492V3zm2 2v13.492a.5.5 0 0 0 .799.4l.704-.524a2.5 2.5 0 0 1 2.994.005l.303.227a2 2 0 0 0 2.4 0l.303-.227a2.5 2.5 0 0 1 2.994-.005l.704.525a.5.5 0 0 0 .799-.401V5H6z" fill="#4D4C54"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 8a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2H9zm6 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7 5a1 1 0 0 1 1-1h2a1 1 0 1 1 0 2H9a1 1 0 0 1-1-1zm7-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" fill="#4D4C54"/>
+                                    <path d="M3 4a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z" fill="#4D4C54"/>
+                                </svg>
+                                <label class="sidebar-label" data-id={pageName_OrderHistory}>Order History</label>
+                                <svg if:true={orderHistoryActivated} data-id={pageName_OrderHistory} class="User-Interface-Arrow-Right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="m16.58 11.006-4.29-4.287a.99.99 0 0 1 0-1.42c.39-.399 1.02-.399 1.42 0l6 5.995a1.004 1.004 0 0 1-.11 1.509L13.7 18.7c-.19.18-.45.29-.71.29L13 19c-.27 0-.53-.11-.71-.29a.998.998 0 0 1-.01-1.419v-.01l4.28-4.277H5c-.56 0-1-.45-1-.999 0-.56.44-1 1-1h11.58z" fill="#4D4C54"/>
+                                </svg>
+                            </div>
+                            <div class="Account-Tab" data-id={pageName_Wishlist} onclick={navigateToItem}>
+                                <svg data-id={pageName_Wishlist} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M10.609 2.938c.505-1.252 2.277-1.252 2.782 0l1.937 4.802a.5.5 0 0 0 .423.311l4.866.397c1.32.108 1.863 1.747.869 2.622l-3.693 3.247a.5.5 0 0 0-.158.483l1.181 5.367c.295 1.341-1.217 2.34-2.335 1.544l-4.191-2.984a.5.5 0 0 0-.58 0l-4.192 2.985c-1.118.796-2.63-.204-2.335-1.545L6.364 14.8a.5.5 0 0 0-.158-.483L2.513 11.07c-.994-.875-.45-2.514.87-2.622l4.865-.397a.5.5 0 0 0 .423-.311l1.938-4.802z" fill="#4D4C54"/>
+                                </svg>
+                                <label class="sidebar-label" data-id={pageName_Wishlist}>My List</label>
+                                <svg if:true={wishlistActivated} data-id={pageName_Wishlist} class="User-Interface-Arrow-Right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="m16.58 11.006-4.29-4.287a.99.99 0 0 1 0-1.42c.39-.399 1.02-.399 1.42 0l6 5.995a1.004 1.004 0 0 1-.11 1.509L13.7 18.7c-.19.18-.45.29-.71.29L13 19c-.27 0-.53-.11-.71-.29a.998.998 0 0 1-.01-1.419v-.01l4.28-4.277H5c-.56 0-1-.45-1-.999 0-.56.44-1 1-1h11.58z" fill="#4D4C54"/>
+                                </svg>
+                            </div>
+                            <div class="Account-Tab" data-id={pageName_Addresses} onclick={navigateToItem}>
+                                <svg data-id={pageName_Addresses} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4a7 7 0 0 0-7 7c0 2.206 1.336 4.268 3.205 5.888l3.441 2.982a.54.54 0 0 0 .708 0l3.441-2.982C17.664 15.268 19 13.206 19 11a7 7 0 0 0-7-7zm-9 7a9 9 0 0 1 18 0c0 3.026-1.81 5.592-3.895 7.399l-3.441 2.983a2.54 2.54 0 0 1-3.328 0l-3.441-2.983C4.81 16.592 3 14.026 3 11z" fill="#4D4C54"/>
+                                    <path d="M14 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" fill="#4D4C54"/>
+                                </svg>
+                                <label class="sidebar-label" data-id={pageName_Addresses}>Addresses</label>
+                                <svg if:true={addressesActivated} data-id={pageName_Addresses} class="User-Interface-Arrow-Right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="m16.58 11.006-4.29-4.287a.99.99 0 0 1 0-1.42c.39-.399 1.02-.399 1.42 0l6 5.995a1.004 1.004 0 0 1-.11 1.509L13.7 18.7c-.19.18-.45.29-.71.29L13 19c-.27 0-.53-.11-.71-.29a.998.998 0 0 1-.01-1.419v-.01l4.28-4.277H5c-.56 0-1-.45-1-.999 0-.56.44-1 1-1h11.58z" fill="#4D4C54"/>
+                                </svg>
+                            </div>
+                            <div class="Account-Tab" data-id={pageName_subscriptions} onclick={navigateToItem}>
+                                <!-- <img src="img/dashboard/subscription.svg" class="User-Interface-Star"> -->
+                                <svg data-id={pageName_subscriptions} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.01 3.04a9 9 0 1 1-6.959 14.742V20a1 1 0 0 1-.883.994L4.05 21a1 1 0 0 1-.993-.883L3.05 20v-5a1 1 0 0 1 .883-.993L4.051 14h5a1 1 0 0 1 .117 1.994L9.05 16l-2.84.001a7.002 7.002 0 0 0 12.718-4.83 7 7 0 0 0-13.887-.04 1 1 0 0 1-1.983-.26 9 9 0 0 1 8.951-7.83z" fill="#2D2B33"/>
+                                </svg>
+                                <label class="sidebar-label" data-id={pageName_subscriptions}>Subscriptions</label>
+                                <svg if:true={subscriptionsActivated} data-id={pageName_subscriptions} class="User-Interface-Arrow-Right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="m16.58 11.006-4.29-4.287a.99.99 0 0 1 0-1.42c.39-.399 1.02-.399 1.42 0l6 5.995a1.004 1.004 0 0 1-.11 1.509L13.7 18.7c-.19.18-.45.29-.71.29L13 19c-.27 0-.53-.11-.71-.29a.998.998 0 0 1-.01-1.419v-.01l4.28-4.277H5c-.56 0-1-.45-1-.999 0-.56.44-1 1-1h11.58z" fill="#4D4C54"/>
+                                </svg>
+                            </div>
+                            <div class="Account-Tab" data-id={pageName_Carts} onclick={navigateToItem}>
+                                <svg data-id={pageName_Carts} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 19a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm8 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3 4a1 1 0 0 1 1-1h.36a3 3 0 0 1 2.942 2.412L7.42 6h11.077a2.5 2.5 0 0 1 2.405 3.18l-1.028 3.636A3 3 0 0 1 16.987 15H9.64a3 3 0 0 1-2.942-2.412L5.34 5.804A1 1 0 0 0 4.361 5H4a1 1 0 0 1-1-1zm4.82 4 .839 4.196a1 1 0 0 0 .98.804h7.348a1 1 0 0 0 .963-.728l1.028-3.636A.5.5 0 0 0 18.497 8H7.82z" fill="#4D4C54"/>
+                                </svg>
+                                <label class="sidebar-label" data-id={pageName_Carts}>My Carts</label>
+                                <svg if:true={cartsActivated} data-id={pageName_Carts} class="User-Interface-Arrow-Right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="m16.58 11.006-4.29-4.287a.99.99 0 0 1 0-1.42c.39-.399 1.02-.399 1.42 0l6 5.995a1.004 1.004 0 0 1-.11 1.509L13.7 18.7c-.19.18-.45.29-.71.29L13 19c-.27 0-.53-.11-.71-.29a.998.998 0 0 1-.01-1.419v-.01l4.28-4.277H5c-.56 0-1-.45-1-.999 0-.56.44-1 1-1h11.58z" fill="#4D4C54"/>
+                                </svg>
+                            </div><div class="Account-Tab" data-id={pageName_Quotes} onclick={navigateToItem}>
+                                <svg data-id={pageName_Quotes} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.2 4h-.039c-.527 0-.981 0-1.356.03-.395.033-.789.104-1.167.297a3 3 0 0 0-1.311 1.311c-.193.378-.264.772-.296 1.167C2 7.18 2 7.635 2 8.161V9a1 1 0 1 0 2 0v-.8c0-.577 0-.949.024-1.232.022-.272.06-.373.085-.422a1 1 0 0 1 .437-.437c.05-.025.15-.063.422-.085C5.25 6 5.623 6 6.2 6H7a1 1 0 1 0 0-2h-.8zm11.6 16h.038c.528 0 .982 0 1.357-.03.395-.033.789-.104 1.167-.297a3 3 0 0 0 1.311-1.311c.193-.378.264-.772.296-1.167.031-.375.031-.83.031-1.356V15a1 1 0 1 0-2 0v.8c0 .577 0 .949-.024 1.232-.022.272-.06.372-.085.422a1 1 0 0 1-.437.437c-.05.025-.15.063-.422.085C18.75 18 18.377 18 17.8 18H17a1 1 0 1 0 0 2h.8zM2 15.838V15a1 1 0 1 1 2 0v.8c0 .577 0 .949.024 1.232.022.272.06.372.085.422a1 1 0 0 0 .437.437c.05.025.15.063.422.085C5.25 18 5.623 18 6.2 18H7a1 1 0 1 1 0 2H6.161c-.527 0-.981 0-1.356-.03-.395-.033-.789-.104-1.167-.297a3 3 0 0 1-1.311-1.311c-.193-.378-.264-.772-.296-1.167A17.9 17.9 0 0 1 2 15.839zM22 8.2v-.039c0-.527 0-.981-.03-1.356-.033-.395-.104-.789-.297-1.167a3 3 0 0 0-1.311-1.311c-.378-.193-.772-.264-1.167-.296A17.9 17.9 0 0 0 17.839 4H17a1 1 0 1 0 0 2h.8c.577 0 .949 0 1.232.024.272.022.372.06.422.085a1 1 0 0 1 .437.437c.025.05.063.15.085.422C20 7.25 20 7.623 20 8.2V9a1 1 0 1 0 2 0v-.8zM7 9a1 1 0 0 1 2 0v6a1 1 0 1 1-2 0V9zm4 0a1 1 0 1 1 2 0v4a1 1 0 1 1-2 0V9zm5-1a1 1 0 0 0-1 1v6a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1z" fill="#4D4C54"/>
+                                </svg>
+                                <label class="sidebar-label" data-id={pageName_Quotes}>My Quotes</label>
+                                <svg if:true={quotesActivated} data-id={pageName_Quotes} class="User-Interface-Arrow-Right" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="m16.58 11.006-4.29-4.287a.99.99 0 0 1 0-1.42c.39-.399 1.02-.399 1.42 0l6 5.995a1.004 1.004 0 0 1-.11 1.509L13.7 18.7c-.19.18-.45.29-.71.29L13 19c-.27 0-.53-.11-.71-.29a.998.998 0 0 1-.01-1.419v-.01l4.28-4.277H5c-.56 0-1-.45-1-.999 0-.56.44-1 1-1h11.58z" fill="#4D4C54"/>
+                                </svg>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="mobile-view">
+                        <div class="Form-Input-Sidebar-md">
+                            <div class="form-input">
+                                <div class="sidebar-select-md" >
+                                    <select id="slct" required="required" name="" onchange={goToMobileNav}>
+                                        <option
+                                            value=""
+                                            disabled="disabled"
+                                            selected="selected"
+                                        >{activeLabel}            
+                                        </option>
+                                        <option value={pageName_Profile} data-id={pageName_Profile}>My Profile</option>
+                                        <option value={pageName_OrderHistory} data-id={pageName_OrderHistory}>Order History</option>
+                                        <option value={pageName_Wishlist} data-id={pageName_Wishlist}>My List</option>
+                                        <option value={pageName_Addresses} data-id={pageName_Addresses}>Addresses</option>
+                                        <option value={pageName_subscriptions} data-id={pageName_subscriptions}>Subscriptions</option>
+                                        <option value={pageName_Carts} data-id={pageName_Carts}>My Carts</option>
+                                        <option value={pageName_Quotes} data-id={pageName_Quotes}>My Quotes</option>
+                                    </select>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

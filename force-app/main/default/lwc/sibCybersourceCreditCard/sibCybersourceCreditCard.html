@@ -1,0 +1,225 @@
+<!--
+  @description       : 
+  @author            : sthakur@rafter.one
+  @group             : 
+  @last modified on  : 10-12-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message lwc:ref="showtoast"></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+
+    <div class={displayStencil}>
+        <div class="parent-container">
+            <div class="slds-grid slds-wrap" >
+                <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                    <c-stencil height="50" width="100%"></c-stencil>
+                </div>
+                <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                    <c-stencil height="30" width="100%"></c-stencil>
+                </div>
+                <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                    <c-stencil height="50" width="100%"></c-stencil>
+                </div>
+                <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                    <c-stencil height="50" width="100%"></c-stencil>
+                </div>
+                <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                    <c-stencil height="30" width="100%"></c-stencil>
+                </div>
+                <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                    <c-stencil height="50" width="100%"></c-stencil>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class={displayContent}>
+
+        <!-- Spinner start -->
+        <div lwc:if={isShowSpinner}>
+            <c-sib-spinner message-state={processingPaymentMessage}></c-sib-spinner>
+        </div>
+        <!-- Spinner End -->
+
+        <template lwc:if={isPaymentReadOnly}>
+            <div>
+                {labels.SIB_LBL_PAYMENT}
+            </div>
+        </template>
+        <template lwc:else>
+            <div class="sib-payment-form-container">
+                <div class="sib-input-container">
+                    <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_FIRSTNAME}*</div>
+                        <div>
+                            <input
+                                name=""
+                                type="text"
+                                lwc:ref="firstName"
+                                id="firstName"
+                                data-id="firstName"
+                                class="sib-input-box"
+                                placeholder={labels.SIB_LBL_FIRSTNAME}
+                                onblur={handleFieldBlur}
+                                required/>
+                        </div>
+                    </div>
+            
+                <!--Last Name-->
+                <div class="sib-input-container">
+                    <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_LASTNAME}*</div>
+                    <div>
+                        <input
+                        name=""
+                        type="text"
+                        id="lastName"
+                        data-id="lastName"
+                        lwc:ref="lastName"
+                        class="sib-input-box"
+                        placeholder={labels.SIB_LBL_LASTNAME}
+                        onblur={handleFieldBlur}
+                        required/>
+                    </div>
+                </div>
+            
+                <div class="sib-input-container">
+                    <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_CARDNUMBERLABEL}*</div>
+                    <div class="img-card white-bg">
+                        <div class="sib-position-relative">
+                        <div class="sib-cc-image">
+                            <template lwc:if={displayCardImage}>
+                            <img class="sib-cc-card-image" src={cardImage}>
+                            </template>
+                        </div>
+                        <div id="ccNumber" data-id="ccNumber" lwc:ref="ccNumber" class="Text-Wrapper sib-cc-number sib-flex-parent-container" ></div>
+                        </div>        
+                    </div>
+                </div>
+            
+                <div class="sib-input-container">
+                    <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_CVVLABEL}*</div>
+                    <div class="img-card white-bg">
+                        <div id="cvvNumber" lwc:ref="cvvNumber" class="Text-Wrapper sib-cvv-number sib-flex-parent-container"></div>
+                    </div>
+                </div>
+            
+                <!--Expiry Month-->
+                <div class="sib-input-container">
+                <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_EXPIRYMONTHLABEL}*</div>
+                <div  for="slct-Month">
+                    <select id="month" data-id="month" class="sib-select-box" lwc:ref="month"  required="required" name="" onblur={handleFieldBlur}>
+                    <option value="" disabled="disabled" selected="selected">{labels.SIB_LBL_EXPIRYMONTHPLACEHOLDER}</option>
+                    <template for:each={monthOptions} for:item="month">
+                        <option key={month.label} value={month.value}>{month.label}</option>
+                    </template>
+                    </select>
+                </div>
+                </div>
+
+                <!--Expiry Year-->
+                <div class="sib-input-container">
+                    <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_EXPIRYYEARLABEL}*</div>
+                    <div for="slct-year">
+                        <select id="year" data-id="year" class="sib-select-box" lwc:ref="year" required="required" name="" onblur={handleFieldBlur}>
+                        <option value="" disabled="disabled" selected="selected">{labels.SIB_LBL_EXPIRYYEARPLACEHOLDER}</option>
+                        <template for:each={yearOptions} for:item="year">
+                            <option key={year.label} value={year.value}>{year.label}</option>
+                        </template>
+                        </select>
+                    </div>
+                </div>
+
+                <!--   : toggle button for same as billing address -->
+                <div class="toggle">
+                    <div class="slds-form-element">
+                        <label class="slds-checkbox_toggle slds-grid">
+                            <span class="slds-form-element__label slds-m-bottom_none"></span>
+                            <input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" checked={isSameAsBillingAddress} onclick={handleIsSameAsBillingAddress}/>
+                            <span id="checkbox-toggle-ordersomeone" class="slds-checkbox_faux_container">
+                            <span class="slds-checkbox_faux"></span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="toggle-label sib-text-size-14">
+                        {labels.SIB_SAMEASBILLINGADDRESS}
+                    </div>
+                </div>
+
+                <template lwc:if={showBillingAddress}>
+                    <!--Street Address-->
+                    <div class="sib-input-container">
+                        <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_STREETADDRESS}*</div>
+                        <input
+                            name=""
+                            type="text"
+                            id="street"
+                            data-id="street"
+                            class="sib-input-box"
+                            lwc:ref="street"
+                            placeholder={labels.SIB_LBL_STREETADDRESS}
+                            onblur={handleFieldBlur}
+                            required/>
+                    </div>
+                
+                    <!--City Address-->
+                    <div class="sib-input-container">
+                        <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_CITYLABEL}*</div>
+                        <input
+                            name=""
+                            type="text"
+                            id="city"
+                            data-id="city"
+                            class="sib-input-box"
+                            lwc:ref="city"
+                            placeholder={labels.SIB_LBL_CITYPLACEHOLDER}
+                            onblur={handleFieldBlur}
+                            required/>
+                    </div>
+                
+                    <!--Country-->
+                    <div class="sib-input-container">
+                        <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_COUNTRYLABEL}*</div>
+                        <div  for="slct-country">
+                            <select id="country" data-id="country" class="sib-select-box" lwc:ref="country" required="required" name="" onchange={handleCountryChange} >
+                            <option value='' disabled="disabled" selected="selected" class="sib-select-placeholder">{labels.SIB_LBL_COUNTRYPLACEHOLDER}</option>
+                            <template for:each={countries} for:item="country">
+                                <option key={country.label} value={country.value}>{country.label}</option>
+                            </template>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--State-->
+                    <div class="sib-input-container">
+                        <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_STATELABEL}<span lwc:if={showStateRequired}>*</span></div>
+                        <div  for="slct">
+                            <select id="state" data-id="state" class="sib-select-box" lwc:ref="state" required="required" name="" onchange={handleStateChange}>
+                            <option value='' disabled="disabled" selected="selected">{labels.SIB_LBL_STATEPLACEHOLDER}</option>
+                            <template for:each={states} for:item="state">
+                                <option key={state.label} value={state.value}>{state.label}</option>
+                            </template>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--ZIP / Postal Code-->
+                    <div class="sib-input-container">
+                        <div class="sib-font-size-14 sib-label-text">{labels.SIB_LBL_POSTALLABEL}<span lwc:if={showZipCodeRequired}>*</span></div>
+                        <input
+                            name=""
+                            type="text"
+                            id="postalCode"
+                            data-id="postalCode"
+                            lwc:ref="postalCode"
+                            class="sib-input-box"
+                            placeholder={labels.SIB_LBL_POSTPLACEHOLDER}
+                            onblur={handleFieldBlur}
+                            required/>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

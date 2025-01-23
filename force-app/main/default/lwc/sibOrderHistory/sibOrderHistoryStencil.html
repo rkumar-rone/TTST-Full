@@ -1,0 +1,47 @@
+<!--
+  @description       : 
+  @author            : Jassimran Virdi
+  @group             : 
+  @last modified on  : 03-10-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template lwc:render-mode="light">
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+    <template if:true={isLoading}>
+        <lightning-spinner variant="brand" alternative-text="Loading"></lightning-spinner>
+    </template>
+    <section class="filter-page-product">
+        <div class="filter-content">
+            <div class="container card-space">
+                <div class="page-filter-flex">
+                <!-- custom dropdown  -->
+                    <div class="Full-Width">
+                        <!-- Dropdown for Mobile -->
+                        <div class="Full-Width">
+                            <div class="Order-History-parent">
+                                <span class="Page-Title-Right">
+                                    Order History
+                                </span>
+                                <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                                    <c-stencil height="15" width="100%"></c-stencil>
+                                </div>
+                                <!-- Order Details  -->
+                                <div class="Two-Column-1">
+                                    <div class="Order-History">
+                                        <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                                            <c-stencil height="30" width="100%"></c-stencil>
+                                            <c-stencil height="30" width="100%"></c-stencil>
+                                            <c-stencil height="30" width="100%"></c-stencil>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

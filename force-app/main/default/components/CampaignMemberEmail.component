@@ -1,0 +1,7 @@
+<apex:component controller="CampaignMemberEmailController" access="global">
+<apex:attribute name="relatedToAttrib" description="This is the value for the relatedTo field." assignTo="{!relatedToId}" type="Id"/>
+<apex:attribute name="recipientAttrib" description="This is the value for the recipient field." assignTo="{!recipientId}" type="Id"/>
+    <apex:repeat value="{!registrations}" var="r">
+        <br />{!r.Session_Name__c}<br /><apex:outputField value="{!r.Session_Date__c}" /> {!r.Start_Hours__c}:{!r.Start_Minutes__c}{!r.Start_AM_PM__c}-{!r.End_Hours__c}:{!r.End_Minutes__c}{!r.End_AM_PM__c}<br />{!r.Status__c}
+    </apex:repeat>
+</apex:component>

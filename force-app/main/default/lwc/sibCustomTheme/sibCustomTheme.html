@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 04-21-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template>
+    <header  data-f6-region style={headerStyle}>
+        <slot name="header"></slot>
+    </header>
+    <section data-f6-region style={sectionStyle}>
+        <slot></slot>
+    </section>
+    <footer data-f6-region style={footerStyle}>
+        <slot name="footer"></slot>
+    </footer>
+</template>

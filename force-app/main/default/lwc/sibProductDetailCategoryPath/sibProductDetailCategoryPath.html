@@ -1,0 +1,17 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-20-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <div class="bread-crumbs" lwc:if={showDetails}>
+        <div class="container">
+            <template lwc:if={categoryPath} for:each={categoryPath} for:item="cat">
+                <a key={cat.id} href={cat.url} target="_self">{cat.name}</a> 
+                <span key={cat.id} if:false={cat.isLast}> / </span>
+            </template>
+        </div>
+    </div>
+</template>

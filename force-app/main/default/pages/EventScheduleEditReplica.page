@@ -1,0 +1,323 @@
+<apex:page standardController="Event_Schedule__c" extensions="EventScheduleEditExtension">
+
+<style>
+
+.lid
+{
+    background-color:#d3d3d3;
+}
+
+.rid
+{
+    background-color:#33CC33;
+}
+.pbs{
+    background : red;
+}
+.apexp .bPageBlock .detailList{padding-bottom:25px;}
+
+input[type="checkbox"]{width:18px; height:18px;}
+
+input[type="submit"]{
+    background:#fff !important;
+}
+
+body .bPageBlock .pbBody .labelCol, body .print .topics-label {
+color: #18181A;
+}
+
+
+body .bEditBlock .pbBody .pbSubheader{
+        padding: 10px;
+        margin-bottom: 40px;
+}
+
+body .bPageBlock .pbBody tr th{
+    padding:7px 5px; 
+    font-size:14px;
+    font-weight:normal;
+         vertical-align:middle;
+}
+
+
+body .bPageBlock .pbBody tr td{
+    padding:7px 5px; 
+    font-size:12px;
+     font-weight:normal;
+     vertical-align:middle;
+     
+}
+
+
+
+
+.bEditBlock input{
+                background: #ccc;
+                border: 1px solid #ccc;
+                padding: 4px;
+                }
+                
+                
+                
+
+body .bPageBlock .pbBody tr th+td > input{
+                background: #ccc;
+                border: 1px solid #ccc;
+                padding: 4px;
+ }
+ 
+
+body .bPageBlock .pbBody tr th+td > select{
+                background: #ccc;
+                border: 1px solid #ccc;
+                padding: 4px;
+                width:177px;
+ }
+ 
+
+body .bPageBlock .pbBody tr th+td > .dateInput.dateOnlyInput input {
+
+
+                background: #ccc;
+                border: 1px solid #ccc;
+                padding: 4px;
+                width:168px;   
+}
+body .bPageBlock .pbBody tr th+td > .dateInput input {
+                   background: #ccc;
+                border: 1px solid #ccc;
+                padding: 4px;
+
+}
+
+
+
+
+body .bPageBlock .pbBody  tr td:last-child input{
+                background: #C4F5C4;
+                border: 1px solid #ccc;
+                padding: 4px;
+}
+body .bPageBlock .pbBody tr th+td:last-child select{
+                background: #C4F5C4;
+                border: 1px solid #ccc;
+                padding: 4px;
+                 width:177px;
+ }
+ 
+
+body .bPageBlock .pbBody tr th+td+th+td > .dateInput.dateOnlyInput  input{
+                background: #C4F5C4;
+                border: 1px solid #ccc;
+                padding: 4px;
+}
+
+body .bPageBlock .pbBody tr th+td+th+td > .dateInput input {
+                    background: #C4F5C4;
+                border: 1px solid #ccc;
+                padding: 4px;
+
+}
+
+ 
+</style>
+    <apex:form >
+    <apex:sectionHeader title="Edit - {!workingEventSchedule.Name}"/>
+        <apex:pageBlock mode="edit" title="Event Schedule Edit">
+        <apex:pageBlockButtons >
+        <apex:commandButton value="Save" action="{!save}"/>
+        <apex:commandButton value="Cancel" action="{!cancel}"/>
+        </apex:pageBlockButtons>
+        
+<apex:outputPanel id="isDefault" rendered="{!IsDefaultEvent}">     
+         
+           
+               <apex:pageBlockSection title="Information" columns="2">
+                
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Information}" var="fieldValue">
+                   
+                    
+                   
+                     <apex:inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                     
+                      </apex:repeat>
+                 </apex:pageBlockSection>
+             
+             
+             <apex:pageBlockSection title="Relative Dates (Other Dates Based on These)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.RelativeDates}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection> 
+             
+             <apex:pageBlockSection title="Training Initiation (Training Confirmation Date + x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.TrainingInitiation}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Logistics & Setup (Earliest Date/Time - x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Logistics_Setup}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Delivery Prep (Start Date (of Training) - x Days)" columns="2" >
+            
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.DeliveryPrep}" var="fieldValue" >
+                    <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Training Wrap-up (End Date (of Training) + x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Training}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+</apex:outputPanel>
+<!-- JGP Addition 8/17/2015 -->
+<apex:outputPanel id="IsAcademicClientEvent" rendered="{!IsAcademicClientEvent}">     
+         
+           
+               <apex:pageBlockSection title="Information" columns="2">
+                
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_Information}" var="fieldValue">
+                   
+                    
+                   
+                     <apex:inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                     
+                      </apex:repeat>
+                 </apex:pageBlockSection>
+             
+             
+             <apex:pageBlockSection title="Relative Dates (Other Dates Based on These)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_RelativeDates}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection> 
+             
+             <apex:pageBlockSection title="Training Initiation (Training Confirmation Date + x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_TrainingInitiation}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Logistics & Setup (Earliest Date/Time - x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_Logistics_Setup}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Delivery Prep (Start Date (of Training) - x Days)" columns="2" >
+            
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_DeliveryPrep}" var="fieldValue" >
+                    <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Training Wrap-up (End Date (of Training) + x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Client_TrainingWrapup}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+</apex:outputPanel> 
+<!-- JGP Addition 8/20/2015 -->
+<apex:outputPanel id="IsAcademicSalesforceEvent" rendered="{!IsAcademicSalesforceEvent}">     
+         
+           
+               <apex:pageBlockSection title="Information" columns="2">
+                
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_Information}" var="fieldValue">
+                   
+                    
+                   
+                     <apex:inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                     
+                      </apex:repeat>
+                 </apex:pageBlockSection>
+             
+             
+             <apex:pageBlockSection title="Relative Dates (Other Dates Based on These)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_RelativeDates}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection> 
+             
+             <apex:pageBlockSection title="Training Initiation (Training Confirmation Date + x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_TrainingInitiation}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Logistics & Setup (Earliest Date/Time - x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_Logistics_Setup}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Delivery Prep (Start Date (of Training) - x Days)" columns="2" >
+            
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_DeliveryPrep}" var="fieldValue" >
+                    <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Training Wrap-up (End Date (of Training) + x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Academic_Salesforce_TrainingWrapup}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+</apex:outputPanel> 
+<!-- JGP Addition 8/17/2015 -->
+<apex:outputPanel id="isCorporate" rendered="{!IsCorporateEvent}">     
+         
+           
+               <apex:pageBlockSection title="Information" columns="2">
+                
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_Information}" var="fieldValue">
+                   
+                    
+                   
+                     <apex:inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                     
+                      </apex:repeat>
+                 </apex:pageBlockSection>
+             
+             
+             <apex:pageBlockSection title="Relative Dates (Other Dates Based on These)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_RelativeDates}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection> 
+             
+             <apex:pageBlockSection title="Training Initiation (Training Confirmation Date + x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_TrainingInitiation}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Logistics & Setup (Earliest Date/Time - x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_Logistics_Setup}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Delivery Prep (Start Date (of Training) - x Days)" columns="2" >
+            
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_DeliveryPrep}" var="fieldValue" >
+                    <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Training Wrap-up (End Date (of Training) + x Days)" columns="2">
+                <apex:repeat value="{!$ObjectType.Event_Schedule__c.fieldsets.Corporate_TrainingWrapup}" var="fieldValue">
+                     <apex:Inputfield value="{!Event_Schedule__c[fieldValue]}"/>
+                 </apex:repeat>
+             </apex:pageBlockSection>
+</apex:outputPanel>              
+             
+          
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>

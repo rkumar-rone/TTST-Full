@@ -1,0 +1,281 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-27-2024
+  @last modified by  : Gaurang
+-->
+<template lwc:render-mode="light">
+    <template lwc:if={displayProducts}>
+        <c-sib-product-listing-page
+        plp-config={plpConfig}
+        search-results={searchResults}
+        show-breadcrumbs={showBreadcrumbs}
+        show-filters={showFilters}
+        is-pagination-click={isPaginationClick}
+        onpagegoto={handleGotoPageEvent}
+        onfacetvalueupdate={handleFacetValueUpdateEvent}
+        oncategoryupdate={handleCategoryUpdate}
+        onclearfilters={handleClearFilters}
+        onsearchsort={handleSearchSortEvent}
+        is-global-search={isGlobalSearch}
+    ></c-sib-product-listing-page>
+    </template>
+    <template lwc:else>
+        <template lwc:if={isNoProducts}>
+            <div class="no-data">
+                <h1> {labels.noResultsFound} </h1>
+            </div>
+        </template>
+        <template lwc:else>
+            <div class="wrapper">
+                <main class="page-content">
+                    <!--Product Page-->
+                    <section class="filter-page-product slds-m-top_large">
+                        <div if:true={showBreadcrumbs} class="bread-crumbs">
+                            <div class="container">
+                                <div class="slds-col slds-size--1-of-3 slds-p-around_x-small stenil-breadcrumbs">
+                                    <c-stencil height="25" width="100%"></c-stencil>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-content">
+                            <div class="container">
+                                <div class="page-filter-flex">
+                                    <!--Filters Left-->
+                                    <div if:true={showFilters} class="filters stencil-mobile-filters" id="filters-panel">
+                                        <div lwc:if={isDesktop} class="filter-accordeon">
+                                            <div class="prod-category">
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                            </div>
+                                            <div class="prod-category">
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                                <div>
+                                                    <c-stencil height="25"></c-stencil>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div lwc:else class="slds-button slds-button_neutral slds-button_stretch">
+                                            <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                                                <c-stencil height="100" style="width: 100%;"></c-stencil>
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <!--Search Result View -->
+                                    <div class="filter-cards-view list-view-filter" id="view-cards">
+                                        <!-- Product Card 1 -->
+                                        <div class="filter-item-cart product-container">
+                                            <div class="left-section-image stencil-image">
+                                                <c-stencil height="154" width="150" class="stencil"></c-stencil>
+                                            </div>
+                                            <div class="right-section">
+                                                <div class="product-info">
+                                                    <div class="prod-name">
+                                                        <c-stencil height="28" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                                <div class="price-info">
+                                                    <div class="product-price-name">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="learn-more-btn">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Product Card 2 -->
+                                        <div class="filter-item-cart product-container">
+                                            <div class="left-section-image stencil-image">
+                                                <c-stencil height="154" width="150" class="stencil"></c-stencil>
+                                            </div>
+                                            <div class="right-section">
+                                                <div class="product-info">
+                                                    <div class="prod-name">
+                                                        <c-stencil height="28" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                                <div class="price-info">
+                                                    <div class="product-price-name">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="learn-more-btn">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Product Card 3 -->
+                                        <div class="filter-item-cart product-container">
+                                            <div class="left-section-image stencil-image">
+                                                <c-stencil height="154" width="150" class="stencil"></c-stencil>
+                                            </div>
+                                            <div class="right-section">
+                                                <div class="product-info">
+                                                    <div class="prod-name">
+                                                        <c-stencil height="28" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                                <div class="price-info">
+                                                    <div class="product-price-name">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="learn-more-btn">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Product Card 4 -->
+                                        <div class="filter-item-cart product-container">
+                                            <div class="left-section-image stencil-image">
+                                                <c-stencil height="154" width="150" class="stencil"></c-stencil>
+                                            </div>
+                                            <div class="right-section">
+                                                <div class="product-info">
+                                                    <div class="prod-name">
+                                                        <c-stencil height="28" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                                <div class="price-info">
+                                                    <div class="product-price-name">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="learn-more-btn">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Product Card 5 -->
+                                        <div class="filter-item-cart product-container">
+                                            <div class="left-section-image stencil-image">
+                                                <c-stencil height="154" width="150" class="stencil"></c-stencil>
+                                            </div>
+                                            <div class="right-section">
+                                                <div class="product-info">
+                                                    <div class="prod-name">
+                                                        <c-stencil height="28" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-des2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location1">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="prod-event-location2">
+                                                        <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                                <div class="price-info">
+                                                    <div class="product-price-name">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                    <div class="learn-more-btn">
+                                                        <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </template>
+    </template>
+</template>

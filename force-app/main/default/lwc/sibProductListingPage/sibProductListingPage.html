@@ -1,0 +1,66 @@
+<!--
+  @description       : 
+  @author            : aprashar@rafter.one
+  @group             : 
+  @last modified on  : 05-06-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <div>
+            <!--Product Page-->
+            <section class="filter-page-product slds-m-top_large">
+                <div if:true={showBreadcrumbs} class="bread-crumbs">
+                    <div if:true={searchResults} class="container">
+                        <template if:true={categoryPath} for:each={categoryPath} for:item="cat">
+                            <a key={cat.id} href={cat.url} target="_self">{cat.name}</a> <span key={cat.id} if:false={cat.isLast}> / </span>
+                        </template>
+                        <template lwc:if={isGlobalSearch}>
+                            <span class="Search-result">{labels.searchResults}</span>
+                        </template>
+                    </div>
+                </div>
+
+                <div class="filter-content">
+                    <div class="container">
+                        
+                        <div if:true={searchResults} class="page-filter-flex">
+                            <!--Filters Left-->
+                            <div if:true={showFilters} class="filters" id="filters-panel">
+                                <c-sib-search-filters 
+                                    plp-config={plpConfig}
+                                    search-results={searchResults}
+                                    is-clear-all-click={isClearAllClick}
+                                    onfacetvalueupdate={handleFacetValueUpdateEvent}
+                                    onclearallfilters={handleClearAllFiltersEvent}
+                                    oncategoryupdate={handleCategoryUpdateEvent} 
+                                    onopenmodal={handleOpenFiltersModal}
+                                ></c-sib-search-filters>
+                                <div class="filter-btn">
+                                    <button
+                                        type="button"
+                                        class="filter-btn active"
+                                        id="filter-btn" 
+                                        onclick={handleClearAllFiltersEvent}
+                                    >
+                                        <span class="clear">{labels.clearAllLabel}</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!--Search Result View -->
+                            <c-sib-search-results 
+                                style="width: 100%;"
+                                plp-config={plpConfig}
+                                results-layout={resultsLayout}
+                                search-results={searchResults}
+                                is-pagination-click={isPaginationClick}
+                                onaddproducttocart={handleAddToCart} 
+                                onshowproduct={handleNavigateToProductPage}
+                                onpagegoto={handleGotoPageEvent}
+                            ></c-sib-search-results>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </div>
+</template>

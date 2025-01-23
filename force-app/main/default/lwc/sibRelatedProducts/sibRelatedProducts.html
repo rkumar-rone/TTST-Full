@@ -1,0 +1,33 @@
+<template lwc:render-mode="light">
+    <template lwc:if={isProductDetailPage}>
+        <c-sib-product-detail-recommendations
+            product={product} 
+            hide-description={hideDescription}
+            button-label={buttonLabel}
+            desc-field={descField}
+            title-field={titleField}
+            hide-addto-cart={hideAddtoCart}
+            product-image-attr={productImageAttr1Details}
+            product-attr-data={productAttrData}
+            webstore-id={webstoreId}
+            effective-account-id={effectiveAccountId}
+            >
+        </c-sib-product-detail-recommendations>
+    </template>
+    <template lwc:else>
+        <div class="related-cart-container1">
+            <c-sib-related-cart-container
+            cart-items={cartItems}
+            hide-description={hideDescription}
+            button-label={buttonLabel}
+            desc-field={descField}
+            title-field={titleField}
+            hide-addto-cart={hideAddtoCart}
+            product-image-attr={productImageAttr1Details}
+            product-attr-data={productAttrData}
+            webstore-id={webstoreId}
+            effective-account-id={effectiveAccountId}
+        ></c-sib-related-cart-container>
+        </div>
+    </template>
+</template>

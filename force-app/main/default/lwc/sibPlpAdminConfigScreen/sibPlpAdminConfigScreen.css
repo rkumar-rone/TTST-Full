@@ -1,0 +1,136 @@
+/* Default width for larger screens */
+.slds-card {
+    max-width: 950px;
+    margin: 0px;
+    border-radius: 0.50rem; /* Rounded corners for card */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  }
+  .innerCard{
+    background: #FAFAFA;
+  
+  }
+  .button-container{
+    max-width: 950px;
+    margin: 0px;
+  }
+  /* Scrollable content */
+  .slds-card__body_scrollable {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: scroll; /* Enable vertical scrolling */
+  }
+  /* Style the scrollbar */
+  .slds-card__body::-webkit-scrollbar {
+    width: 2px; /* Set scrollbar width */
+  }
+  
+  .slds-card__body::-webkit-scrollbar-track {
+    background: lightgray; /* Track color */
+  }
+  
+  .slds-card__body::-webkit-scrollbar-thumb {
+    background: lightgray; /* Thumb color */
+    border-radius: 5px; /* Rounded corners for thumb */
+  }
+  
+  .slds-card__body::-webkit-scrollbar-thumb:hover {
+    background: lightgray; /* Hover color for thumb */
+  }
+  .noShadow{
+    box-shadow:none;
+  }
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .slds-card {
+      max-width: 90%; /* Adjust width for medium-sized screens */
+      margin: 0px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .slds-card {
+      max-width: 100%; /* Adjust width for smaller screens */
+      margin: 0px;
+    }
+  }
+  
+  .accordianHeader{
+    /* Typography */
+    --slds-c-accordion-heading-font-size:18px;
+    --slds-c-accordion-heading-font-weight:600;
+    --slds-c-accordion-heading-text-align:left;
+  }
+  
+  .subHeader{
+    /* Typography */
+    font-size:14px;
+    font-weight:600;
+    line-height:16.7px;
+    text-align:left;
+  }
+  .configLabel{
+    /* Typography */
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 23px;
+    text-align: left;
+  }
+  .configInput{
+    /* Typography */
+    font-size: 14px;
+    font-weight: 400;
+    /* Colors */
+    color: #3C3C3C;
+    border-radius: 10px;
+  }
+  .configAddNewButton{
+    /* Typography */
+    font-size: 14px;
+    font-weight: 400;
+    /* Colors */
+    color: #0176D3;
+    border:0px;
+  }
+  .checkboxLabel,.radioLabel{
+    font-weight: 400;
+  }
+  .checkboxClass .slds-form-element__control{
+    display: -webkit-box;
+    display: flex;
+  }
+  .sectionHeader.slds-accordion__list-item{
+    border-top-width: 0.5px !important;
+    border-bottom-width: 0.5px !important;
+    border-bottom-color: var(--slds-c-accordion-color-border, var(--sds-c-accordion-color-border, var(--slds-g-color-border-base-1, var(--lwc-colorBorder,rgb(229, 229, 229))))) !important;
+    border-bottom-style: double !important;
+    border-top-style:inherit !important;
+  }
+  
+.inputWidth{
+    min-width: 95%;
+    max-width: 95%;
+}
+.displayFlex{
+    display: flex;
+}
+.deleteIcon{
+    padding-top: 8px;
+    cursor:pointer;
+}
+.configTableHeader{
+    /* Typography */
+    font-size: 13px;
+}
+.configTableBodyRow{
+    /* Typography */
+    line-height: 0px;
+}
+.configTableInput{
+    /* Layout */
+    width: 250px;
+    /* Typography */
+    font-size: 13px;
+    font-weight: 400;
+    /* Colors */
+    color: #3C3C3C;
+    border-radius: 10px;
+}

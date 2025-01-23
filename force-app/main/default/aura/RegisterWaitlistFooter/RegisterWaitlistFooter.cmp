@@ -1,0 +1,7 @@
+<aura:component>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    <aura:registerEvent name="loggedInEvent" type="c:CloseModal"/>
+    <aura:handler event="c:CloseModal" action="{!c.handleClose}"/>
+    <lightning:button name="RegisterCourse" label="Register for Course" variant="brand" onclick="{!c.handleConfirm}"/>
+    <lightning:button name="ChangedMind" label="I've Changed My Mind" variant="neutral" onclick="{!c.handleCancel}"/>
+</aura:component>

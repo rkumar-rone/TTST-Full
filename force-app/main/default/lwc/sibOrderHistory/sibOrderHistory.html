@@ -1,0 +1,291 @@
+<!--
+  @description       : 
+  @author            : Jassimran Virdi
+  @group             : 
+  @last modified on  : 03-12-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template lwc:render-mode="light">
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+    <section class="filter-page-product">
+        <div class="filter-content">
+            <div class="container card-space">
+                <div class="page-filter-flex">
+                <!-- custom dropdown  -->
+                    <div class="Full-Width">
+                        <section class="recent-order-filter">
+                            <div class="mobile-view">
+                                <c-sib-my-account-navigation></c-sib-my-account-navigation>
+                            </div>
+                        </section>
+                        <!-- Dropdown for Mobile -->
+                        <div class="Full-Width">
+                            <div class="Order-History-parent">
+                                <span class="Page-Title-Right">
+                                    Order History
+                                </span>
+                                <div class="Filter-Sort">
+                                    <div class="Filter">
+                                        <div class="Form-Input-Field-Details Start-Date-Align">
+                                            <div class="form-input">
+                                                <label for="last-name-form">Start Date</label>
+                                                <div class="select">
+                                                    <input type="date" value={startDateValue} onchange={handleStartDate} />
+                                                    <!-- <select required="required">
+                                                        <option
+                                                        value=""
+                                                        disabled="disabled"
+                                                        selected="selected"
+                                                        >
+                                                            MM/DD/YYYY
+                                                        </option>
+                                                        <option value="#">One</option>
+                                                    </select> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Form-Input-Field-Details">
+                                            <div class="form-input">
+                                                <label for="last-name-form">End Date</label>
+                                                <div class="select">
+                                                    <input type="date" value={endDateValue} onchange={handleEndDate} />
+                                                    <!-- <select required="required">
+                                                        <option
+                                                        value=""
+                                                        disabled="disabled"
+                                                        selected="selected"
+                                                        >
+                                                            MM/DD/YYYY
+                                                        </option>
+                                                        <option value="#">One</option>
+                                                    </select> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="Button-CTA-filter" if:true={showApplyButton} onclick={handleApplyFilter}>
+                                            <label class="btn-view-details-label">
+                                                Apply Filter
+                                            </label>
+                                        </div>
+                                        <div class="Button-CTA-filter" onclick={handleResetFilter}>
+                                            <label class="btn-view-details-label">
+                                                Reset
+                                            </label>
+                                        </div>
+                                        <div class="Form-Input-Field-Details">
+                                            <div class="form-input">
+                                                <div class="select" for="state-select">
+                                                    <select required="required" onchange={handleSortChange}>
+                                                        <template for:each={sortByOptions} for:item="sortOption">
+                                                            <option key={sortOption.value} value={sortOption.value}>
+                                                                {sortOption.label}
+                                                            </option>
+                                                        </template>
+                                                        <!-- <option
+                                                        value=""
+                                                        disabled="disabled"
+                                                        selected="selected"
+                                                        >
+                                                            Most Recent Order
+                                                        </option>
+                                                        <option value="#">One</option> -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Filter-mobile-view">
+                                    <div class="CTA-Btn-Row">
+                                        <div class="Form-Input-Field-Details">
+                                            <div class="form-input">
+                                                <label for="last-name-form">Start Date</label>
+                                                <div class="select select-date">
+                                                    <input type="date" value={startDateValue} onchange={handleStartDate} />
+                                                    <!-- <select required="required">
+                                                        <option
+                                                        value=""
+                                                        disabled="disabled"
+                                                        selected="selected"
+                                                        placeholder="MM/DD/YYYY"
+                                                        >
+                                                        MM/DD/YYYY
+                                                        </option>
+                                                        <option value="#">One</option>
+                                                        <option value="#">Two</option>
+                                                        <option value="#">Three</option>
+                                                        <option value="#">Four</option>
+                                                        <option value="#">Five</option>
+                                                        <option value="#">Six</option>
+                                                        <option value="#">Seven</option>
+                                                    </select> -->
+                                                </div>
+                                            </div>       
+                                        </div>
+                                        <div class="Form-Input-Field-Details">
+                                            <div class="form-input">
+                                                <label for="last-name-form">End Date</label>
+                                                <div class="select select-date">
+                                                    <input type="date" value={endDateValue} onchange={handleEndDate} />
+                                                    <!-- <select required="required">
+                                                        <option
+                                                        value=""
+                                                        disabled="disabled"
+                                                        selected="selected"
+                                                        placeholder="MM/DD/YYYY"
+                                                        >
+                                                        MM/DD/YYYY
+                                                        </option>
+                                                        <option value="#">One</option>
+                                                        <option value="#">Two</option>
+                                                        <option value="#">Three</option>
+                                                        <option value="#">Four</option>
+                                                        <option value="#">Five</option>
+                                                        <option value="#">Six</option>
+                                                        <option value="#">Seven</option>
+                                                    </select> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="CTA-Btn-Inline CTA-Btn-Row">
+                                        <div class="Button-CTA-Apply" if:true={showApplyButton} onclick={handleApplyFilter}>
+                                            <label class="btn-apply-label">
+                                                Apply Filter
+                                            </label>
+                                        </div>
+                                        <div class="Button-CTA-filter" onclick={handleResetFilter}>
+                                            <label class="btn-view-details-label">
+                                                Reset
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="Full-Width">
+                                        <section class="recent-order-filter">
+                                            <div class="Form-Input-Field-Details-md">
+                                                <div class="form-input">
+                                                    <div class="select-md">
+                                                        <select required="required" onchange={handleSortChange}>
+                                                            <template for:each={sortByOptions} for:item="sortOption">
+                                                                <option key={sortOption.value} value={sortOption.value}>
+                                                                    {sortOption.label}
+                                                                </option>
+                                                            </template>
+                                                            <!-- <option
+                                                            value=""
+                                                            disabled="disabled"
+                                                            selected="selected"
+                                                            >
+                                                                Most Recent Order
+                                                            </option>
+                                                            <option value="#">One</option> -->
+                                                        </select>
+                                                    </div>
+                                                </div>        
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <!-- Order Details  -->
+                                <div class="Two-Column-1">
+                                    <div class="Order-History">
+                                        <div if:true={showOrders} class="Orders">
+                                            <template for:each={orderList} for:item="ord">
+                                                <div class="Order-Tiles" key={ord.orderSummaryId}>
+                                                    <div class="Order-Card">
+                                                        <div class="Frame-11394">
+                                                            <div class="Frame-11393">
+                                                                <div class="Two-Column">
+                                                                    <div class="Col-1">
+                                                                        <div class="Order-No-card ">
+                                                                            <div class="Order-No-Wrapper">
+                                                                                <label class="Order-No-label">
+                                                                                    Order No.
+                                                                                </label>
+                                                                            </div>
+                                                                            <span class="Order-No-Val">
+                                                                                {ord.orderNumber}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="Each-Price">
+                                                                            <div class="Each">
+                                                                                <label class="detail-label">
+                                                                                    Ordered Date
+                                                                                </label>
+                                                                            </div>
+                                                                            <span class="Price">
+                                                                                <lightning-formatted-date-time value={ord.orderedDate} year="numeric"
+                                                                                    month="numeric" day="numeric" hour="2-digit" minute="2-digit">
+                                                                                </lightning-formatted-date-time>
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="Each-Price">
+                                                                            <div class="Each">
+                                                                                <label class="detail-label">
+                                                                                    Status
+                                                                                </label>
+                                                                            </div>
+                                                                            <span class="Price">
+                                                                                {ord.status}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="Each-Price">
+                                                                            <div class="Each">
+                                                                                <label class="detail-label">
+                                                                                    Total
+                                                                                </label>
+                                                                            </div>
+                                                                            <span class="Price">
+                                                                                <lightning-formatted-number format-style="currency"
+                                                                                currency-code={ord.CurrencyIsoCode}
+                                                                                currency-display-as="code"
+                                                                                maximum-fraction-digits="2"
+                                                                                value={ord.fields.GrandTotalAmount.text}></lightning-formatted-number>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="Frame-11392">
+                                                                <div class="Button-CTA" onclick={handleViewDetails} data-id={ord.orderSummaryId}>
+                                                                    <label class="btn-view-details-label" data-id={ord.orderSummaryId}>
+                                                                        View Details
+                                                                    </label>
+                                                                </div>
+                                                                <div class="Button-CTA-Reorder" onclick={handleOnReorder} data-id={ord.orderSummaryId}>
+                                                                    <label class="btn-reorder-label" data-id={ord.orderSummaryId}>
+                                                                        Start Reorder
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="filter-cards-view grid-view-filter" id="view-cards">
+                                    <div class="pagination">
+                                        <ul>
+                                            <li class="active">1</li>
+                                            <li>2</li>
+                                            <li>3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                            <li class="dott">...</li>
+                                            <li>10</li>
+                                            <li if:true={showNext} class="arrow"></li>
+                                        </ul>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

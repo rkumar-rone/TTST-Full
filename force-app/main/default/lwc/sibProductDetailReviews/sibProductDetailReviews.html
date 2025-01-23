@@ -1,0 +1,33 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-18-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div class="section-padding">
+        <div lwc:if={showReviews} class="info-heading">{labels.RATING_HEADING}</div>
+        <div>
+          <c-sib-product-detail-rating></c-sib-product-detail-rating>
+        </div>
+        <template lwc:if={showReviews} for:each={reviews} for:item="review">
+          <div key={review.Id} class="background-white sib-m-5">
+              <div class="review-course-name">{review.Course__r.Name}</div>
+              <div class="rating-stars">
+                <template for:each={review.stars} for:item="star">
+                    <span key={star} class={star.class}>
+                    </span>
+                </template>
+              </div>
+              <div class="review-comment">{review.Comment__c}</div>
+              <div class="review-reviewer-name">{review.Name}, <lightning-formatted-date-time value={review.Date__c} 
+                year="numeric" 
+                month="short" 
+                day="numeric"></lightning-formatted-date-time></div>
+          </div>
+        </template>
+    </div>
+    
+</template>

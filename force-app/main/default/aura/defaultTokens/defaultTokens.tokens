@@ -1,0 +1,3 @@
+<aura:tokens extends="c:TTSCommunity">
+	
+</aura:tokens>

@@ -1,0 +1,108 @@
+.header,.breadcrumb{
+    width:100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.breadcrumb{
+    margin-bottom:20px;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main{
+    width: 75%;
+    height: fit-content;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.mainStencil{
+    width: 75%;
+    height: fit-content;
+    padding: 15px;
+    margin-top: 5px;
+}
+
+.conditionalDisplay{
+    display:none;
+}
+  
+.sidebar{
+    width: 25%;
+    height: fit-content;
+    padding: 15px;
+    position: -webkit-sticky;
+    position: sticky;
+    top:160px;
+    padding: 15px 15px 15px 2px;
+}
+
+.header, .footer{
+    width:100%;
+}
+
+
+.title{
+    font-weight:700;
+    font-size: 32px;
+}
+
+.section{
+    margin-bottom: 20px;
+}
+
+.stencil{
+    margin-bottom:20px;
+}
+
+.fixed-div{
+    position: sticky;
+    top:160px;
+}
+
+@media (max-width: 800px) {
+    .container{
+        display: block;
+        justify-content: space-between;
+    }
+
+    .main{
+        width: 100%;
+        height: fit-content;
+        padding: 2px;
+        margin-top: 5px;
+    }
+      
+    .sidebar{
+        width: 100%;
+        position: relative;
+        padding: 2px;
+        top:0;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .container{
+        display: block;
+        justify-content: space-between;
+    }
+
+    .main{
+        width: 100%;
+        height: fit-content;
+        padding: 2px;
+        margin-top: 5px;
+    }
+      
+    .sidebar{
+        width: 100%;
+        position: relative;
+        padding: 2px;
+        top:0;
+    }
+}

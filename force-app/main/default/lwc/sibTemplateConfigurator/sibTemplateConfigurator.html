@@ -1,0 +1,81 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 04-29-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+
+    <div class="sibConfigHeader"> Please Select Your Store Template Design</div>
+
+    <div style="justify-content: center;">
+        <lightning-layout multiple-rows="true" style="justify-content: center;">
+
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+                class="slds-p-around_small">
+                <a data-id="templateOne" onclick={onSelectTemplate} class="templateOne sibImageWrapper">
+                    <div class="card" data-id="templateImageOne">
+                        <img class="card__background" src={templateOne}
+                            alt="Photo of Cartagena's cathedral at the background and some colonial style houses"
+                            width="1920" height="2193" />
+                        <div class="card__content | flow">
+                            <div class="card__content--container | flow">
+                                <h2 class="card__title">Manufacturing</h2>
+                                <p class="card__description">
+                                    Generate io help you generate with intuitive design template.
+                                    B2B based template with wide range of component selections.
+                                </p>
+                            </div>
+                            <!--button class="card__button">Read more</button-->
+                        </div>
+                    </div>
+                </a>
+            </lightning-layout-item>
+
+
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="4"
+                class="slds-p-around_small">
+                <a data-id="templateTwo" onclick={onSelectTemplate} class="templateTwo sibImageWrapper">
+                    <div class="card" data-id="templateImageTwo">
+                        <img class="card__background" src={templateTwo}
+                            alt="Photo of Cartagena's cathedral at the background and some colonial style houses"
+                            width="1920" height="2193" />
+                        <div class="card__content | flow">
+                            <div class="card__content--container | flow">
+                                <h2 class="card__title">High Tech Subscriptions</h2>
+                                <p class="card__description">
+                                    'Recognize' and 'Identify'.
+                                    CPQ based template with wide range of component selections.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!--lightning-layout multiple-rows="true">
+                    <lightning-layout-item size="12" small-device-size="3" medium-device-size="4" large-device-size="4"
+                        class="slds-p-around_small">
+                        <img src={templateTwoPLP} style="border: 1px solid black;height: 150px;" />
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="3" medium-device-size="4" large-device-size="4"
+                        class="slds-p-around_small">
+                        <img src={templateTwoPDP} style="border: 1px solid black;height: 150px;"/>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="3" medium-device-size="4" large-device-size="4"
+                        class="slds-p-around_small">
+                        <img src={templateTwoCart} style="border: 1px solid black;height: 150px;"/>
+                    </lightning-layout-item>
+                </lightning-layout-->
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="12" large-device-size="12"
+                class="slds-p-around_small">
+                <div class="slds-align_absolute-center slds-p-top_medium">
+                    <button class="slds-button slds-button_brand" onclick={handleSaveConfig}>Save</button>
+                    <button class="slds-button slds-button_neutral" onclick={handleCloseCompConfig}>Cancel</button>
+                </div>
+            </lightning-layout-item>
+
+        </lightning-layout>
+    </div>
+</template>

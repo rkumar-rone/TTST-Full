@@ -1,0 +1,98 @@
+<!--Horizontal Product Tile-->
+
+<template>
+    <div class="slds-card product-card ">
+        <div class="slds-grid product-grid" >
+            <div class="slds-col slds-size--1-of-3 ">
+
+                <div  class="img-body">
+                    <img class="product-image" src={product.defaultImage.url} onclick={handleViewDetail}>
+                    <div if:false={mutProductImageAttr.hideProductAttr} class="tag slds-p-around--small">
+                        <span title={mutProductImageAttr.productAttrValue} class="tagContents"><img class="product-img-attr-img" src={productImageAttrImg}></img>&nbsp;{mutProductImageAttr.productAttrValue}</span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size--2-of-3">
+              <div class="slds-p-around--medium">
+                <div class="slds-grid">
+                    <div class="slds-col" style="padding: 0px !important;">
+                        <div class="product-title slds-p-top--small">
+                           <!-- <span class="slds-truncate">{product.fields.Name}</span> -->
+                           <div class="slds-grid" >
+                            <div class="slds-grid slds-has-flexi-truncate" style="width: 320px;">
+                              <span title={title} onclick={handleViewDetail} style="cursor: pointer;" class="slds-truncate slds-truncate_container_75">{title}</span>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="slds-col">
+                        <div class="wishlist" if:false={hideWishlist} onclick={handleWishListModal}>
+                            <template if:false={itemIsInWishlist}>
+                                <img class="wishlist-img" src={wishListUrl} >
+                            </template>
+        
+                            <template if:true={itemIsInWishlist}>
+                                <svg width="22" height="20" viewBox="0 0 22 20" fill="#C60C2D" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.8401 2.61012C19.3294 2.09912 18.7229 1.69376 18.0555 1.4172C17.388 1.14064 16.6726 0.998291 15.9501 0.998291C15.2276 0.998291 14.5122 1.14064 13.8448 1.4172C13.1773 1.69376 12.5709 2.09912 12.0601 2.61012L11.0001 3.67012L9.94012 2.61012C8.90843 1.57842 7.50915 0.998826 6.05012 0.998826C4.59109 0.998826 3.19181 1.57842 2.16012 2.61012C1.12843 3.64181 0.548828 5.04108 0.548828 6.50012C0.548828 7.95915 1.12843 9.35842 2.16012 10.3901L3.22012 11.4501L11.0001 19.2301L18.7801 11.4501L19.8401 10.3901C20.3511 9.87936 20.7565 9.27293 21.033 8.60547C21.3096 7.93801 21.4519 7.2226 21.4519 6.50012C21.4519 5.77763 21.3096 5.06222 21.033 4.39476C20.7565 3.7273 20.3511 3.12087 19.8401 2.61012V2.61012Z" stroke="#DFDFDF" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <defs>
+                                    <linearGradient id="paint0_linear_437_2684" x1="11.0004" y1="0.998291" x2="21" y2="26" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#C60C2D"></stop>
+                                    <stop offset="1" stop-color="#FF4468"></stop>
+                                    </linearGradient>
+                                    </defs>
+                                </svg>
+                                    
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-m-top--medium">
+                    <div class="sub-title">
+                        <span>{priceTitle}</span>
+                    </div>
+                    <div class="amount-title">
+                        <span><lightning-formatted-number value={product.prices.unitPrice} format-style="currency" currency-code="USD"></lightning-formatted-number></span>
+                        <!-- <span if:false={isGuestUser}><lightning-formatted-number value={product.prices.unitPrice} format-style="currency" currency-code="USD"></lightning-formatted-number></span>
+                        <span if:true={isGuestUser}>Unavailable</span> -->
+                    </div>
+                </div>
+
+                <div class="slds-m-top--medium">
+                    <div class="description">
+                        <span if:false={hideDescription} class="slds-line-clamp_small">{description}</span>
+                    </div>
+                </div>
+             </div>
+             <div>
+                <footer if:false={hideFooter} class="slds-card__footer footer">
+                    <div class="slds-grid">
+                      <div class="slds-col slds-align-middle">
+                          <span  if:false={hideViewDetail} onclick={handleViewDetail} class="view-details slds-float--left">{buttonLabel2}</span>
+                      </div>
+                      <div class="slds-col">
+                          <button if:false={hideAddtoCart} onclick={addItemToCart}  class="slds-button  slds-float--right add-to-cart slds-align--absolute-center">{buttonLabel}
+                            <svg if:false={hideCartIcon} focusable="false"  data-key="cart" aria-hidden="true" viewBox="0 0 52 52" class="slds-icon  cart-icon slds-icon_small"><g><g><path d="M20.1 26H44c.7 0 1.4-.5 1.5-1.2l4.4-15.4c.3-1.1-.5-2-1.5-2H11.5l-.6-2.3C10.6 4 9.6 3.3 8.6 3.3h-4c-1.3 0-2.5 1-2.6 2.3C1.9 7 3.1 8.2 4.4 8.2h2.3l7.6 25.7c.3 1.1 1.2 1.8 2.3 1.8h28.2c1.3 0 2.5-1 2.6-2.3.1-1.4-1.1-2.6-2.4-2.6H20.2c-1.1 0-2-.7-2.3-1.7V29c-.5-1.5.7-3 2.2-3z"></path><circle cx="20.6" cy="44.6" r="4"></circle><circle cx="40.1" cy="44.6" r="4"></circle></g></g></svg>
+                            </button>
+                      </div>
+                    </div>
+                  </footer>
+             </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Comment this piece out if needing to deploy without wishlist functionality-->
+    
+    <!-- <template if:true={showWishListModal}>
+        <c-saltbox-wishlist-modal-comp   
+            product-id={product.id} 
+            oncancelmodel={cancelModel}
+
+            effective-account-id={effectiveAccountId}
+            community-id={communityId}
+            
+        ></c-saltbox-wishlist-modal-comp>
+    </template> -->
+</template>

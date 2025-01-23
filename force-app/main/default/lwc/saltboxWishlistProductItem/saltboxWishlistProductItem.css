@@ -1,0 +1,89 @@
+.product-card{
+    max-width: 490px;
+    height: 116px;
+    left: 328px;
+    top: 1645px;
+
+    /* White */
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.product-name{
+font-family: Lato;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 22px;
+/* identical to box height, or 138% */
+
+display: flex;
+align-items: center;
+
+/* Seconday-color-2 */
+
+color: #001022;
+
+}
+
+.price{
+    font-family: Lato;
+font-style: normal;
+font-weight: 800;
+font-size: 18px;
+line-height: 16px;
+/* identical to box height, or 89% */
+
+display: flex;
+align-items: center;
+
+/* Secondary-color */
+color: black;
+
+}
+
+.sku-id{
+    font-family: Lato;
+font-style: normal;
+font-weight: normal;
+font-size: 13px;
+line-height: 16px;
+/* identical to box height, or 123% */
+
+
+/* Primary-color 2 */
+
+color: var(--productAttrTextColor);
+}
+
+.add-to-cart{
+width: 97px;
+height: 36px;
+
+
+/* Primary-color 2 */
+
+background: var(--brand);
+/* Primary-color 2 */
+color: var(--buttonColor);
+border: 1px solid var(--brand);
+box-sizing: border-box;
+border-radius: 4px;
+}
+
+.slds-spinner_container{
+    position: fixed !important;
+}
+
+.title-grid{
+    width: 220px;
+}
+
+@media screen and (max-width: 480px) {
+    .title-grid{
+        width: 170px;
+    }
+    
+  }

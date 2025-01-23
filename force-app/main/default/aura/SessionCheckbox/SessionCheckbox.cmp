@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="id" type="Id" />
+    <aura:attribute name="checked" type="Boolean" default="false" />
+    <aura:attribute name="label" type="String"/>
+    <aura:attribute name="required" type="Boolean"/>
+    <aura:attribute name="disabled" type="Boolean" default="false"/>
+    <aura:attribute name="waitlisted" type="Boolean" default="false"/>
+  	<lightning:input class="sess" style="width:20px;display:inline-block;float:left;" type="checkbox" aura:id="sess" checked="{!v.checked}" onchange="{!c.check}" disabled="{!v.disabled}"/><div style="float:left;font-size:14px;width:90%;padding-left:5px;"><label>{!v.label}</label></div>
+    <aura:registerEvent name="sessionSelected" type="c:sessionSelected" />
+</aura:component>

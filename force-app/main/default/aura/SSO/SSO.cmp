@@ -1,0 +1,7 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global" controller="NavigationController">
+    <aura:handler event="c:LoggedIn" action="{!c.load}"/>
+    <form aura:id="ssoform" action="https://ttsdev.mrooms3.net/auth/saml2/sp/saml2-acs.php/ttsdev.mrooms3.net" method="post">
+        <input aura:id="samlresponse" type="hidden" name="SAMLResponse" />
+        <input aura:id="relaystate" type="hidden" name="RelayState" value="/auth/saml2/login.php" />
+    </form>
+</aura:component>

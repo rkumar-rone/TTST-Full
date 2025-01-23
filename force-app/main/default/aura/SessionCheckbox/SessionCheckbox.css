@@ -1,0 +1,10 @@
+.THIS .slds-form-element__label {
+    font-size: 16px;
+    line-height: 26px;
+    color: #222;
+    font-weight: 300;
+}
+
+.THIS .slds-form-element__label {
+    display:none !important;
+}

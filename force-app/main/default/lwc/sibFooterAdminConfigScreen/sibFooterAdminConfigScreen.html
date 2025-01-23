@@ -1,0 +1,319 @@
+<template>
+    <article if:true={configObjectsList} class="slds-card slds-p-around_medium noShadow">
+
+        <div class="slds-card__body slds-card__body_inner">
+
+            <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
+
+                <template for:each={configObjectsList} for:item="section" for:index="sectionIndex">
+
+                    <lightning-accordion-section class="accordianHeader" name={section.sectionName} label={section.sectionLabel} key={section.sectionName}>
+
+                        <article class="slds-card">
+
+                            <div class="slds-card__body slds-card__body_inner">
+
+                                <div class="slds-form slds-form_compound slds-p-top_large slds-p-bottom_large" >
+                                        
+                                        <template if:true={section.individuals.length} for:each={section.individuals} for:item="invidualSectionConfigObj" for:index="invidualSectionConfigIndex">
+                                            
+                                            <div if:true={invidualSectionConfigObj.isText} class="slds-form-element slds-form-element_horizontal" key={invidualSectionConfigObj.label}>
+                                                <label class="slds-form-element__label configLabel">{invidualSectionConfigObj.label}</label>
+                                                <div class="slds-form-element__control configInputWidth">
+                                                    <lightning-input type="text" class="configInput" data-section={section.sectionName} data-id={invidualSectionConfigObj.name} data-type={invidualSectionConfigObj.type} value={invidualSectionConfigObj.value} onchange={handleInvidualSectionConfigChange}></lightning-input>
+                                                </div>
+                                            </div>
+
+                                            <div if:true={invidualSectionConfigObj.isNumber} class="slds-form-element slds-form-element_horizontal" key={invidualSectionConfigObj.label}>
+                                                <label class="slds-form-element__label configLabel">{invidualSectionConfigObj.label}</label>
+                                                <div class="slds-form-element__control configInputWidth">
+                                                    <lightning-input type="number" class="configInput" data-section={section.sectionName} data-id={invidualSectionConfigObj.name} data-type={invidualSectionConfigObj.type} value={invidualSectionConfigObj.value} onchange={handleInvidualSectionConfigChange}></lightning-input>
+                                                </div>
+                                            </div>
+
+                                            <div if:true={invidualSectionConfigObj.isCheckbox} class="slds-form-element slds-form-element_horizontal" key={invidualSectionConfigObj.label}>
+                                                <label class="slds-form-element__label configLabel">{invidualSectionConfigObj.label}</label>
+                                                <div class="slds-form-element__control">
+                                                    <label class="slds-checkbox_toggle slds-grid">
+                                                        <input type="checkbox" data-section={section.sectionName} data-id={invidualSectionConfigObj.name} name={invidualSectionConfigObj.name} data-type={invidualSectionConfigObj.type} checked={invidualSectionConfigObj.value} aria-describedby={invidualSectionConfigObj.name} onchange={handleInvidualSectionConfigChange}/>
+                                                        <span id={invidualSectionConfigObj.name} class="slds-checkbox_faux_container">
+                                                        <span class="slds-checkbox_faux"></span>
+                                                        <span class="slds-checkbox_on">Enabled</span>
+                                                        <span class="slds-checkbox_off">Disabled</span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                        </template>
+
+                                        <template if:true={section.subsections.length} for:each={section.subsections} for:item="subSection" for:index="subSectionIndex">
+
+                                            <lightning-accordion-section class="subSectionHeader" name={subSection.subsectionName} label={subSection.label}  key={subSection.subsectionName}>
+                                                
+                                                <div class="slds-form slds-form_compound slds-p-top_small slds-p-bottom_small" >
+
+                                                    <div class="slds-form-element slds-form-element_horizontal">
+                                                        
+                                                        <label class="slds-form-element__label configLabel">{label.Sub_Section_Name}</label>
+                                                        
+                                                        <div class="slds-form-element__control configInputWidth">
+                                                            <lightning-input type="text" class="configInput" data-parent-section={section.sectionName} data-index={subSectionIndex} data-id={subSection.subsectionName} data-original-name={subSection.subsectionName} value={subSection.subsectionName} onchange={handleSubSectionNameConfigChange}></lightning-input>
+                                                        </div>
+                                                        
+                                                        <template if:true={subSection.individuals.length} for:each={subSection.individuals} for:item="invidualSectionConfigObj" for:index="invidualSectionConfigIndex">
+                                            
+                                                            <div if:true={invidualSectionConfigObj.isText} class="slds-form-element slds-form-element_horizontal" key={invidualSectionConfigObj.label}>
+                                                                <label class="slds-form-element__label configLabel">{invidualSectionConfigObj.label}</label>
+                                                                <div class="slds-form-element__control configInputWidth">
+                                                                    <lightning-input type="text" class="configInput" data-section={section.sectionName} data-sub-section={subSection.subsectionName} data-id={invidualSectionConfigObj.name} data-type={invidualSectionConfigObj.type} value={invidualSectionConfigObj.value} onchange={handleInvidualSectionConfigChange}></lightning-input>
+                                                                </div>
+                                                            </div>
+
+                                                            <div if:true={invidualSectionConfigObj.isNumber} class="slds-form-element slds-form-element_horizontal" key={invidualSectionConfigObj.label}>
+                                                                <label class="slds-form-element__label configLabel">{invidualSectionConfigObj.label}</label>
+                                                                <div class="slds-form-element__control configInputWidth">
+                                                                    <lightning-input type="number" class="configInput" data-section={section.sectionName} data-sub-section={subSection.subsectionName} data-id={invidualSectionConfigObj.name} data-type={invidualSectionConfigObj.type} value={invidualSectionConfigObj.value} onchange={handleInvidualSectionConfigChange}></lightning-input>
+                                                                </div>
+                                                            </div>
+                
+                                                            <div if:true={invidualSectionConfigObj.isCheckbox} class="slds-form-element slds-form-element_horizontal" key={invidualSectionConfigObj.label}>
+                                                                <label class="slds-form-element__label configLabel">{invidualSectionConfigObj.label}</label>
+                                                                <div class="slds-form-element__control">
+                                                                    <label class="slds-checkbox_toggle slds-grid">
+                                                                        <input type="checkbox" data-section={section.sectionName} data-sub-section={subSection.subsectionName} data-id={invidualSectionConfigObj.name} name={invidualSectionConfigObj.name} data-type={invidualSectionConfigObj.type} checked={invidualSectionConfigObj.value} aria-describedby={invidualSectionConfigObj.name} onchange={handleInvidualSectionConfigChange}/>
+                                                                        <span id={invidualSectionConfigObj.name} class="slds-checkbox_faux_container">
+                                                                        <span class="slds-checkbox_faux"></span>
+                                                                        <span class="slds-checkbox_on">Enabled</span>
+                                                                        <span class="slds-checkbox_off">Disabled</span>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </template>
+                                                    </div>
+
+                                                </div>
+                                                <article class="slds-card innerCard">
+            
+                                                    <div class="slds-card__header slds-grid">
+                                                        
+                                                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                                            
+                                                            <div class="slds-media__body">
+                                                        
+                                                                <h2 class="slds-card__header-title slds-truncate subHeader">
+                                                        
+                                                                    <span>{label.Sub_Section_Links}</span>
+                                                        
+                                                                </h2>
+                                                        
+                                                            </div>
+                                                        
+                                                            <div class="slds-no-flex">
+                                                        
+                                                                <button class="slds-button configAddNewButton" data-section={section.sectionName} data-sub-section={subSection.subsectionName} data-sub-section-index={subSectionIndex} data-total-records={subSection.records.length} onclick={showModalBox}>+ {label.Add_New}</button>
+                                                        
+                                                            </div>
+                                                        
+                                                        </header>
+            
+                                                    </div>
+            
+                                                    <div class="slds-card__body slds-card__body_inner">
+            
+                                                        <fieldset class="slds-form-element slds-form-element_compound slds-p-bottom_large">
+
+                                                            <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
+                                                                <thead class="configTableHeader">
+                                                                    <tr class="slds-line-height_reset">
+                                                                        <th class="" scope="col">
+                                                                            <div class="slds-truncate" title="Name">{label.Name}</div>
+                                                                        </th>
+                                                                        <th class="" scope="col">
+                                                                            <div class="slds-truncate" title="Label">{label.URL}</div>
+                                                                        </th>
+                                                                        <th class="" scope="col">
+                                                                            <div class="slds-truncate" title="Label">{label.Sort_Order}</div>
+                                                                        </th>
+                                                                        <th class="" scope="col">
+                                                                            <div class="slds-truncate" title="Show Label">{label.Active}</div>
+                                                                        </th>
+                                                                        <th class="" scope="col">
+                                                                            <div class="slds-truncate" title="Actions">{label.Actions}</div>
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+
+                                                                <tbody>
+                                                                
+                                                                    <template for:each={subSection.records} for:item="record" for:index="recordIndex">
+                                                                        
+                                                                        <tr key={record.label} class="configTableBodyRow">
+                                                                            <td>
+                                                                                <lightning-input data-id={record.label} data-parent-section={section.sectionName} data-parent-index={subSectionIndex} data-record-index={recordIndex} data-name="Label" type="text" value={record.label} class="configTableInput" onchange={handleSubsectionRecordChange}></lightning-input>
+                                                                            </td>
+                                                                            <td>
+                                                                                <lightning-input data-id={record.label} data-parent-section={section.sectionName} data-parent-index={subSectionIndex} data-record-index={recordIndex} data-name="URL" type="url" value={record.url} class="configTableInput" onchange={handleSubsectionRecordChange}></lightning-input>
+                                                                            </td>
+                                                                            <td>
+                                                                                <lightning-input data-id={record.label} data-parent-section={section.sectionName} data-parent-index={subSectionIndex} data-record-index={recordIndex} data-name="sortOrder" type="number" value={record.sortOrder} class="configTableInput" onchange={handleSubsectionRecordChange}></lightning-input>
+                                                                            </td>
+                                                                            <td>
+                                                                                <lightning-input data-id={record.label} data-parent-section={section.sectionName} data-parent-index={subSectionIndex} data-record-index={recordIndex} data-name="Active" type="checkbox" checked={record.isActive} class="configTableInput" onchange={handleSubsectionRecordChange}></lightning-input>
+                                                                            </td>
+                                                                            <td>
+                                                                                <lightning-icon icon-name="utility:delete" size="small" label="Delete" class="deleteIcon" title="Delete Link" variant="base" data-parent-section={section.sectionName} data-parent-index={subSectionIndex} data-record-index={recordIndex} onclick={handleDelete}></lightning-icon>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </template>
+
+                                                                </tbody>
+
+                                                            </table>
+                                                        </fieldset>
+                                                    </div>
+            
+                                                </article>
+                                            </lightning-accordion-section>
+
+                                        </template>
+
+                                        <article if:true={section.records.length} class="slds-card innerCard">
+    
+                                            <div class="slds-card__header slds-grid">
+                                                
+                                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                                    
+                                                    <div class="slds-media__body">
+                                                
+                                                        <h2 class="slds-card__header-title slds-truncate subHeader">
+                                                
+                                                            <span>{label.Links}</span>
+                                                
+                                                        </h2>
+                                                
+                                                    </div>
+                                                
+                                                    <div class="slds-no-flex">
+                                                
+                                                        <button class="slds-button configAddNewButton" data-section={section.sectionName} data-total-records={section.records.length} onclick={showModalBox}>+ {label.Add_New}</button>
+                                                
+                                                    </div>
+                                                
+                                                </header>
+    
+                                            </div>
+    
+                                            <div class="slds-card__body slds-card__body_inner">
+    
+                                                <fieldset class="slds-form-element slds-form-element_compound slds-p-bottom_large">
+                                                    <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
+                                                        <thead class="configTableHeader">
+                                                            <tr class="slds-line-height_reset">
+                                                                <th class="" scope="col">
+                                                                    <div class="slds-truncate" title="Name">{label.Name}</div>
+                                                                </th>
+                                                                <th class="" scope="col">
+                                                                    <div class="slds-truncate" title="Label">{label.URL}</div>
+                                                                </th>
+                                                                <th class="" scope="col">
+                                                                    <div class="slds-truncate" title="Label">{label.Sort_Order}</div>
+                                                                </th>
+                                                                <th class="" scope="col">
+                                                                    <div class="slds-truncate" title="Show Label">{label.Active}</div>
+                                                                </th>
+                                                                <th class="" scope="col">
+                                                                    <div class="slds-truncate" title="Actions">{label.Actions}</div>
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                        
+                                                            <template for:each={section.records} for:item="record" for:index="recordIndex">
+                                                                
+                                                                <tr key={record.label} class="configTableBodyRow">
+                                                                    <td>
+                                                                        <lightning-input data-id={record.label} data-parent-section={section.sectionName} data-parent-index={sectionIndex} data-record-index={recordIndex} data-name="Label" type="text" value={record.label} class="configTableInput" onchange={handleSubsectionRecordChange}></lightning-input>
+                                                                    </td>
+                                                                    <td>
+                                                                        <lightning-input data-id={record.label} data-parent-section={section.sectionName} data-parent-index={sectionIndex} data-record-index={recordIndex} data-name="URL" type="url" value={record.url} class="configTableInput" onchange={handleSubsectionRecordChange}></lightning-input>
+                                                                    </td>
+                                                                    <td>
+                                                                        <lightning-input data-id={record.label} data-parent-section={section.sectionName} data-parent-index={sectionIndex} data-record-index={recordIndex} data-name="SortOrder" type="number" value={record.sortOrder} class="configTableInput" onchange={handleSubsectionRecordChange}></lightning-input>
+                                                                    </td>
+                                                                    <td>
+                                                                        <lightning-input data-id={record.label} data-parent-section={section.sectionName} data-parent-index={sectionIndex} data-record-index={recordIndex} data-name="Active" type="checkbox" checked={record.isActive} class="configTableInput" onchange={handleSubsectionRecordChange}></lightning-input>
+                                                                    </td>
+                                                                    <td>
+                                                                        <lightning-icon icon-name="utility:delete" size="small" label="Delete" class="deleteIcon" title="Delete Link" variant="base" data-parent-section={section.sectionName} data-parent-index={sectionIndex} data-record-index={recordIndex} onclick={handleDelete}></lightning-icon>
+                                                                    </td>
+                                                                </tr>
+                                                            </template>
+
+                                                        </tbody>
+
+                                                    </table>
+                                                </fieldset>
+                                            </div>
+    
+                                        </article>
+
+                                </div>
+                                
+                            </div>
+
+                        </article>
+
+                    </lightning-accordion-section>
+                    
+                </template>
+            </lightning-accordion>
+        </div>
+        <template if:true={isShowModal}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={hideModalBox}>
+                            <lightning-icon class="myIcon" icon-name="utility:close" alternative-text="close"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.New_Sub_Section_Record_Mapping}</h2>
+                    </header>
+    
+                    <!-- modal body start -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <div class="slds-form-element slds-form-element_compound">
+                            <div class="slds-form-element slds-form-element_stacked">
+                                <lightning-input type="text" data-id="inputLabel" value={inputLabel} label="Label" onchange={handleInputChange} required></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-form-element_stacked">
+                                <lightning-input type="text" data-id="inputURL" value={inputURL} label="URL" onchange={handleInputChange} required></lightning-input>
+                            </div>
+                            <div class="slds-form-element slds-form-element_stacked">
+                                <lightning-input type="checkbox" data-id="inputStatus" value={inputStatus} label="Active" onchange={handleInputChange}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- modal footer start-->
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+                        <button class="slds-button slds-button_brand" onclick={addNewRow}>Save</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <div class="button-container slds-m-top_medium slds-p-horizontal_medium slds-text-align_center">
+            <lightning-button label="Save" variant="brand" class="slds-p-horizontal_small" onclick={handleSave}></lightning-button>
+            <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+        </div>
+    </article>
+</template>

@@ -1,0 +1,102 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-24-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div lwc:if={showDetails} class="container product-page-banner">
+        <div class="detail-title">
+            <div lwc:if={productName} class="product-name">
+                {productName}
+            </div>
+    
+            <div lwc:if={shortDescription} class="product-value">
+                {shortDescription}
+            </div>
+    
+            <div lwc:if={description} class="product-desc">
+                {description}
+            </div>
+    
+            <div class="review-content">
+                <span lwc:if={showReview} class="rating-stars">
+                    <template for:each={stars} for:item="star">
+                        <span key={star} class={star.class}>
+                        </span>
+                    </template> {rating} ({reviews} reviews) 
+                </span>
+
+                <div lwc:if={courseCount} class="side-spacing"> 
+                    <lightning-icon 
+                        class="icon-color-white right-spacing"
+                        icon-name="utility:knowledge_base" 
+                        alternative-text="knowledge_base" 
+                        size="small" 
+                        title="Courses Pending">
+                    </lightning-icon>
+
+                    {courseCount} Courses
+                </div>
+
+                <div lwc:if={hoursOfVideoContent} class="side-spacing">
+                    <lightning-icon 
+                        class="icon-color-white right-spacing"
+                        icon-name="utility:clock" 
+                        alternative-text="clock" 
+                        size="small" 
+                        title="Courses Pending">
+                    </lightning-icon>
+
+                    {hoursOfVideoContent} hours of video content
+                </div>
+
+                <div lwc:if={hoursToComplete} class="side-spacing">
+                    <lightning-icon 
+                        class="icon-color-white right-spacing"
+                        icon-name="utility:hourglass" 
+                        alternative-text="hourglass" 
+                        size="small" 
+                        title="Courses Pending">
+                    </lightning-icon>
+
+                    {hoursToComplete} hours to complete
+                </div>
+
+                <div lwc:if={totalDays} class="side-spacing">
+                    <lightning-icon 
+                        class="icon-color-white right-spacing"
+                        icon-name="utility:date_input" 
+                        alternative-text="date_input" 
+                        size="small" 
+                        title="Courses Pending">
+                    </lightning-icon>
+
+                    {totalDays}
+                </div>
+
+                <template lwc:if={isParent}>
+                    <div lwc:if={totalDaysForPc} class="side-spacing">
+                        <lightning-icon 
+                            class="icon-color-white right-spacing"
+                            icon-name="utility:date_input" 
+                            alternative-text="date_input" 
+                            size="small" 
+                            title="Courses Pending">
+                        </lightning-icon>
+    
+                        {totalDaysForPc}
+                    </div>
+                </template>
+                
+            </div>
+        </div>
+
+        <div class="product-image product-page__slider">
+            <img src={defaultImage.url} alt={defaultImage.title} />
+        </div>
+    </div>
+    
+</template>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Reminder_Email_to_Checklist_Builder</name>
+        <label>Reminder Email to Checklist Builder</label>
+        <locationX>754</locationX>
+        <locationY>408</locationY>
+        <actionName>Materials_Log__c.REMINDER_checklist_requested</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.REMINDER_checklist_requested</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Materials_Assigned_to</name>
+        <label>Send Email to Materials Assigned to</label>
+        <locationX>50</locationX>
+        <locationY>744</locationY>
+        <actionName>Materials_Log__c.Logistics_Confirmed_MatLog</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Logistics_Confirmed_MatLog</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_to_Materials_Assigned_to_1</name>
+        <label>Send Email to Materials Assigned to</label>
+        <locationX>314</locationX>
+        <locationY>744</locationY>
+        <actionName>Materials_Log__c.Parent_Opp_Logistics_Confirmed_MatLog</actionName>
+        <actionType>emailAlert</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Materials_Log__c.Parent_Opp_Logistics_Confirmed_MatLog</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>Check_if_Region_is_Americas_Asia_Pac</name>
+        <label>Check if Region is Americas/Asia Pac?</label>
+        <locationX>1414</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Americas_Asia_Pac</name>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Name__r.Opportunity_region__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Americas</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Name__r.Opportunity_region__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Asia Pac</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Checklist requested</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Reminder_Email_to_Checklist_Builder</targetReference>
+            </connector>
+            <label>Americas/Asia Pac</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Region_is_EMEA</name>
+        <label>Check if Region is EMEA?</label>
+        <locationX>886</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>EMEA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Name__r.Opportunity_region__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>EMEA</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Materials_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Checklist requested</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reminder_Email_to_Checklist_Builder</targetReference>
+            </connector>
+            <label>EMEA</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Stage_Changed</name>
+        <label>Check if Stage Changed?</label>
+        <locationX>314</locationX>
+        <locationY>288</locationY>
+        <defaultConnector>
+            <targetReference>Logistics_Confirmed_On_Opportunity</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Stage_Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Materials_Stage__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_Notification_Sub_Flow</targetReference>
+            </connector>
+            <label>Stage Changed</label>
+        </rules>
+        <rules>
+            <name>Account_is_AMT_Online_Store</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Account_Name_MatLog__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AMT Online Store</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Stage_to_Publications_ordered</targetReference>
+            </connector>
+            <label>Account is AMT Online Store</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Logistics_Confirmed_On_Opportunity</name>
+        <label>Logistics Confirmed On Opportunity</label>
+        <locationX>314</locationX>
+        <locationY>624</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Logistics_Confirmed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Materials_Assigned_to__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Opportunity_Name__r.StageName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Logistics Confirmed &gt;</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Materials_Assigned_to</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Logistics Confirmed</label>
+        </rules>
+        <rules>
+            <name>Parent_Opp_Logistics_Confirmed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.AMT_Parent_Opportunity_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Materials_Assigned_to__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AMT_Parent_Opportunity_Name__r.Course_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Public Course</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.AMT_Parent_Opportunity_Name__r.Parent_Opportunity_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Logistics Confirmed &gt;</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Email_to_Materials_Assigned_to_1</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Parent Opp - Logistics Confirmed</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Materials Log Record Triggered Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Materials Log Record Triggered Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Stage_to_Publications_ordered</name>
+        <label>Update Stage to Publications ordered</label>
+        <locationX>314</locationX>
+        <locationY>408</locationY>
+        <connector>
+            <targetReference>Logistics_Confirmed_On_Opportunity</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Materials_Stage__c</field>
+            <value>
+                <stringValue>Publications ordered</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>738</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_Stage_Changed</targetReference>
+        </connector>
+        <object>Materials_Log__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>X7_Days_before_Start_Date</name>
+            <connector>
+                <targetReference>Check_if_Region_is_EMEA</targetReference>
+            </connector>
+            <label>7 Days before Start Date</label>
+            <offsetNumber>-7</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Course_Start_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>X14_Days_before_Start_Date</name>
+            <connector>
+                <targetReference>Check_if_Region_is_Americas_Asia_Pac</targetReference>
+            </connector>
+            <label>14 Days before Start Date</label>
+            <offsetNumber>-14</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Course_Start_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Email_Notification_Sub_Flow</name>
+        <label>Email Notification Sub Flow</label>
+        <locationX>50</locationX>
+        <locationY>408</locationY>
+        <connector>
+            <targetReference>Logistics_Confirmed_On_Opportunity</targetReference>
+        </connector>
+        <flowName>Material_Log_Email_Notifications_Sub_Flow</flowName>
+        <inputAssignments>
+            <name>MaterialLogRecord</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

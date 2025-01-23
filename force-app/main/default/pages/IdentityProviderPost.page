@@ -1,0 +1,5 @@
+<apex:page controller="IdentityProviderPostController" showHeader="false" sidebar="false" action="{!checkProvider}">
+
+<h1 style="font-weight:bold;color:red;">{!errorString}</h1>
+
+</apex:page>

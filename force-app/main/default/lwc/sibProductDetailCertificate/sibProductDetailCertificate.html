@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 09-19-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div lwc:if={showDetails} class="section-padding">
+        <div class="info-heading">Certificate</div>
+
+        <div class="background-white">
+            <div  class="certificate-heading">{certTitle}</div> 
+
+            <lightning-formatted-rich-text 
+                value={certDescription}
+            ></lightning-formatted-rich-text>
+
+            <div>
+                <img src={certImage} style="max-width: 70%;"/>
+            </div>
+        </div>
+    </div>
+
+</template>

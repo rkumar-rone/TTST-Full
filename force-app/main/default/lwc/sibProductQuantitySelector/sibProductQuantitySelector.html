@@ -1,0 +1,44 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 02-20-2024
+  @last modified by  : asood@rafter.one
+-->
+<template lwc:render-mode="light">
+    <div class="product-quantity js-quantity-counter">
+        <!--<c-sib-product-quantity-selector-popover
+            if:true={showRulePopover}
+            increment-text={stepText}
+            minimum-text={minimumText}
+            maximum-text={maximumText}></c-sib-product-quantity-selector-popover>-->
+        <c-sib-common-number-input
+            value={inputValue}
+            min={rulesAsNumbers.minimum}
+            max={ruleOrInventoryMaximum}
+            step={rulesAsNumbers.step}
+            disabled={isDisabled}
+            custom-validity={customErrorMessage}
+            field-label={label}
+            field-described-by={ariaDescribedByLabel}
+            hide-buttons={hideButtons}
+            hide-label={hideLabel}
+            onvaluechanged={handleQuantityChanged}
+            onvaliditychanged={handleValidityChanged}></c-sib-common-number-input>
+    </div>
+    <template lwc:if={showNotification}>
+        <p
+            lwc:if={hasError}
+            class={computedClasses}
+            role="alert"
+            id={ariaDescribedByLabel}>
+            {notificationText}
+        </p>
+        <p
+            lwc:else
+            class={computedClasses}
+            id={ariaDescribedByLabel}>
+            {notificationText}
+        </p>
+    </template>
+</template>

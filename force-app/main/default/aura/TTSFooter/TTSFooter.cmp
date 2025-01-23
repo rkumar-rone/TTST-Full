@@ -1,0 +1,78 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+<footer>
+  
+  <section id="footer_main">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <p>Having trouble? Please contact us at <a href="mailto:info@trainingthestreet.com" style="color:white">info@trainingthestreet.com</a> or + 1 800 887 1320</p>
+           
+          <div class="social_media_links">			<div class="textwidget"><ul class="social">
+	<li><a target="_blank" href="https://www.facebook.com/pages/Training-The-Street/56806716383"><img src="{!$Resource.TTSCommunity + '/facebook.png'}" /></a></li>
+    <li class="google_plus_footer"><a target="_blank" href="https://plus.google.com/105168481630804663122/about "><img src="{!$Resource.TTSCommunity + '/google.png'}" /></a></li>
+    <li><a target="_blank" href="https://www.linkedin.com/company/658350 "><img src="{!$Resource.TTSCommunity + '/linkedin.png'}" /></a></li>
+    <li><a target="_blank" href="https://twitter.com/TTS_Chat "><img src="{!$Resource.TTSCommunity + '/twitter.png'}" /></a></li>
+</ul></div>
+		</div>          <div class="menu-main-navigation-container"><ul id="menu-main-navigation-2" class="ftr_menu"><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-91 current_page_item menu-item-has-children menu-item-94"><a href="http://trainingthestreet.com/professional/">Corporate</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-618"><a href="http://trainingthestreet.com/professional/training-programs/">Training Programs</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-617"><a href="http://trainingthestreet.com/professional/continuing-development/">Continuing Development</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-619"><a href="http://trainingthestreet.com/professional/program-advisory-services/">Program Advisory Services</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-620"><a href="http://trainingthestreet.com/professional/resource-center/">TTS Resource Center</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1531"><a href="http://trainingthestreet.com/professional/training-learning-center/">Using Our Training &amp; Learning Center</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3365"><a href="http://trainingthestreet.com/public_courses/">Public Courses</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5206"><a href="http://trainingthestreet.com/public_courses/course-calendar/">Course Calendar</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4907"><a href="http://trainingthestreet.com/public_courses/participant-feedback/">Participant Feedback</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3321"><a href="http://trainingthestreet.com/public_courses/corporate-valuation/">Core: Financial Modeling &amp; Corporate Valuation</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3456"><a href="http://trainingthestreet.com/public_courses/enhanced-core-comprehensive-financial-modeling-corporate-valuation/"><i>Enhanced</i> Core: Financial Modeling and Corporate Valuation</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3322"><a href="http://trainingthestreet.com/public_courses/fasttrack/">Fast Track: Financial Modeling</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3970"><a href="http://trainingthestreet.com/public_courses/5-day-capital-markets-program/">Principles of Capital Markets</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3324"><a href="http://trainingthestreet.com/public_courses/applied-excel/">Applied Excel</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3325"><a href="http://trainingthestreet.com/public_courses/financial-statement-analysis/">Financial Statement Analysis/Accounting</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3326"><a href="http://trainingthestreet.com/public_courses/advanced-topics-2/">M&amp;A and LBO Analysis</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4251"><a href="http://trainingthestreet.com/public_courses/advanced-topics-3/"><img class="alignnone wp-image-4816" src="{!$Resource.TTSCommunity + '/new-100x100.png'}" alt="new" width="35" height="35" /> Advanced Topics</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3879"><a href="http://trainingthestreet.com/public_courses/undergraduate-wall-street-bootcamp/">Undergraduate Boot Camp</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3327"><a href="http://trainingthestreet.com/public_courses/evening-weekend-courses/">Evening Essentials</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4899"><a title="TTS Academy" target="_blank" href="http://www.ttsacademy.com">Self-Study</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-82"><a href="http://trainingthestreet.com/on-campus/">On Campus</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3319"><a href="http://trainingthestreet.com/on-campus/2980-2/">Academic Client List</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4663"><a href="http://trainingthestreet.com/macros/">Macros</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-10"><a href="http://trainingthestreet.com/about/">About TTS</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609"><a href="http://trainingthestreet.com/about/history/">History</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610"><a href="http://trainingthestreet.com/about/people/">People</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-611"><a href="http://trainingthestreet.com/about/why-choose-tts/">Why Choose TTS</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-612"><a href="http://trainingthestreet.com/about/tts-community/">TTS Community</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-613"><a href="http://trainingthestreet.com/about/careers/">Careers</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-614"><a href="http://trainingthestreet.com/about/contact/">Contact</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-615"><a href="http://trainingthestreet.com/about/faq/">FAQ</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4180"><a href="http://trainingthestreet.com/news/">News</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197"><a href="http://trainingthestreet.com/about/people/instructors/">Our Instructors</a></li>
+</ul></div>          <div class="menu-footer-navigation-container"><ul id="menu-footer-navigation" class="ftr_menu"><li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-57"><a href="http://trainingthestreet.com/about/careers/">Careers</a></li>
+<li id="menu-item-56" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56"><a href="http://trainingthestreet.com/about/faq/">FAQ</a></li>
+<li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="http://trainingthestreet.com/about/contact/">Contact</a></li>
+<li id="menu-item-54" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-54"><a href="http://trainingthestreet.com/privacy/">Privacy</a></li>
+<li id="menu-item-243" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-243"><a href="http://trainingthestreet.com/privacy-2/">Terms of Use</a></li>
+<li id="menu-item-4097" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4097"><a href="mailto:info@trainingthestreet.com">info@trainingthestreet.com</a></li>
+<li id="menu-item-4098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4098"><a href="tel:8008871320">800.887.1320</a></li>
+</ul></div>        </div>
+      </div>
+      <div class="row footer_bootm">
+        <div class="col-md-12">
+          <p>Copyright © 2011-2022 Training The Street. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+</aura:component>

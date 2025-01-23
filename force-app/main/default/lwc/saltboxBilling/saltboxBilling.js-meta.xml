@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <description>Saltbox Billing</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Saltbox Billing</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="cartId" label="Cart Id" type="String" description="The current cart id" default="" role="inputOnly"/>
+            <property name="outputSelectedAddress" type="String" role="outputOnly"/>
+            <property name="outputSelectedCity" type="String" role="outputOnly" />
+            <property name="outputSelectedCountry" type="String" role="outputOnly"/>
+            <property name="outputSelectedState" type="String" role="outputOnly"/>
+            <property name="outputSelectedZipCode" type="String" role="outputOnly"/>
+            <property name="billingSelectedOption" type="String" role="outputOnly"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

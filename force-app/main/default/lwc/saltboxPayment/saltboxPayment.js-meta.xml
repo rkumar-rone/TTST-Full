@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Saltbox Payment</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Saltbox Payment</masterLabel>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="cartId" label="Cart Id" type="String" description="The current cart id" default="" role="inputOnly"/>
+            <property name="orderId" label="Order Id" type="String" description="The current order id" default="" role="inputOnly"/>
+            <property name="hidePurchaseOrder" label="Hide PO" type="Boolean" description="" default="false" role="inputOnly"/>
+            <property name="isGroupOrder" label="Is Group Order" type="Boolean" description="" default="false" role="inputOnly"/>
+            <property name="waitlistOrder" label="Should Waitlist Order" type="Boolean" description="" default="false" role="inputOnly"/>
+            <property name="paymentSelectedOption" label="Selected Payment Type" type="String" description="The selected payment type" role="outputOnly"/>
+            <property name="outputSelectedAddress" type="String" role="outputOnly"/>
+            <property name="outputSelectedCity" type="String" role="outputOnly" />
+            <property name="outputSelectedCountry" type="String" role="outputOnly"/>
+            <property name="outputSelectedState" type="String" role="outputOnly"/>
+            <property name="outputSelectedZipCode" type="String" role="outputOnly"/>
+            <property name="billingSelectedOption" type="String" role="outputOnly"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 10-15-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <li>
+        <input tabindex="0" type="checkbox" id="check-2" />
+        <i></i>
+        <label for="check-2">{name}</label>
+        <article class="panel">
+            <div class="filters-checkbox">
+                <form>
+                    <c-sib-search-input-facet if:false={isDateTimeOrSlider} facet-name={normalizedDisplayData.nameOrId} facet-type={normalizedDisplayData.attributeType} values={values}
+                        type={type} class={facetDisplayClasses} onfacetvaluetoggle={handleFacetToggle}>
+                    </c-sib-search-input-facet>
+                </form>
+            </div>
+        </article>
+    </li>
+</template>

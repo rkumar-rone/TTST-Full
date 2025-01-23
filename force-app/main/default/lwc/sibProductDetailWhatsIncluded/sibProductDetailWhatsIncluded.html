@@ -1,0 +1,169 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-22-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+
+    <div lwc:if={showDetails}>
+        <div class="section-padding" lwc:if={isBundleProduct}>
+            <div class="info-heading">What's included?</div>
+                <div class="border-left">
+                    <div class="stencil-container" lwc:if={isSkeletonLoading}>
+                        <div class="stencil-prod-name">
+                            <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                        </div>
+                        <div class="stencil-prod-desc">
+                            <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                        </div>
+                        <div class="stencil-prod-topics">
+                            <c-stencil height="50" width="100%" class="stencil"></c-stencil>
+                        </div>
+                        <div class="stencil-hours-sec">
+                            <div class="stencil-child-video-content">
+                                <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                            </div>
+                            <div class="stencil-child-video-content">
+                                <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                            </div>
+                        </div>
+                    </div>
+                    <div lwc:else>
+                        <template for:each={bundleChildDetails} for:item="child">
+                            <div class="child-sec" key={child.Id}>
+                                <div class="icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="#038008">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.00967 7.69359V18.5627C6.25549 17.7223 8.7451 17.7196 11.0059 18.5659V7.73375C8.79967 6.64636 6.21769 6.63297 4.00967 7.69359ZM12.5047 21.0101C12.4514 21.0393 12.3956 21.0635 12.3384 21.0827C12.2341 21.1198 12.122 21.14 12.0053 21.14C11.8964 21.14 11.792 21.123 11.6945 21.0915C11.6287 21.0712 11.5652 21.044 11.5053 21.0101C9.02659 19.5822 5.97823 19.5822 3.50955 21.0101H3.50855C3.01882 21.2797 2.40914 21.1199 2.13929 20.6406C2.02245 20.4363 1.98226 20.2111 2.01074 19.9985V7.30275C2.0039 7.25584 2.00036 7.2079 2.00036 7.15917C1.99036 6.78971 2.19026 6.46019 2.50009 6.28045L2.4901 6.27146C5.40853 4.5939 8.96662 4.49405 11.985 6.00186C14.9834 4.48406 18.5615 4.58392 21.4799 6.27146C21.5728 6.32479 21.654 6.3914 21.7224 6.46766C21.8941 6.64604 21.9999 6.88909 21.9999 7.16034V20.1415C21.9999 20.6907 21.5501 21.14 21.0004 21.14C20.8482 21.14 20.7048 21.1068 20.5768 21.0473C20.5508 21.0358 20.5253 21.0234 20.5004 21.0101C18.0218 19.5822 14.9734 19.5822 12.5047 21.0101ZM20.001 18.5704V7.73373C17.7948 6.64635 15.2128 6.63298 13.0048 7.69361V18.5676C15.2652 17.727 17.7476 17.7317 20.001 18.5704Z" fill="#038008"/>
+                                    </svg>
+                                </div>
+                                <div class="child-info">
+                                    <div  class="child-name" lwc:if={child.Name}>
+                                        <div class="child-name">{child.Name}</div>
+                                    </div>
+                                    <div class="child-desc" lwc:if={child.Short_Description__c}>
+                                        <span> {child.Short_Description__c}</span>
+                                    </div>
+                                    <div class="child-topic-covered" lwc:if={child.Topics_Covered__c}>
+                                        <div class="topic-header">
+                                            Topics covered:
+                                        </div>
+                                        <lightning-formatted-rich-text 
+                                            value={child.Topics_Covered__c}
+                                        ></lightning-formatted-rich-text>
+                                    </div>
+                                    <div class="hours-sec">
+                                        <div class="child-video-content" lwc:if={child.SIB_Hours_of_Video_Content__c}>
+                                            <div class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="#038008">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4.93066C7.58172 4.93066 4 8.51239 4 12.9307C4 17.3489 7.58172 20.9307 12 20.9307C16.4183 20.9307 20 17.3489 20 12.9307C20 8.51239 16.4183 4.93066 12 4.93066ZM2 12.9307C2 7.40782 6.47715 2.93066 12 2.93066C17.5228 2.93066 22 7.40782 22 12.9307C22 18.4535 17.5228 22.9307 12 22.9307C6.47715 22.9307 2 18.4535 2 12.9307Z" fill="#038008"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.93066C12.5523 6.93066 13 7.37838 13 7.93066V10.5165L13.2929 10.2236C13.6834 9.83303 14.3166 9.83303 14.7071 10.2236C15.0976 10.6141 15.0976 11.2472 14.7071 11.6378L12.7071 13.6378C12.4211 13.9238 11.991 14.0093 11.6173 13.8545C11.2436 13.6998 11 13.3351 11 12.9307V7.93066C11 7.37838 11.4477 6.93066 12 6.93066Z" fill="#038008"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <span>{child.SIB_Hours_of_Video_Content__c} hours of video content</span>
+                                            </div>
+                                        </div>
+                                        <div class="child-hours" lwc:if={child.SIB_Hours_to_Complete__c} >
+                                            <div class="vertical-line">|</div>
+                                            <div class="icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="#038008">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5.93066C4 4.27381 5.34315 2.93066 7 2.93066H17C18.6569 2.93066 20 4.27381 20 5.93066V6.90143C20 7.87028 19.5321 8.77949 18.7437 9.34263L13.7205 12.9307L18.7437 16.5187C19.5321 17.0818 20 17.991 20 18.9599V19.9307C20 21.5875 18.6569 22.9307 17 22.9307H7C5.34315 22.9307 4 21.5875 4 19.9307V18.9599C4 17.991 4.4679 17.0818 5.25629 16.5187L10.2795 12.9307L5.25629 9.34263C4.4679 8.77949 4 7.87028 4 6.90143V5.93066ZM12 11.7018L17.5812 7.71516C17.844 7.52745 18 7.22438 18 6.90143V5.93066C18 5.37838 17.5523 4.93066 17 4.93066H7C6.44772 4.93066 6 5.37838 6 5.93066V6.90143C6 7.22438 6.15597 7.52745 6.41876 7.71516L12 11.7018ZM12 14.1596L6.41876 18.1462C6.15597 18.3339 6 18.6369 6 18.9599V19.9307C6 20.4829 6.44772 20.9307 7 20.9307H17C17.5523 20.9307 18 20.4829 18 19.9307V18.9599C18 18.6369 17.844 18.3339 17.5812 18.1462L12 14.1596Z" fill="#038008"/>
+                                                    <path d="M16 20.9307H8V20.5079C8 20.1507 8.19054 19.8206 8.49987 19.642L10.9997 18.1982C11.6187 17.8407 12.3813 17.8407 13.0003 18.1982L15.5001 19.642C15.8095 19.8206 16 20.1507 16 20.5079V20.9307Z" fill="#038008"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <span>{child.SIB_Hours_to_Complete__c} hours to complete</span>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+        </div>
+        <template lwc:else>
+            <div lwc:if={whatsIncludedOrTopicCovered} class="section-padding">
+                <div class="info-heading">What's included?</div>
+                <div class="border-left">
+                    <div class="child-sec">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="#038008">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.00967 7.69359V18.5627C6.25549 17.7223 8.7451 17.7196 11.0059 18.5659V7.73375C8.79967 6.64636 6.21769 6.63297 4.00967 7.69359ZM12.5047 21.0101C12.4514 21.0393 12.3956 21.0635 12.3384 21.0827C12.2341 21.1198 12.122 21.14 12.0053 21.14C11.8964 21.14 11.792 21.123 11.6945 21.0915C11.6287 21.0712 11.5652 21.044 11.5053 21.0101C9.02659 19.5822 5.97823 19.5822 3.50955 21.0101H3.50855C3.01882 21.2797 2.40914 21.1199 2.13929 20.6406C2.02245 20.4363 1.98226 20.2111 2.01074 19.9985V7.30275C2.0039 7.25584 2.00036 7.2079 2.00036 7.15917C1.99036 6.78971 2.19026 6.46019 2.50009 6.28045L2.4901 6.27146C5.40853 4.5939 8.96662 4.49405 11.985 6.00186C14.9834 4.48406 18.5615 4.58392 21.4799 6.27146C21.5728 6.32479 21.654 6.3914 21.7224 6.46766C21.8941 6.64604 21.9999 6.88909 21.9999 7.16034V20.1415C21.9999 20.6907 21.5501 21.14 21.0004 21.14C20.8482 21.14 20.7048 21.1068 20.5768 21.0473C20.5508 21.0358 20.5253 21.0234 20.5004 21.0101C18.0218 19.5822 14.9734 19.5822 12.5047 21.0101ZM20.001 18.5704V7.73373C17.7948 6.64635 15.2128 6.63298 13.0048 7.69361V18.5676C15.2652 17.727 17.7476 17.7317 20.001 18.5704Z" fill="#038008"/>
+                            </svg>
+                        </div>
+                        <div class="child-info">
+                            <div class="pc-header">
+                                <span lwc:if={isSelfStudy}>Topics Covered:</span>
+                                <span lwc:else>You’ll get access to:</span>
+                            </div>
+                            <div class="content">
+                                <lightning-formatted-rich-text value={topicCovered} lwc:if={isSelfStudy}></lightning-formatted-rich-text>
+                                <lightning-formatted-rich-text value={whatsIncluded} lwc:else></lightning-formatted-rich-text>
+                            </div>
+                            <div class="learning-objectives" lwc:if={learningObjectives}>
+                                <div class="learning-objectives-header">
+                                    <span>Learning Objectives:</span>
+                                </div>
+                                <div class="learning-objectives-body">
+                                    <lightning-formatted-rich-text 
+                                        value={learningObjectives}
+                                    ></lightning-formatted-rich-text>
+                                </div>
+                            </div>
+                            <div class="hours-sec" lwc:if={isSelfStudy}>
+                                <div class="child-video-content" lwc:if={hoursOfVideoContent}>
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="#038008">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4.93066C7.58172 4.93066 4 8.51239 4 12.9307C4 17.3489 7.58172 20.9307 12 20.9307C16.4183 20.9307 20 17.3489 20 12.9307C20 8.51239 16.4183 4.93066 12 4.93066ZM2 12.9307C2 7.40782 6.47715 2.93066 12 2.93066C17.5228 2.93066 22 7.40782 22 12.9307C22 18.4535 17.5228 22.9307 12 22.9307C6.47715 22.9307 2 18.4535 2 12.9307Z" fill="#038008"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.93066C12.5523 6.93066 13 7.37838 13 7.93066V10.5165L13.2929 10.2236C13.6834 9.83303 14.3166 9.83303 14.7071 10.2236C15.0976 10.6141 15.0976 11.2472 14.7071 11.6378L12.7071 13.6378C12.4211 13.9238 11.991 14.0093 11.6173 13.8545C11.2436 13.6998 11 13.3351 11 12.9307V7.93066C11 7.37838 11.4477 6.93066 12 6.93066Z" fill="#038008"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span>{hoursOfVideoContent} hours of video content</span>
+                                    </div>
+                                </div>
+                                <div class="child-hours" lwc:if={hoursToComplete} >
+                                    <div class="vertical-line">|</div>
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="#038008">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 5.93066C4 4.27381 5.34315 2.93066 7 2.93066H17C18.6569 2.93066 20 4.27381 20 5.93066V6.90143C20 7.87028 19.5321 8.77949 18.7437 9.34263L13.7205 12.9307L18.7437 16.5187C19.5321 17.0818 20 17.991 20 18.9599V19.9307C20 21.5875 18.6569 22.9307 17 22.9307H7C5.34315 22.9307 4 21.5875 4 19.9307V18.9599C4 17.991 4.4679 17.0818 5.25629 16.5187L10.2795 12.9307L5.25629 9.34263C4.4679 8.77949 4 7.87028 4 6.90143V5.93066ZM12 11.7018L17.5812 7.71516C17.844 7.52745 18 7.22438 18 6.90143V5.93066C18 5.37838 17.5523 4.93066 17 4.93066H7C6.44772 4.93066 6 5.37838 6 5.93066V6.90143C6 7.22438 6.15597 7.52745 6.41876 7.71516L12 11.7018ZM12 14.1596L6.41876 18.1462C6.15597 18.3339 6 18.6369 6 18.9599V19.9307C6 20.4829 6.44772 20.9307 7 20.9307H17C17.5523 20.9307 18 20.4829 18 19.9307V18.9599C18 18.6369 17.844 18.3339 17.5812 18.1462L12 14.1596Z" fill="#038008"/>
+                                            <path d="M16 20.9307H8V20.5079C8 20.1507 8.19054 19.8206 8.49987 19.642L10.9997 18.1982C11.6187 17.8407 12.3813 17.8407 13.0003 18.1982L15.5001 19.642C15.8095 19.8206 16 20.1507 16 20.5079V20.9307Z" fill="#038008"/>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <span>{hoursToComplete} hours to complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- <template lwc:if={isPublicProduct}> -->
+            <div lwc:if={whatYouAllNeed} class="section-padding">
+                <div class="info-heading">What You’ll Need</div>
+                
+                <div class="background-white border-left">
+                    <lightning-formatted-rich-text 
+                        value={whatYouAllNeed}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+            <div lwc:if={agenda} class="section-padding">
+                <div class="info-heading">Agenda</div>
+                
+                <div class="background-white border-left">
+                    <lightning-formatted-rich-text 
+                        value={agenda}
+                    ></lightning-formatted-rich-text>
+                </div>
+            </div>
+        <!-- </template> -->
+    </div>
+</template>

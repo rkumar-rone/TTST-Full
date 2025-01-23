@@ -1,0 +1,49 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 19-09-2024
+  @last modified by  : Gaurang Arora
+-->
+<template lwc:render-mode="light">
+    <template lwc:if={showMoreButton}>
+        <center><button disabled={disableButton} onclick={handleMoreRecords} class="showMoreBtn">{buttonLabel}</button></center>
+    </template>
+    <template lwc:if={stencilLoading}>
+      <div class="filter-item-cart product-container">
+        <div class="left-section-image stencil-image">
+            <c-stencil height="154" width="150" class="stencil"></c-stencil>
+        </div>
+        <div class="right-section">
+            <div class="product-info">
+                <div class="prod-name">
+                    <c-stencil height="28" width="100%" class="stencil"></c-stencil>
+                </div>
+                <div class="prod-des1">
+                    <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                </div>
+                <div class="prod-des2">
+                    <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                </div>
+                <div class="prod-event-location1">
+                    <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                </div>
+                <div class="prod-event-location2">
+                    <c-stencil height="14" width="100%" class="stencil"></c-stencil>
+                </div>
+            </div>
+            <div class="price-info">
+                <div class="product-price-name">
+                    <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                </div>
+                <div class="product-price">
+                    <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                </div>
+                <div class="learn-more-btn">
+                    <c-stencil height="30" width="100%" class="stencil"></c-stencil>
+                </div>
+            </div>
+        </div>
+      </div>
+    </template>
+</template>

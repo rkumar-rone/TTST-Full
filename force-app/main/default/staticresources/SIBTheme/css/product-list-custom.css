@@ -1,0 +1,36 @@
+.plp-container{
+    display: flex;
+    width: 1920px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plp-header{
+    text-align: center;
+    width: 1360px;
+    height: 43px;
+}
+
+.plp-col{
+    width: 1360px;  
+    height: 3404px;
+}
+
+.plp-col-size_1-of-3{
+    width: 455px;
+}
+
+.plp-col-size_2-of-3{
+    width: 910px;
+}
+
+.plp-col-size_3-of-3{
+    width: 455px;
+}
+
+.product-grid-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+}

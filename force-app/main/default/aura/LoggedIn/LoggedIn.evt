@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Handles Propagation of Login Checking" >
+    <aura:attribute name="username" type="String" />
+    <aura:attribute name="key" type="String" />
+</aura:event>

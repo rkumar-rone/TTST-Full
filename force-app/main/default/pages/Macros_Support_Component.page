@@ -1,0 +1,3 @@
+<apex:page >
+<apex:enhancedList customizable="open,on hold" ListId="00BG0000009BRRf" height="600"/>
+</apex:page>

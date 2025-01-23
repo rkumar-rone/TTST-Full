@@ -1,0 +1,159 @@
+<apex:page showHeader="false" controller="Saltbox_PaymentController">
+    <script src="https://flex.cybersource.com/microform/bundle/v2/flex-microform.min.js"></script>
+
+    <style>
+        .flex-microform {
+        height: 20px;
+        background: #ffffff;
+        -webkit-transition: background 200ms;
+        transition: background 200ms;
+        }
+
+        .required {
+            color: var(--slds-g-color-error-base-40, var(--lwc-colorTextError,rgb(234, 0, 30)));
+            margin: 0 var(--lwc-spacingXxxSmall,0.125rem);
+        }
+
+        .custom-label {
+            width: 99%;
+            word-wrap: break-word;
+            -webkit-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+            display: inline-block;
+            color: var(--slds-g-color-neutral-base-30, var(--lwc-colorTextLabel,rgb(49, 133, 156)));
+            font-size: var(--lwc-formLabelFontSize,0.75rem);
+            padding-right: var(--lwc-spacingXSmall,0.5rem);
+            padding-top: var(--lwc-spacingXxSmall,0.25rem);
+            margin-bottom: var(--lwc-spacingXxxSmall,0.125rem);
+        }
+
+        #securityCode-container.flex-microform, #number-container.flex-microform, .custom-input {
+            padding-top: 0;
+            padding-right: var(--slds-c-input-spacing-horizontal-end, var(--sds-c-input-spacing-horizontal-end, var(--lwc-spacingMedium,1rem)));
+            padding-bottom: 0;
+            padding-left: var(--slds-c-input-spacing-horizontal-start, var(--sds-c-input-spacing-horizontal-start, var(--lwc-spacingSmall,0.75rem)));
+            width: 99%;
+            min-height: calc(var(--lwc-heightInput,1.875rem) + (var(--lwc-borderWidthThin,1px) * 2));
+            line-height: var(--lwc-heightInput,1.875rem);
+            border: var(--lwc-borderWidthThin,1px) solid var(--slds-c-input-color-border, var(--sds-c-input-color-border, var(--slds-g-color-border-base-4, var(--lwc-colorBorderInput,rgb(0, 176, 80)))));
+            border-radius: var(--slds-c-input-radius-border, var(--sds-c-input-radius-border, var(--lwc-borderRadiusMedium,0.25rem)));
+            background-color: var(--slds-c-input-color-background, var(--sds-c-input-color-background, var(--slds-g-color-neutral-base-100, var(--lwc-colorBackgroundInput,rgb(255, 255, 255)))));
+            color: var(--slds-c-input-text-color, var(--sds-c-input-text-color));
+            box-shadow: var(--slds-c-input-shadow, var(--sds-c-input-shadow));
+            transition: border var(--lwc-durationQuickly,0.1s) linear,background-color var(--lwc-durationQuickly,0.1s) linear;
+            display: inline-block;
+        }
+
+        .flex-microform-focused {
+        background: lightyellow;
+        }
+
+        .flex-microform-valid {
+        background: green;
+        }
+
+        .flex-microform-valid.flex-microform-focused {
+        background: lightgreen;
+        }
+
+        .flex-microform-autocomplete {
+        background: #faffbd;
+        }
+    </style>
+
+
+    <div style="display: flex;margin-top:3px;">
+        <div style="flex:0 1 calc(50% - 1.5rem);margin-right: 3rem;">
+            <label class="custom-label" id="cardNumber-label">
+                <abbr class="required">*</abbr>Card Number
+            </label>
+            <div id="number-container" class="form-control"></div>
+        </div>
+        <div style="flex:0 1 calc(50% - 3.2rem);">
+            <label class="custom-label" for="securityCode-container">
+                <abbr class="required">*</abbr>CVV
+            </label>
+            <div id="securityCode-container" class="form-control"></div>
+        </div>
+    </div>
+    <div style="display: flex;margin-top:3px;">
+        <div style="flex:0 1 calc(50% - 1.5rem);margin-right: 3rem;">
+            <label class="custom-label" for="expMonth"> <abbr class="required">*</abbr>Expiry Month</label>
+            <input class="custom-input" id="expMonth" placeholder="MM"></input>
+        </div>
+        <div style="flex:0 1 calc(50% - 3.2rem);">
+            <label class="custom-label" for="expYear"> <abbr class="required">*</abbr>Expiry Year</label>
+            <input class="custom-input" id="expYear" placeholder="YYYY"></input>
+        </div>
+    </div>
+    <div id="errorsOutput" style="color:red;margin-top:3px;" role="alert"></div>
+
+    <script>
+        var microform;
+        let cardValid;
+        let cardType;
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.Saltbox_PaymentController.generateCaptureContext}',
+            function(result, event){
+                if (event.status) {
+                    var flex = new Flex(result);
+                    microform = flex.microform({ styles: {'input': {'color' : 'rgb(51, 51, 51)'}} });
+                    var number = microform.createField('number', { placeholder: 'Enter card number' });
+                    number.load('#number-container');
+                    var securityCode = microform.createField('securityCode', { placeholder: '•••' });
+                    securityCode.load('#securityCode-container');
+                    number.on('change', function(data) {
+                        console.log(data);
+                        if(data.card.length > 0) {
+                            cardValid = data.card[0].valid;
+                            cardType = data.card[0].brandedName;
+                        }
+                        else cardValid = false;
+                    });
+                } else console.log(event);
+            }, 
+            {escape: true}
+        );
+        let isIFrameListenerAttached = false;
+        if(!isIFrameListenerAttached) {
+        window.addEventListener('message', function(event) {  
+            console.log('tokenize event reached inside iframe');
+            if(event.data == 'tokenize') {
+                if(!cardValid) {
+                    errorsOutput.textContent = 'Card Number is invalid. Check the length and card type (American Express, Discover, Master Card, or Visa)';
+                    parent.postMessage('error', '*');
+                }
+                else {
+                    var options = {    
+                    expirationMonth: document.querySelector('#expMonth').value,  
+                    expirationYear: document.querySelector('#expYear').value 
+                    };              
+                    microform.createToken(options, function (err, token) {
+                    if (err) {
+                        console.error(err);
+                        // errorsOutput.textContent = err.message;
+                        errorsOutput.textContent = err.details[0].message;
+                        if(err.details[0].message == 'Validation error') {
+                            errorsOutput.textContent += ' - ' + err.details[0].location;
+                        }
+                        parent.postMessage('error', '*');
+                    } else {   
+                        errorsOutput.textContent = '';
+                        const data = {
+                            token: token,
+                            expiryYear : document.querySelector('#expYear').value,
+                            expiryMonth : document.querySelector('#expMonth').value,
+                            cardType : cardType
+                        };
+                        parent.postMessage(data, '*');
+                        console.log(JSON.stringify(data));
+                    }
+                    });
+                }
+            }
+          });
+          isIFrameListenerAttached = true;
+        }
+    </script>
+</apex:page>

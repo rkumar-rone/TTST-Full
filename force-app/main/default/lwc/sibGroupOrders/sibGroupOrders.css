@@ -1,0 +1,467 @@
+:host{
+
+    --sib-grouporder-border-radius: 16px;
+
+}
+
+.parent-container{
+    padding: 24px 0px 24px 0px;
+}
+
+.sib-header-label {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.sib-detail-label {
+    font-size: 12px;
+    background: #F3F3F3;
+    width: fit-content;
+    padding: 4px 8px 4px 8px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.sib-session-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.title h2 {
+    font-size: var(--sib-checkout-title-h2-font-size);
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: -1.26px;
+    text-align: left;
+    color: var(--sib-checkout-title-h2-text-color);
+    margin-bottom: 10px;
+    padding: 20px 0px 20px 0px;
+}
+
+.title h4 {
+    color: var(--sib-checkout-title-h2-text-color);
+    font-size: 21px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: -0.21px;
+    text-align: left;
+}
+
+.sib-text-description-bold {
+    color: var(--sib-plp-description-text-color);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.sib-text-description {
+    color: var(--sib-plp-description-text-color);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.sib-text-size-16 {
+    font-size: 16px;
+}
+
+.sib-text-size-14 {
+    font-size: 14px;
+}
+
+.sib-full-width {
+    width: 100%;
+}
+
+.sib-error-text{
+    color: red;
+}
+
+.sib-hide-component {
+    display: none;
+}
+
+.sib-card {
+    background: var(--sib-checkout-card-background-color) ; 
+    border-radius: 16px;
+}
+
+/** Wishlist section styling: begin*/ 
+.wishlist-error {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px;
+}
+
+
+/** Wishlist section styling: end*/ 
+
+
+.grouporder-readonly {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+}
+
+.grouporder-readonly .checkout-section-card {
+    width: 100%;
+}
+
+.grouporder-readonly .grouporder-readonlycontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.grouporder-readonly .edit{
+    margin-left: auto;
+    text-decoration: underline;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    text-align: center;
+    color:var(--sib-plp-description-text-color);
+    cursor: pointer;
+    text-decoration-color: #038008;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    min-width: 400px;
+    border: 2px solid #dedede;
+    border-radius: 10px 10px 0 0;
+}
+
+.styled-table th {
+    background-color: #f3f3f3;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.grouporder-container  {
+    display: flex;
+    flex-direction: column;
+    gap: 24px !important;
+    width: 100%;
+}
+
+.grouporder-container  .togglebtn-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    width: 100%;
+}
+
+.grouporder-container .divider {
+    height: 1px;
+    align-self: stretch;
+}
+
+.toggle {
+    width: 36px;   
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+}
+
+.toggle-label {
+    width: 100%;
+    height: 24px;
+}
+
+.grouporder-page .checkout-section-card {
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    align-self: stretch;
+    height: 100%;
+    
+}
+
+.divider {
+    background: rgba(110, 110, 135, 0.2);
+    height: 1px;
+}
+
+/** recipients section styling : begin*/
+.recipients-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 24px;
+}
+
+.recipient-header {
+    color: #242424;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+    word-wrap: break-word;
+}
+
+.recipient-header-cursor {
+    cursor: pointer;
+}
+
+.recipient-data-section-expanded {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    gap: 24px;
+}
+
+.recipient-data-section-hidden {
+    display: none;
+}
+
+.recipient-data-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    gap: 16px;
+}
+
+.recipient-label-bold{
+    color: var(--sib-plp-description-text-color);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17.50px;
+}
+
+.recipient-label {
+    color: var(--sib-plp-description-text-color);
+    font-feature-settings: 'ss01' on, 'ss03' on, 'ss04' on, 'ss05' on, 'ss06' on;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.recipient-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.recipient-input {
+    padding: 16px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid  rgba(110, 110, 135, 0.20);
+    background:  var(--sib-card-background-color);
+    width: 100%;
+    outline: none;
+    height: 44px;
+}
+
+.recipient-input-error {
+    border: 1px solid red !important;
+}
+/** recipients section styling : end */
+
+/** Button styling : begin */
+.cta-btn {
+    outline: none;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 5px;
+    height: 56px;
+    background: var(--sib-checkout-button-background-color);
+    color: var(--sib-checkout-button-text-color);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    padding: 16px 24px;
+    white-space: nowrap;
+    letter-spacing: 0.8px;
+    border: 0;
+    width: 100%;
+}
+
+.cta-btn:hover, .cta-btn:focus {
+    background: var(--sib-checkout-button-background-color);
+  -webkit-box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4), 0px 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px -1px 1px rgba(0, 0, 0, 0.4), 0px 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--sib-checkout-button-background-color) !important;
+  color: white !important;
+  text-decoration: none !important;
+}
+/** Button styling : end */
+
+
+/** toggle button checkbox styling : begin */
+.slds-form-element__label {
+    position: absolute;
+    left: 5%;
+}
+
+.slds-checkbox_toggle .slds-checkbox_faux {
+    box-shadow: none !important;
+    width: 36px;
+    height: 20px;
+
+}
+
+.slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux, .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox--faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux {
+    --slds-c-checkbox-toggle-color-background:var(--sib-checkout-button-background-color);
+    --slds-c-checkbox-toggle-color-background-hover: var(--sib-checkout-button-background-color);
+    border: 1px solid var(--sib-checkout-button-background-color);
+}
+
+.slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux, .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox--faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux:focus {
+    --slds-c-checkbox-toggle-color-background: var(--sib-checkout-button-background-color) !important;
+}
+
+.slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux, .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked ~ .slds-checkbox--faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux, .slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked ~ .slds-checkbox--faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux, .slds-checkbox--toggle [type=checkbox]:checked + .slds-checkbox--faux_container .slds-checkbox--faux:hover {
+    --slds-c-checkbox-toggle-color-background: var(--sib-checkout-button-background-color) !important;
+}
+
+.slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux {
+    --slds-c-checkbox-toggle-color-background: var(--sib-checkout-button-background-color) !important;
+}
+
+.slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux:hover{
+    --slds-c-checkbox-toggle-color-background: var(--sib-checkout-button-background-color) !important;
+}
+
+.slds-checkbox_toggle [type=checkbox]:checked + .slds-checkbox_faux_container .slds-checkbox_faux:focus{
+    --slds-c-checkbox-toggle-color-background: var(--sib-checkout-button-background-color) !important;
+}
+
+/** checkmark styling : begin */
+.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux:after, .slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:after, .slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux:after, .slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:after, .slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox--faux:after, .slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox_faux:after, .slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux:after, .slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:after, .slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux:after, .slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:after, .slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox--faux:after, .slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox_faux:after {
+    left: 23px !important;
+    height: 8px !important;
+    width: 4px !important;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-bottom-right-radius: 0.9px;
+    border-bottom-left-radius: 1px;
+    border-top-right-radius: 1px;
+}
+
+.slds-checkbox_toggle [type='checkbox']:checked + .slds-checkbox_faux:after, .slds-checkbox_toggle [type='checkbox']:checked + .slds-checkbox--faux:after, .slds-checkbox_toggle [type='checkbox']:checked ~ .slds-checkbox_faux:after, .slds-checkbox_toggle [type='checkbox']:checked ~ .slds-checkbox--faux:after, .slds-checkbox_toggle [type='checkbox']:checked + .slds-checkbox_faux_container .slds-checkbox_faux:after, .slds-checkbox_toggle [type='checkbox']:checked + .slds-checkbox--faux_container .slds-checkbox--faux:after, .slds-checkbox--toggle [type='checkbox']:checked + .slds-checkbox_faux:after, .slds-checkbox--toggle [type='checkbox']:checked + .slds-checkbox--faux:after, .slds-checkbox--toggle [type='checkbox']:checked ~ .slds-checkbox_faux:after, .slds-checkbox--toggle [type='checkbox']:checked ~ .slds-checkbox--faux:after, .slds-checkbox--toggle [type='checkbox']:checked + .slds-checkbox_faux_container .slds-checkbox_faux:after, .slds-checkbox--toggle [type='checkbox']:checked + .slds-checkbox--faux_container .slds-checkbox--faux:after {
+    border-bottom-color: var(--sib-checkout-button-background-color);
+    border-right-color: var(--sib-checkout-button-background-color);
+}
+/** checkmark styling : end */
+
+/**checked circle*/
+.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux:before, 
+.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:before, 
+.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux:before, 
+.slds-checkbox--toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:before, 
+.slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox--faux:before, 
+.slds-checkbox--toggle [type=checkbox]:checked~.slds-checkbox_faux:before, 
+.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux:before, 
+.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox--faux_container .slds-checkbox--faux:before, 
+.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux:before,
+.slds-checkbox_toggle [type=checkbox]:checked+.slds-checkbox_faux_container .slds-checkbox_faux:before, 
+.slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox--faux:before, .slds-checkbox_toggle [type=checkbox]:checked~.slds-checkbox_faux:before {
+    top: 1px;
+    right: 1px;
+    width: 16px;
+    height: 16px;
+    
+}
+
+/** unchecked circle */
+.slds-checkbox_toggle .slds-checkbox_faux:after {
+    width: 16px;
+    height: 16px;
+}
+/** checkbox styling : end */
+
+/** Common from other component css */
+.checkout-page .content-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    /* padding: 40px 40px 80px; */
+}
+
+.checkout-page .content-wrapper .d-flex {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.checkout-page .checkout-content {
+    width: 100%;
+}
+
+.checkout-page .checkout-content .checkout-customer {
+    border-radius: 16px;
+    background-color: var(--sib-checkout-card-background-color);
+    padding: 32px;
+}
+
+.checkout-page .checkout-content .box-title {
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(110, 110, 135, 0.2);
+}
+
+.checkout-page .checkout-content .box-info {
+    padding-top: 24px;
+}
+
+@media screen and  (max-width:1000px) {
+
+    .grouporder-container  .togglebtn-container{ 
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+    }
+}
+
+@media screen and  (max-width:800px) {
+    .recipients-container{
+        padding: 0 ;
+    }
+    
+}

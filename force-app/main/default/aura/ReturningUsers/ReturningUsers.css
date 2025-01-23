@@ -1,0 +1,28 @@
+.THIS {
+    margin:15px;
+    background: none;
+}
+
+.THIS .slds-card {
+    background: none;
+}
+
+.THIS .nolabel label {
+    display:none;
+}
+
+.THIS .htext div.slds-align-middle {
+	vertical-align: text-bottom;
+}
+
+.THIS .lowercase input {
+    text-transform: lowercase;
+}
+
+.THIS .slds-media__body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+}

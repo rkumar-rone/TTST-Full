@@ -1,0 +1,32 @@
+<!--
+  @description       : 
+  @author            : garora@rafter.one
+  @group             : 
+  @last modified on  : 13-09-2024
+  @last modified by  : Gaurang Arora
+-->
+<template>
+    <div class="desktopView">
+        <template lwc:if={sectionLength} for:each={sections} for:item="section">
+            <div key={section} class="heading" data-id={section} onclick={scrollToHeading}>
+                {section}
+            </div>
+        </template>
+        <template lwc:else>
+            <c-stencil class="heading" height="20" width="100%"></c-stencil>
+            <c-stencil class="heading" height="20" width="100%"></c-stencil>
+            <c-stencil class="heading" height="20" width="100%"></c-stencil>
+            <c-stencil class="heading" height="20" width="100%"></c-stencil>
+            <c-stencil class="heading" height="20" width="100%"></c-stencil>
+        </template>
+    </div>
+    <div class="handheldView">
+            <lightning-combobox lwc:if={sectionOptionsLength}
+                name="sections"
+                value={chosenSection}
+                options={sectionOptions}
+                onchange={scrollToHeadingMobile}>
+            </lightning-combobox>
+            <c-stencil lwc:else height="20" width="100%"></c-stencil>
+    </div>
+</template>

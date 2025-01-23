@@ -1,0 +1,85 @@
+<template lwc:render-mode="light">
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+
+    <article class="noborder setdropDownPos" lwc:if={isSkeletonLoading}>
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="stencil-container">
+                <div class="stencil-header">
+                    <div class="combox">
+                        <c-stencil height="40" width="100%"></c-stencil>
+                    </div>
+                    <div class="combox">
+                        <c-stencil height="40" width="100%"></c-stencil>
+                    </div>
+                </div>
+                <div class="stencil-body">
+                    <template for:each={courseCards} for:item="card" for:index="index">
+                        <div key={card} class="stencil-course-card">
+                            <div class="course-img">
+                                <c-stencil height="174" width="100%"></c-stencil>
+                            </div>
+                            <div class="course-header">
+                                <div class="stencil-course-title">
+                                    <c-stencil height="25" width="100%"></c-stencil>
+                                </div>
+                                <div class="stencil-course-btns">
+                                    <c-stencil height="35" width="100%" class="wid-50"></c-stencil>
+                                    <c-stencil height="35" width="100%" class="wid-50"></c-stencil>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </article>
+    <template lwc:else>
+        <article class="noborder setdropDownPos">
+            <div class="slds-card__body slds-card__body_inner">
+                <h3>
+                    <!-- Dropdown for Study Type -->
+                    <lightning-combobox name="type" label="" value={selectedstudytype} class="selectleft"
+                        options={studyTypeOptions} onchange={handleCourseTypeAndStudyType}>
+                    </lightning-combobox>
+
+                    <!-- Dropdown for Course Type -->
+                    <lightning-combobox name="coursetype" label="" value={selectedtype} class="selectright"
+                        options={courseTypeOptions} onchange={handleCourseTypeAndStudyType}>
+                    </lightning-combobox>
+
+                    <!-- Show "All Online Content" button if hasonline is true -->
+                    <template lwc:if={hasonline}>
+                        <a href={moodleLink} class="slds-show_large" style="margin-left:15px;">
+                            <lightning-button label={labels.allOnlineContentBtn} class="greenbutton"></lightning-button>
+                        </a>
+                    </template>
+                </h3>
+
+                <template lwc:if={noCourses}>
+                    <span class="no-course-text">
+                        {labels.noCourseText}
+                    </span>
+                </template>
+
+                <!-- Layout with "All Online Content" button for smaller screens -->
+                <lightning-layout vertical-align="center" multiple-rows="true" class="parent-schedule">
+                    <template lwc:if={hasonline}>
+                        <lightning-layout-item padding="horizontal-medium" size="12" class="slds-hide_large">
+                            <a href={moodleLink}>
+                                <lightning-button label={labels.allOnlineContentBtn}
+                                    class="greenbutton"></lightning-button>
+                            </a>
+                            <br /><br />
+                        </lightning-layout-item>
+                    </template>
+                    <div class="slds-grid slds-wrap slds-grid_align-left" style="width:100%;">
+                        <template for:each={courses} for:item="course">
+                            <c-sib-schedule-card course={course} key={course.cm.Campaign.Online_Event_Name__c}
+                                onshowtoastmsg={handleToastMsg}></c-sib-schedule-card>
+                        </template>
+                    </div>
+                </lightning-layout>
+            </div>
+        </article>
+    </template>
+</template>

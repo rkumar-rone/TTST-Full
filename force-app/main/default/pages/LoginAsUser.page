@@ -1,0 +1,5 @@
+<apex:page standardController="Contact" extensions="LoginAsUserExtension" action="{!loginAs}">
+    <script>
+        document.location.href='https://portal.trainingthestreet.com/s/events?s={!c.Session_Key__c}&u={!URLENCODE(Contact.User_Id__c)}';
+    </script>
+</apex:page>

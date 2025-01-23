@@ -1,0 +1,57 @@
+.handheldView{
+    display:none;
+}
+
+.desktopView{
+    width:100%;
+}
+
+.heading{
+    padding:10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    font-size: 16px;
+    font-family: Roboto;
+}
+
+.activeHeading{
+    padding:10px;
+    cursor: pointer;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    border-radius: 0px 16px 16px 0px;
+    background: #CDE8CE;
+    border-left: 4px solid #038008;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+
+@media (max-width: 800px) {
+    .handheldView{
+        display:block;
+        width:100%
+    }
+
+    .desktopView{
+       display:none;
+    }
+}
+
+@media (max-width: 480px) {
+    .handheldView{
+        display:block;
+        width:100%
+    }
+
+    .desktopView{
+        display:none;
+     }
+}

@@ -1,0 +1,114 @@
+<template>
+    <template lwc:if={isLoading}>
+        <lightning-spinner variant="brand" size="medium"></lightning-spinner>
+    </template>
+    <template lwc:else>
+        <lightning-accordion
+            allow-multiple-sections-open
+            active-section-name={orderDeliveryGroupSummmariesSelected}
+        >
+            <template if:true={physicalOdgs}>
+                <lightning-accordion-section
+                    name="PhysicalOrder"
+                    label={accordionTitle}
+                >
+                    <div
+                        class="slds-grid slds-wrap slds-border_bottom slds-p-vertical_small"
+                        style="padding: 0px !important;"
+                    >
+                    </div>
+                    <template for:each={physicalOdgsProducts} for:item="ois">
+                        <div
+                            class="slds-grid slds-wrap slds-border_bottom slds-p-vertical_small"
+                            key={ois.id}
+                        >
+                            <div class="slds-col slds-size_1-of-8">
+                                <img src={ois.media} alt="" />
+                            </div>
+                            <div
+                                class="slds-grid slds-grid_vertical slds-no-space slds-grow slds-col slds-size_7-of-8"
+                                style="padding-left: 1em; font-size: 12px;"
+                            >
+                                <div class="slds-p-bottom_small">
+                                    <div
+                                        class="slds-col slds-size_1-of-1 orderTitle"
+                                    >
+                                        <a style="font-size: 14px !important;" href={ois.detailLink}>{ois.Product2Name}</a> 
+                                        <p style="font-size: 13px !important;">{ois.dateCity}</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-p-bottom_xxx-small"
+                                >
+                                Course Code:
+                                    {ois.OrderItemSummaryStockKeepingUnit}
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-p-bottom_xxx-small"
+                                >
+                                    Quantity: {ois.OrderItemSummaryQuantity}
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-p-bottom_xxx-small"
+                                >
+                                Total with Tax: ${ois.OrderItemSummaryTotalAmtWithTax}
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </lightning-accordion-section>
+            </template>
+            <template if:true={digitalOdgs}>
+                <lightning-accordion-section
+                    name="DigitalOrder"
+                    label={accordionTitle}
+                >
+                    <div
+                        class="slds-grid slds-wrap slds-border_bottom slds-p-vertical_small"
+                        style="padding: 0px !important;"
+                    >
+                    </div>
+                    <template for:each={digitalOdgsProducts} for:item="ois">
+                        <div
+                            class="slds-grid slds-wrap slds-border_bottom slds-p-vertical_small"
+                            key={ois.id}
+                        >
+                            <div class="slds-col slds-size_1-of-8">
+                                <img src={ois.media} alt="" />
+                            </div>
+                            <div
+                                class="slds-grid slds-grid_vertical slds-no-space slds-grow slds-col slds-size_7-of-8"
+                                style="padding-left: 1em; font-size: 12px;"
+                            >
+                                <div class="slds-p-bottom_small">
+                                    <div
+                                        class="slds-col slds-size_1-of-1 orderTitle"
+                                    >
+                                        <a style="font-size: 14px !important;" href={ois.detailLink}>{ois.Product2Name}</a> 
+                                        <p style="font-size: 13px !important;">{ois.dateCity}</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-p-bottom_xxx-small"
+                                >
+                                Course Code:
+                                    {ois.OrderItemSummaryStockKeepingUnit}
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-p-bottom_xxx-small"
+                                >
+                                    Quantity: {ois.OrderItemSummaryQuantity}
+                                </div>
+                                <div
+                                    class="slds-col slds-size_1-of-1 slds-p-bottom_xxx-small"
+                                >
+                                Total with Tax: ${ois.OrderItemSummaryTotalAmtWithTax}
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+    </template>
+</template>

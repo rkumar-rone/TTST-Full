@@ -1,0 +1,158 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global"
+    controller="CourseManagementController">
+    <aura:attribute name="loggedin" type="Boolean" default="false" />
+    <aura:attribute name="isSandbox" type="Boolean" default="false" />
+    <aura:attribute name="courses" type="Object[]" />
+    <aura:attribute name="coursetypes" type="String[]" />
+    <aura:attribute name="deliveryFormats" type="String[]" />
+    <aura:attribute name="months" type="String[]" />
+    <aura:attribute name="cities" type="String[]" />
+    <aura:attribute name="years" type="String[]" />
+    <aura:attribute name="selectedcourse" type="String" default="All Courses" />
+    <aura:attribute name="selectedmonth" type="String" default="All Months" />
+    <aura:attribute name="selectedcity" type="String" default="All Cities and Time Zones" />
+    <aura:attribute name="selectedyear" type="String" default="All Years" />
+    <aura:attribute name="selectedDeliveryFormat" type="String" default="All Delivery Formats" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:LoggedIn" action="{!c.loggedIn}" />
+    <lightning:card class="noborder">
+        <aura:set attribute="title">
+            Public Course Calendar
+        </aura:set>
+        <lightning:layout class="slds-p-around_small" multipleRows="true">
+            <lightning:layoutItem size="12" smallDeviceSize="3">
+                <lightning:select name="course" value="{!v.selectedcourse}" onchange="{!c.loadCourses}" label="">
+                    <aura:iteration items="{!v.coursetypes}" var="ct">
+                        <option value="{!ct}" selected="{!ct==v.selectedcourse}">{!ct}</option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" smallDeviceSize="3">
+                <lightning:select name="city" value="{!v.selectedcity}" onchange="{!c.loadCourses}" label="">
+                    <aura:iteration items="{!v.cities}" var="ct">
+                        <option value="{!ct}" selected="{!ct==v.selectedcity}">{!ct}</option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" smallDeviceSize="3">
+                <lightning:select name="format" value="{!v.selectedDeliveryFormat}" onchange="{!c.loadCourses}"
+                    label="">
+                    <aura:iteration items="{!v.deliveryFormats}" var="df">
+                        <option value="{!df}" selected="{!df==v.selectedDeliveryFormat}">{!df}</option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" smallDeviceSize="3">
+                <lightning:select name="month" value="{!v.selectedmonth}" onchange="{!c.loadCourses}" label="">
+                    <aura:iteration items="{!v.months}" var="m">
+                        <option value="{!m}" selected="{!m==v.selectedmonth}">{!m}</option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="12" smallDeviceSize="3">
+                <lightning:select aura:id="year" name="year" value="{!v.selectedyear}" onchange="{!c.loadCourses}"
+                    label="">
+                    <aura:iteration items="{!v.years}" var="y">
+                        <option aura:id="yearoptions" value="{!y}" selected="{!y==v.selectedyear}">{!y}</option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+        </lightning:layout>
+        <aura:iteration items="{!v.courses}" var="course">
+            <lightning:layout horizontalAlign="center" multipleRows="true" class="slds-p-around_small">
+                <lightning:layoutItem size="5" largeDeviceSize="5">
+                    <h3><strong>
+                            <!-- <aura:if isTrue="{!v.loggedin}"> -->
+                                <!-- <lightning:formattedUrl value="{!'/s/view-event?id=' + course.c.Id}"
+                                    label="{!course.c.Online_Event_Name__c}" /> -->
+                                <aura:if isTrue="{!v.isSandbox}">
+                                    <lightning:formattedUrl class="slds-text-color_success"
+                                        value="{!'/TTSB2B/s/product/' + course.productId}"
+                                        label="{!course.c.Online_Event_Name__c}" />
+                                </aura:if>      
+                                <aura:if isTrue="{!not(v.isSandbox)}">
+                                    <lightning:formattedUrl class="slds-text-color_success"
+                                    value="{!'/s/product/' + course.productId}"
+                                    label="{!course.c.Online_Event_Name__c}" />
+                                </aura:if>  
+                            <!-- </aura:if> -->
+                            <!-- <aura:if isTrue="{!not(v.loggedin)}">
+                                <lightning:formattedUrl value="{!'/s/viewevent?id=' + course.c.Id}"
+                                    label="{!course.c.Online_Event_Name__c}" />
+                            </aura:if> -->
+                        </strong></h3>
+                </lightning:layoutItem>
+                <!-- Image -->
+                <lightning:layoutItem size="5" largeDeviceSize="5">
+                    <span class="slds-show_medium">
+                        <aura:if isTrue="{!course.c.Delivery_Format__c == 'In-person'}">
+                            <div class="badge">
+                                <span>In-Person</span>
+                            </div>
+                            <aura:set attribute="else">
+                                <div class="badgeAlt">
+                                    <span>Virtual</span>
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                        <aura:if isTrue="{!course.weekend}">
+                            <span class="weekendSpan">Weekend</span>
+                        </aura:if>
+                        <aura:if isTrue="{!course.isCloseToCapacity}">
+                            <span class="weekendSpan">Close to Capacity</span>
+                        </aura:if>
+                    </span>
+                </lightning:layoutItem>
+                <!-- Image End -->
+
+                <lightning:layoutItem size="12" largeDeviceSize="8">
+                    <lightning:layout>
+                        <lightning:layoutItem size="12" smallDeviceSize="6">
+                            <p style="padding-left: 30px;">
+                                <!-- <aura:if isTrue="{!not(empty(course.c.Event_Messages__c))}">
+                                    <span class="slds-hide_medium">
+                                        <aura:unescapedHtml value="{!course.c.Event_Messages__c}" /><br />
+                                    </span>
+                                </aura:if> -->
+                                <strong>{!course.c.Training_Location_City__c}<br />
+                                </strong>
+                                <lightning:formattedDateTime value="{!course.c.StartDate}" year="numeric"
+                                    month="numeric" day="numeric" timeZone="UTC" /> -
+                                <lightning:formattedDateTime value="{!course.c.EndDate}" year="numeric" month="numeric"
+                                    day="numeric" timeZone="UTC" />
+
+                            </p>
+                            <p class="slds-hide_medium" style="padding-left: 30px;">
+                                <strong>Format<br /></strong>
+                                <span>
+                                    <aura:if isTrue="{!course.c.Delivery_Format__c == 'In-person'}">
+                                        <div class="badge">
+                                            <span>In-Person</span>
+                                        </div>
+                                        <aura:set attribute="else">
+                                            <div class="badgeAlt">
+                                                <span>Virtual</span>
+                                            </div>
+                                        </aura:set>
+                                    </aura:if>
+                                    <aura:if isTrue="{!course.weekend}">
+                                        <span class="weekendSpan">Weekend</span>
+                                    </aura:if>
+                                    <aura:if isTrue="{!course.isCloseToCapacity}">
+                                        <span class="weekendSpan">Close to Capacity</span>
+                                    </aura:if>
+                                </span>
+                            </p>
+                        </lightning:layoutItem>
+                        <lightning:layoutItem size="6" class="slds-show_medium">
+                            <p>
+                                <strong>Class Code<br />
+                                </strong>{!course.c.Class_Code__c}
+                            </p>
+                        </lightning:layoutItem>
+                    </lightning:layout>
+                </lightning:layoutItem>
+            </lightning:layout>
+        </aura:iteration>
+    </lightning:card>
+</aura:component>

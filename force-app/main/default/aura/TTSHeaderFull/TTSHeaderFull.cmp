@@ -1,0 +1,288 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" >
+	<aura:handler event="c:LoggedIn" action="{!c.loggedIn}"/>
+	<ltng:require scripts="{!join(',', $Resource.jQuery_1_10_2, $Resource.SmartMenus)}" afterScriptsLoaded="{!c.scriptsLoaded}"/>
+	<nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
+	<div class="container-fluid"> 
+		<!-- Brand and toggle get grouped for better mobile display --> 
+
+		<!-- Collection of nav links and other content for toggling --> 
+        <span class="slds-hide_medium"><c:NavigationMobile /></span>
+        <a class="navbar-brand page-scroll" id="logonav" href="https://trainingthestreet.com">
+            <img class="logoimg" src="{!$Resource.TTS_Main}" />
+		</a>
+		<div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+			<div class="menu-main-navigation-container">
+				<ul id="menu-main-navigation" class="sm sm-blue nav navbar-nav" data-smartmenus-id="15161241456077505">
+					<li id="menu-item-94" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-94">
+						<a href="https://trainingthestreet.com/corporatelearning/" class="has-submenu" id="sm-15161241456077505-1" aria-haspopup="true" aria-controls="sm-15161241456077505-2" aria-expanded="false">
+							<span class="sub-arrow">+</span>Corporate Learning</a>
+						<ul class="sub-menu" id="sm-15161241456077505-2" role="group" aria-hidden="true" aria-labelledby="sm-15161241456077505-1" aria-expanded="false" style="width: auto; display: none; top: auto; left: 0px; margin-left: 0px; margin-top: 0px; min-width: 10em; max-width: 20em;">
+							<!--<li id="menu-item-618" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-618">
+								<a href="http://trainingthestreet.com/professional/training-programs/">Training Programs</a>
+							</li>-->
+                        	<li id="menu-item-619" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-619">
+								<a href="https://trainingthestreet.com/corporatelearning/">Overview</a>
+                            </li>
+							<li id="menu-item-617" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-617">
+                            
+								<a href="https://trainingthestreet.com/corporatelearning/continuing-development/">Continuing Development</a>
+							</li>
+							<li id="menu-item-619" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-619">
+								<a href="https://trainingthestreet.com/corporatelearning/program-advisory-services/">Program Advisory Services</a>
+							</li>
+                            <li id="menu-item-619" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-619">
+								<a href="https://trainingthestreet.com/corporate-excel-training/">Corporate Excel Training</a>
+							</li>
+                            <li id="menu-item-619" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-619">
+								<a href="https://trainingthestreet.com/onsite-private-equity-training/">Onsite Private Equity Training</a>
+							</li>
+							<!--<li id="menu-item-620" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-620">
+								<a href="http://trainingthestreet.com/professional/resource-center/">TTS Resource Center</a>
+							</li>
+							<li id="menu-item-1531" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1531">
+								<a href="http://trainingthestreet.com/professional/training-learning-center/">Using Our Training &amp; Learning Center</a>
+							</li>-->
+						</ul>
+					</li>
+					<li id="menu-item-3365" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3365">
+						<a href="https://trainingthestreet.com/publiccourses/" class="has-submenu" id="sm-15161241456077505-3" aria-haspopup="true" aria-controls="sm-15161241456077505-4" aria-expanded="false">
+							<span class="sub-arrow">+</span>Public Courses</a>
+						<ul class="sub-menu sm-nowrap" id="sm-15161241456077505-4" role="group" aria-hidden="true" aria-labelledby="sm-15161241456077505-3" aria-expanded="false" style="width: auto; display: none; top: auto; left: 0px; margin-left: 0px; margin-top: 0px; min-width: 10em; max-width: 20em;">
+							<li id="menu-item-5206" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5206">
+								<a href="https://portal.trainingthestreet.com/s/public-courses">Course Calendar</a>
+							</li>
+							<li id="menu-item-4907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4907">
+								<a href="https://trainingthestreet.com/course-reviews/">Course Reviews</a>
+							</li>
+							<li id="menu-item-3321" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3321">
+								<a href="https://trainingthestreet.com/corecomp/">Core Comprehensive</a>
+								</li>
+							<li id="menu-item-3325" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3325">
+								<a href="https://trainingthestreet.com/financial_statement_analysis/">Financial Statement Analysis and Accounting</a>
+							</li>
+							<li id="menu-item-4251" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4251">
+								<a href="https://trainingthestreet.com/advanced_topics/">Advanced Topics</a>
+							</li>
+                            <li id="menu-item-3322" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3322">
+								<a href="https://trainingthestreet.com/fasttrack/">Fast Track: Financial Modeling</a>
+							</li>
+                            <li id="menu-item-3456" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3456">
+								<a href="https://trainingthestreet.com/enhancedcore/">Enhanced Core</a>
+							</li>
+                            <li id="menu-item-3324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3324">
+								<a href="https://trainingthestreet.com/applied_excel/">Applied Excel</a>
+                                </li>
+                            <li id="menu-item-3324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3324">
+								<a href="https://trainingthestreet.com/python-training/">Python Training</a>
+                            </li>
+                            <li id="menu-item-3324" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3324">
+								<a href="https://trainingthestreet.com/private-equity/">Private Equity Transition</a>
+							</li>
+							<li id="menu-item-3879" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3879">
+								<a href="https://trainingthestreet.com/undergraduate_wall_street_bootcamp/">Undergraduate Boot Camp</a>
+							</li>
+                            <li id="menu-item-3970" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3970">
+								<a href="https://trainingthestreet.com/public_courses/capital-markets/">Principles of Capital Markets</a>
+							</li>
+							<li id="menu-item-3327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3327">
+								<a href="https://trainingthestreet.com/real-estate-fundamentals/">Real Estate Fundamentals</a>
+                            </li>
+							<li id="menu-item-3327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3327">
+								<a href="https://trainingthestreet.com/software_industry_analysis_and_modeling/">Software Industry Analysis and Modeling</a>
+                            </li>
+							<li id="menu-item-3327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3327">
+								<a href="https://trainingthestreet.com/evening_essentials/">Evening Essentials</a>
+							</li>
+						</ul>
+					</li>
+					<li id="menu-item-82" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-82">
+						<a href="https://trainingthestreet.com/academic/">Academic</a>
+					</li>
+					<li id="menu-item-4899" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4899">
+						<a title="TTS Academy" target="_blank" href="http://www.ttsacademy.com">Self-study<img src="{!$Resource.TTSCommunity + '/link-out-arrow-white-on-green2.png'}" alt="" width="12" height="12" class="alignnone size-full wp-image-5070" />
+
+						</a>
+					</li>
+					<!--<li id="menu-item-82" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-82">
+						<a href="http://trainingthestreet.com/on-campus/" class="has-submenu" id="sm-15161241456077505-5" aria-haspopup="true" aria-controls="sm-15161241456077505-6" aria-expanded="false">
+							<span class="sub-arrow">+</span>On Campus</a>
+						<ul class="sub-menu" id="sm-15161241456077505-6" role="group" aria-hidden="true" aria-labelledby="sm-15161241456077505-5" aria-expanded="false" style="width: auto; display: none; top: auto; left: 0px; margin-left: 0px; margin-top: 0px; min-width: 10em; max-width: 20em;">
+							<li id="menu-item-3319" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3319">
+								<a href="http://trainingthestreet.com/on-campus/2980-2/">Academic Client List</a>
+							</li>
+						</ul>
+					</li>
+					<li id="menu-item-4663" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4663">
+						<a href="http://trainingthestreet.com/macros/">Macros</a>
+					</li>-->
+					<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-10">
+						<a href="http://trainingthestreet.com/about/" class="has-submenu" id="sm-15161241456077505-7" aria-haspopup="true" aria-controls="sm-15161241456077505-8" aria-expanded="false">
+							<span class="sub-arrow">+</span>About TTS</a>
+						<ul class="sub-menu" id="sm-15161241456077505-8" role="group" aria-hidden="true" aria-labelledby="sm-15161241456077505-7" aria-expanded="false" style="width: auto; display: none; top: auto; left: 0px; margin-left: 0px; margin-top: 0px; min-width: 10em; max-width: 20em;">
+							<li id="menu-item-610" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610">
+								<a href="https://trainingthestreet.com/about/people/instructors/">Our Team</a>
+							</li>
+                                                        <li id="menu-item-609" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609">
+								<a href="http://trainingthestreet.com/about/history/">History</a>
+							</li>
+
+							<li id="menu-item-611" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-611">
+								<a href="http://trainingthestreet.com/about/why-choose-tts/">Why Choose TTS</a>
+							</li>
+							<li id="menu-item-612" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-612">
+								<a href="http://trainingthestreet.com/about/tts-community/">TTS Community</a>
+							</li>
+                            <li id="menu-item-612" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-612">
+								<a href="http://trainingthestreet.com/corporatelearning/training-learning-center/">Our Training and Learning Center</a>
+							</li>
+							<li id="menu-item-613" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-613">
+								<a href="http://trainingthestreet.com/about/careers/">Careers</a>
+							</li>
+							<li id="menu-item-614" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-614">
+								<a href="https://trainingthestreet.com/macros/">Macros</a>
+							</li>
+							<li id="menu-item-615" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-615">
+								<a href="http://trainingthestreet.com/about/faq/">FAQ</a>
+							</li>
+							<li id="menu-item-4180" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4180">
+								<a href="http://trainingthestreet.com/news/">News and Blogs</a>
+							</li>
+						</ul>
+					</li>
+					<!--<li id="menu-item-197" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197">
+						<a href="http://trainingthestreet.com/about/people/instructors/">Our Instructors</a>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<div class="acc_wrapper" id="acc_wrap_none" style="display:none">
+			<div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
+				<h3 class="hdng1 ui-accordion-header ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="false" aria-expanded="false" tabindex="0">
+					<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"/>
+					<img src="{!$Resource.TTSCommunity + '/menu_icon.png'}" />Menu</h3>
+				<div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="true" style="display: none; height: 66px;">
+					<div class="menu-main-navigation-container">
+						<ul id="menu-main-navigation-1" class="sm sm-blue nav navbar-nav" data-smartmenus-id="15161241456531042">
+							<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-94">
+								<a href="http://trainingthestreet.com/professional/" class="has-submenu" id="sm-15161241456531042-1" aria-haspopup="true" aria-controls="sm-15161241456531042-2" aria-expanded="false">
+									<span class="sub-arrow">+</span>Corporate</a>
+								<ul class="sub-menu" id="sm-15161241456531042-2" role="group" aria-hidden="true" aria-labelledby="sm-15161241456531042-1" aria-expanded="false">
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-618">
+										<a href="http://trainingthestreet.com/professional/training-programs/">Training Programs</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-617">
+										<a href="http://trainingthestreet.com/professional/continuing-development/">Continuing Development</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-619">
+										<a href="http://trainingthestreet.com/professional/program-advisory-services/">Program Advisory Services</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-620">
+										<a href="http://trainingthestreet.com/professional/resource-center/">TTS Resource Center</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1531">
+										<a href="http://trainingthestreet.com/professional/training-learning-center/">Using Our Training &amp; Learning Center</a>
+									</li>
+								</ul>
+							</li>
+							<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3365">
+								<a href="http://trainingthestreet.com/public_courses/" class="has-submenu" id="sm-15161241456531042-3" aria-haspopup="true" aria-controls="sm-15161241456531042-4" aria-expanded="false">
+									<span class="sub-arrow">+</span>Public Courses</a>
+								<ul class="sub-menu" id="sm-15161241456531042-4" role="group" aria-hidden="true" aria-labelledby="sm-15161241456531042-3" aria-expanded="false">
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5206">
+										<a href="http://trainingthestreet.com/public_courses/course-calendar/">Course Calendar</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4907">
+										<a href="http://trainingthestreet.com/public_courses/participant-feedback/">Participant Feedback</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3321">
+										<a href="http://trainingthestreet.com/public_courses/corporate-valuation/">Core: Financial Modeling &amp; Corporate Valuation</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3456">
+										<a href="http://trainingthestreet.com/public_courses/enhanced-core-comprehensive-financial-modeling-corporate-valuation/">
+											<i>Enhanced</i> Core: Financial Modeling and Corporate Valuation</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3322">
+										<a href="http://trainingthestreet.com/public_courses/fasttrack/">Fast Track: Financial Modeling</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3970">
+										<a href="http://trainingthestreet.com/public_courses/5-day-capital-markets-program/">Principles of Capital Markets</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3324">
+										<a href="http://trainingthestreet.com/public_courses/applied-excel/">Applied Excel</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3325">
+										<a href="http://trainingthestreet.com/public_courses/financial-statement-analysis/">Financial Statement Analysis/Accounting</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3326">
+										<a href="http://trainingthestreet.com/public_courses/advanced-topics-2/">M&amp;A and LBO Analysis</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4251">
+										<a href="http://trainingthestreet.com/public_courses/advanced-topics-3/">
+											<img class="alignnone wp-image-4816" src="{!$Resource.TTSCommunity + '/new-100x100.png'}" alt="new" width="35" height="35" /> Advanced Topics</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3879">
+										<a href="http://trainingthestreet.com/public_courses/undergraduate-wall-street-bootcamp/">Undergraduate Boot Camp</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3327">
+										<a href="http://trainingthestreet.com/public_courses/evening-weekend-courses/">Evening Essentials</a>
+									</li>
+								</ul>
+							</li>
+							<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4899">
+								<a title="TTS University" target="_blank" href="http://www.ttsuniversity.com">Self-study<img src="{!$Resource.TTSCommunity + '/link-out-arrow-white-on-green2.png'}" alt="" width="12" height="12" class="alignnone size-full wp-image-5070" />
+								</a>
+							</li>
+							<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-82">
+								<a href="http://trainingthestreet.com/on-campus/" class="has-submenu" id="sm-15161241456531042-5" aria-haspopup="true" aria-controls="sm-15161241456531042-6" aria-expanded="false">
+									<span class="sub-arrow">+</span>On Campus</a>
+								<ul class="sub-menu" id="sm-15161241456531042-6" role="group" aria-hidden="true" aria-labelledby="sm-15161241456531042-5" aria-expanded="false">
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3319">
+										<a href="http://trainingthestreet.com/on-campus/2980-2/">Academic Client List</a>
+									</li>
+								</ul>
+							</li>
+							<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4663">
+								<a href="http://trainingthestreet.com/macros/">Macros</a>
+							</li>
+							<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-10">
+								<a href="http://trainingthestreet.com/about/" class="has-submenu" id="sm-15161241456531042-7" aria-haspopup="true" aria-controls="sm-15161241456531042-8" aria-expanded="false">
+									<span class="sub-arrow">+</span>About TTS</a>
+								<ul class="sub-menu" id="sm-15161241456531042-8" role="group" aria-hidden="true" aria-labelledby="sm-15161241456531042-7" aria-expanded="false">
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-609">
+										<a href="http://trainingthestreet.com/about/history/">History</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-610">
+										<a href="http://trainingthestreet.com/about/people/">People</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-611">
+										<a href="http://trainingthestreet.com/about/why-choose-tts/">Why Choose TTS</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-612">
+										<a href="http://trainingthestreet.com/about/tts-community/">TTS Community</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-613">
+										<a href="http://trainingthestreet.com/about/careers/">Careers</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-614">
+										<a href="http://trainingthestreet.com/macros/">Macros</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-615">
+										<a href="http://trainingthestreet.com/about/faq/">FAQ</a>
+									</li>
+									<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4180">
+										<a href="http://trainingthestreet.com/news/">News</a>
+									</li>
+								</ul>
+							</li>
+							<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-197">
+								<a href="http://trainingthestreet.com/about/people/instructors/">Our Instructors</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+<div style="height:58px" >aaa&nbsp;</div>
+</aura:component>

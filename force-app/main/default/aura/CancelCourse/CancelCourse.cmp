@@ -1,0 +1,41 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="CourseManagementController">
+    <aura:attribute name="afterdeadline" type="Boolean" default="false" />
+    <aura:attribute name="beforedeadline" type="Boolean" default="false" />
+    <aura:attribute name="policy" type="String" />
+    <aura:attribute name="deadlinedate" type="Date" />
+    <aura:attribute name="deadlinehour" type="String" />
+    <aura:attribute name="deadlineminutes" type="String" />
+    <aura:attribute name="deadlineampm" type="String" />
+    <aura:attribute name="username" type="String" />
+    <aura:attribute name="key" type="String" />
+    <aura:attribute name="error" type="String" />
+    <aura:attribute name="campaignMemberId" type="Id" />
+    <aura:attribute name="checked" type="Boolean" default="false" />
+    <aura:attribute name="waitlist" type="Boolean" default="false" />
+    <aura:attribute name="courseName" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:CloseModal" action="{!c.handleClose}" />
+    <lightning:overlayLibrary aura:id="overlayLib" />
+
+    <aura:if isTrue="{!and(v.afterdeadline, not(v.waitlist))}">
+        The cancellation deadline for this event was
+        <lightning:formattedDateTime value="{!v.deadlinedate}" />&nbsp;{!v.deadlinehour}:{!v.deadlineminutes}
+        {!v.deadlineampm}. If you cancel, you will be subject to the cancellation policy:<br />
+        <span style="font-style:italic">{!v.policy}</span><br /><br />
+        <lightning:input type="checkbox" checked="{!v.checked}" label="I Acknowledge" />
+        <aura:if isTrue="{!not(empty(v.error))}">
+            <div class="slds-has-error slds-m-left--medium">
+                <div class="slds-form-element__help">
+                    {!v.error}
+                </div>
+            </div>
+        </aura:if>
+    </aura:if>
+    <aura:if isTrue="{!and(v.beforedeadline, not(v.waitlist))}">
+        As the deadline has not passed, there is no penalty to cancel.
+    </aura:if>
+    <aura:if isTrue="{!v.waitlist}">
+        As you are on the waitlist, you can cancel without penalty.
+    </aura:if>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+</aura:component>

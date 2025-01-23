@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>List Composer</masterLabel>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__Tab</target>
+        <target>lightning__FlowScreen</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="isRelatedList" type="Boolean" default="false" label="Is Related List" description="Mark it to show the component as related list"/>
+            <property name="recordId" type="String" default="{!recordId}" label="Record Id" description="Id of the record where the data will be pulled from"/>
+            <property name="relatedfieldname" type="String" default="" label="Related field API name" description="API name of the Lookup/MD field"/>
+            <property name="columnListTD" type="String" label="Set Columns" editor="c/setColumns"/>
+            <property name="searchAvailable" type="Boolean" default="false" label="Enable Search" description="Set to true to enable search bar"/>
+            <property name="searchFieldList" type="String" default="" label="Field Search List" description="Comma separated API names of the fields to search on. Kepp in mind like operator only valid on string field" required="true"/>
+            <property name="sortedbylist" type="String" default="" label="Order by" description="API name of the field to use to order the list" required="true"/>
+            <property name="sortedDir" type="String" default="DESC" label="Sort direction" description="Specifies whether the list is ordered in ascending (ASC) or descending (DESC) order by the Order by field. Default order is ascending. Only works if Order by is set" required="true"/>
+            <property name="rowLimit" type="Integer" default="25" label="Limit of rows" description="Number of maximum rows to show in the component." required="true" />
+            <property name="pageLimit" type="Integer" default="25" label="Limit of rows per page" description="Number of maximum rows to show per page." required="true" />
+            <property name="detailpage" type="String" default="" label="Detail Page Base URL" description="Set a base url for the detail page to redirect to"/>
+            <property name="brandColor" type="Color" default="" label=" Header Background Color" description="Set a header color"/>
+            <property name="textColor" type="Color" default="" label="Header Text Color" description="Set a header color"/>
+        
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,36 @@
+<!--
+  @description       : 
+  @author            : pareddy@rafter.one
+  @group             : 
+  @last modified on  : 09-25-2024
+  @last modified by  : Anand
+-->
+<template lwc:render-mode="light">
+    <lightning-modal-body>
+        <section class="modal-body-content dialog-body-height filters slds-scrollable">
+            <c-sib-public-course-calendar-filters-panel
+                selected-filters={selectedFilters}
+                filters={filters}
+                is-clear-all = {isClearAll}
+                onfacetvalueupdate={handleInputChange}
+            >
+            </c-sib-public-course-calendar-filters-panel>
+        </section>
+        <section class="modal-filter-buttons">
+            <section class="modal-reset-button">
+                <button
+                    type="button"
+                    class="clear-search-filters-modal-panel slds-float_left"
+                    onclick={handleClearAllFilters}>
+                    {labels.clearButton}
+                </button>
+                <button
+                    type="button"
+                    class="cancel-search-filters-modal-panel slds-float_right"
+                    onclick={handleCloseModal}>
+                    {labels.cancelButton}
+                </button>
+            </section>
+        </section>
+    </lightning-modal-body>
+</template>

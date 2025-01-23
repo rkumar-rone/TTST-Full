@@ -1,0 +1,10 @@
+.THIS {
+    width:100%;
+    height:100vh;
+}
+.THIS.loading-animation {
+    position: relative;
+    display: inline-block;
+    margin:auto;
+    color: #027d07;
+}

@@ -1,0 +1,35 @@
+<template>
+    <div class="sibConfigWrapper">
+        <div class="sibWrapperHeader">Configure</div>
+        <div class="sibWrapperDesc">Set the Configurations you want </div>
+        <lightning-tabset active-tab-value="SignUp">
+            <lightning-tab label="SignUp Configs" value="SignUp"> 
+                <c-sib-signup-admin-config-screen></c-sib-signup-admin-config-screen>
+            </lightning-tab>
+            <!--<lightning-tab label="Home Configs"> 
+                <c-sib-home-admin-config-screen></c-sib-home-admin-config-screen>
+            </lightning-tab>-->
+            <lightning-tab label="PLP Configs">
+                <c-sib-plp-admin-config-screen></c-sib-plp-admin-config-screen>
+            </lightning-tab>
+            <lightning-tab label="PDP Configs"> 
+                <c-sib-pdp-admin-config-screen></c-sib-pdp-admin-config-screen>
+            </lightning-tab>
+            <lightning-tab label="Cart Configs">
+                <c-sib-cart-admin-config-screen></c-sib-cart-admin-config-screen>
+            </lightning-tab>
+            <lightning-tab label="Checkout Configs">
+                <c-sib-checkout-admin-config-screen></c-sib-checkout-admin-config-screen>
+            </lightning-tab>
+            <lightning-tab label="Order Configs">
+                <c-sib-order-detail-admin-config-screen></c-sib-order-detail-admin-config-screen>
+            </lightning-tab>
+            <lightning-tab label="Footer Configs">
+                <c-sib-footer-admin-config-screen></c-sib-footer-admin-config-screen>
+            </lightning-tab>
+            <lightning-tab label="Mega Menu Configs">
+                <c-sib-header-menu-admin-config-screen></c-sib-header-menu-admin-config-screen>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+</template>

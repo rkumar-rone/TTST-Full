@@ -1,0 +1,56 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 03-12-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+    <div class="">
+        <section class="accordeon">
+            <ul>
+            <li>
+                <i class="promo-icon" onclick={handlePromoIconClick}></i>
+                <label class="slds-p-top_xxx-small" for="check-1">{labels.EnterPromoCode}</label>
+                <article class={panelClass}>
+                <div class="order-line">
+                    <input
+                    type="text"
+                    placeholder={labels.PromoCode}
+                    class="promo-input"
+                    value={couponCodeVal} 
+                    oninput={handleCouponChange}
+                    onkeydown={handleKeyPress}
+                    />
+                    <button type="button" class={applyBtnClass} onclick={handleApplyCoupon} disabled ={applyActionDisabled}>
+                    {labels.ApplyBtn}
+                    </button>
+                </div>
+                </article>
+            </li>
+            </ul>
+            <div lwc:if={isCouponInvalid} class="error-msg">
+                {errorMsg}
+            </div>
+        </section>
+        <div if:true={couponCode} class="promocode-line">
+            <p class="discount">
+            <span>
+                <lightning-formatted-number
+                    lwc:if={adjustedAmt}
+                    value={adjustedAmt}
+                    format-style="currency" 
+                    currency-code={currencyCode}
+                    display-currency-as="symbol"
+                ></lightning-formatted-number>
+            </span> {labels.Discount}
+            </p>
+            <p class="promo-num">{couponCode}</p>
+            <span
+            class="close"
+            id="promocode"
+            onclick={handleDeleteCoupon}
+            ></span>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,62 @@
+<template>
+    
+    <div class = 'card'>
+        <div class="promo-banner">
+            <div class="promo-text" lwc:if={hasDiscount}>{labels.save} <span>{discountPercent}</span></div>
+        </div>
+        <div  class="img-body">
+            <div if:false={mutProductImageAttr.hideProductAttr} class="tag slds-p-around--small">
+                <span title={mutProductImageAttr.productAttrValue} class="tagContents">
+                    <img class="product-img-attr-img" src={productImageAttrImg}></img>&nbsp;
+                    <lightning-formatted-rich-text value={mutProductImageAttr.productAttrValue}></lightning-formatted-rich-text>
+                    
+                </span>
+            </div>
+        </div>
+        <div class="product-info">
+            <div class="disc-text">{labels.getEverythingYouNeed}</div>
+            <div class = disc-script>{labels.getEverythingYouNeedHelpText}</div>
+            <div class="product-name">
+                <span onclick={handleNavigation} data-id = {productId}>{productName}</span>
+            </div>
+            <div class="prod-desc" if:false={hideDescription}>
+                {shortDescription}
+            </div>
+            <div class="slds-m-top--medium">
+                <div class="slds-grid">
+                    <template for:each={mutProductAttrData} for:item="attr" >
+                        <div key={attr.productAttrFieldName} if:false={attr.hideProductAttr}>
+                            <c-saltbox-product-attribute-item product-attr-detail={attr} ></c-saltbox-product-attribute-item>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        <div class="price-action-area">
+            <div class="price">
+                <p class={strikeTroughPriceClass}>
+                    <lightning-formatted-number
+                    format-style="currency"
+                    currency-code={currencyCode}
+                    currency-display-as="symbol"
+                    maximum-fraction-digits="2"
+                    value={productPrice}>
+                    </lightning-formatted-number>
+                    
+                </p>
+                <p lwc:if={hasDiscount}>
+                    <lightning-formatted-number
+                    format-style="currency"
+                    currency-code={currencyCode}
+                    currency-display-as="symbol"
+                    maximum-fraction-digits="2"
+                    value={discountedPrice}>
+                    </lightning-formatted-number>
+                </p>
+            </div>
+            <div class="add-cart-action" if:false={hideAddtoCart}>
+                <button class="add-btn" onclick={addToCartAction}>{buttonLabel}</button>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,52 @@
+.bucket-name{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    /* identical to box height, or 112% */
+
+    display: flex;
+    align-items: center;
+
+    /* Seconday-color-2 */
+
+   
+
+    opacity: 0.8;
+}
+
+.inactive-bucket-item{
+   
+    min-height: 41px;
+    border-radius: 4px 0px 0px 0px;
+    border: 0.5px solid #BDBDBD;
+}
+
+.active-bucket-item{
+    min-height: 41px;
+    border-radius: 0px 0px 0px 0px;
+    border-right: 0.5px solid #BDBDBD;
+    border-left: 0.5px solid #BDBDBD;
+    border-bottom: 0.5px solid #BDBDBD;
+    border-left: 4px solid #2A8F56;
+    background: #EEF9F6;
+    color: #2A8F56;
+
+}
+
+.bucket-input{
+    border: none !important;
+    background-color: #EEF9F6;
+}
+.bucket-input:focus{
+    border: none !important;
+    background-color: #EEF9F6;
+    box-shadow: none;
+}
+
+.close-icon{
+    
+    --lwc-colorTextIconDefault: #2A8F56;
+   
+}

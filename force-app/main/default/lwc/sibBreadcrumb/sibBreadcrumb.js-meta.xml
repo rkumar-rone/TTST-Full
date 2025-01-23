@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <masterLabel>SIB Breadcrumb</masterLabel>
+    <description>SIB Breadcrumb</description>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Nav Menu name" name="navMenu" type="String" description="used to fetch nav menu against module name in metadata" />
+            <property label="Nav item name" name="navItem" type="String" description="used to extract nav item from nav menu" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,116 @@
+:host {
+    background-color: #f1f1f1;
+    display: flex;
+    padding-top: var(--lwc-spacingXxLarge, 3rem);
+    padding-bottom: var(--lwc-spacingXxLarge, 3rem);
+    flex-direction: column;
+}
+
+.summary-container {
+    padding: 0rem 1.5rem;
+}
+
+.summary-header {
+    padding-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* border-bottom: solid rgb(42,143,86) 1px; */
+}
+
+.original-price {
+    text-decoration: line-through;
+    font-size: 1rem;
+    align-self: flex-end;
+}
+
+.final-price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: inherit;
+    font-size: 1.5rem;
+    font-weight: var(--lwc-fontWeightBold);
+}
+
+.final-price-container span {
+    font-weight: var(--lwc-fontWeightRegular);
+}
+
+.final-price-container lightning-formatted-number {
+    font-weight: 500;
+}
+
+.finalPriceContainer {
+    border-top: solid rgb(42,143,86) 1px;
+}
+
+/* Tablet screens */
+@media only screen and (max-width: 64em) {
+    .final-price-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .final-price-container lightning-formatted-number {
+        align-self: flex-end;
+        padding-left: 1rem;
+    }
+}
+
+/* Phone screens */
+@media only screen and (max-width: 47.9375em) {
+    .final-price-container {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+}
+
+.price-container {
+    padding: 0.75rem 0rem;
+    /* border-bottom: solid lightgray 1px; */
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.total-amount {
+    color: rgb(42,143,86);
+}
+
+.quote-container {
+    border-bottom: solid rgb(42,143,86) 1px;
+    padding: 0.75rem 0rem;
+}
+
+.quote-label {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 0.25rem;
+    color: black;
+}
+
+.add-quote-input-default {
+    border: 0px;
+    font-weight: bold;
+}
+
+.add-quote-input-success {
+    border: 0px;
+    color: #36b66c;
+    font-weight: bold;
+}
+
+.add-quote-input-failure {
+    border: solid rgb(234, 0, 30) 1px;
+    color: rgb(234, 0, 30);
+    font-weight: bold;
+}
+
+.invalid-quote-message {
+    color: rgb(234, 0, 30);
+    font-size: 0.7rem;
+}
+
+.pricing-update-helptext {
+    color: #485561;
+    font-size: 1rem;
+    padding: 0.75rem 0rem;
+}

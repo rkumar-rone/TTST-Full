@@ -1,0 +1,23 @@
+.q-product-boxes .priceDetail .q-price{
+	font-size: 30px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1;
+	letter-spacing: -0.3px;
+	text-align: left;
+	color: #3e831c;
+	display: block;
+	padding: 0 15px 0;
+}
+
+.q-product-boxes .priceDetail .q-sales-price {
+	display: block;
+	padding: 0 15px 0;
+	min-height: 32px;
+}
+
+.q-product-boxes .priceDetail small {
+	vertical-align: super;
+	font-size: 20px;
+}

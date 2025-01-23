@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 02-22-2024
+  @last modified by  : asood@rafter.one
+-->
+<template lwc:render-mode="light">
+    <section class="modal-body-content dialog-body-height filters slds-scrollable">
+        <c-sib-search-filters-panel
+            display-data={normalizedSearchFilters}
+            onfacetvalueupdate={handleFacetValueUpdate}
+            oncategoryupdate={handleCategoryUpdate}
+            is-clear-all-click={isClearAllClick}
+        ></c-sib-search-filters-panel>
+    </section>
+    <section class="modal-filter-buttons">
+        <section class="modal-reset-button">
+            <button
+                type="button"
+                class="clear-search-filters-modal-panel slds-float_left"
+                onclick={handleClearAllFilters}>
+                {clearButtonLabel}
+            </button>
+            <button
+                type="button"
+                class="cancel-search-filters-modal-panel slds-float_right"
+                onclick={handleCloseModal}>
+                {cancelButtonLabel}
+            </button>
+        </section>
+        <button
+            type="button"
+            class="slds-button_stretch slds-m-top_small"
+            onclick={handleCloseModal}>
+            {displayCountLabel}
+        </button>
+    </section>
+</template>

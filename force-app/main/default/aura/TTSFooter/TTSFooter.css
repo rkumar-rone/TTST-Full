@@ -1,0 +1,139 @@
+.THIS {
+    line-height:20px;
+    font-size:14px;
+}
+footer.THIS {
+    padding: 0;
+    display: table;
+    width: 100%;
+    background-color: #333;
+}
+
+.THIS #footer_main {
+    padding: 40px 0;
+}
+
+.THIS .container-fluid {
+    /*max-width: 1250px;*/
+}
+
+.THIS .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.THIS .row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+@media (min-width: 992px) {
+	.THIS .col-md-12 {
+    	width: 100%;
+	}
+    .THIS .col-md-1, .THIS .col-md-2, .THIS .col-md-3, .THIS .col-md-4, .THIS .col-md-5, .THIS .col-md-6, .THIS .col-md-7, .THIS .col-md-8, .THIS .col-md-9, .THIS .col-md-10, .THIS .col-md-11, .THIS .col-md-12 {
+    	float: left;
+	}
+}
+
+
+.THIS .col-xs-1, .THIS .col-sm-1, .THIS .col-md-1, .THIS .col-lg-1, .THIS .col-xs-2, .THIS .col-sm-2, .THIS .col-md-2, .THIS .col-lg-2, .THIS .col-xs-3, .THIS .col-sm-3, .THIS .col-md-3, .THIS .col-lg-3, .THIS .col-xs-4, .THIS .col-sm-4, .THIS .col-md-4, .THIS .col-lg-4, .THIS .col-xs-5, .THIS .col-sm-5, .THIS .col-md-5, .THIS .col-lg-5, .THIS .col-xs-6, .THIS .col-sm-6, .THIS .col-md-6, .THIS .col-lg-6, .THIS .col-xs-7, .THIS .col-sm-7, .THIS .col-md-7, .THIS .col-lg-7, .THIS .col-xs-8, .THIS .col-sm-8, .THIS .col-md-8, .THIS .col-lg-8, .THIS .col-xs-9, .THIS .col-sm-9, .THIS .col-md-9, .THIS .col-lg-9, .THIS .col-xs-10, .THIS .col-sm-10, .THIS .col-md-10, .THIS .col-lg-10, .THIS .col-xs-11, .THIS .col-sm-11, .THIS .col-md-11, .THIS .col-lg-11, .THIS .col-xs-12, .THIS .col-sm-12, .THIS .col-md-12, .THIS .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.THIS p {
+    margin: 0 0 25px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #222;
+    font-weight: 300;
+}
+
+footer.THIS p {
+    color: #dfdfdf;
+    text-align: center;
+    margin-bottom: 0;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.THIS ul.social {
+    padding: 0;
+    display: table;
+    margin: 30px auto;
+}
+
+.THIS ul.social li {
+    list-style: none;
+    float: left;
+}
+
+.THIS ul.social li a {
+    padding: 0 7px;
+    transition: all .3s ease;
+    opacity: .7;
+}
+
+.THIS .google_plus_footer {
+    display: none;
+}
+
+.THIS .ftr_menu {
+    padding: 0;
+    margin: 0 auto;
+    display: table;
+    width: auto;
+}
+
+.THIS .ftr_menu li {
+    float: left;
+    list-style: none;
+    margin: 6px 15px;
+}
+
+.THIS .ftr_menu li a {
+    color: #dfdfdf;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.THIS .acc_wrapper, .THIS .ftr_menu .sub-menu {
+    display: none;
+}
+
+.THIS .sub-menu {
+    padding: 0 !important;
+}
+
+.THIS .sub-menu {
+    max-width: 60em !important;
+}
+
+.THIS .row.footer_bootm {
+    border-top: #474646 solid 1px;
+    margin-top: 35px;
+    padding-top: 35px;
+}
+
+footer.THIS a:hover {
+	color: #ef6921;
+    text-decoration:none;
+}
+
+.THIS ul.social li a:hover {
+	opacity: 1;
+}
+
+.THIS .clearfix:before, .THIS .clearfix:after, .THIS .dl-horizontal dd:before, .THIS .dl-horizontal dd:after, .THIS .container:before, .THIS .container:after, .THIS .container-fluid:before, .THIS .container-fluid:after, .THIS .row:before, .THIS .row:after, .THIS .form-horizontal .form-group:before, .THIS .form-horizontal .form-group:after, .THIS .btn-toolbar:before, .THIS .btn-toolbar:after, .THIS .btn-group-vertical > .btn-group:before, .THIS .btn-group-vertical > .btn-group:after, .THIS .nav:before, .THIS .nav:after, .THIS .navbar:before, .THIS .navbar:after, .THIS .navbar-header:before, .THIS .navbar-header:after, .THIS .navbar-collapse:before, .THIS .navbar-collapse:after, .THIS .pager:before, .THIS .pager:after, .THIS .panel-body:before, .THIS .panel-body:after, .THIS .modal-footer:before, .THIS .modal-footer:after {
+    display: table;
+    content: " ";
+}
+
+.THIS .clearfix:after, .THIS .dl-horizontal dd:after, .THIS .container:after, .THIS .container-fluid:after, .THIS .row:after, .THIS .form-horizontal .form-group:after, .THIS .btn-toolbar:after, .THIS .btn-group-vertical > .btn-group:after, .THIS .nav:after, .THIS .navbar:after, .THIS .navbar-header:after, .THIS .navbar-collapse:after, .THIS .pager:after, .THIS .panel-body:after, .THIS .modal-footer:after {
+    clear: both;
+}

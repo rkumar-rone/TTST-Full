@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <assignments>
+        <name>Create_Platform_Event</name>
+        <label>Create Platform Event</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <assignmentItems>
+            <assignToReference>PaymentCaptureEvent.Payment_Authorization_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Payment_Authorization.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Fire_Capture_Event</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_if_OS_is_Null</name>
+        <label>Check if OS is Null</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>OS Null</defaultConnectorLabel>
+        <rules>
+            <name>OS_not_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Order_Summary__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Previous_Value_Waitlist</targetReference>
+            </connector>
+            <label>OS not Null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Previous_Value_Waitlist</name>
+        <label>Previous Value Waiting List?</label>
+        <locationX>182</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Was_Waiting_List</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record__Prior.Attendee_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Waiting List</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Order_Summary</targetReference>
+            </connector>
+            <label>Was Waiting List</label>
+        </rules>
+    </decisions>
+    <description>With correct OS not null in desition</description>
+    <environments>Default</environments>
+    <interviewLabel>Capture Payment when Registered {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Capture Payment when Registered</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Fire_Capture_Event</name>
+        <label>Fire Capture Event</label>
+        <locationX>50</locationX>
+        <locationY>863</locationY>
+        <inputReference>PaymentCaptureEvent</inputReference>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Order_Summary</name>
+        <label>Get Order Payment Summary</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Payment_Authorization</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OrderSummaryId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Order_Summary__r.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OrderPaymentSummary</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Payment_Authorization</name>
+        <label>Get Payment Authorization</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Platform_Event</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OrderPaymentSummaryId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Order_Summary.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PaymentAuthorization</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_OS_is_Null</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Attendee_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Registered</stringValue>
+            </value>
+        </filters>
+        <object>CampaignMember</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>PaymentCaptureEvent</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Payment_Capture__e</objectType>
+    </variables>
+</Flow>

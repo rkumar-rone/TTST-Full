@@ -1,0 +1,38 @@
+<template>
+    <h1 style={textTitleSize} class="slds-align_absolute-center">{textTitle}</h1>
+    <lightning-accordion if:true={isLoading} allow-multiple-sections-open active-section-name="General" class="example-accordion slds-var-m-around_small">
+        
+        <lightning-accordion-section name="General" label="TTS General FAQ">
+            <template for:each={questions.general} for:item="question">
+                <lightning-accordion-section key={question.Id} label={question.Question__c} style={textSize} class="slds-var-m-around_small">
+                    <p class="slds-var-m-top_x-small">{question.Answer__c}</p>
+                    <div style="white-space: pre-line" class="slds-var-m-top_x-small">
+                        <p class="slds-var-p-left_large slds-list_dotted">{question.Answer_List__c}</p>
+                    </div>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="Public" label="Public Courses FAQ" class="slds-var-m-around_small">
+            <template for:each={questions.public} for:item="question">
+                <lightning-accordion-section key={question.Id} label={question.Question__c} style={textSize} class="slds-var-m-around_small">
+                    <p class="slds-var-m-top_x-small">{question.Answer__c}</p>
+                    <div style="white-space: pre-line" class="slds-var-m-top_x-small">
+                        <p class="slds-var-p-left_large slds-list_dotted">{question.Answer_List__c}</p>
+                    </div>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion-section>
+
+        <lightning-accordion-section name="selfStudy" label="Self-Study FAQ" class="slds-var-m-around_small">
+            <template for:each={questions.selfStudy} for:item="question">
+                <lightning-accordion-section key={question.Id} label={question.Question__c} style={textSize} class="slds-var-m-around_small">
+                    <p class="slds-var-m-top_x-small">{question.Answer__c}</p>
+                    <div style="white-space: pre-line" class="slds-var-m-top_x-small">
+                        <p class="slds-var-p-left_large slds-list_dotted">{question.Answer_List__c}</p>
+                    </div>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion-section>
+    </lightning-accordion>
+</template>

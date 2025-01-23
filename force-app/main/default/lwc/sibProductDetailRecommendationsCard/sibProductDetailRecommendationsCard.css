@@ -1,0 +1,119 @@
+.disc-text{
+    color: #242424;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    word-wrap: break-word;
+    margin-top: 16px;
+}
+.disc-script{
+    color: #242424;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.50px;
+    padding: 16px 0;
+}
+.product-name span{
+    color: #038008;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: underline;
+    line-height: 17.50px;
+    cursor: pointer;
+}
+.add-btn{
+    border-radius: 8px;
+    background:  #038008;
+    padding:  10px 16px;
+    color: white;
+}
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    background: #CDE8CE;
+    color: #242424;
+    padding: 24px;
+    position: relative;
+}
+.product-info{
+    width: 60%;
+}
+.prod-desc {
+    color: #242424 !important;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    /* line-height: 150%; */
+    line-height: normal;
+    padding-top: 16px;
+
+}
+.price-action-area{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.price-area{
+    color: #242424;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    word-wrap: break-word;
+}
+
+.promo-banner {
+  
+    background: #FFA603;
+    border-bottom-right-radius: 16px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+
+.promo-text {
+    padding: 4px 8px;
+    color: #242424;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 15px;
+    letter-spacing: 0.96px;
+    word-wrap: break-word;
+}
+.add-strike-line{
+    color: #979797;
+    text-decoration: line-through;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: end;
+}
+.tag {
+    width: 120px;
+    height: 42px;
+    position: absolute;
+    top: 0px;
+    left: 176px;
+    color: var(--tagTextColor);
+    background: var(--tagBackgroundColor);
+    border-radius: 0px 2px 2px 0px;
+}
+.tagContents {
+    display: block; 
+    max-width: 100px; 
+    overflow: hidden; 
+    word-wrap: break-word; 
+    text-overflow: clip; 
+    word-break: break-all; 
+    overflow-wrap: break-word; 
+    white-space: nowrap; 
+}
+.product-img-attr-img {
+    width: 16px;
+    height: 16px;
+}

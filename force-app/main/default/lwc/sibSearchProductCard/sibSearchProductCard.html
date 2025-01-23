@@ -1,0 +1,123 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 07-18-2024
+  @last modified by  : Jassimran Virdi
+-->
+<template lwc:render-mode="light">
+
+    <div class="filter-item-cart">
+       
+        <div class={productBgDiv}>
+            <template lwc:if={mostPopularTag.isPopular}>
+                <div class="product-popular-tag-section">
+                    <span class="product-popular-text">{mostPopularTag.popularLabel}</span>
+                </div>
+            </template>
+            <template lwc:if={newCourseTag.hasNewCourse}>
+                <div class="product-newCourse-tag-section">
+                    <span class="product-newCourse-text">{newCourseTag.newCourseLabel}</span>
+                </div>
+            </template>
+            <span class="course-type">{productGroup}</span>
+            <div class="filter-cart__img" if:true={showProductImage} onkeydown={handleKeydown} onclick={handleProductDetailPageNavigation}>
+                <experience-picture 
+                    alternative-text={image.altText} 
+                    url={image.url} 
+                    images={image.images}
+                    loading="lazy">
+                </experience-picture>
+            </div>
+        </div>
+
+        <div class="inner">
+            <div class="filter-cart__desc">
+
+                <template lwc:if={productName}>
+                    <a class="slds-text-link_reset product-name"
+                        onkeydown={handleKeydown} 
+                        onclick={handleProductDetailPageNavigation}>
+                        <h3 title={productName}>{productName}</h3>
+                    </a>
+                </template>
+
+                <template lwc:if={shortDescription}>
+                    <p title={shortDescription}>{shortDescription}</p>
+                </template>
+
+                <template lwc:if={eventRelationshipChildNames}>
+                    <div class="columns">
+                        <template lwc:if={leftChildNames}>
+                            <ul class="items-column">
+                                <template for:each={leftChildNames} for:item="des">
+                                    <li key={des}>
+                                        <p title={des}>{des}</p>
+                                    </li>
+                                </template>
+                            </ul>
+                        </template>
+                        <template lwc:if={rightChildNames}>
+                            <ul class="items-column">
+                                <template for:each={rightChildNames} for:item="des">
+                                    <li key={des}>
+                                        <p title={des}>{des}</p>
+                                    </li>
+                                </template>
+                            </ul>
+                        </template>
+                    </div>
+                    
+                    <template lwc:if={isShowMore}>
+                        <span class="showMoreText" title={showMoreText}>{showMoreText}</span>
+                    </template>
+                </template>
+                
+                <template lwc:if={attributes}>
+                    <ul>
+                        <template for:each={attributes} for:item="attribute">
+                            <li key={attribute.apiName}>
+                                <p title={attribute.value}>{attribute.label}: {attribute.value}</p>
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+                
+            </div>
+            <div class="filter-cart__price">
+                <div class="left">
+                    <template lwc:if={parentProduct}>
+                        <span class="price">{parentPrice}</span>
+                    </template>
+                    <template lwc:else>
+                        <template if:false={isSubscriptionProduct}>
+                            <template if:true={displayPriceText}>
+                                <span class="price-text" title={displayPriceText}>{displayPriceText}</span>
+                            </template>
+    
+                            <c-sib-product-pricing
+                                plp-config={plpConfig} 
+                                price={product.price}
+                            ></c-sib-product-pricing>
+    
+                        </template>
+                    </template>
+                </div>
+
+                <div class="right">
+                        <c-sib-common-button 
+                            button-label={learnMoreButtonText}
+                            assistive-text={addToCartButtonAriaLabel} 
+                            data-product-id={product.productId} 
+                            variant={actionButtonVariant}
+                            onclick={handleProductDetailPageNavigation}>
+                            <span class="button-text">{learnMoreButtonText}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M19.978 12.2446C19.9446 12.363 19.841 12.5192 19.6984 12.626L14.699 17.3953C14.5565 17.5303 14.3615 17.6127 14.1665 17.6127C13.9715 17.6127 13.7765 17.5303 13.6415 17.3953C13.3425 17.103 13.3425 16.6234 13.635 16.3311L17.394 12.1858H5C4.58 12.1858 4.25 11.8486 4.25 11.4364C4.25 11.0167 4.58 10.6869 5 10.6869H17.4154L13.641 6.47163C13.342 6.17185 13.342 5.69969 13.641 5.40742C13.9335 5.10764 14.406 5.10764 14.706 5.40667L19.674 9.88342C19.6783 9.88745 19.6825 9.89153 19.6867 9.89567C19.6904 9.89942 19.6941 9.90321 19.6978 9.90702C19.8832 10.0902 19.949 10.3523 19.8953 10.5935Z" fill="white"/>
+                            </svg>
+                        </c-sib-common-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

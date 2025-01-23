@@ -1,0 +1,8 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global" controller="CourseManagementController">
+    <aura:attribute name="message" type="String" />
+    <aura:attribute name="noCourses" type="Boolean" default="false" />
+    <aura:handler event="c:LoggedIn" action="{!c.doInit}"/>
+    <aura:if isTrue="{!v.noCourses}">
+        <div class="message">{!v.message}</div>
+    </aura:if>
+</aura:component>

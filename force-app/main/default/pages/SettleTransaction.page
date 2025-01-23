@@ -1,0 +1,44 @@
+<apex:page controller="SettleTransaction">
+<apex:form forceSSL="true">
+	<apex:pageBlock title="Settle Transactions">
+		<apex:pageMessages />
+		<apex:pageBlockButtons >
+			<apex:commandButton value="Submit Transactions" action="{!submit}" />
+			<apex:commandButton value="Cancel" action="{!cancel}" />
+		</apex:pageBlockButtons>
+		<apex:pageBlockSection title="Event" columns="1">
+			<apex:outputField value="{!e.Name}" />
+		</apex:pageBlockSection>
+		<apex:pageBlockTable value="{!trans}" var="tran" id="tran">
+			<apex:column >
+				<apex:facet name="header">Capture</apex:facet>
+				<apex:inputCheckBox value="{!tran.selected}" />
+			</apex:column>
+			<apex:column >
+				<apex:facet name="header">Delete</apex:facet>
+				<apex:commandButton value="Delete" action="{!tran.del}" reRender="tran"/>
+			</apex:column>
+			<apex:column >
+				<apex:facet name="header">Contact</apex:facet>
+				<apex:outputText value="{!tran.t.Contact__r.FirstName} {!tran.t.Contact__r.LastName}" />
+			</apex:column>
+			<apex:column >
+				<apex:facet name="header">Amount</apex:facet>
+				<apex:inputField value="{!tran.t.Amount__c}" />
+			</apex:column>
+			<apex:column >
+				<apex:facet name="header">Status</apex:facet>
+				<apex:outputField value="{!tran.cm.Attendee_Status__c}" />
+			</apex:column>
+			<apex:column rendered="{!submitted}">
+				<apex:facet name="header">Transaction Status</apex:facet>
+				<apex:outputText value="{!tran.status}" />
+			</apex:column>
+			<apex:column rendered="{!submitted}">
+				<apex:facet name="header">Transaction</apex:facet>
+				<apex:commandLink target="_blank" value="View Transaction" action="{!tran.view}"/>
+			</apex:column>
+		</apex:pageBlockTable>
+	</apex:pageBlock>
+	</apex:form>
+</apex:page>

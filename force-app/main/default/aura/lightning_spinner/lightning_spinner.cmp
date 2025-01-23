@@ -1,0 +1,5 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+	<div class="loading-animation">
+        <lightning:spinner alternativeText="Loading" variant="brand" size="large" />
+    </div>
+</aura:component>

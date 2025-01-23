@@ -1,0 +1,102 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 11-04-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message lwc:ref="showtoast"></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+    <div class="">
+        <div class={orderTitle}>
+            <h2>{cartSummaryHeader}</h2>
+        </div>
+        <div class={orderContent}>
+            <form>
+                <template lwc:if={isCheckoutViewOrPromo}>
+                    <c-sib-coupon
+                        class="order-box promocode"
+                        cart-config={cartConfig} 
+                        cart-total={cartTotal}
+                        error-msg={errorMsg}
+                        webstore-id={webstoreId}>
+                    </c-sib-coupon>
+                </template>
+                <div class="order-box">
+                    <div class="order-box-title">
+                        <h3>{labels.Subtotal}</h3>
+                    </div>
+                    <div class="order-line">
+                        <p>{labels.Products}</p>
+                        <strong>
+                            <lightning-formatted-number
+                                value={cartSubTotal}
+                                format-style="currency" 
+                                currency-code={currencyCode}
+                                display-currency-as="symbol"
+                            ></lightning-formatted-number>
+                        </strong>
+                    </div>
+                    <template lwc:if={hasTax}>
+                        <div class="order-line">
+                            <p>{labels.Taxes}</p>
+                            <strong>
+                                <lightning-formatted-number
+                                    value={taxAmt}
+                                    format-style="currency"
+                                    currency-code={currencyCode}
+                                    display-currency-as="symbol"
+                                ></lightning-formatted-number>
+                            </strong>
+                        </div>
+                    </template>
+                    <template lwc:elseif={hasUndefinedTax}>
+                        <div class="order-line">
+                            <p>{labels.Taxes}</p>
+                            <strong>
+                                <span>{labels.CalculatedAtCheckout}</span>
+                            </strong>
+                        </div>
+                    </template>
+                </div>
+                <div lwc:if={cartPromotion} class="order-box discounts">
+                    <div class="order-box-title">
+                        <h3>{labels.Discounts}</h3>
+                    </div>
+                    <div class="order-line">
+                        <p>{labels.CustomerDiscount}</p>
+                        <strong>
+                            <lightning-formatted-number
+                            value={cartPromotion}
+                            format-style="currency" 
+                            currency-code={currencyCode}
+                            display-currency-as="symbol"
+                            ></lightning-formatted-number>
+                        </strong>
+                    </div>
+                </div>
+                <div class="order-total">
+                    <div class="order-line">
+                        <strong>{labels.TotalDue}</strong>
+                        <strong>
+                            <lightning-formatted-number
+                                value={grandTotal}
+                                format-style="currency" 
+                                currency-code={currencyCode}
+                                display-currency-as="symbol"
+                            ></lightning-formatted-number>
+                        </strong>
+                    </div>
+                </div>
+
+                <div class= "pricing-update-helptext" if:false={isCheckoutView}>{labels.FinalTaxHelpText}</div>
+                
+                <template if:false={isCheckoutView}>
+                    <button type="button" class="btn" onclick={goToCheckout}>{labels.Checkout}</button>
+                </template>
+            </form>
+        </div>
+    </div>
+</template>

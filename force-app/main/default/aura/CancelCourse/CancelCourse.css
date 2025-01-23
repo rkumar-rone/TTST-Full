@@ -1,0 +1,9 @@
+.THIS .slds-spinner_container {  
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+    width: 55px;
+    vertical-align: middle;
+    white-space: nowrap;
+    z-index: 9999999;
+}

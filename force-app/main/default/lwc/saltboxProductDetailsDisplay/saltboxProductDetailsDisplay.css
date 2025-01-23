@@ -1,0 +1,145 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+lightning-breadcrumbs {
+    display: block;
+}
+
+.product-information {
+    display: flex;
+}
+
+figure {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+}
+
+img {
+    object-fit: contain;
+}
+
+.heading {
+    flex-grow: 1;
+}
+
+.details-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: stretch;
+    min-height: 400px;
+}
+
+.price lightning-formatted-number {
+    font-weight: bold;
+    padding-left: var(--lwc-spacingXSmall, 0.5rem);
+}
+
+.price p:nth-child(2) {
+    width: 250px;
+}
+
+/* CSS Styling for narrow screens (e.g. phones) */
+@media only screen and (max-width: 48em) {
+
+    /* SLDS token: mqSmall */
+    .product-information {
+        flex-direction: column;
+    }
+
+    .details-area {
+        padding-top: var(--lwc-spacingSmall);
+    }
+
+    .image {
+        align-self: center;
+    }
+
+    figure {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.quantitySelectorContainer input, button {
+    border: none;
+}
+
+.decrement-btn {
+    border-right: var(--lwc-borderWidthThin, 1px) solid var(--lwc-colorBorder, var(--dxp-g-neutral-1));
+    background: none;
+    outline: 0;
+}
+
+.increment-btn {
+    border-left: var(--lwc-borderWidthThin, 1px) solid var(--lwc-colorBorder, var(--dxp-g-neutral-1));
+    background: none;
+    outline: 0;
+}
+
+.selector-input {
+    width: 4rem;
+    text-align: center;
+    outline: 0;
+    background-color: var(--lwc-colorBackgroundInput, var(--dxp-g-root));
+    border: none;
+}
+
+.controls {
+    height: 2.5rem;
+    display: flex;
+    box-sizing: border-box;
+    border: var(--lwc-borderWidthThin, 1px) solid var(--lwc-colorBorder, var(--dxp-g-neutral-1));
+}
+
+.btn-icon {
+    --sds-c-icon-color-foreground-default: var(--lwc-colorTextDefault, var(--dxp-g-root-contrast));
+}
+
+button[disabled] .btn-icon {
+    --sds-c-icon-color-foreground-default: var(--lwc-brandDisabled, var(--dxp-g-neutral));
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.btns {
+    height:2.5rem;
+}
+
+.detailHeading {
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.buttonContainer {
+    margin: 10px 0;
+    display: flex;
+}
+
+.quantitySelectorContainer {
+    margin-right: 30px;
+}
+
+.locationText {
+    color: #027d07;
+}
+
+.capacitySpan {
+    margin-left: 2px;
+    font-style: italic;
+    font-size: 11pt;
+    color: rgb(255, 102, 0);
+}

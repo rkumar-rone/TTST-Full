@@ -1,0 +1,67 @@
+<template>
+    
+    <template lwc:if={isLoading}>
+        <lightning-layout class="slds-m-top_x-small">
+            <article class="slds-card lightning-card">
+                <div style="position:relative; width: 860px; height: 168px;">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </article>
+        </lightning-layout>
+    </template>
+    <template lwc:else>
+        <template if:true={state.showRelatedList}>
+            <lightning-layout class="slds-m-top_x-small">
+                <article class="slds-card lightning-card">
+                    <div class="slds-card__header slds-grid slds-theme_shade" data-id="header">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate ">
+                            <div class="slds-media__figure">
+                                <lightning-icon icon-name={state.iconName} size="small"></lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                    <p>{state.title}</p>
+                                </h2>
+                            </div>
+                            <div class="slds-no-flex" if:false={hideActions}>
+                                <lightning-button label="New" onclick={handleCreateRecord}></lightning-button>
+                            </div>
+                        </header>
+                        <template if:true={searchAvailable}>
+                            <lightning-layout vertical-align="end">
+                                <lightning-layout-item class="slds-text-align_center slds-align_absolute-center slds-float_right" size="8">
+                                    <lightning-input type="search" onchange={handleKeyChange} class="slds-m-bottom_small slds-m-top_large slds-p-bottom_xxx-small" variant="label-hidden" placeholder="Search"
+                                    value={searchKey}>
+                                </lightning-input>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="slds-text-align_center slds-align_absolute-center slds-float_right slds-p-top_x-small" size="1">
+                                    <lightning-button label="Search" onclick={handleSearchKeyword} variant="brand"></lightning-button>  
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+                    </div>
+                    <template if:true={hasRecords}>
+                        <div>
+                            <template if:true={validAccess}>
+                                <c-lightning-datatable-pagination hide-checkbox-column="true" resize-column-disabled="true"
+                                    class="related-list" key-field='id' source-data={state.records} columns={state.columns}
+                                    display-ammount={amount} sobject-api-name={sobjectApiName} state={state}
+                                    onrefreshdata={handleRefreshData} brand-color={brandColor} text-color={textColor}>
+                                </c-lightning-datatable-pagination>
+                            </template>
+                            <template if:false={validAccess}>
+                                <div class="slds-align_absolute-center slds-m-vertical_x-small">
+                                    You don't have view access to the related object.
+                                </div>
+                            </template>
+                        </div>
+                        <footer class="slds-card__footer slds-m-bottom_xx-small">
+                            <!-- <a onclick={handleGotoRelatedList}>View All</a> -->
+                        </footer>
+                    </template>
+                </article>
+            </lightning-layout>
+        </template>
+    </template>
+
+</template>

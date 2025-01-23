@@ -1,0 +1,198 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="CourseManagementController">
+    <aura:attribute name="course" type="Object" />
+    <aura:attribute name="bring" type="String[]" />
+    <aura:attribute name="included" type="String[]" />
+    <aura:attribute name="loggedin" type="Boolean" default="false" />
+    <aura:attribute name="username" type="String" />
+    <aura:attribute name="key" type="String" />
+    <aura:attribute name="courseid" type="Id" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="c:LoggedIn" action="{!c.loggedIn}"/>
+    <aura:attribute name="errormessage" type="String" />
+    <aura:if isTrue="{!and(v.loggedin, not(empty(v.course.history)))}">
+            	<lightning:card class="slds-p-vertical_medium grey">
+    				<aura:set attribute="title">
+                        <aura:iteration items="{!v.course.history}" var="h">
+                        	<div class="headeritem"><strong>Current Status: {!h.newValue} on <lightning:formattedDateTime value="{!h.dt}" year="numeric" day="2-digit" month="long" hour="2-digit" minute="2-digit" timeZone="{!$Locale.timezone}"/></strong></div>
+                        </aura:iteration>
+                        <aura:if isTrue="{!not(empty(v.course.cm.Date_RC_Access_Ends_Formula__c))}"><div class="headeritem"><strong>Access End Date: <lightning:formattedDateTime value="{!v.course.cm.Date_RC_Access_Ends_Formula__c}" year="numeric" day="2-digit" month="long" timeZone="{!$Locale.timezone}" hour="2-digit" minute="2-digit" timeZoneName="short"/></strong></div></aura:if>
+                        <div class="headeritem"><strong>Class Code: {!v.course.c.Class_Code__c}</strong></div>
+                        <aura:if isTrue="{!not(empty(v.course.cm.Event_Relationship_Generated_From__c))}"><div class="headeritem"><strong>Access to this course through: {!v.course.cm.Event_Relationship_Generated_From__r.Parent__r.Online_Event_Name__c}</strong></div></aura:if><!--<a href="{!'view-event?id=' + v.course.cm.Event_Relationship_Generated_From__r.Parent__c}"></a>-->
+                        <aura:if isTrue="{!not(empty(v.course.tran.Id))}"><div class="headeritem"><strong>Course Fees: <lightning:formattedNumber value="{!v.course.tran.Amount__c}" style="currency" minimumFractionDigits="2"/></strong></div></aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.tran.Id))}"><div class="headeritem"><strong>Transaction Status: {!v.course.tran.Status__c}</strong></div></aura:if>
+        			</aura:set>
+<!--                    <p class="slds-p-horizontal_medium">
+	                    <aura:iteration items="{!v.course.history}" var="h">
+                        	<aura:if isTrue="{!h.firstRecord}">{!h.name} registration created on <lightning:formattedDateTime value="{!h.dt}" year="numeric" day="2-digit" month="long" hour="2-digit" minute="2-digit" /> with status {!h.newValue}<br /></aura:if>
+                        	<aura:if isTrue="{!not(h.firstRecord)}">{!h.name} status changed from {!h.oldValue} to {!h.newValue} on <lightning:formattedDateTime value="{!h.dt}" year="numeric" day="2-digit" month="long" hour="2-digit" minute="2-digit" /><br /></aura:if>
+	                	</aura:iteration>
+                    </p>-->
+                </lightning:card>
+            </aura:if>
+	<lightning:card class="noborder">
+    	<aura:set attribute="title">
+            <h3>{!v.course.c.Online_Event_Name__c}</h3>
+        </aura:set>
+        <aura:if isTrue="{!v.errormessage != null}">
+        	<div class="slds-has-error">
+            	<div class="slds-form-element__help" style="padding-left:10px;">
+                    {!v.errormessage}<br />
+                    <a href="/s/">If you are already registered, click here to login</a>
+    	    	</div>                       
+      		</div>
+    	</aura:if>
+        <aura:if isTrue="{!not(empty(v.course))}">
+        <lightning:layout verticalAlign="start" multipleRows="true">
+            <aura:if isTrue="{!not(v.course.c.Do_Not_Display_Course_Dates__c)}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+            	<strong>{!v.course.dates}</strong>
+            </lightning:layoutItem>
+            </aura:if>
+          	<!--<lightning:layoutItem padding="horizontal-medium" size="12">
+            	<strong>Location</strong>
+            </lightning:layoutItem>-->
+            <aura:if isTrue="{!not(v.course.c.Do_Not_Display_Location__c)}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+            	<aura:if isTrue="{!or(v.course.c.View_Map__c == null, v.course.c.View_Map__c == '')}">
+                    <a target="_blank" href="{!'http://www.google.com/maps?hl=en&amp;safe=off&amp;q=' + v.course.c.Training_Location_Street__c + ',' + v.course.c.Training_Location_City__c + ',' + v.course.c.Training_Location_State__c + ',' + v.course.c.Training_Location_Zip_Code__c + '&amp;aq=f&amp;aqi=&amp;aql=&amp;oq=&amp;pbx=1&amp;bav=on.2,or.r_gc.r_pw.&amp;fp=a445e974b90b3339'}">
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_Name__c))}">{!v.course.c.Training_Location_Name__c}<br /></aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_Street__c))}">{!v.course.c.Training_Location_Street__c}<br /></aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_City__c))}">{!v.course.c.Training_Location_City__c}&nbsp;</aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_State__c))}">{!v.course.c.Training_Location_State__c}&nbsp;</aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_Zip_Code__c))}">{!v.course.c.Training_Location_Zip_Code__c}</aura:if>
+                    </a>
+                </aura:if>
+                <aura:if isTrue="{!and(v.course.c.View_Map__c != null, v.course.c.View_Map__c != '')}">
+                    <a target="_blank" href="{!v.course.c.View_Map__c}">
+                    	<aura:if isTrue="{!not(empty(v.course.c.Training_Location_Name__c))}">{!v.course.c.Training_Location_Name__c}<br /></aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_Street__c))}">{!v.course.c.Training_Location_Street__c}<br /></aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_City__c))}">{!v.course.c.Training_Location_City__c}<br /></aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_State__c))}">{!v.course.c.Training_Location_State__c}<br /></aura:if>
+                        <aura:if isTrue="{!not(empty(v.course.c.Training_Location_Zip_Code__c))}">{!v.course.c.Training_Location_Zip_Code__c}<br /></aura:if>
+                    </a>
+                </aura:if>
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!v.course.c.Sister_Event__c != null}">
+            	<lightning:layoutItem padding="horizontal-medium" size="12">
+                    <strong>Alternate Date/Time</strong>
+            	</lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="12">
+                    <a href="view-event?id={v.course.c.Sister_Event__c}"><ui:outputDate value="{!v.course.c.Sister_Event__r.StartDate}" format="M/d/yyyy" /> - <ui:outputDate value="{!v.course.c.Sister_Event__r.EndDate}" format="M/d/yyyy" /></a>
+            	</lightning:layoutItem>
+            </aura:if>
+            <lightning:layoutItem padding="around-medium" size="12">
+                <lightning:formattedRichText value="{!v.course.c.RT_Description__c}" />
+            </lightning:layoutItem>
+            <aura:if isTrue="{!not(empty(v.course.c.Pre_requisites__c))}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <strong>Prerequisites</strong>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                {!v.course.c.Pre_requisites__c}
+            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.bring))}">                   
+            	<lightning:layoutItem padding="horizontal-medium" size="12">
+	                <div class="slds-p-top_medium">
+	                    <strong>What You'll Need</strong>
+	                </div>
+	            </lightning:layoutItem>
+	            <lightning:layoutItem padding="horizontal-medium" size="12">
+	                <ul style="list-style: disc;" class="slds-p-left_large">
+	                	<aura:iteration items="{!v.bring}" var="b">
+	                        <li>{!b}</li>
+	                    </aura:iteration>
+	                </ul>
+	            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.included))}">      
+            	<lightning:layoutItem padding="horizontal-medium" size="12">
+	                <div class="slds-p-top_medium">
+	                    <strong>What's Included</strong>
+	                </div>
+	            </lightning:layoutItem>
+	            <lightning:layoutItem padding="horizontal-medium" size="12">
+	               	<ul style="list-style: disc;" class="slds-p-left_large">
+	                	<aura:iteration items="{!v.included}" var="i">
+	                        <li>{!i}</li>
+	                    </aura:iteration>
+	                </ul>
+	            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.course.c.Additional_Information__c))}">      
+	            <lightning:layoutItem padding="horizontal-medium" size="12">
+	                <div class="slds-p-top_medium">
+	                	<strong>Additional Information</strong>
+	                </div>
+	            </lightning:layoutItem>
+	            <lightning:layoutItem padding="horizontal-medium" size="12">
+	                {!v.course.c.Additional_Information__c}
+	            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.course.c.Cancellation_Policy__c))}">      
+				<lightning:layoutItem padding="horizontal-medium" size="12">
+	                <div class="slds-p-top_medium">
+	                	<strong>Cancellation Policy</strong>
+	                </div>
+	            </lightning:layoutItem>
+	            <lightning:layoutItem padding="horizontal-medium" size="12">
+	                {!v.course.c.Cancellation_Policy__c}
+	            </lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(v.course.c.Do_Not_Display_Pricing__c)}">
+            <lightning:layoutItem padding="horizontal-medium" size="12">
+                <div class="slds-p-top_medium">
+                	<strong>Course Cost</strong>
+                </div>
+            </lightning:layoutItem>
+            <aura:if isTrue="{!v.course.c.Early_Bird_Registration_Cost__c != null}" >
+            	<lightning:layoutItem padding="horizontal-medium" size="12">
+                	Early-Bird Registration Cost <lightning:formattedNumber value="{!v.course.c.Early_Bird_Registration_Cost__c}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+            	</lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!v.course.c.Early_Bird_Deadline__c != null}" >
+                <lightning:layoutItem padding="horizontal-medium" size="12">
+                    Early-Bird Deadline Register Before <ui:outputDate value="{!v.course.c.Early_Bird_Deadline__c}" format="M/d/yyyy" /><!--<lightning:formattedDateTime value="{!course.c.Early_Bird_Deadline__c}" year="numeric" month="numeric" day="numeric"/>-->
+            	</lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(v.course.c.Only_Show_Sessions__c)}">
+                <lightning:layoutItem padding="horizontal-medium" size="12">
+                	 Full Registration Cost <lightning:formattedNumber value="{!v.course.c.Full_Registration_Cost__c}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+            	</lightning:layoutItem>
+            </aura:if>
+            <aura:if isTrue="{!not(v.course.allRequired)}">
+                <lightning:layoutItem padding="horizontal-medium" size="12">
+                	 Per Session Cost <lightning:formattedNumber value="{!v.course.perSession}" currencyCode="{!v.course.c.CurrencyIsoCode}" style="currency"/>
+            	</lightning:layoutItem>
+            </aura:if>
+            </aura:if>
+            <aura:if isTrue="{!and(v.loggedin, v.course.button == 'Register')}">
+            	<lightning:button label="Register for Course" 
+                              class="slds-m-around--medium"
+                              variant="brand"
+                              onclick="{!c.register}"/>
+            </aura:if>
+			<aura:if isTrue="{!and(v.loggedin, v.course.button == 'Switch Sessions')}">
+            	<lightning:button label="Switch Sessions" 
+                              class="slds-m-around--medium"
+                              variant="brand"
+                              onclick="{!c.register}"/>
+            </aura:if>
+			<aura:if isTrue="{!and(v.loggedin, v.course.button == 'Add Session')}">
+            	<lightning:button label="Add Sessions" 
+                              class="slds-m-around--medium"
+                              variant="brand"
+                              onclick="{!c.register}"/>
+            </aura:if>
+            <aura:if isTrue="{!not(v.loggedin)}">
+            	<lightning:button label="Log in to Register" 
+                              class="slds-m-around--medium"
+                              variant="brand"
+                              onclick="{!c.logIn}"/>
+            </aura:if>
+        </lightning:layout>
+            </aura:if>
+    </lightning:card>
+</aura:component>

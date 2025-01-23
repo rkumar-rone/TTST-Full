@@ -1,0 +1,38 @@
+body{
+    font-size:16px !important;
+}
+.sibConfigWrapper{
+    background-color:white;
+    padding: 1.2rem;
+}
+.sibWrapperHeader{
+    font-size:23px;
+    font-weight:600;
+}
+.sibWrapperDesc{
+    font-size:16px;
+    color:#8C8C8C;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.slds-tabs_default__nav, .slds-tabs--default__nav {
+    border-bottom-color: #d3d3d3 !important;
+}
+.sibInputsMargin{
+    margin-bottom: 25px;
+    font-size:14px !important;
+}
+.sibConfigHeader{
+    font-size: 18px;
+    margin-left: 25px;
+}
+.sibDivider{
+    border:1px solid #d3d3d3;
+}
+.slds-radio .slds-form-element__label {
+    font-size: 14px !important;
+}
+.slds-tabs_default .slds-tabs_default__item{
+    font-size: 16px !important;
+}

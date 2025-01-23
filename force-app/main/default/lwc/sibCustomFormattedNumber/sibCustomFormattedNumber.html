@@ -1,0 +1,12 @@
+<template lwc:render-mode="light">
+    <template if:true={isUSD}>
+        US${integerPart}
+    </template>
+    <template if:true={isEUR}>
+        EUR${integerPart}
+    </template>
+    <template if:true={isCAD}>
+        CA${integerPart}
+    </template>
+    <small>{fractionPart}</small>
+</template>

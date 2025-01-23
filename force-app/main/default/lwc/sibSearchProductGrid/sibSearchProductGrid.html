@@ -1,0 +1,37 @@
+<!--
+  @description       : 
+  @author            : asood@rafter.one
+  @group             : 
+  @last modified on  : 13-09-2024
+  @last modified by  : Gaurang Arora
+-->
+<template lwc:render-mode="light">
+    <div class={layoutContainerClass} id="view-cards" onkeydown={handleKeyDown}>
+
+        <!--LIST OF PRODUCTS TO DISPLAY-->
+
+        <template if:true={normalizedDisplayData} for:each={normalizedDisplayData} for:item="it">
+            <div class="filter-item-cart" key={it.productId}>
+                <c-sib-search-product-card
+                    class="filter-item-cart"
+                    data-id={it.productId}
+                    plp-config={plpConfig}
+                    results-layout={resultsLayout}
+                    product={it}
+                    onshowproduct={handleNavigateToProductPage}
+                    onaddproducttocart={handleAddToCart}
+                ></c-sib-search-product-card>
+            </div>
+        </template>
+
+        <!-- Paging Control - paging navigation -->
+        <c-sib-search-paging-control
+            plp-config={plpConfig}
+            search-results={searchResults}
+            is-pagination-click={isPaginationClick}
+            onpagegoto={handleGotoPageEvent}
+            onpaginationchange={handlePagination}
+            class="pagination-width"
+        ></c-sib-search-paging-control>
+    </div>
+</template>

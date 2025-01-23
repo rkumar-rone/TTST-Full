@@ -1,0 +1,22 @@
+<aura:component>
+    <aura:attribute name="checked" type="Boolean" default="false"/>
+    <aura:attribute name="courses" type="String[]" />
+    <aura:attribute name="error" type="String" />
+    <aura:handler event="c:CloseModal" action="{!c.handleClose}"/>
+    <aura:registerEvent name="closeEvent" type="c:RegisterWaitlistConfirm"/>
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+        I understand that I am going on the waitlist for the following sessions and that my card will be authorized for any course fees.  While in waitlist status I can cancel at any time without penalty.  I will be notified via email if I am moved to registered status at which time my card will be charged.
+        <span style="font-style:italic">{!v.policy}</span><br /><br />
+        <aura:iteration items="{!v.courses}" var="c">
+            <strong>{!c}</strong><br />
+        </aura:iteration>
+        <br /><br />
+        <lightning:input type="checkbox" checked="{!v.checked}" label="I Acknowledge"/>
+        <aura:if isTrue="{!not(empty(v.error))}">
+	        <div class="slds-has-error slds-m-left--medium">
+    	    	<div class="slds-form-element__help">
+        			{!v.error}
+				</div>                       
+			</div>
+        </aura:if>
+</aura:component>

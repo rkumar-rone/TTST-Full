@@ -1,0 +1,62 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global" controller="CourseManagementController">
+    <aura:attribute name="courses" type="Object[]" />
+    <aura:attribute name="errormessage" type="String" />
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+	<aura:handler event="c:LoggedIn" action="{!c.doInit}"/>
+    <aura:if isTrue="{!not(empty(v.courses))}" >
+    <lightning:card >
+    	<aura:set attribute="title">
+            <h3>Inactive Courses</h3>
+        </aura:set>
+        <aura:if isTrue="{!v.errormessage != null}">
+        	<div class="slds-has-error">
+            	<div class="slds-form-element__help">
+        	   		{!v.errormessage}
+    	    	</div>                       
+      		</div>
+    	</aura:if>
+        <lightning:layout verticalAlign="center" multipleRows="true">
+            	<!--<lightning:layoutItem padding="horizontal-medium" size="4" class="slds-show_large">
+                    	<strong>Event</strong>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="2" class="slds-show_large">
+                    	<strong>Status</strong>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="1" class="slds-show_large">
+                    	<strong>Code</strong>
+                </lightning:layoutItem>-->
+                <!--<lightning:layoutItem padding="horizontal-medium" size="2">
+                    	<strong>Event City</strong>
+                </lightning:layoutItem>-->
+                <!--<lightning:layoutItem padding="horizontal-medium" size="2">
+                    	<strong>Start Date</strong>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="horizontal-medium" size="2">
+                    	<strong>End Date</strong>
+                </lightning:layoutItem>-->
+            <!--<lightning:layoutItem padding="horizontal-medium" size="5" class="slds-show_large">
+                    	&nbsp;
+                </lightning:layoutItem>-->
+
+            <aura:iteration items="{!v.courses}" var="course">
+                <lightning:card>
+                    <lightning:layoutItem padding="horizontal-medium" size="12" largeDeviceSize="4">
+    					<span class="slds-hide_large" style="font-size:1rem;">
+                    	    <a href="{!'view-event?id=' + course.cm.CampaignId}">{!course.cm.Campaign.Online_Event_Name__c}</a>
+                        </span>
+                        <span class="slds-show_large">
+                        	<a href="{!'view-event?id=' + course.cm.CampaignId}">{!course.cm.Campaign.Online_Event_Name__c}</a>
+                        </span>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="horizontal-medium" size="12" largeDeviceSize="2">
+                    	    {!course.cm.Attendee_Status__c}
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="horizontal-medium" size="12" mediumDeviceSize="1">
+                    	    {!course.cm.Campaign.Class_Code__c}
+                    </lightning:layoutItem>
+                </lightning:card>
+            </aura:iteration>
+    	</lightning:layout>
+    </lightning:card>
+    </aura:if>
+</aura:component>

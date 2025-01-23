@@ -1,0 +1,72 @@
+<!--
+  @description       : 
+  @author            : sthakur@rafter.one
+  @group             : 
+  @last modified on  : 10-12-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <div lwc:if={isSkeletonLoading} class="parent-container">
+        <div class="order-title-checkout" style="padding: 32px 0px 8px 0px; margin-bottom: 24px;">
+            <h2>Order Summary</h2>
+        </div>
+        <div class="order-content-checkout">
+            <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                <c-stencil height="30" width="100%"></c-stencil>
+            </div>
+            <div class="slds-col slds-size--2-of-3 slds-p-around_x-small">
+                <c-stencil height="15" width="100%"></c-stencil>
+            </div>
+            <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                <c-stencil height="30" width="100%"></c-stencil>
+            </div>
+            <div class="slds-col slds-size--2-of-3 slds-p-around_x-small">
+                <c-stencil height="15" width="100%"></c-stencil>
+            </div>
+            <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                <c-stencil height="30" width="100%"></c-stencil>
+            </div>
+            <div class="slds-col slds-size--2-of-3 slds-p-around_x-small">
+                <c-stencil height="15" width="100%"></c-stencil>
+            </div>
+        </div>
+        <div class="slds-col slds-size--2-of-3 slds-p-top--xx-large slds-p-bottom--xx-large">
+            <c-stencil height="25" width="100%"></c-stencil>
+        </div>
+
+        <div class="order-content-checkout slds-p-top--xx-large">
+            <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                <c-stencil height="30" width="100%"></c-stencil>
+            </div>
+            <div class="slds-col slds-size--1-of-3 slds-p-around_x-small">
+                <c-stencil height="30" width="100%"></c-stencil>
+            </div>
+        </div>
+    </div>
+    <div lwc:else>
+        <c-sib-cart-summary 
+            cart-total={cartTotal}
+            cart-details={cartDetails}
+            cart-config={checkoutConfig}
+            webstore-id={webstoreId}
+            currency-code={currencyCode} 
+            onapplycartcoupon={handleApplyCoupon}
+            onremovecartoupon={handleRemoveCoupon}
+            view-page={viewPage}
+            error-msg = {errorMsg}
+        ></c-sib-cart-summary>
+
+        <template lwc:if={cartItems}>
+            <c-sib-order-items-review 
+            cart-details={cartDetails} 
+            cart-items={cartItems} 
+            product-count={productCount}
+        >
+        </c-sib-order-items-review>
+        </template>  
+    </div>
+
+    <c-sib-cart-utils oninvalidcoupon={handleInvalidCoupon} onshowtoastmsg={handleToastMsg} >
+    </c-sib-cart-utils> 
+</template>

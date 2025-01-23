@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Course_Built_on_AMTO_to_Opp_Owner</name>
+        <label>Course Built on AMTO to Opp Owner</label>
+        <locationX>50</locationX>
+        <locationY>455</locationY>
+        <actionName>Pre_work_Session__c.Pre_work_Course_Built_on_AMTO</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Password_Generation</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pre_work_Session__c.Pre_work_Course_Built_on_AMTO</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Course_Built_on_DELTA_to_Opp_Owner</name>
+        <label>Course Built on DELTA to Opp Owner</label>
+        <locationX>314</locationX>
+        <locationY>455</locationY>
+        <actionName>Pre_work_Session__c.Pre_work_Course_Built_on_DELTA</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Password_Generation</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pre_work_Session__c.Pre_work_Course_Built_on_DELTA</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Notification_to_Lucy_Martin_Harvey</name>
+        <label>Notification to &quot;Lucy Martin-Harvey&quot;</label>
+        <locationX>578</locationX>
+        <locationY>455</locationY>
+        <actionName>Pre_work_Session__c.Pre_work_Participant_List_to_Update</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Password_Generation</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pre_work_Session__c.Pre_work_Participant_List_to_Update</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>User: Meera Patel
+User: Ellie Short
+User: Cherie Huang</description>
+        <name>Notification_to_Meera_Patel_Ellie_Short_Cherie_Huang</name>
+        <label>Notification to Meera Patel, Ellie Short, Cherie Huang</label>
+        <locationX>1106</locationX>
+        <locationY>455</locationY>
+        <actionName>Pre_work_Session__c.Pre_work_Session_Requested</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Password_Generation</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pre_work_Session__c.Pre_work_Session_Requested</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Session_Actioned_to_Opp_Owner</name>
+        <label>Session Actioned to Opp Owner</label>
+        <locationX>842</locationX>
+        <locationY>455</locationY>
+        <actionName>Pre_work_Session__c.Pre_work_Session_Actioned</actionName>
+        <actionType>emailAlert</actionType>
+        <connector>
+            <targetReference>Password_Generation</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Pre_work_Session__c.Pre_work_Session_Actioned</nameSegment>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <decisions>
+        <name>Password_Generation</name>
+        <label>Password Generation</label>
+        <locationX>710</locationX>
+        <locationY>671</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Generic_Password_Generation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Password_Generated_by__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Generic</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Password_Field</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Generic Password Generation</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Stage_Changed</name>
+        <label>Stage Changed?</label>
+        <locationX>710</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>Password_Generation</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Course_Built_on_AMTO</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pre_work_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Course Built on AMTO &gt;</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Course_Built_on_AMTO_to_Opp_Owner</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Course Built on AMTO</label>
+        </rules>
+        <rules>
+            <name>Course_Built_on_DELTA</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pre_work_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Course Built on DELTA &gt;</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Course_Built_on_DELTA_to_Opp_Owner</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Course Built on DELTA</label>
+        </rules>
+        <rules>
+            <name>Update_Participant_List</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pre_work_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Update Participant List &gt;</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Notification_to_Lucy_Martin_Harvey</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Update Participant List</label>
+        </rules>
+        <rules>
+            <name>Pre_work_Session_Actioned</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pre_work_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pre-work Session Actioned &gt;</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Session_Actioned_to_Opp_Owner</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Pre-work Session Actioned</label>
+        </rules>
+        <rules>
+            <name>Pre_work_Session_Requested</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Pre_work_Stage__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pre-work Session Requested &gt;</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Notification_to_Meera_Patel_Ellie_Short_Cherie_Huang</targetReference>
+            </connector>
+            <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+            <label>Pre-work Session Requested</label>
+        </rules>
+    </decisions>
+    <description>Confirm the usage of Stage - Course Built on DELTA &gt;</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>GenericPassword</name>
+        <dataType>String</dataType>
+        <expression>&quot;Training&quot; &amp;TEXT(YEAR(today()))</expression>
+    </formulas>
+    <interviewLabel>Pre-work Session Record Triggered Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pre-work Session Record Triggered Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Password_Field</name>
+        <label>Update Password Field</label>
+        <locationX>578</locationX>
+        <locationY>791</locationY>
+        <inputAssignments>
+            <field>Password__c</field>
+            <value>
+                <elementReference>GenericPassword</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>584</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Stage_Changed</targetReference>
+        </connector>
+        <object>Pre_work_Session__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

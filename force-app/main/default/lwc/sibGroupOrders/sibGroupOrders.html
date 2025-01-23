@@ -1,0 +1,291 @@
+<!--
+  @description       : 
+  @author            : vramchandran@rafter.one
+  @group             : 
+  @last modified on  : 10-12-2024
+  @last modified by  : Gaurav Setia
+-->
+<!--
+    This Group order page. The receipient information is fetched/savedto the cart item records
+-->
+<template lwc:render-mode="light"><!-- if using render-mode=light then show toast will not render. use this.queryselector instead to select toast component-->
+    <!--Error Toast Msg Start-->
+    <c-sib-show-toast-message lwc:ref="showtoast"></c-sib-show-toast-message>
+    <!--Error Toast Msg End-->
+
+    <template lwc:if={isScreenLoaded}>
+        
+        <div class="sib-card">
+            <div class="parent-container">
+                <div class="slds-grid slds-wrap" >
+                    <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                        <c-stencil height="50" width="100%"></c-stencil>
+                    </div>
+                    <div class="slds-col slds-size--1-of-3 slds-p-around_x-small">
+                        <c-stencil height="30" width="100%"></c-stencil>
+                    </div>
+                    <div class="slds-col slds-size--1-of-1 slds-p-around_x-small">
+                        <c-stencil height="50" width="100%"></c-stencil>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </template>
+    <template lwc:else>
+        <template lwc:if={displayWaitlistScreen}>
+            <!-- display this section if there are waitlisted items-->
+            <div class="wishlist-error sib-card">
+                <div class="title">
+                    <h4>{componentHeaderLabel}</h4>
+                </div>
+                <div class="sib-text-size-14 sib-text-description">{labels.B2B_LBL_WAITLISTSCREENHEADER}</div>
+                <div class="sib-text-size-14 sib-text-description sib-error-text">{waitlistScreenMessage}</div>
+                <div>
+                    <button type="button" onclick={continueToGrouporder} class="cta-btn">Continue</button>
+                </div>
+            </div>
+        </template>
+        <template lwc:else>
+            <!-- display this section once the waitlist error has been acknowledged-->
+            <template lwc:if={isGroupOrderReadOnly}>
+                <div class="grouporder-readonly sib-card">
+                    <div class="checkout-section-card">
+                        <div class="grouporder-readonlycontainer">
+                            <div class="title">
+                                <h4>{componentHeaderLabel}</h4>
+                            </div>
+                            <div class="edit sib-text-size-14" onclick={handleEdit}>{labels.B2B_LBL_EDIT}</div>
+                        </div>
+                    </div>
+
+                    <!-- Recipients Read Only -->
+                    <template lwc:if={displayRecipientSection}>
+                        <!-- break for header and bottom part-->
+                        <div class="divider">
+                        </div>
+                        <div class="recipients-container">
+                            <template for:each={currentItemsToDisplay} for:index="index" for:item="item">
+                                <div class="recipient-header" key={item.productName}><span key={item.productName} >{item.productname}</span></div>
+                                
+                                <div key={item.productName} class="recipient-data-section-expanded">
+
+                                    <!-- 25, Oct 2024: TATLB-134: Changes to display start date and session VRa : begin -->
+                                    <div lwc:if={item.displayCitySessionData} class="sib-session-info-section" >
+                                        <div  lwc:if={item.city} >
+                                            <div class="sib-header-label">
+                                                {labels.B2B_LBL_CITY}: <span class="sib-detail-label">{item.city}</span>
+                                            </div>
+                                            
+                                        </div>
+                                        <div key={item.productName} lwc:if={item.isSessionPresent}>
+                                            <div class="sib-header-label">{labels.B2B_LBL_SESSIONS}:</div> 
+                                            <div key={item.productName} for:each={item.sessions} for:item="session" >
+                                                <div class="sib-detail-label"><span>{session}</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 25, Oct 2024: TATLB-134: Changes to display start date and session VRa : end -->
+                                    
+                                    <div data-currentcourseid={item.cartItemId}>
+                                        <span class="sib-text-size-16 recipient-label-bold">{labels.B2B_LBL_RECIPIENTS}</span>
+                                        <svg width="30" height="30" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="down-arrow-icon down-arrow-icon-with-text" data-currentcartitemid={item.cartItemId} onclick={showRecipients}>
+                                            <path
+                                                d="M6.70711 9.19292C6.31658 8.80239 5.68342 8.80239 5.29289 9.19292C4.90237 9.58344 4.90237 10.2166 5.29289 10.6071L11.2929 16.6071C11.6834 16.9977 12.3166 16.9977 12.7071 16.6071L18.7071 10.6071C19.0976 10.2166 19.0976 9.58344 18.7071 9.19292C18.3166 8.80239 17.6834 8.80239 17.2929 9.19292L12 14.4858L6.70711 9.19292Z" 
+                                                fill="#242424"
+                                            />                               
+                                        </svg>
+                                    </div>
+
+                                    <div data-sectionid={item.displaySectionId} data-id={item.cartItemId} class={item.displayRecipientsClass}>
+                                        <table class="styled-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{labels.B2B_LBL_FIRSTNAME}</th>
+                                                    <th>{labels.B2B_LBL_LASTNAME}</th>
+                                                    <th>{labels.B2B_LBL_EMAILADDRESS}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <template iterator:it={item.recipients} >
+                                                    <tr key={it.value.counter}>
+                                                        <td>{it.value.firstname}</td>
+                                                        <td>{it.value.lastname}</td>
+                                                        <td>{it.value.email}</td>
+                                                    </tr>
+                                                </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <template lwc:if={item.islast}></template>
+                                <template lwc:else>
+                                    <div key={item.productName} data-id={item.islast} class="divider"></div>
+                                </template> <!-- hide bottom divider for last course-->
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="grouporder-page">
+                    <div class="checkout-section-card sib-card">
+                        <div class=" grouporder-container">
+                            <div class="title">
+                                <h4>{componentHeaderLabel}</h4>
+                            </div>
+                            <div class="togglebtn-container">
+            
+                                <template lwc:if={isGroupOrder}>
+                                    <!--   : toggle button for is different recipient -->
+                                    <div class="toggle">
+                                        <div class="slds-form-element">
+                                            <label class="slds-checkbox_toggle slds-grid">
+                                                <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                                <input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" checked={isOrderForSomeoneElse} onclick={handleOrderForSomeOneElseToggle}/>
+                                                <span id="checkbox-toggle-ordersomeone" class="slds-checkbox_faux_container">
+                                                <span class="slds-checkbox_faux"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="toggle-label sib-text-size-14">
+                                            {labels.B2B_LBL_ISORDERFORSOMEONEELSE}
+                                        </div>
+                                    </div>
+                                    
+                                </template>
+            
+                            </div>
+                            <!-- render below elements only if its not a group order cart-->
+                            <template lwc:if={displayRecipientSection}>
+                                <!-- break for header and bottom part-->
+                                <div class="divider">
+                                </div>
+                                <div class="recipients-container">
+                                    <template for:each={currentItemsToDisplay} for:index="index" for:item="item">
+                                        <div class="recipient-header recipient-header-cursor" key={item.productName} data-currentcourseid={item.cartItemId} onclick={openCurrentCourse}><span key={item.productName} >{item.productname}</span></div>
+                                        <template lwc:if={item.islast}></template>
+                                        <template lwc:else>
+                                            <div key={item.productName} data-id={item.islast} class="divider"></div>
+
+                                            
+                                        </template> <!-- hide bottom divider for last course-->
+                                        
+                                        <div key={item.productName} data-sectionid={item.displaySectionId} data-id={item.cartItemId} class={item.displayClass} onclick={toggleSectionVisibility}>
+                                            <!-- recipient-data-section-hidden/expanded-->
+                                            <template iterator:it={item.recipients} >
+                                                <template lwc:if={it.first}>
+                                                    <!-- 25, Oct 2024: TATLB-134: Changes to display start date and session VRa : begin -->
+                                                    <div key={item.productName} lwc:if={item.displayCitySessionData} class="sib-session-info-section" >
+                                                        <div  lwc:if={item.city} >
+                                                            <div class="sib-header-label">
+                                                                {labels.B2B_LBL_CITY}: <span class="sib-detail-label">{item.city}</span>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div key={item.productName} lwc:if={item.isSessionPresent}>
+                                                            <div class="sib-header-label">{labels.B2B_LBL_SESSIONS}:</div> 
+                                                            <div key={item.productName} for:each={item.sessions} for:item="session" >
+                                                                <div class="sib-detail-label"><span>{session}</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 25, Oct 2024: TATLB-134: Changes to display start date and session VRa : end -->
+                                                </template>
+                                                <template lwc:else>
+                                                        <div key={item.productName} data-id={item.islast} class="divider"></div>
+                                                </template>
+            
+                                                <div key={it.value.counter}  class="recipient-data-container" >
+
+                                                    <!-- <div lwc:if={isGroupOrder}> -->
+                                                        <div key={it.value.counter} class="sib-text-size-16 recipient-label-bold">{labels.B2B_LBL_RECIPIENT}<span if:false={isGroupOrder}> {it.value.counter}</span>:</div>
+                                                    <!-- </div> -->
+                                                    <!-- <div lwc:else>
+                                                        <div key={it.value.counter} class="sib-text-size-16 recipient-label-bold">{labels.B2B_LBL_RECIPIENT} {it.value.counter}:</div>
+                                                    </div> -->
+                                                    <div class="recipient-input-container">
+                                                        <div class="sib-text-size-14 sib-text-description">
+                                                            {labels.B2B_LBL_FIRSTNAME} *
+                                                        </div>
+                                                        <div>
+                                                            <input data-id={it.value.firstNameId}  class="recipient-input sib-text-description sib-text-size-16 sib-full-width" placeholder={labels.B2B_LBL_FIRSTNAME} onblur={handleRecipientInfoChange} value={it.value.firstname}></input>
+                                                        </div>
+                                                        <div data-id={it.value.firstNameErrorId} class="sib-text-size-14 sib-error-text sib-hide-component">
+                                                            {labels.B2B_LBL_COMPLETETHISFIELD}
+                                                        </div>
+                                                    </div>
+            
+                                                    <div class="recipient-input-container">
+                                                        <div class="sib-text-size-14 sib-text-description">
+                                                            {labels.B2B_LBL_LASTNAME} *
+                                                        </div>
+                                                        <div>
+                                                            <input data-id={it.value.lastNameId} class="recipient-input sib-text-description sib-text-size-16 sib-full-width" placeholder={labels.B2B_LBL_LASTNAME} onblur={handleRecipientInfoChange} value={it.value.lastname}></input>
+                                                        </div>
+                                                        <div data-id={it.value.lastNameErrorId} class="sib-text-size-14 sib-error-text sib-hide-component">
+                                                            {labels.B2B_LBL_COMPLETETHISFIELD}
+                                                        </div>
+                                                    </div>
+            
+                                                    <div class="recipient-input-container">
+                                                        <div class="sib-text-size-14 sib-text-description">
+                                                            {labels.B2B_LBL_EMAILADDRESS} *
+                                                        </div>
+                                                        <div>
+                                                            <input data-id={it.value.emailId}  class="recipient-input sib-text-description sib-text-size-16 sib-full-width" placeholder={labels.B2B_LBL_EMAILADDRESS}  onblur={validateEmailAddress} value={it.value.email}></input>
+                                                        </div>
+                                                        <div data-id={it.value.emailErrorId} class="sib-text-size-14 sib-error-text sib-hide-component">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <template  lwc:if={it.last}>
+                                                    <template lwc:if={item.islast}>
+                                                    </template>
+                                                    <template lwc:else>
+                                                        <a key={it.value.counter} class="cta-btn" data-currentcourseid={item.cartItemId} data-nextcourseid={item.nextCourseId}  onclick={proceedToNextCourse}>{labels.B2B_LBL_NEXTCOURSE}</a>
+                                                        <div key={it.value.counter}  class="divider"></div>
+                                                    </template>
+                                                    
+                                                </template>
+                                            </template>
+
+                                            <template lwc:if={item.isFirst}>
+                                                <template lwc:if={displayPrepopulate}>
+                                                    <!-- Pre-populate same recipients: begin-->
+                                                    <div key={item.productName} class="toggle">
+                                                        <div class="slds-form-element">
+                                                            <label class="slds-checkbox_toggle slds-grid">
+                                                                <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                                                <input type="checkbox" name="checkbox-toggle-16" value="checkbox-toggle-16" aria-describedby="checkbox-toggle-16" checked={isPrePopulateChecked} onclick={handlePrepopulateData}/>
+                                                                <span id="checkbox-toggle-prepopulate2" class="slds-checkbox_faux_container">
+                                                                <span class="slds-checkbox_faux"></span>
+                                                                </span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="toggle-label sib-text-size-14">
+                                                            {labels.B2B_LBL_PREPOPULATEONALLCOURSES}
+                                                        </div>
+                                                    </div>
+                                                    <!-- Pre-populate same recipients: end-->
+                                                </template>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <div>
+                                <button type="button" onclick={proceedToNextCheckoutStep} class="cta-btn">{labels.B2B_LBL_NEXT} {nextStepLabel}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </template>
+
+    
+</template>

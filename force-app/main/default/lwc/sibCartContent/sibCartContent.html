@@ -1,0 +1,45 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-29-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+    <div if:true={isCartItemsAvailable} id="cart">
+        <div class="cart-title" if:false={readOnly}>
+            <h2>{cartHeader}</h2>
+            <div class="sort">
+                <span if:true={productCount}>{productCount} {labels.items}</span>
+            </div>
+        </div>
+        <template for:each={cartItemsToShow} for:item="item">
+            <div  key={item.itemId} class="cards">
+                <c-sib-cart-item 
+                    class="card-board"
+                    item={item}
+                    labels={labels} 
+                    is-preview={isPreview}
+                    cart-config={cartConfig}
+                    onnavigatetoproduct={handleProductNavigation}
+                    read-only={readOnly}
+                    is-locked={isLocked}
+                    is-cart-status-checkout={isCartStatusCheckout}>
+                </c-sib-cart-item>
+            </div>
+            
+        </template>
+
+        <div class="clear-cart" if:false={readOnly}>
+            <p class="cursor-pointer" onclick={handleClearCart}>{clearCartText}</p>
+        </div>
+    </div>
+
+    <div if:true={needsToShowMore} class="slds-align_absolute-center">
+        <lightning-button
+            onclick={handleShowMoreButton} variant="base"
+            label={labels.showMore} title={labels.showMore}
+            class="slds-var-m-left_x-small">
+        </lightning-button>
+    </div>
+</template>

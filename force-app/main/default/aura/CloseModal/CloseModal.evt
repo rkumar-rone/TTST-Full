@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Handles Closing of a Modal" >
+    <aura:attribute name="cancel" type="Boolean" default="true" />
+</aura:event>

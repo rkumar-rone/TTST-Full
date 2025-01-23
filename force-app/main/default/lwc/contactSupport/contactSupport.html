@@ -1,0 +1,62 @@
+<template>
+    <div class="slds-grid slds-grid_align-center">
+        <div class="slds-col slds-size_2-of-3 slds-small-size_1-of-2">
+            <div class="spinnerOverlay" if:true={showSpinner}>
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </div>
+            <lightning-tabset class="slds-tabs_medium customtabset">
+                <lightning-tab onactive={contactTabActive} icon-name="utility:questions_and_answers" label={lContactButton}>
+                    <lightning-input type="text" label="First Name" required class="csInput" lwc:ref="csFirstName"
+                        value={currentUserName} pattern="^(?!\s*$).+" message-when-pattern-mismatch="First Name must not be blank"></lightning-input>
+                    <lightning-input type="text" label="Last Name" required class="csInput" lwc:ref="csLastName"
+                        value={currentUserLastName} pattern="^(?!\s*$).+" message-when-pattern-mismatch="Last Name must not be blank"></lightning-input>
+                    <lightning-input type="email" label="Email Address" required class="csInput" lwc:ref="csEmail"
+                        value={currentUserEmail}></lightning-input>
+                    <lightning-input type="tel" label="Phone" class="csInput" lwc:ref="csPhone"
+                                            value={currentUserPhone} minlength="10" max-length="15" pattern="^\+?[0-9]{10,14}$" message-when-pattern-mismatch="Enter a valid Phone"></lightning-input>
+                    <lightning-input type="text" label="Subject" value={subject} required class="csInput"
+                        lwc:ref="csSubject" pattern="^(?!\s*$).+" message-when-pattern-mismatch="Subject must not be blank"></lightning-input>
+                    <lightning-textarea type="text" label="How can we help?" required lwc:ref="csHow" class="csInput"></lightning-textarea>
+                </lightning-tab>
+                <lightning-tab onactive={courseTabActive}  icon-name="utility:knowledge_base" label={lCourseButton}>
+                    <lightning-input type="text" label="First Name" required class="courseInput"
+                        lwc:ref="courseFirstName" value={currentUserName} pattern="^(?!\s*$).+" message-when-pattern-mismatch="First Name must not be blank"></lightning-input>
+                    <lightning-input type="text" label="Last Name" required class="courseInput" lwc:ref="courseLastName"
+                        value={currentUserLastName} pattern="^(?!\s*$).+" message-when-pattern-mismatch="Last Name must not be blank"></lightning-input>
+                    <lightning-input type="email" label="Email Address" required class="courseInput"
+                        lwc:ref="courseEmail" value={currentUserEmail}></lightning-input>
+                    <lightning-input type="text" label="Company or School" class="courseInput"
+                        lwc:ref="courseCompanyOrSchool" pattern="^(?!\s*$).+" message-when-pattern-mismatch="Company or School must not be blank"></lightning-input>
+                    <lightning-combobox name="Region" label="Region" value="" placeholder="Select Region"
+                        options={options} onchange={handleChange} required class="courseInput"></lightning-combobox>
+                    <lightning-textarea class="courseInput" lwc:ref="courseHow" type="text" label="How can we help?" required></lightning-textarea>
+                </lightning-tab>
+            </lightning-tabset>
+            <template lwc:if={ContactSupport}>
+                <div class="slds-m-top_medium">
+                    <template lwc:if={isGuestElements}>
+                        <button class="slds-button slds-button_brand submitbutton" disabled>Submit</button>
+                    </template>
+                    <template lwc:else>
+                        <button class="slds-button slds-button_brand submitbutton" onclick={handleClickCS}>Submit</button>
+                    </template>
+                </div>
+            </template>
+            <template lwc:elseif={CourseSupport}>
+                <div class="slds-m-top_medium">
+                    <template lwc:if={isGuestElements}>
+                        <button class="slds-button slds-button_brand submitbutton" disabled>Submit</button>
+                    </template>
+                    <template lwc:else>
+                        <button class="slds-button slds-button_brand submitbutton" onclick={handleClickCourse}>Submit</button>
+                    </template>
+                </div>
+            </template>
+            <template lwc:if={isGuest}>
+                <div class="slds-align_absolute-center">
+                    <c-saltbox_-recaptcha onsuccess={validCaptcha} onexpired={handleExpired}></c-saltbox_-recaptcha>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

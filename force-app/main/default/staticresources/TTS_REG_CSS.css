@@ -1,0 +1,147 @@
+a { color: #027d07; text-decoration: underline; }
+body { padding: 0; margin: 0; height: 100%; background: url('images/background.jpg'); line-height: 1.6em; }
+body {font: 100% Verdana, Arial, Helvetica, sans-serif; color:#333; }
+
+
+#masthead  { height: 89px; background: url(images/masthead-fill.jpg) 0 0 repeat-x; }
+
+.sectionlabel
+{
+	font-weight: bold;
+	font-size: 0.9em;
+	color: #027d07;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-style: italic;
+}
+
+.texthighlightlarge
+{
+	font-weight: bold;
+	font-size: 1em;
+	color: #027d07;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.fieldlabel
+{
+	font-weight: bold;
+	font-size: 0.8em;
+	color: #027d07;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: right;
+}
+.fieldlabelleft
+{
+	font-weight: bold;
+	font-size: 0.8em;
+	color: #027d07;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: left;
+}
+.bodytext
+{
+	font-size: 0.75em;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.bodytextsmall
+{
+	font-size: 0.65em;
+	color: #999;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.errorMessage
+{
+	font-weight: bold;
+	font-size: 0.8em;
+	color: red;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.hiddenHiddenCell
+{
+	visibility: hidden;
+}
+
+.gridRowOdd
+{
+	font-weight: 500;
+	font-size: 0.8em;
+	color: black;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #dfdfdf;
+}
+.gridRowOdd:Hover
+{
+	font-weight: 500;
+	font-size: 0.8em;
+	color: #263d95;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #dfdfdf;
+}
+.gridRowEven
+{
+	font-size: 0.8em;
+	color: black;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: white;
+}
+.gridSelectedRowOdd
+{
+    FONT-WEIGHT: 500;
+    FONT-SIZE: 0.8em;
+    COLOR: white;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+    BACKGROUND-COLOR: darkturquoise
+}
+.gridSelectedRowEven
+{
+    FONT-SIZE: 0.8em;
+    COLOR: white;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+    BACKGROUND-COLOR: mediumblue
+}
+.gridHeader
+{
+	font-weight: 800;
+	font-size: 1em;
+	color: black;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	height: 25pt;
+	background-color: #7c9c3d;
+}
+.gridCellHidden
+{
+    DISPLAY: none;
+    FONT-WEIGHT: 500;
+    FONT-SIZE: 0.1em;
+    COLOR: white;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+    BACKGROUND-COLOR: #027d07
+}
+.gridCellAddNew
+{
+    FONT-WEIGHT: 500;
+    FONT-SIZE: 0.8em;
+    COLOR: black;
+    FONT-FAMILY: Verdana, Arial;
+}
+.gridTableTite
+{
+    FONT-WEIGHT: 800;
+    FONT-SIZE: 0.95em;
+    COLOR: #66a1b1;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+    HEIGHT: 25pt;
+    BACKGROUND-COLOR: white
+}
+.gridSortColumn
+{
+	font-weight: bold;
+	font-size: 1em;
+	color: White;
+	text-decoration: underline;
+}
+.gridUnSortColumn
+{
+		font-weight: bold;
+	font-size: 0.9em;
+	color: White;
+}

@@ -1,0 +1,16 @@
+<aura:component extends="c:AuthenticatedComponentAbstract" implements="forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="profile" type="Boolean" default="false" />
+    <aura:attribute name="mycourses" type="Boolean" default="false" />
+    <aura:attribute name="events" type="Boolean" default="false" />
+    <aura:attribute name="courses" type="Boolean" default="false" />
+    <aura:handler event="c:LoggedIn" action="{!c.setNav}"/>
+    
+	  <lightning:buttonMenu aura:id="menu" onselect="{! c.handleSelect }" alternativeText="Navigation" class="slds-hide_medium" iconName="utility:rows" value="{!v.page}">
+        <lightning:menuItem value="profile" aura:id="menuItems" checked="{!v.profile}" label="Profile" />
+        <lightning:menuItem value="mycourses" aura:id="menuItems" checked="{!v.mycourses}" label="My Courses" />
+        <lightning:menuItem value="events" aura:id="menuItems"  checked="{!v.events}" label="Search by Class Code" />
+        <lightning:menuItem value="courses" aura:id="menuIems" checked="{!v.courses}" label="Public Course Calendar" />
+        <lightning:menuItem value="logout" aura:id="menuItems" checked="false" label="Logout" />
+    </lightning:buttonMenu>
+   
+</aura:component>

@@ -1,0 +1,47 @@
+.wishlist-modal{
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.add-icon{
+    fill: white !important;
+}
+
+.create-bucket{
+    width: 140px;
+    height: 38px;
+    border: 1px solid var(--brand);
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: white;
+    background: var(--brand);
+}
+
+.cancel{
+    border-color: var(--brand);
+    color: var(--brand);
+}
+
+.addDisable{
+    background: #D9D9E0;
+    color: #828282;
+border: 1px solid #BDBDBD;
+box-sizing: border-box;
+border-radius: 4px;
+}
+
+.addEnable{
+    background: var(--brand);
+    color: white;
+    border: 1px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.modal-body{
+    max-height: 360px;
+}
+
+tr{
+    height: 63px;
+}

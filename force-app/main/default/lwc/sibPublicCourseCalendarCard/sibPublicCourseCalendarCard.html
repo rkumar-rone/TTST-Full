@@ -1,0 +1,83 @@
+<!--
+  @description       : 
+  @author            : pareddy@rafter.one
+  @group             : 
+  @last modified on  : 09-25-2024
+  @last modified by  : Anand
+-->
+<template lwc:render-mode="light">
+    <div class="filter-item-cart">
+
+        <div class="plp-image-section plp-green-bg-color">
+            <div class="filter-cart__img" onkeydown={handleKeydown} onclick={handleProductDetailPageNavigation}>
+                <experience-picture 
+                    alternative-text={image.altText} 
+                    url={image.url} 
+                    loading="lazy">
+                </experience-picture>
+            </div>
+        </div>
+
+        <div class="inner">
+            <div class="filter-cart__desc">
+
+                <template if:true={productName}>
+                    <a class="slds-text-link_reset product-name"
+                        onkeydown={handleKeydown} 
+                        onclick={handleProductDetailPageNavigation}>
+                        <h3 title={productName}>{productName}</h3>
+                    </a>
+                </template>
+
+                <div class="event-details">
+                    <div class="event-date">
+                        <span>
+                            <template lwc:if={eventDate}>
+                                {eventDate}
+                            </template>
+                        </span>
+                        <template if:true={course.weekend}>
+                            <span class="weekendSpan">{weekendLabel}</span>
+                        </template>
+                    </div>
+                    
+                    <div class={badge.badgeCSS}>
+                        <template if:true={badge.badgeLabel}>
+                            <span class="price-text" title={badge.badgeLabel}>{badge.badgeLabel}: </span>
+                        </template>
+                        
+                        <template if:true={badge.location}>
+                            <span title={badge.location}>
+                                {badge.location}
+                            </span>
+                        </template>
+                    </div>
+                    
+                    <div if:true={classCode} class="class-code">
+                        <span>
+                            {classCodeLabel}: {classCode}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-cart__price">
+                <div class="left">
+                    <template lwc:if={displayPrice}>
+                        <!-- <span class="price">{displayPrice}</span> -->
+                    </template>
+                </div>
+                <div class="right">
+                    <c-sib-common-button 
+                        button-label={learnMoreButtonText} 
+                        variant={actionButtonVariant}
+                        onclick={handleProductDetailPageNavigation}>
+                        <span class="button-text">{learnMoreButtonText}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M19.978 12.2446C19.9446 12.363 19.841 12.5192 19.6984 12.626L14.699 17.3953C14.5565 17.5303 14.3615 17.6127 14.1665 17.6127C13.9715 17.6127 13.7765 17.5303 13.6415 17.3953C13.3425 17.103 13.3425 16.6234 13.635 16.3311L17.394 12.1858H5C4.58 12.1858 4.25 11.8486 4.25 11.4364C4.25 11.0167 4.58 10.6869 5 10.6869H17.4154L13.641 6.47163C13.342 6.17185 13.342 5.69969 13.641 5.40742C13.9335 5.10764 14.406 5.10764 14.706 5.40667L19.674 9.88342C19.6783 9.88745 19.6825 9.89153 19.6867 9.89567C19.6904 9.89942 19.6941 9.90321 19.6978 9.90702C19.8832 10.0902 19.949 10.3523 19.8953 10.5935Z" fill="white"/>
+                        </svg>
+                    </c-sib-common-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

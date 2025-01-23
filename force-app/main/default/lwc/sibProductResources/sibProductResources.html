@@ -1,0 +1,17 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 04-30-2024
+  @last modified by  : Gaurav Setia
+-->
+<template>
+    <ul class="list-resoursces">
+        <template for:each={resources} for:item="resource">
+            <li key={resource.id}>
+                <img src={images.doc} alt={resource.altText}>
+                <a href={resource.url}>{resource.title}</a>
+            </li>
+        </template>
+    </ul>
+</template>

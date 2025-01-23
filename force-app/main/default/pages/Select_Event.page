@@ -1,0 +1,28 @@
+<apex:page controller="SelectEventController" showHeader="false" sidebar="false" title="Current Events">
+<apex:stylesheet value="{!$Resource.TTS_Style}"/>
+<apex:pageMessages />
+<table id="container">
+<h1>Course Selection Screen</h1>
+<br/>
+<br/>
+<apex:repeat value="{!Grouping}" var="g">
+                
+              
+                
+                
+                
+                <apex:datatable width="50%" border="2" value="{!g.classes}" var="c">
+                <apex:facet name="header">{!g.header}</apex:facet>
+                 <apex:column width="25%" headerValue="Class Name" value="{!c.Online_Event_Name__c}"/>
+                 <apex:column width="25%" headerValue="Class Code" value="{!c.Class_Code__c}"/>
+                 <apex:column width="25%" headerValue="Start Date" value="{!c.StartDate}"/>
+                 <apex:column width="25%" headerValue="End Date" value="{!c.EndDate}"/>
+                 </apex:datatable>
+                 <br/>
+                 <br/>
+				  
+                
+                
+</apex:repeat>     
+</table>
+</apex:page>

@@ -1,0 +1,293 @@
+.THIS {
+}
+
+nav.THIS.navbar.navbar-custom.navbar-fixed-top {
+    background-color: #027d07;
+    font-size:14px;
+}
+
+/*@media  { (min-width: 768px)*/
+	.THIS.navbar-custom {
+    	padding: 20px 0;
+    	border-bottom: 0;
+    	letter-spacing: 1px;
+    	background: 0 0;
+    	-webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+    	-moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+    	transition: background .5s ease-in-out, padding .5s ease-in-out;
+	}
+/*}*/
+
+/*@media screen and (max-width: 992px) {
+    nav.THIS .container-fluid {
+    	padding-left: 0 !important;
+    	padding-right: 0 !important;
+        min-height:75px;
+	}
+    .THIS.navbar-custom {
+    	padding: 0;
+	}
+    .THIS .navbar-brand.page-scroll {
+    	position: absolute;
+    	z-index: 999;
+	}
+    .THIS #menu-main-navigation {
+    	display: none;
+	}
+    .THIS .navbar-nav {
+    	margin: 0 !important;
+	}
+}*/
+
+/*@media {  (min-width: 992px)*/
+	.THIS .navbar {
+    	border-radius: 4px;
+	}
+    .THIS.navbar-fixed-top, .THIS.navbar-fixed-bottom {
+	    border-radius: 0;
+	}
+    
+    .THIS .navbar > .container .navbar-brand, .THIS .navbar > .container-fluid .navbar-brand {
+    	margin-left: -15px;
+	}
+    .THIS .sm-blue a {
+    	white-space: nowrap;
+	}
+    .THIS .sm-blue > li:first-child {
+ 	   border-left: 0;
+	}
+    
+    .THIS .sm-blue li {
+    	float: left;
+	}
+    .THIS .sm-blue ul {
+    	position: absolute;
+	}
+    .THIS .sm-blue ul li {
+    	border: 0;
+	}
+    .THIS .sm-blue ul li, .THIS .sm-blue.sm-rtl ul li, .THIS .sm-blue.sm-vertical li {
+	    float: none;
+	}
+    .THIS .sm-blue ul a, .THIS .sm-blue ul a:hover, .THIS .sm-blue ul a:focus, .THIS .sm-blue ul a:active, .THIS .sm-blue ul a.highlighted {
+    	border: 0 !important;
+    	display: table;
+	   	padding: 6px 10px;
+	    background-color: #f8f8f8;
+	    color: #444;
+	    width: 100%;
+	    font-size: 13px !important;
+	    text-transform: uppercase !important;
+	}
+    .THIS .sm-blue a span.sub-arrow {
+    	top: auto;
+    	margin-top: 0;
+    	bottom: 2px;
+    	left: 50%;
+    	margin-left: -5px;
+    	right: auto;
+    	width: 0;
+    	height: 0;
+	}
+/*}*/
+
+/*@media  { (min-width: 991px)*/
+	.THIS .navbar-nav {
+    	float: left;
+    	margin: 0;
+	}
+    .THIS .navbar-nav > li > a {
+    	padding-top: 18px;
+    	padding-bottom: 18px;
+	}
+/*}*/
+
+.THIS.navbar-custom {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+}
+
+.THIS.navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+}
+
+.THIS.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+
+.THIS.navbar-fixed-top, .THIS.navbar-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.THIS .container-fluid {
+    max-width: 1250px;
+}
+
+.THIS .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+/*    margin-left: auto;*/
+}
+
+.THIS.navbar-custom .navbar-brand {
+    font-weight: 700;
+}
+
+.THIS.navbar-custom a {
+    color: #fff;
+}
+
+@media  (max-width: 500px) {
+	.THIS .container-fluid {
+		padding-left:0;
+		padding-right:0;
+	}
+	
+	.THIS #logonav img {
+		width:275px;
+	}
+}
+
+.THIS .navbar-brand {
+    float: left;
+    height: 58px;
+    padding: 0 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+a.THIS {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+}
+
+.THIS .navbar-brand > img {
+    display: block;
+}
+
+.THIS .navbar-nav {
+    margin: 7.5px -15px;
+}
+
+.THIS .nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+ol.THIS, ul.THIS {
+    list-style: none;
+}
+
+a.THIS button.THIS {
+    cursor: pointer;
+}
+
+.THIS.navbar-custom .nav li a {
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+    text-transform: uppercase;
+}
+
+.THIS .nav > li > a:hover, .THIS .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #eee;
+}
+.THIS.navbar-custom .nav li a:hover {
+    outline: 0;
+    color: rgba(255,255,255,1);
+    background-color: transparent;
+}
+.THIS .nav > li {
+    position: relative;
+    display: block;
+}
+
+.THIS .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+
+.THIS .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+.THIS .sub-menu {
+    padding: 0 !important;
+}
+
+.THIS .sub-menu {
+    max-width: 60em !important;
+}
+
+ul.THIS ul, ol.THIS ul, ul.THIS ol, ol.THIS ol {
+    margin-bottom: 0;
+}
+
+.THIS .sm-blue ul li:first-child {
+    border-top: 0;
+}
+
+.THIS .sub-menu li {
+    list-style: none;
+}
+d.THIS .sub-menu, .THIS .sub-arrow {
+    display: none;
+}
+
+.THIS .acc_wrapper {
+    display: table;
+    width: 100%;
+    position: relative;
+    padding-top: 70x;
+    background-color: #027d07;
+}
+.THIS .ui-widget {
+    font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+}
+
+.THIS .ui-helper-reset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    line-height: 1.3;
+    text-decoration: none;
+    font-size: 100%;
+    list-style: none;
+}
+
+.THIS .navbar-nav > li:last-child a:hover {
+    background-color: #fff;
+    color: #ef6921;
+}
+
+.THIS .navbar-nav > li:last-child a {
+    background-color: #ef6921;
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+.THIS .clearfix:before, .THIS .clearfix:after, .THIS .dl-horizontal dd:before, .THIS .dl-horizontal dd:after, .THIS .container:before, .THIS .container:after, .THIS .container-fluid:before, .THIS .container-fluid:after, .THIS .row:before, .THIS .row:after, .THIS .form-horizontal .form-group:before, .THIS .form-horizontal .form-group:after, .THIS .btn-toolbar:before, .THIS .btn-toolbar:after, .THIS .btn-group-vertical > .btn-group:before, .THIS .btn-group-vertical > .btn-group:after, .THIS .nav:before, .THIS .nav:after, .THIS .navbar:before, .THIS .navbar:after, .THIS .navbar-header:before, .THIS .navbar-header:after, .THIS .navbar-collapse:before, .THIS .navbar-collapse:after, .THIS .pager:before, .THIS .pager:after, .THIS .panel-body:before, .THIS .panel-body:after, .THIS .modal-footer:before, .THIS .modal-footer:after {
+    display: table;
+    content: " ";
+}
+
+.THIS .clearfix:after, .THIS .dl-horizontal dd:after, .THIS .container:after, .THIS .container-fluid:after, .THIS .row:after, .THIS .form-horizontal .form-group:after, .THIS .btn-toolbar:after, .THIS .btn-group-vertical > .btn-group:after, .THIS .nav:after, .THIS .navbar:after, .THIS .navbar-header:after, .THIS .navbar-collapse:after, .THIS .pager:after, .THIS .panel-body:after, .THIS .modal-footer:after {
+    clear: both;
+}

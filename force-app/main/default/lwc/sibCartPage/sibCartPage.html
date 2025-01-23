@@ -1,0 +1,146 @@
+<!--
+  @description       : 
+  @author            : Gaurav Setia
+  @group             : 
+  @last modified on  : 10-29-2024
+  @last modified by  : Gaurav Setia
+-->
+<template lwc:render-mode="light">
+    <c-sib-show-toast-message></c-sib-show-toast-message>
+    <template lwc:if={isSkeletonLoading}>
+        <div class="cart-page">
+            <div class="content-wrapper">
+                <div class="d-flex" >
+                    <div class="cart" id="cart">
+                        <div class="cart-title">
+                            <h2>{Labels.SIB_CartName}</h2>
+                        </div>
+                        <div class="product-container">
+                            <div class="left-section-image">
+                                <c-stencil height="180" width="100%" class="stencil"></c-stencil>
+                            </div>
+                            <div class="right-section">
+                                <div class="product-info">
+                                    <div class="prod-sku">
+                                        <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                    </div>
+                                    <div class="prod-name">
+                                        <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                    </div>
+                                    <div class="prod-des">
+                                        <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                    </div>
+                                    <div class="prod-qty">
+                                        <div class="price-item">
+                                            <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                        <div class="price-qty-sec">
+                                            <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                        <div class="remove-btn">
+                                            <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="parent-container">
+                                <div class="order-title-checkout" style="padding-left:20px; margin-bottom: 24px;">
+                                    <h2 style="color: #2d2b33;font-size: 28px;font-weight: 600;line-height: 1.2;letter-spacing: -0.84px;">{Labels.SIB_OrderSummary}</h2>
+                                </div>
+                                <div class="order-content-checkout">
+                                    <div class="full-width">
+                                        <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                    </div>
+                                    <div class="row">
+                                        <div class="column-70">
+                                            <c-stencil height="35" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                        <div class="column-30">
+                                            <c-stencil height="35" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                    </div>
+                                    <div class="column-50">
+                                        <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                    </div>
+                                    <div class="row">
+                                        <div class="column-30">
+                                            <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                        <div class="column-30">
+                                            <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                    </div>
+                                    <div class="column-50">
+                                        <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                    </div>
+                                    <div class="row">
+                                        <div class="column-30">
+                                            <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                        <div class="column-30">
+                                            <c-stencil height="25" width="100%" class="stencil"></c-stencil>
+                                        </div>
+                                    </div>
+                                    <div class="full-width">
+                                        <c-stencil height="45" width="100%" class="stencil"></c-stencil>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </template>
+    <template lwc:else>
+        <div>
+            <div class="cart-page">
+                <div class="content-wrapper">
+                    <div class="d-flex" lwc:if={displayCartPage}>
+                        <c-sib-cart-content  
+                            class="cart" 
+                            is-preview={isPreview}
+                            cart-config={cartConfig}
+                            cart-items={cartItems}
+                            cart-details={cartDetails}
+                            onquantitychanged={handleQuantityChanged}
+                            ondeletecartitem={handleCartItemDelete}
+                            onclearcurrentcart={handleCartDelete}
+                        ></c-sib-cart-content> 
+                        <div class="order-summary">
+                            <c-sib-cart-summary 
+                                cart-config={cartConfig}
+                                cart-total={cartTotal}
+                                cart-details={cartDetails}
+                                currency-code={currencyCode}
+                                webstore-id={webstoreId}
+                                onapplycartcoupon={handleApplyCoupon}
+                                onremovecartoupon={handleRemoveCoupon}
+                                error-msg = {errorMsg}
+                            ></c-sib-cart-summary>
+                        </div>
+                    </div>
+    
+                    <div lwc:if={checkEmptyCart} class="empty-cart">
+                        {Labels.SIB_EmptyCartMsg}
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </template> 
+
+    <template if:true={isCartClosed}>
+        <div class="empty-cart">
+            {Labels.SIB_CartNotAvailableMsg}
+        </div>
+    </template>
+
+    <c-sib-cart-utils oninvalidcoupon={handleInvalidCoupon} onshowtoastmsg={handleToastMsg} >
+    </c-sib-cart-utils> 
+</template>

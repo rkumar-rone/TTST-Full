@@ -1,0 +1,27 @@
+a{
+    color: var(--textColor) !important;
+}
+
+.background {
+    --backgroundColor: black;
+    --textColor: black;
+    background-color: var(--backgroundColor) !important;
+}
+
+.text-color{
+    color: var(--textColor) !important;
+}
+
+.sectionPadding{
+    padding-bottom:20px;
+}
+
+.socialIcons{
+    max-width: 15px;
+}
+
+@media (max-width: 480px) {
+    .basicFooter ul {
+      display: inline;
+    }
+}
