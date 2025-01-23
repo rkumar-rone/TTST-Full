@@ -2,6 +2,7 @@
     <apex:attribute name="orderSummaryRecordId" type="String" description="Order Summary record Id" assignTo="{!orderSummaryId}" />
     <apex:attribute name="OwnerName" type="String" description="Order Summary record owner name" assignTo="{!recipientName}" />
 <html>
+  
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"> </meta>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
