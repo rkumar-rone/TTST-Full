@@ -97,6 +97,10 @@ import SIB_SiteDomainName from '@salesforce/label/c.Cje_Domain_Name';
 import SIB_StrivacityIdCookieName from '@salesforce/label/c.SIB_StrivacityIdCookieName';
 import SIB_ExcelModellingChallenges from '@salesforce/label/c.SIB_ExcelModellingChallenges';
 import SIB_PythonCoreDataAnalysis from '@salesforce/label/c.SIB_PythonCoreDataAnalysis';
+import SIB_InterviewprepAi from '@salesforce/label/c.SIB_InterviewprepAi';
+import SIB_InterviewSmartprepAi_Pro from '@salesforce/label/c.SIB_InterviewSmartprepAi_Pro';
+import SIB_AdditionalMinutes from '@salesforce/label/c.SIB_AdditionalMinutes';
+import SIB_UpgradeToAIPlus from '@salesforce/label/c.SIB_UpgradeToAIPlus';
 
 export const Labels ={
     SIB_SearchPlaceHolderText,
@@ -197,5 +201,9 @@ export const Labels ={
     SIB_SiteDomainName,
     SIB_StrivacityIdCookieName,
     SIB_ExcelModellingChallenges,
-    SIB_PythonCoreDataAnalysis
+    SIB_PythonCoreDataAnalysis,
+    SIB_InterviewprepAi,
+    SIB_InterviewSmartprepAi_Pro,
+    SIB_AdditionalMinutes,
+    SIB_UpgradeToAIPlus
 }

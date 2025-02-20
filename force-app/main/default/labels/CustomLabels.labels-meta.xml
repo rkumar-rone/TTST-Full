@@ -1,0 +1,3842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>B2BCheckoutPathLabels</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2BCheckoutPathLabels</shortDescription>
+        <value>Start,Checkout Summary,Payment,Order Confirmation,</value>
+    </labels>
+    <labels>
+        <fullName>B2BEndingWith</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Checkout My Wallet Component</shortDescription>
+        <value>ending with</value>
+    </labels>
+    <labels>
+        <fullName>B2BGrandTotal</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Order Confirmation</shortDescription>
+        <value>Grand Total:</value>
+    </labels>
+    <labels>
+        <fullName>B2BPaymentInformation</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Order Confirmation</shortDescription>
+        <value>Payment Information</value>
+    </labels>
+    <labels>
+        <fullName>B2BPrice</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Order Confirmation</shortDescription>
+        <value>Price:</value>
+    </labels>
+    <labels>
+        <fullName>B2BQuantity</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Order Confirmation</shortDescription>
+        <value>Qty:</value>
+    </labels>
+    <labels>
+        <fullName>B2BSKU</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Order Confirmation</shortDescription>
+        <value>SKU:</value>
+    </labels>
+    <labels>
+        <fullName>B2BShipping</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Order Confirmation</shortDescription>
+        <value>Shipping:</value>
+    </labels>
+    <labels>
+        <fullName>B2BSubtotal</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Order Confirmation</shortDescription>
+        <value>Subtotal:</value>
+    </labels>
+    <labels>
+        <fullName>B2BTotalTaxAmount</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Order Confirmation</shortDescription>
+        <value>Total Tax Amount:</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Active_Cart_Alert_Action_Text</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Active Cart Alert Action Text</shortDescription>
+        <value>Cancel Checkout</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Active_Cart_Alert_Text</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Active Cart Alert Text</shortDescription>
+        <value>Your cart&apos;s locked during checkout. You can wait here, step away, or cancel checkout. To return to checkout, click the cart icon, then click Proceed to Checkout.</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Billing</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_Billing</shortDescription>
+        <value>Billing</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Billing_Address</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Billing Address</shortDescription>
+        <value>Billing Address</value>
+    </labels>
+    <labels>
+        <fullName>B2B_CheckoutWaitListScreenHeader</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_CheckoutWaitListScreenHeader</shortDescription>
+        <value>There are not enough seats to register all your group recipients to the courses in your cart. You can still buy the course and your participants will be waitlisted when they register. If any seats become available they will be registered to the course</value>
+    </labels>
+    <labels>
+        <fullName>B2B_CompleteThisField</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_CompleteThisField</shortDescription>
+        <value>Complete this field</value>
+    </labels>
+    <labels>
+        <fullName>B2B_CybersourceConfiguration</fullName>
+        <categories>B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_CybersourceConfiguration</shortDescription>
+        <value>SIB_RafterOneCyberSource</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Edit</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_Edit</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Edit_Address</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Edit Address</shortDescription>
+        <value>Edit Address</value>
+    </labels>
+    <labels>
+        <fullName>B2B_EmailAddress</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_EmailAddress</shortDescription>
+        <value>Email Address</value>
+    </labels>
+    <labels>
+        <fullName>B2B_EmailFormatError</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_EmailFormatError</shortDescription>
+        <value>You have entered an invalid format.</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Error</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Featured_Product_Error_Msg</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Featured Product Error Msg</shortDescription>
+        <value>Something went wrong!!</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Featured_Products</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Featured Products</shortDescription>
+        <value>Featured Products</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Firstname</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_Firstname</shortDescription>
+        <value>First Name</value>
+    </labels>
+    <labels>
+        <fullName>B2B_GenericExceptionMessage</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_GenericExceptionMessage</shortDescription>
+        <value>Something went wrong. Please try again later!</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Global_GenericErrorEmailSubject</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Generic Error Email Subject</shortDescription>
+        <value>Error Email</value>
+    </labels>
+    <labels>
+        <fullName>B2B_GroupOrders</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B GroupOrders</shortDescription>
+        <value>Group Orders</value>
+    </labels>
+    <labels>
+        <fullName>B2B_GroupRecipientCreated</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_GroupRecipientCreated</shortDescription>
+        <value>Group recipients created</value>
+    </labels>
+    <labels>
+        <fullName>B2B_IsOrderForSomeoneElse</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_IsOrderForSomeoneElse</shortDescription>
+        <value>Is this order for someone else?</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Lastname</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_Lastname</shortDescription>
+        <value>Last Name</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Manage_Subscriptions</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Manage Subscriptions</shortDescription>
+        <value>Manage Subscriptions</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Checkout_Label</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Checkout Label</shortDescription>
+        <value>Checkout</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Close_Label</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Close Label</shortDescription>
+        <value>close</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Empty_Message</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Empty Message</shortDescription>
+        <value>Your cart’s empty</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Items_Label</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Items Label</shortDescription>
+        <value>items</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Label</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Label</shortDescription>
+        <value>My Cart</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Product_Label</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Product Label</shortDescription>
+        <value>Product</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Quantity</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Quantity</shortDescription>
+        <value>Quantity</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_SKU</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart SKU</shortDescription>
+        <value>SKU#</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Total</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Total</shortDescription>
+        <value>Total</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Total_Price</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Total Price</shortDescription>
+        <value>Total Price</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_Total_Quantity</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart Total Quantity</shortDescription>
+        <value>Total Quantity</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Mini_Cart_View_Button</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Mini Cart View Button</shortDescription>
+        <value>View Cart</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Next</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_Next</shortDescription>
+        <value>Next</value>
+    </labels>
+    <labels>
+        <fullName>B2B_NextCourse</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_NextCourse</shortDescription>
+        <value>Next Course</value>
+    </labels>
+    <labels>
+        <fullName>B2B_No_Billing_Addr_Txt</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B No Billing Addr Txt</shortDescription>
+        <value>There is no billing address for this cart, please add using below link.</value>
+    </labels>
+    <labels>
+        <fullName>B2B_No_Shipping_Txt</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B No Shipping Txt</shortDescription>
+        <value>There is no shipping address for this cart, please add using below link.</value>
+    </labels>
+    <labels>
+        <fullName>B2B_No_Subscription_label</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B No Subscription label</shortDescription>
+        <value>No Subscription -- The price is {0}</value>
+    </labels>
+    <labels>
+        <fullName>B2B_No_Subscriptions</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B No Subscriptions</shortDescription>
+        <value>No Subscriptions found</value>
+    </labels>
+    <labels>
+        <fullName>B2B_PDP_Selling_Pricing_Label</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B PDP Selling Pricing Label</shortDescription>
+        <value>Your price:</value>
+    </labels>
+    <labels>
+        <fullName>B2B_PaymentPathName</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_PaymentPathName</shortDescription>
+        <value>Payment</value>
+    </labels>
+    <labels>
+        <fullName>B2B_PrepopulateOnAllCourses</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_PrepopulateOnAllCourses</shortDescription>
+        <value>Pre-populate the same recipient information across all courses?</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Primary_Account</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saltbox_Test_User_ID</shortDescription>
+        <value>0054w00000CImYLAA1</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Product_added_successfully</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Product added successfully</shortDescription>
+        <value>Product added successfully</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Profile_Name</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Profile Name</shortDescription>
+        <value>B2B Lightning Community Plus</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Recipient</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_Recipient</shortDescription>
+        <value>Recipient</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Select_Billing_Address</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Select Billing Address</shortDescription>
+        <value>Please Select Billing Address</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Shipping_Address</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Shipping Address</shortDescription>
+        <value>Shipping Address</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Shipping_Address_Select_Txt</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Shipping Address Select Txt</shortDescription>
+        <value>Please Select Shipping Address</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Storefront_Url</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Storefront Url</shortDescription>
+        <value>https://lightningdemo1.my.site.com/Demo</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Subscription_with_upfront</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Subscription with upfront</shortDescription>
+        <value>{0} Subscription - Pay {1} now and then just {2} {3}</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Subscritpion_label</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Subscritpion label</shortDescription>
+        <value>{0} Subscription - {1} and then just {2} {3}</value>
+    </labels>
+    <labels>
+        <fullName>B2B_Success</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>B2B Success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>B2B_qty</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B_PrinterDetail_qty</shortDescription>
+        <value>qty</value>
+    </labels>
+    <labels>
+        <fullName>Cje_Domain_Name</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cje Domain Name</shortDescription>
+        <value>trainingthestreet--fullcopy.sandbox.my.site.com</value>
+    </labels>
+    <labels>
+        <fullName>Colleva_Prod_Already_Exist_On_Cart</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Colleva Prod Already Exist On Cart</shortDescription>
+        <value>Colleva Product Already Exist On Cart</value>
+    </labels>
+    <labels>
+        <fullName>Commerce_Search_Facets_modalLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Commerce_Search_Facets_modalLabel</shortDescription>
+        <value>Filter Search Results</value>
+    </labels>
+    <labels>
+        <fullName>Common_NumberInput_decrementAltText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Common_NumberInput_decrementAltText</shortDescription>
+        <value>Decrement quantity</value>
+    </labels>
+    <labels>
+        <fullName>Common_NumberInput_incrementAltText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Common_NumberInput_incrementAltText</shortDescription>
+        <value>Increase quantity</value>
+    </labels>
+    <labels>
+        <fullName>Common_NumberInput_inputAriaLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Common_NumberInput_inputAriaLabel</shortDescription>
+        <value>Enter a value to change your quantity</value>
+    </labels>
+    <labels>
+        <fullName>Failed_to_get_shipping_options</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Failed_to_get_shipping_options</shortDescription>
+        <value>Failed to get shipping options.</value>
+    </labels>
+    <labels>
+        <fullName>FedEx_Address_Error</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FedEx Address Error</shortDescription>
+        <value>There is an issue with your address. If you need assistance, please contact us at 1-800-487-2448.</value>
+    </labels>
+    <labels>
+        <fullName>FedEx_Address_Failure</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FedEx Address Failure</shortDescription>
+        <value>There is an issue with your address. If you need assistance, please contact us at 1-800-487-2448.</value>
+    </labels>
+    <labels>
+        <fullName>FedEx_Address_Invalid</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FedEx Address Invalid</shortDescription>
+        <value>Please provide valid Address.</value>
+    </labels>
+    <labels>
+        <fullName>FedEx_Address_Normalized</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FedEx Address Normalized</shortDescription>
+        <value>Our system was unable to verify your address, please correct your address and try again.</value>
+    </labels>
+    <labels>
+        <fullName>FedEx_Address_Raw</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FedEx Address Raw</shortDescription>
+        <value>Address Validation Service is not supported for the provided country.</value>
+    </labels>
+    <labels>
+        <fullName>FedEx_Address_Validated</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FedEx Address Validated</shortDescription>
+        <value>Your address has been validated.</value>
+    </labels>
+    <labels>
+        <fullName>FedEx_Format_Failure_Subject</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FedEx Format Failure Subject</shortDescription>
+        <value>This will be the value set in the Operation element of the ExceptionLoggingDomain instance for FedEx related SOAP webservice response errors.</value>
+    </labels>
+    <labels>
+        <fullName>Full_Moodle_Batch_Query</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Full Moodle Batch Query</shortDescription>
+        <value>SELECT Id, LMS_Id__c from Contact where LMS_Id__c != null AND Last_Login__c = Last_N_days:15</value>
+    </labels>
+    <labels>
+        <fullName>Global_GenericException</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Global GenericException</shortDescription>
+        <value>There was an error processing your request. Please try again. If you need assistance, please contact us at 1-800-487-2448.</value>
+    </labels>
+    <labels>
+        <fullName>Moodle_Last_Login_Days</fullName>
+        <categories>Moodle</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Moodle Last Login Days</shortDescription>
+        <value>7</value>
+    </labels>
+    <labels>
+        <fullName>No_Cart_Delivery_Group</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No_Cart_Delivery_Group</shortDescription>
+        <value>No Cart Delivery Group Found.</value>
+    </labels>
+    <labels>
+        <fullName>No_Shipping_Products_Configured</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>No_Shipping_Products_Configured</shortDescription>
+        <value>No Shipping Products Configured.</value>
+    </labels>
+    <labels>
+        <fullName>Product_ModalAddToCart_actionContinueShopping</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_ModalAddToCart_actionContinueShopping</shortDescription>
+        <value>Continue Shopping</value>
+    </labels>
+    <labels>
+        <fullName>Product_ModalAddToCart_actionViewCart</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_ModalAddToCart_actionViewCart</shortDescription>
+        <value>View Cart</value>
+    </labels>
+    <labels>
+        <fullName>Product_ModalAddToCart_messageSuccessfullyAddedToCart</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_ModalAddToCart_messageSuccessfullyAddedToCart</shortDescription>
+        <value>Item was added to cart</value>
+    </labels>
+    <labels>
+        <fullName>Product_Pricing_strikethroughAssistiveText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_Pricing_strikethroughAssistiveText</shortDescription>
+        <value>Crossed Out</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_errorAccessInsufficient</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_errorAccessInsufficient</shortDescription>
+        <value>You don’t have permission to complete this action.</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_errorDefault</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_errorDefault</shortDescription>
+        <value>An unexpected error occurred. Try again later.</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_errorLimitExceeded</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_errorLimitExceeded</shortDescription>
+        <value>Your cart is full.</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_errorLimitIncrement</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_errorLimitIncrement</shortDescription>
+        <value>Always purchase this product in set increments. Check product increments.</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_errorLimitMaximum</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_errorLimitMaximum</shortDescription>
+        <value>This product has a maximum purchase limit. Check quantity limits.</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_errorLimitMinimum</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_errorLimitMinimum</shortDescription>
+        <value>This product has a minimum purchase limit. Check quantity limits.</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_modalCartActionContinue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_modalCartActionContinue</shortDescription>
+        <value>Continue Shopping</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_modalCartActionView</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_modalCartActionView</shortDescription>
+        <value>View Cart</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_modalCartTitleSuccess</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_modalCartTitleSuccess</shortDescription>
+        <value>Item was added to cart</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_toastWishlistError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_toastWishlistError</shortDescription>
+        <value>We couldn’t add this item to the list. Try again.</value>
+    </labels>
+    <labels>
+        <fullName>Product_PurchaseOptions_toastWishlistSuccess</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_PurchaseOptions_toastWishlistSuccess</shortDescription>
+        <value>Item was added to list.</value>
+    </labels>
+    <labels>
+        <fullName>Product_QuantitySelectorPopover_quantityHelp</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_QuantitySelectorPopover_quantityHelp</shortDescription>
+        <value>Quantity help</value>
+    </labels>
+    <labels>
+        <fullName>Product_QuantitySelector_outOfStock</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_QuantitySelector_outOfStock</shortDescription>
+        <value>Out of stock</value>
+    </labels>
+    <labels>
+        <fullName>Product_QuantitySelector_patternMismatch</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_QuantitySelector_patternMismatch</shortDescription>
+        <value>Enter a valid number.</value>
+    </labels>
+    <labels>
+        <fullName>Product_QuantitySelector_rangeOverflow</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_QuantitySelector_rangeOverflow</shortDescription>
+        <value>Enter a value between {min} and {max} in increments of {step}.</value>
+    </labels>
+    <labels>
+        <fullName>Product_QuantitySelector_rangeUnderflow</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_QuantitySelector_rangeUnderflow</shortDescription>
+        <value>Enter a value between {min} and {max} in increments of {step}.</value>
+    </labels>
+    <labels>
+        <fullName>Product_QuantitySelector_stepMismatch</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_QuantitySelector_stepMismatch</shortDescription>
+        <value>Enter a value between {min} and {max} in increments of {step}.</value>
+    </labels>
+    <labels>
+        <fullName>Product_Variant_Selector_productVariantSelectorPlaceholderText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Product_Variant_Selector_productVariantSelectorPlaceholderText</shortDescription>
+        <value>Select...</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AboutUs</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AboutUs</shortDescription>
+        <value>About Us</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Academic</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Academic</shortDescription>
+        <value>Academic</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AccessErrorMsg</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AccessErrorMsg</shortDescription>
+        <value>You don&apos;t have view access to the related object.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Acknowledge</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Acknowledge</shortDescription>
+        <value>I Acknowledge</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Actions</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Actions</shortDescription>
+        <value>Actions</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Active</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Active</shortDescription>
+        <value>Active</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Active_Colleva_Prod_Already_Avl</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Active Colleva Prod Already Avl</shortDescription>
+        <value>You have already Active SmartPrep AI Product.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Active_Option</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Active Option</shortDescription>
+        <value>Active Only</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Active_and_Inactive_Option</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Active and Inactive Option</shortDescription>
+        <value>Active and Inactive</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AddSessions</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AddSessions</shortDescription>
+        <value>Add Sessions</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AddToCart</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AddToCart</shortDescription>
+        <value>Add to Cart</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AddToCartErrorMsg</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AddToCartErrorMsg</shortDescription>
+        <value>could not be added to your cart at this time. Please try again later.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AddToCartSuccessMsg</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AddToCartSuccessMsg</shortDescription>
+        <value>Your cart has been updated.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Add_New</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Add_New</shortDescription>
+        <value>Add New</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AdditionalMinutes</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AdditionalMinutes</shortDescription>
+        <value>SmartPrep AI Additional Time</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Advanced</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Advanced</shortDescription>
+        <value>Advanced</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AdvancedTopics</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AdvancedTopics</shortDescription>
+        <value>Advanced Topics</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Advanced_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Advanced_Info</shortDescription>
+        <value>Develop the high-level financial modeling skills needed to secure and excel in full-time Financial roles.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AfterDeadLinePolicyText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AfterDeadLinePolicyText</shortDescription>
+        <value>If you cancel, you will be subject to the cancellation policy:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AfterDeadLineText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AfterDeadLineText</shortDescription>
+        <value>The cancellation deadline for this event was</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AllOnlineContentBtn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AllOnlineContentBtn</shortDescription>
+        <value>All Online Content</value>
+    </labels>
+    <labels>
+        <fullName>SIB_All_Course_Option</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB All Course Option</shortDescription>
+        <value>All Course Types</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Amount</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Amount</shortDescription>
+        <value>Amount</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AppliedExcel</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AppliedExcel</shortDescription>
+        <value>Applied Excel</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ApplyBtn</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ApplyBtn</shortDescription>
+        <value>Apply</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Assetmanagement</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Assetmanagement</shortDescription>
+        <value>Asset management</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AuraSiteURL</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AuraSiteURL</shortDescription>
+        <value>https://trainingthestreet--fullcopy.sandbox.my.site.com/TTSB2B/s</value>
+    </labels>
+    <labels>
+        <fullName>SIB_AuthorizationNotFound</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_AuthorizationNotFound</shortDescription>
+        <value>Could not Process payment. Authorization record not found</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Back</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Back</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BankingFIG</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BankingFIG</shortDescription>
+        <value>Banking and FIG</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BecomeProficientInPowerPoint</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BecomeProficientInPowerPoint</shortDescription>
+        <value>The Power of PowerPoint</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BeforeDeadLineText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BeforeDeadLineText</shortDescription>
+        <value>As the deadline has not passed, there is no penalty to cancel.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Billing</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Billing</shortDescription>
+        <value>Billing</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingAddressSaveError</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingAddressSaveError</shortDescription>
+        <value>Error saving, please check and try again</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingAddressSuccess</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingAddressSuccess</shortDescription>
+        <value>Billing address added</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldCityHeading</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldCityHeading</shortDescription>
+        <value>City</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldCityPlaceholder</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldCityPlaceholder</shortDescription>
+        <value>City</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldCountryHeading</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldCountryHeading</shortDescription>
+        <value>Country</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldCountryPlaceholder</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldCountryPlaceholder</shortDescription>
+        <value>Select a Country</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldStateHeading</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldStateHeading</shortDescription>
+        <value>State</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldStatePlaceholder</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldStatePlaceholder</shortDescription>
+        <value>Select a State</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldStreetHeading</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldStreetHeading</shortDescription>
+        <value>Street Address</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldStreetPlaceholder</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldStreetPlaceholder</shortDescription>
+        <value>Street Address</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldValidationError</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldValidationError</shortDescription>
+        <value>Please fill in valid address information</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldZipHeading</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldZipHeading</shortDescription>
+        <value>ZIP / Postal Code</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingFieldZipPlaceholder</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingFieldZipPlaceholder</shortDescription>
+        <value>ZIP / Postal Code</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BillingHeading</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BillingHeading</shortDescription>
+        <value>Billing</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Blog</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Blog</shortDescription>
+        <value>Blog</value>
+    </labels>
+    <labels>
+        <fullName>SIB_BondMarket</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_BondMarket</shortDescription>
+        <value>Bond Market</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Bundle_Option</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Bundle_Option</shortDescription>
+        <value>Bundle</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Buy_Colleva_Base_Product</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Buy Colleva Base Product</shortDescription>
+        <value>Please buy SmartPrep AI Product before Additional Minutes.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CVVLABEL</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CVVLABEL</shortDescription>
+        <value>CVV</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Cancel</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CancelBtn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CancelBtn</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CancelCourse</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CancelCourse</shortDescription>
+        <value>Cancel Course?</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CancelCourseBtn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CancelCourseBtn</shortDescription>
+        <value>Cancel Course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Card</fullName>
+        <categories>SIB, PaymentInformation component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Card</shortDescription>
+        <value>Card</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CardInformationIncorrect</fullName>
+        <categories>SIB, Cybersource</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CardInformationIncorrect</shortDescription>
+        <value>Provided card information is incorrect</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CardNumberLabel</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CardNumberLabel</shortDescription>
+        <value>Card Number</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CardRemovedAddNewCard</fullName>
+        <categories>SIB, PaymentInformation component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CardRemovedAddNewCard</shortDescription>
+        <value>Credit Card removed. Please provide a new credit card</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CartName</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CartName</shortDescription>
+        <value>Cart</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CartNotAvailableMsg</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CartNotAvailableMsg</shortDescription>
+        <value>The cart that you requested isn&apos;t available.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ChangedMindBtn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ChangedMindBtn</shortDescription>
+        <value>I&apos;ve Changed My Mind</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CheckoutWaitListScreenHeader</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CheckoutWaitListScreenHeader</shortDescription>
+        <value>There are not enough seats to register all your group recipients to the courses in your cart. You can still buy the course and your participants will be waitlisted when they register. If any seats become available they will be registered to the course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ChooseYourCourse</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ChooseYourCourse</shortDescription>
+        <value>Choose Your Course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ClassCodeName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ClassCodeName</shortDescription>
+        <value>Class Code</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ClientName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ClientName</shortDescription>
+        <value>Client</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Colleva_Prod_Already_Avl</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Colleva Prod Already Avl</shortDescription>
+        <value>Email already exist for this product.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Colleva_Prod_Online_Name</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Colleva Prod Online Name</shortDescription>
+        <value>Smart Prep AI</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CompleteThisField</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CompleteThisField</shortDescription>
+        <value>Complete this field</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Configuration_Type_Footer</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Configuration_Type_Footer</shortDescription>
+        <value>FOOTER</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Configuration_updated_successfully</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Configuration_updated_successfully</shortDescription>
+        <value>Configuration updated successfully</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ContinueShopping</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ContinueShopping</shortDescription>
+        <value>Continue Shopping</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ContinuingDevelopment</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ContinuingDevelopment</shortDescription>
+        <value>Continuing Development</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CopilotForFinance</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CopilotForFinance</shortDescription>
+        <value>Copilot for Finance</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CopilotFoundations</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CopilotFoundations</shortDescription>
+        <value>Copilot Foundations</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CorporateExcelTraining</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CorporateExcelTraining</shortDescription>
+        <value>Corporate Excel Training</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CorporateOverview</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CorporateOverview</shortDescription>
+        <value>Corporate Overview</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CorporateSolutions</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CorporateSolutions</shortDescription>
+        <value>CORPORATE SOLUTIONS</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CorporateSolutions_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CorporateSolutions_Info</shortDescription>
+        <value>Training The Street creates customized training programs that deliver the right content at the right time to maximize talent development.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CorporateTraining</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CorporateTraining</shortDescription>
+        <value>Corporate Training</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotAddToCartDueToCurrencyMismatch</fullName>
+        <categories>SIB, ProductDetailAddToCart component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotAddToCartDueToCurrencyMismatch</shortDescription>
+        <value>Could not add this product to Cart because there are items in the cart with a different currency.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotAuthorizeCard</fullName>
+        <categories>SIB, B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotAuthorizeCard</shortDescription>
+        <value>Could not authorize payment with provided card information</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotCompleteAuthroization</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotCompleteAuthroization</shortDescription>
+        <value>Could not complete payment authorization. Please try again later</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotCompletePayment</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotCompletePayment</shortDescription>
+        <value>Could not complete payment. Please try again later</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotFetchPaymentDetails</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotFetchPaymentDetails</shortDescription>
+        <value>Could not retrieve payment information. Please try again later</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotFindStateCode</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotFindStateCode</shortDescription>
+        <value>Error finding state codes contact admin.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotFindStateCodesError</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotFindStateCodesError</shortDescription>
+        <value>Error finding state codes contact admin.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotRemoveCard</fullName>
+        <categories>SIB, PaymentInformation component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotRemoveCard</shortDescription>
+        <value>Could not remove credit card</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotRetrieveCart</fullName>
+        <categories>SIB, Cybersource</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotRetrieveCart</shortDescription>
+        <value>Could not retrieve cart information. Please try again</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotRetrieveCheckout</fullName>
+        <categories>SIB, Cybersource</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotRetrieveCheckout</shortDescription>
+        <value>Could not retrieve checkout information. Please try again</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouldNotVerifyCardInformation</fullName>
+        <categories>SIB, Cybersource</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouldNotVerifyCardInformation</shortDescription>
+        <value>Could not validate card information. Please check Card Number and CVV again</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CountriesRequiringPostalCode</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CountriesRequiringPostalCode</shortDescription>
+        <value>US, CA, GB, AU, IN, MX, BR, AR, DE, FR, IT, ES, JP, CN, RU, NL, CH, BE, AT, SE, FI, NO, DK, NZ, SG, ZA</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CountriesRequiringState</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CountriesRequiringState</shortDescription>
+        <value>US, CA, AU, IN, MX, BR, AR, CN, JP, RU</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CouponAppliedSuccessMsg</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CouponAppliedSuccessMsg</shortDescription>
+        <value>Coupon applied successfully</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CourseCalendar</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CourseCalendar</shortDescription>
+        <value>View Course Calendar</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CourseCancelledAcknowledgeMsg</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CourseCancelledAcknowledgeMsg</shortDescription>
+        <value>You must acknowledge the cancellation policy before cancelling.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CourseCancelledErrorMsg</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CourseCancelledErrorMsg</shortDescription>
+        <value>The course could not be cancelled</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CourseCancelledSuccessMsg</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CourseCancelledSuccessMsg</shortDescription>
+        <value>The course has been cancelled successfully.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CourseCode</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CourseCode</shortDescription>
+        <value>Course Code:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CourseName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CourseName</shortDescription>
+        <value>Course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Course_DetailsOrStatus</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Course DetailsOrStatus</shortDescription>
+        <value>Course Details/Status</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CreditCard</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CreditCard</shortDescription>
+        <value>Credit Card</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CreditCardExpired</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CreditCardExpired</shortDescription>
+        <value>Provided card has expired</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Currency_Change_Msg</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Currency Change Msg</shortDescription>
+        <value>Your cart has products with a different currency. Unfortunately, to view this product you’ll need to clear your cart. Would you like to clear your existing items?</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CvvIsInvalid</fullName>
+        <categories>SIB, Cybersource</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CvvIsInvalid</shortDescription>
+        <value>CVV provided is invalid</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CvvPlaceholder</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CvvPlaceholder</shortDescription>
+        <value>•••</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CybersourceAddressRequiredFieldsMessage</fullName>
+        <categories>SIB,</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CybersourceAddressRequiredFieldsMessage</shortDescription>
+        <value>Required billing field missing( Street, City, State, Country and Postal Code are required fields)</value>
+    </labels>
+    <labels>
+        <fullName>SIB_CybersourcePaymentGateway</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_CybersourcePaymentGateway</shortDescription>
+        <value>SIB_CybersoursePaymentGateway</value>
+    </labels>
+    <labels>
+        <fullName>SIB_DataScienceAndAnalytics</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_DataScienceAndAnalytics</shortDescription>
+        <value>Data Science &amp; Analytics</value>
+    </labels>
+    <labels>
+        <fullName>SIB_DefaultStorename</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_DefaultStorename</shortDescription>
+        <value>TTS B2B Store(LWR)</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Discount</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Discount</shortDescription>
+        <value>Discount</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Edit</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Edit</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EmailAddress</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EmailAddress</shortDescription>
+        <value>Email Address</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EmailConfirmationText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EmailConfirmationText</shortDescription>
+        <value>You will receive an email confirmation shortly at</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EmailFormatError</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EmailFormatError</shortDescription>
+        <value>You have entered an invalid format.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EmptyCart</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EmptyCart</shortDescription>
+        <value>Empty Cart</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EmptyCartMsg</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EmptyCartMsg</shortDescription>
+        <value>Oops, your cart is empty.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EnhancedEssential</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EnhancedEssential</shortDescription>
+        <value>Enhanced Essential</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EnterCardNumber</fullName>
+        <categories>SIB, Cybersource</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EnterCardNumber</shortDescription>
+        <value>Enter card number</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EquityResearch</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EquityResearch</shortDescription>
+        <value>Equity Research</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Error</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ErrorMsgforInvalidMonth</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ErrorMsgforInvalidMonth</shortDescription>
+        <value>Please enter card expiration month</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ErrorMsgforInvalidYear</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ErrorMsgforInvalidYear</shortDescription>
+        <value>Please enter card expiration year</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Error_Code</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Error_Code</shortDescription>
+        <value>error</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Error_Update_Config</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Error_Update_Config</shortDescription>
+        <value>Error in updating the config. Please contact your system administrator with the following details</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EssentialComprehensive</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EssentialComprehensive</shortDescription>
+        <value>Core Comprehensive</value>
+    </labels>
+    <labels>
+        <fullName>SIB_EveningEssentials</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_EveningEssentials</shortDescription>
+        <value>Evening Essentials</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ExcelModellingChallenges</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ExcelModellingChallenges</shortDescription>
+        <value>Excel Modeling Challenges</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ExpiryMonthLabel</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ExpiryMonthLabel</shortDescription>
+        <value>Expiry Month</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ExpiryMonthPlaceholder</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ExpiryMonthPlaceholder</shortDescription>
+        <value>Select a month</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ExpiryYearLabel</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ExpiryYearLabel</shortDescription>
+        <value>Expiry Year</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ExpiryYearPlaceholder</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ExpiryYearPlaceholder</shortDescription>
+        <value>Select a Year</value>
+    </labels>
+    <labels>
+        <fullName>SIB_FillInAllFields</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_FillInAllFields</shortDescription>
+        <value>Please fill in all fields</value>
+    </labels>
+    <labels>
+        <fullName>SIB_FinancialModeling</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_FinancialModeling</shortDescription>
+        <value>Fast Track: Financial Modeling</value>
+    </labels>
+    <labels>
+        <fullName>SIB_FinancialStatementAnalysis</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_FinancialStatementAnalysis</shortDescription>
+        <value>Financial Statement Analysis</value>
+    </labels>
+    <labels>
+        <fullName>SIB_FinancialStatementAnalysisAndAccounting</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_FinancialStatementAnalysisAndAccounting</shortDescription>
+        <value>Financial Statement Analysis and Accounting</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Firstname</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Firstname</shortDescription>
+        <value>First Name</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Foundations</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Foundations</shortDescription>
+        <value>Foundations</value>
+    </labels>
+    <labels>
+        <fullName>SIB_FoundationsPlusAdvanced</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_FoundationsPlusAdvanced</shortDescription>
+        <value>Foundations + Advanced</value>
+    </labels>
+    <labels>
+        <fullName>SIB_FoundationsPlusAdvanced_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_FoundationsPlusAdvanced_Info</shortDescription>
+        <value>Everything you need to get from your first internship to full time roles.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Foundations_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Foundations_Info</shortDescription>
+        <value>Kick-start your career in Finance. Build a understanding of the financial concepts and skills needed to succeed in internships and beyond.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_FreeResources</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_FreeResources</shortDescription>
+        <value>Free Resources</value>
+    </labels>
+    <labels>
+        <fullName>SIB_FrequentlyBoughtTogether</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_FrequentlyBoughtTogether</shortDescription>
+        <value>Frequently Bought Together</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Fundamentals</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Fundamentals</shortDescription>
+        <value>FUNDAMENTALS</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Fundamentals_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Fundamentals_Info</shortDescription>
+        <value>Jump-start your career with our most popular courses for less</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GatewayConfigMissingForCybersource</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GatewayConfigMissingForCybersource</shortDescription>
+        <value>Payment gateway configuration not available for cybersource</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GenericExceptionMessage</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GenericExceptionMessage</shortDescription>
+        <value>Something went wrong. Please try again later!</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GetEverythingYouNeed</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GetEverythingYouNeed</shortDescription>
+        <value>Get everything you need, for less</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GetEverythingYouNeedHelpText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GetEverythingYouNeedHelpText</shortDescription>
+        <value>Everything you need to get from your first internship to full time roles.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GettingStartedwithCopilot</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GettingStartedwithCopilot</shortDescription>
+        <value>Getting Started with Copilot</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GlobalMarketandHedgeFund</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GlobalMarketandHedgeFund</shortDescription>
+        <value>Global Market and Hedge Fund</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GlobalMarkets</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GlobalMarkets</shortDescription>
+        <value>Global Markets</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GoToCourseBtn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GoToCourseBtn</shortDescription>
+        <value>Go to Course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GroupOrders</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GroupOrders</shortDescription>
+        <value>Group Orders</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GroupRecipientCreated</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GroupRecipientCreated</shortDescription>
+        <value>Group recipients created</value>
+    </labels>
+    <labels>
+        <fullName>SIB_GroupRecipientsMismatch</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_GroupRecipientsMismatch</shortDescription>
+        <value>The group recipients do not match. Please return to the cart and try again</value>
+    </labels>
+    <labels>
+        <fullName>SIB_HeaderPromoBanner</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_HeaderPromoBanner</shortDescription>
+        <value>Limited Time Deal - All Interview Prep 10% OFF</value>
+    </labels>
+    <labels>
+        <fullName>SIB_HedgeFundInterviewPrep</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_HedgeFundInterviewPrep</shortDescription>
+        <value>Hedge Fund Interview Prep</value>
+    </labels>
+    <labels>
+        <fullName>SIB_HomePageUrl</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_HomePageUrl</shortDescription>
+        <value>https://trainingthestreet.com/</value>
+    </labels>
+    <labels>
+        <fullName>SIB_IBInterviewPrep</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_IBInterviewPrep</shortDescription>
+        <value>IB Interview Prep</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InPersonName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InPersonName</shortDescription>
+        <value>In-Person</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InPersonPicklistValue</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InPersonPicklistValue</shortDescription>
+        <value>In-person</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Inactive_Option</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Inactive Option</shortDescription>
+        <value>Inactive Only</value>
+    </labels>
+    <labels>
+        <fullName>SIB_IndustrySpecific</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_IndustrySpecific</shortDescription>
+        <value>INDUSTRY-SPECIFIC</value>
+    </labels>
+    <labels>
+        <fullName>SIB_IndustrySpecific_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_IndustrySpecific_Info</shortDescription>
+        <value>Tailored to help transition into industry-specific roles</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InputDataNotProvided</fullName>
+        <categories>SIB, B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InputDataNotProvided</shortDescription>
+        <value>Input data not provided</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Insurance</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Insurance</shortDescription>
+        <value>Insurance</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InterviewFundamentals</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InterviewFundamentals</shortDescription>
+        <value>Interview Fundamentals</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InterviewPrep</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InterviewPrep</shortDescription>
+        <value>INTERVIEW PREP</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InterviewPrep_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InterviewPrep_Info</shortDescription>
+        <value>Prepare for finance interviews with technical and behavioral questions</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InterviewSmartprepAi_Pro</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InterviewSmartprepAi_Pro</shortDescription>
+        <value>Interview SmartPrep AI +</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InterviewprepAi</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InterviewSmartprepAi</shortDescription>
+        <value>Interview SmartPrep AI</value>
+    </labels>
+    <labels>
+        <fullName>SIB_InvestmentBanking</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_InvestmentBanking</shortDescription>
+        <value>Investment Banking</value>
+    </labels>
+    <labels>
+        <fullName>SIB_IsOrderForSomeoneElse</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_IsOrderForSomeoneElse</shortDescription>
+        <value>Is this order for someone else?</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Item</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Item</shortDescription>
+        <value>item</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Items</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Items</shortDescription>
+        <value>Items</value>
+    </labels>
+    <labels>
+        <fullName>SIB_LWRSiteURL</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_LWRSiteURL</shortDescription>
+        <value>https://trainingthestreet--fullcopy.sandbox.my.site.com/store</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Lastname</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Lastname</shortDescription>
+        <value>Last Name</value>
+    </labels>
+    <labels>
+        <fullName>SIB_LearnMore</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_LearnMore</shortDescription>
+        <value>Learn More</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Links</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Links</shortDescription>
+        <value>Links</value>
+    </labels>
+    <labels>
+        <fullName>SIB_LmsInactive</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_LmsInactive</shortDescription>
+        <value>Inactive</value>
+    </labels>
+    <labels>
+        <fullName>SIB_LmsSuffixUrl</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_LmsSuffixUrl</shortDescription>
+        <value>my/?saml=on</value>
+    </labels>
+    <labels>
+        <fullName>SIB_LoadingText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_LoadingText</shortDescription>
+        <value>Loading...</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Location</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Location</shortDescription>
+        <value>Location</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Logo_Image_Alt_Text</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Logo_Image_Alt_Text</shortDescription>
+        <value>TRAINING THE STREET</value>
+    </labels>
+    <labels>
+        <fullName>SIB_MaskedCardDigits</fullName>
+        <categories>SIB, PaymentInformation component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_MaskedCardDigits</shortDescription>
+        <value>XXXX XXXX XXXX</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Mastering_Excel</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Mastering_Excel</shortDescription>
+        <value>Mastering Excel</value>
+    </labels>
+    <labels>
+        <fullName>SIB_MegaMenuIdName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_MegaMenuIdName</shortDescription>
+        <value>MEGAMENU</value>
+    </labels>
+    <labels>
+        <fullName>SIB_MenuConfigCustomLabel</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_MenuConfigCustomLabel</shortDescription>
+        <value>Custom Label</value>
+    </labels>
+    <labels>
+        <fullName>SIB_MicroflexCreationError</fullName>
+        <categories>SIB, Cybersource</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_MicroflexCreationError</shortDescription>
+        <value>Something went wrong while contacting payment provider. Please try again</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ModelingSolutions</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ModelingSolutions</shortDescription>
+        <value>Modeling Solutions</value>
+    </labels>
+    <labels>
+        <fullName>SIB_MoreBtn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_MoreBtn</shortDescription>
+        <value>More</value>
+    </labels>
+    <labels>
+        <fullName>SIB_MostPopularName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_MostPopularName</shortDescription>
+        <value>Most Popular</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Name</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>SIB_NewBillingAddress</fullName>
+        <categories>SIB, Billing</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_NewBillingAddress</shortDescription>
+        <value>New Billing Address</value>
+    </labels>
+    <labels>
+        <fullName>SIB_NewCourseName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_NewCourseName</shortDescription>
+        <value>New Course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_New_Sub_Section_Record_Mapping</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_New_Sub_Section_Record_Mapping</shortDescription>
+        <value>New Sub Section Record Mapping</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Next</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Next</shortDescription>
+        <value>Next</value>
+    </labels>
+    <labels>
+        <fullName>SIB_NextCourse</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_NextCourse</shortDescription>
+        <value>Next Course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_NextStepLabel</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_NextStepLabel</shortDescription>
+        <value>Next Step</value>
+    </labels>
+    <labels>
+        <fullName>SIB_NoChargePaymentOption</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_NoChargePaymentOption</shortDescription>
+        <value>No Charge</value>
+    </labels>
+    <labels>
+        <fullName>SIB_NoCourseText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_NoCourseText</shortDescription>
+        <value>You have a new account with Training The Street – Welcome!! You are not registered for any courses. If you were provided a course registration link please return to that link to complete the registration process.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_NoDataToDisplay</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_NoDataToDisplay</shortDescription>
+        <value>No data to display</value>
+    </labels>
+    <labels>
+        <fullName>SIB_NoResultsFound</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_NoResultsFound</shortDescription>
+        <value>No results found</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Of</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Of</shortDescription>
+        <value>of</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OilGas</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OilGas</shortDescription>
+        <value>Oil &amp; Gas</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OneOnOneMentoring</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OneOnOneMentoring</shortDescription>
+        <value>1:1 Mentoring</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OrderConfirmationThanksMessage</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OrderConfirmationThanksMessage</shortDescription>
+        <value>Thank You for Your Order</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OrderDateName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OrderDateName</shortDescription>
+        <value>Order Date</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OrderNumberName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OrderNumberName</shortDescription>
+        <value>Order Number</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OrderRecipients</fullName>
+        <categories>SIB, B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OrderRecipients</shortDescription>
+        <value>Order Recipient</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OrderSummary</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OrderSummary</shortDescription>
+        <value>Order Summary</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OtherResource</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OtherResource</shortDescription>
+        <value>OTHER RESOURCES</value>
+    </labels>
+    <labels>
+        <fullName>SIB_OwnerName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_OwnerName</shortDescription>
+        <value>Owner Name</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PDPMobileSummaryHeading</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PDPMobileSummaryHeading</shortDescription>
+        <value>View Available Dates:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PDPMobileSummaryHeading_SelfStudy</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PDPMobileSummaryHeading_SelfStudy</shortDescription>
+        <value>Details and Price:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PDPRatingHeading</fullName>
+        <categories>SIB, PDP</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PDPRatingHeading</shortDescription>
+        <value>Reviews From Others Like You</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PEInterviePrep</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PEInterviePrep</shortDescription>
+        <value>PE Interview Prep</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PONumberText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PONumberText</shortDescription>
+        <value>PO NUMBER:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PageTypeOrderConfirmation</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PageTypeOrderConfirmation</shortDescription>
+        <value>Order Confirmation</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Pay</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Pay</shortDescription>
+        <value>Pay</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Payment</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Payment</shortDescription>
+        <value>Payment</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PaymentAuthorizationSuccessful</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PaymentAuthorizationSuccessful</shortDescription>
+        <value>Payment authorization successful</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PaymentInformation</fullName>
+        <categories>SIB, PaymentInformation component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PaymentInformation</shortDescription>
+        <value>Payment Information</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PaymentSuccessfull</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PaymentSuccessfull</shortDescription>
+        <value>Payment processed successfully</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PharmaBiotech</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PharmaBiotech</shortDescription>
+        <value>Pharma / Biotech</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PrepopulateOnAllCourses</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PrepopulateOnAllCourses</shortDescription>
+        <value>Pre-populate the same recipient information across all courses?</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PrinciplesOfCapitalMarkets</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PrinciplesOfCapitalMarkets</shortDescription>
+        <value>Principles of Capital Markets</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PrivateEquity</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PrivateEquity</shortDescription>
+        <value>Private Equity</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PrivateEquityTransition</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PrivateEquityTransition</shortDescription>
+        <value>Private Equity Transition</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Private_Equity</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Private_Equity</shortDescription>
+        <value>Private Equity</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ProcessingPayment</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ProcessingPayment</shortDescription>
+        <value>Processing your payment. Please wait</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Prod_UrlInfix</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Prod_UrlInfix</shortDescription>
+        <value>/</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ProductCouldNotBeAddedToCart</fullName>
+        <categories>SIB, ProductDetailAddToCart component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ProductCouldNotBeAddedToCart</shortDescription>
+        <value>{0} could not be added to your cart at this time. Please try again later.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Productivity</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Productivity</shortDescription>
+        <value>PRODUCTIVITY</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Productivity_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Productivity_Info</shortDescription>
+        <value>Maximize and enhance your productivity with our Microsoft courses</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ProfessionalSkillsTraining</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ProfessionalSkillsTraining</shortDescription>
+        <value>Professional Skills Training</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ProgramAdvisoryServices</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ProgramAdvisoryServices</shortDescription>
+        <value>Program Advisory Services</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ProgressText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ProgressText</shortDescription>
+        <value>Progress</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ProgressTextSuffix</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ProgressTextSuffix</shortDescription>
+        <value>/</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PromoCode</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PromoCode</shortDescription>
+        <value>Promo Code</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCalendar</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourseCalendar</shortDescription>
+        <value>Public Course Calendar</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCalendarCitiesFilterName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourseCalendarCitiesFilterName</shortDescription>
+        <value>Cities and Time Zones</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCalendarCoursesFilterName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourseCalendarCoursesFilterName</shortDescription>
+        <value>Courses</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCalendarDeliveryFormatFilterName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourseCalendarDeliveryFormatFilterName</shortDescription>
+        <value>Delivery Formats</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCalendarHeader</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourseCalendarHeader</shortDescription>
+        <value>Public Course Calendar</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCalendarMonthsFilterName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourseCalendarMonthsFilterName</shortDescription>
+        <value>Months</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCalendarYearFilterName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourseCalendarYearFilterName</shortDescription>
+        <value>Years</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCalendar_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourseCalendar_Info</shortDescription>
+        <value>Courses taught in-person in over 14 cities around world and virtual options available.  Click below to browse all upcoming Public Courses.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourseCategory</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Slug for Public Courses Category</shortDescription>
+        <value>public-course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourses</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourses</shortDescription>
+        <value>Public Courses</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourses_MenuItem</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourses_MenuItem</shortDescription>
+        <value>PUBLIC COURSES</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicCourses_MenuItem_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicCourses_MenuItem_Info</shortDescription>
+        <value>Our turnkey finance training courses make new, lateral and off-cycle hires ‘desk-ready’ productive members of your team in no time.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PublicName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PublicName</shortDescription>
+        <value>Public</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PurchaseOrder</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PurchaseOrder</shortDescription>
+        <value>Invoice</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PythonCoreDataAnalysis</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PythonCoreDataAnalysis</shortDescription>
+        <value>Python 1: Core Data Analysis</value>
+    </labels>
+    <labels>
+        <fullName>SIB_PythonTraining</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_PythonTraining</shortDescription>
+        <value>Python Training</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Quantity</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Quantity</shortDescription>
+        <value>Quantity:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RafterOneCyberSource</fullName>
+        <categories>B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RafterOneCyberSource</shortDescription>
+        <value>SIB_RafterOneCyberSource</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RealEstate</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RealEstate</shortDescription>
+        <value>Real Estate</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RealEstateFundamentals</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RealEstateFundamentals</shortDescription>
+        <value>Real Estate Fundamentals</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ReceiptName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ReceiptName</shortDescription>
+        <value>Receipt</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RecentOrderErrorMsg</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RecentOrderErrorMsg</shortDescription>
+        <value>Something went wrong.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Recipient</fullName>
+        <categories>B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Recipient</shortDescription>
+        <value>Recipient</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RecipientEmailShouldBeUnique</fullName>
+        <categories>SIB, B2B, Group Order Screen</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RecipientEmailShouldBeUnique</shortDescription>
+        <value>Recipient emails should be unique for each course</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RecipientErrorMessage</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RecipientErrorMessage</shortDescription>
+        <value>Some fields are missing. Please click on the product and fill in the values</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Recipients</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Recipients</shortDescription>
+        <value>Recipients</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RegisterCourseUrl</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RegisterCourseUrl</shortDescription>
+        <value>/s/register-course?id=</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RequiredFieldMissing</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RequiredFieldMissing</shortDescription>
+        <value>Required field missing:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Restructuring</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Restructuring</shortDescription>
+        <value>Restructuring</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Results</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Results</shortDescription>
+        <value>results</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RolePrep</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RolePrep</shortDescription>
+        <value>Role Prep</value>
+    </labels>
+    <labels>
+        <fullName>SIB_RolePrep_Info</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_RolePrep_Info</shortDescription>
+        <value>Prepare and excel in specific roles from Day-1 with curated courses</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SOMETHINGWRONGWITHPAYMENT</fullName>
+        <categories>SIB, B2B, Payment</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SOMETHINGWRONGWITHPAYMENT</shortDescription>
+        <value>Something when wrong when processing the payment</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SameAsBillingAddress</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SameAsBillingAddress</shortDescription>
+        <value>Same as billing address</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Save</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Save</shortDescription>
+        <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Search</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Search</shortDescription>
+        <value>Search</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SearchPlaceHolderText</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SearchPlaceHolderText</shortDescription>
+        <value>Enter Keyword or Course Name</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SearchResults</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SearchResults</shortDescription>
+        <value>Search Results</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SelfStudy</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SelfStudy</shortDescription>
+        <value>Self-Study</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SelfStudyBuilderPageApi</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SelfStudyBuilderPageApi</shortDescription>
+        <value>self-study</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SelfStudyFreeResources</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SelfStudyFreeResources</shortDescription>
+        <value>Free Resources</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Self_Study_Option</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Self Study Option</shortDescription>
+        <value>Self-Study</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Sessions</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Sessions</shortDescription>
+        <value>Sessions</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Showing</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Showing</shortDescription>
+        <value>showing</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SignIn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SignIn</shortDescription>
+        <value>Sign In</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SkusMustBeDefined</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SkusMustBeDefined</shortDescription>
+        <value>The SKUs for all products in your cart must be defined.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SoftwareIndustryAnalysisFinancialModeling</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SoftwareIndustryAnalysisFinancialModeling</shortDescription>
+        <value>Software Industry Analysis &amp; Financial Modeling</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SoftwareTech</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SoftwareTech</shortDescription>
+        <value>Software &amp; Tech</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Sort_Order</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Sort_Order</shortDescription>
+        <value>Sort Order</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Status</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Status</shortDescription>
+        <value>Status</value>
+    </labels>
+    <labels>
+        <fullName>SIB_StrivacityIdCookieName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_StrivacityIdCookieName</shortDescription>
+        <value>sib_strivacityid</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Sub_Section_Links</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Sub_Section_Links</shortDescription>
+        <value>Sub Section Links</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Sub_Section_Name</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Sub_Section_Name</shortDescription>
+        <value>Sub Section Name</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Subtotal</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Subtotal</shortDescription>
+        <value>Subtotal</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Success</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Success</shortDescription>
+        <value>success</value>
+    </labels>
+    <labels>
+        <fullName>SIB_SwitchSessions</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_SwitchSessions</shortDescription>
+        <value>Switch Sessions</value>
+    </labels>
+    <labels>
+        <fullName>SIB_TaxErrorMessageForCustomer</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_TaxErrorMessageForCustomer</shortDescription>
+        <value>There was an error processing your order. Please confirm a valid address has been inputted and try again. If you continue to receive an error, please contact us at support@trainingthestreet.com for further assistance. Thank you.</value>
+    </labels>
+    <labels>
+        <fullName>SIB_TotalWithTax</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_TotalWithTax</shortDescription>
+        <value>Total with Tax:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Training_Programs_Option</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB Training Programs Option</shortDescription>
+        <value>Training Programs</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Type</fullName>
+        <categories>SIB, PaymentInformation component</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Type</shortDescription>
+        <value>Type</value>
+    </labels>
+    <labels>
+        <fullName>SIB_URL</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_URL</shortDescription>
+        <value>URL</value>
+    </labels>
+    <labels>
+        <fullName>SIB_UpgradeToAIPlus</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_UpgradeToAIPlus</shortDescription>
+        <value>SmartPrep AI Upgrade To +</value>
+    </labels>
+    <labels>
+        <fullName>SIB_UrlInfix</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_UrlInfix</shortDescription>
+        <value>store/</value>
+    </labels>
+    <labels>
+        <fullName>SIB_UserMenu_ContactSupport</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_UserMenu_ContactSupport</shortDescription>
+        <value>Contact Support</value>
+    </labels>
+    <labels>
+        <fullName>SIB_UserMenu_Logout</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_UserMenu_Logout</shortDescription>
+        <value>Log Out</value>
+    </labels>
+    <labels>
+        <fullName>SIB_UserMenu_MyCourses</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_UserMenu_MyCourses</shortDescription>
+        <value>My Courses</value>
+    </labels>
+    <labels>
+        <fullName>SIB_UserMenu_Orders</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_UserMenu_Orders</shortDescription>
+        <value>Orders</value>
+    </labels>
+    <labels>
+        <fullName>SIB_UserMenu_Profile</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_UserMenu_Profile</shortDescription>
+        <value>Profile</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ViewAllCorporateSolutions_Btn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ViewAllCorporateSolutions_Btn</shortDescription>
+        <value>View All Corporate Solutions</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ViewAllPublicCourses_Btn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ViewAllPublicCourses_Btn</shortDescription>
+        <value>View All Public Courses</value>
+    </labels>
+    <labels>
+        <fullName>SIB_ViewAllSelfStudy_Btn</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_ViewAllSelfStudy_Btn</shortDescription>
+        <value>View All self-study</value>
+    </labels>
+    <labels>
+        <fullName>SIB_VirtualName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_VirtualName</shortDescription>
+        <value>Virtual</value>
+    </labels>
+    <labels>
+        <fullName>SIB_Virtual_Event</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_Virtual_Event</shortDescription>
+        <value>Virtual Event</value>
+    </labels>
+    <labels>
+        <fullName>SIB_WallStreetBootcamp</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_WallStreetBootcamp</shortDescription>
+        <value>Undergraduate: Wall Street Bootcamp</value>
+    </labels>
+    <labels>
+        <fullName>SIB_WeekendName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_WeekendName</shortDescription>
+        <value>Weekend</value>
+    </labels>
+    <labels>
+        <fullName>SIB_YourItemsName</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_YourItemsName</shortDescription>
+        <value>Your Items</value>
+    </labels>
+    <labels>
+        <fullName>SIB_calculatedAtCheckout</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_calculatedAtCheckout</shortDescription>
+        <value>Calculated at Checkout</value>
+    </labels>
+    <labels>
+        <fullName>SIB_checkout</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_checkout</shortDescription>
+        <value>Check Out</value>
+    </labels>
+    <labels>
+        <fullName>SIB_classCode</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_classCode</shortDescription>
+        <value>CLASS CODE:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_couponDeletedSuccessMsg</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_couponDeletedSuccessMsg</shortDescription>
+        <value>Coupon deleted successfully</value>
+    </labels>
+    <labels>
+        <fullName>SIB_customerDiscount</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_customerDiscount</shortDescription>
+        <value>Customer Discount</value>
+    </labels>
+    <labels>
+        <fullName>SIB_decrease</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_decrease</shortDescription>
+        <value>Decrease</value>
+    </labels>
+    <labels>
+        <fullName>SIB_delete</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_delete</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
+        <fullName>SIB_discounts</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_discounts</shortDescription>
+        <value>Discounts</value>
+    </labels>
+    <labels>
+        <fullName>SIB_enterPromoCode</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_enterPromoCode</shortDescription>
+        <value>Enter Promo Code</value>
+    </labels>
+    <labels>
+        <fullName>SIB_finalTaxHelpText</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_finalTaxHelpText</shortDescription>
+        <value>* Final tax will be updated in checkout</value>
+    </labels>
+    <labels>
+        <fullName>SIB_increase</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_increase</shortDescription>
+        <value>Increase</value>
+    </labels>
+    <labels>
+        <fullName>SIB_incrementStep</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_incrementStep</shortDescription>
+        <value>Increment step</value>
+    </labels>
+    <labels>
+        <fullName>SIB_invalidCouponMsg</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_invalidCouponMsg</shortDescription>
+        <value>Invalid Coupon</value>
+    </labels>
+    <labels>
+        <fullName>SIB_maxQty</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_maxQty</shortDescription>
+        <value>Max Qty</value>
+    </labels>
+    <labels>
+        <fullName>SIB_minQty</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_minQty</shortDescription>
+        <value>Min Qty</value>
+    </labels>
+    <labels>
+        <fullName>SIB_products</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_products</shortDescription>
+        <value>Products</value>
+    </labels>
+    <labels>
+        <fullName>SIB_qty</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_qty</shortDescription>
+        <value>Qty:</value>
+    </labels>
+    <labels>
+        <fullName>SIB_remove</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_remove</shortDescription>
+        <value>Remove</value>
+    </labels>
+    <labels>
+        <fullName>SIB_saved</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_saved</shortDescription>
+        <value>Saved</value>
+    </labels>
+    <labels>
+        <fullName>SIB_showMore</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_showMore</shortDescription>
+        <value>Show More</value>
+    </labels>
+    <labels>
+        <fullName>SIB_sku</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_sku</shortDescription>
+        <value>SKU</value>
+    </labels>
+    <labels>
+        <fullName>SIB_success_code</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_success_code</shortDescription>
+        <value>success</value>
+    </labels>
+    <labels>
+        <fullName>SIB_taxes</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_taxes</shortDescription>
+        <value>Taxes</value>
+    </labels>
+    <labels>
+        <fullName>SIB_totalDue</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_totalDue</shortDescription>
+        <value>Total Due</value>
+    </labels>
+    <labels>
+        <fullName>SIB_waitlistText</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SIB_waitlistText</shortDescription>
+        <value>As you are on the waitlist, you can cancel without penalty.</value>
+    </labels>
+    <labels>
+        <fullName>Saltbox_Bundle_Product</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saltbox_Bundle_Product</shortDescription>
+        <value>01t4w00000NGWAAAA5</value>
+    </labels>
+    <labels>
+        <fullName>Saltbox_Effective_Account_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saltbox_Effective_Account_Id</shortDescription>
+        <value>0014w00003zGkhXAAS</value>
+    </labels>
+    <labels>
+        <fullName>Saltbox_Network_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saltbox_Network_ID</shortDescription>
+        <value>0DB4w0000001mUnGAI</value>
+    </labels>
+    <labels>
+        <fullName>Saltbox_Test_User_ID</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saltbox_Test_User_ID</shortDescription>
+        <value>0054w00000CIvZh</value>
+    </labels>
+    <labels>
+        <fullName>Saltbox_Webstore</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Saltbox_Webstore</shortDescription>
+        <value>TTS B2B Store</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_backActionAssistiveText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_backActionAssistiveText</shortDescription>
+        <value>Back to {categoryName}</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_cancelButton</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_cancelButton</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_categoryHeader</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_categoryHeader</shortDescription>
+        <value>Category</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_clearButton</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_clearButton</shortDescription>
+        <value>Reset Filters</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_filtersHeader</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_filtersHeader</shortDescription>
+        <value>Filters</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_showLess</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_showLess</shortDescription>
+        <value>Show Less</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_showLessAriaLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_backActionAssistiveText</shortDescription>
+        <value>Show Less {name}</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_showMore</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_showMore</shortDescription>
+        <value>Show More</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_showMoreAriaLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_backActionAssistiveText</shortDescription>
+        <value>Show More {name}</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_toggleFilterCollapsedAssistiveText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_toggleFilterCollapsedAssistiveText</shortDescription>
+        <value>Toggle filter, collapsed</value>
+    </labels>
+    <labels>
+        <fullName>Search_Facets_toggleFilterExpandedAssistiveText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Facets_toggleFilterExpandedAssistiveText</shortDescription>
+        <value>Toggle filter, expanded</value>
+    </labels>
+    <labels>
+        <fullName>Search_ProductCard_addToCartAriaLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_ProductCard_addToCartAriaLabel</shortDescription>
+        <value>Add to cart: {productTitle}</value>
+    </labels>
+    <labels>
+        <fullName>Search_ProductCard_subscriptionOptions</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_ProductCard_subscriptionOptions</shortDescription>
+        <value>Subscription Options Available</value>
+    </labels>
+    <labels>
+        <fullName>Search_ProductCard_variationAttribute</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_ProductCard_variationAttribute</shortDescription>
+        <value>{name}: {value}</value>
+    </labels>
+    <labels>
+        <fullName>Search_ProductCard_viewOptionsAriaLabel</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_ProductCard_viewOptionsAriaLabel</shortDescription>
+        <value>View Options: {productTitle}</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_allCategoriesName</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_allCategoriesName</shortDescription>
+        <value>All Categories</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_multipleCategoryHeader</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_multipleCategoryHeader</shortDescription>
+        <value>{count} Items</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_multipleResultSearchHeaderShort</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_multipleResultSearchHeaderShort</shortDescription>
+        <value>{count} Results</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_next</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_next</shortDescription>
+        <value>Next</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_oneCategoryHeader</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_oneCategoryHeader</shortDescription>
+        <value>{count} Item</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_oneResultSearchHeaderShort</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_oneResultSearchHeaderShort</shortDescription>
+        <value>{count} Result</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_previous</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_previous</shortDescription>
+        <value>Previous</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_resultsLimitHitText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_resultsLimitHitText</shortDescription>
+        <value>Results are limited to 5,000 after the first page. Use sort options or filters to adjust your results.</value>
+    </labels>
+    <labels>
+        <fullName>Search_Results_searchResults</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Search_Results_searchResults</shortDescription>
+        <value>Search Results</value>
+    </labels>
+    <labels>
+        <fullName>Shared_closeButtonAssistiveText</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shared_closeButtonAssistiveText</shortDescription>
+        <value>Close dialog</value>
+    </labels>
+    <labels>
+        <fullName>Shared_error</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shared_error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>Shared_required</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shared_required</shortDescription>
+        <value>Required</value>
+    </labels>
+    <labels>
+        <fullName>Shared_success</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shared_success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>Shipping_Rates_Error</fullName>
+        <categories>SIB</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Shipping Rates Error</shortDescription>
+        <value>The error occurs while getting the shipping rates. Please, contact your System Administrator.</value>
+    </labels>
+    <labels>
+        <fullName>Source_System</fullName>
+        <categories>B2B</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Source System</shortDescription>
+        <value>E-commerce</value>
+    </labels>
+    <labels>
+        <fullName>Test_CMS_Key</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Test CMS Key</shortDescription>
+        <value>MCTEMRCQS6RBBWTNCKSMT6I4WUGM</value>
+    </labels>
+    <labels>
+        <fullName>Test_Product_Id</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Test_Product_Id</shortDescription>
+        <value>01t4w00000NOSLnAAP</value>
+    </labels>
+    <labels>
+        <fullName>Travel_Expense_GLA</fullName>
+        <categories>FFA</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Travel Expense GLA</shortDescription>
+        <value>a8A4w000000H1fsEAC</value>
+    </labels>
+    <labels>
+        <fullName>defaultEmailAddress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>defaultEmailAddress</shortDescription>
+        <value>archana.bukka@trainingthestreet.com</value>
+    </labels>
+</CustomLabels>

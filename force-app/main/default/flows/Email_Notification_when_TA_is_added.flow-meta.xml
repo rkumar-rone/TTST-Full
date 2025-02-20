@@ -20,7 +20,6 @@
             </value>
         </inputParameters>
         <nameSegment>Contact.Email_when_new_TA_added</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <assignments>

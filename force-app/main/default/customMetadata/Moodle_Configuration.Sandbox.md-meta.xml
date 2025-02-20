@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Sandbox</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Add_Group_Members_Function__c</field>
+        <value xsi:type="xsd:string">core_group_add_group_members</value>
+    </values>
+    <values>
+        <field>Course_Contents_Function__c</field>
+        <value xsi:type="xsd:string">core_course_get_contents</value>
+    </values>
+    <values>
+        <field>Create_Categories_Function__c</field>
+        <value xsi:type="xsd:string">core_course_create_categories</value>
+    </values>
+    <values>
+        <field>Create_Courses_Function__c</field>
+        <value xsi:type="xsd:string">core_course_create_courses</value>
+    </values>
+    <values>
+        <field>Create_Groups_Function__c</field>
+        <value xsi:type="xsd:string">core_group_create_groups</value>
+    </values>
+    <values>
+        <field>Create_Users_Function__c</field>
+        <value xsi:type="xsd:string">core_user_create_users</value>
+    </values>
+    <values>
+        <field>Delete_Courses_Function__c</field>
+        <value xsi:type="xsd:string">core_course_delete_courses</value>
+    </values>
+    <values>
+        <field>Delete_Groups_Function__c</field>
+        <value xsi:type="xsd:string">core_group_delete_groups</value>
+    </values>
+    <values>
+        <field>Delete_Users_Function__c</field>
+        <value xsi:type="xsd:string">core_user_delete_users</value>
+    </values>
+    <values>
+        <field>Enable_Auto_Deactivation_of_Accounts__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Enroll_Users_Function__c</field>
+        <value xsi:type="xsd:string">enrol_manual_enrol_users</value>
+    </values>
+    <values>
+        <field>Get_Users_Courses_Activities_Function__c</field>
+        <value xsi:type="xsd:string">core_completion_get_activities_completion_status</value>
+    </values>
+    <values>
+        <field>Get_Users_Courses_Function__c</field>
+        <value xsi:type="xsd:string">core_enrol_get_users_courses</value>
+    </values>
+    <values>
+        <field>Get_Users_Function__c</field>
+        <value xsi:type="xsd:string">core_user_get_users_by_field</value>
+    </values>
+    <values>
+        <field>Minutes_Until_Deactivation__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>REST_Endpoint__c</field>
+        <value xsi:type="xsd:string">webservice/rest/server.php</value>
+    </values>
+    <values>
+        <field>Remove_Group_Members_Function__c</field>
+        <value xsi:type="xsd:string">core_group_delete_group_members</value>
+    </values>
+    <values>
+        <field>Server_URL__c</field>
+        <value xsi:type="xsd:string">https://ttsdev.mrooms3.net/</value>
+    </values>
+    <values>
+        <field>Token__c</field>
+        <value xsi:type="xsd:string">94ecdac853839248583f5bbd2176e6bb</value>
+    </values>
+    <values>
+        <field>Unenroll_Users_Function__c</field>
+        <value xsi:type="xsd:string">enrol_manual_unenrol_users</value>
+    </values>
+    <values>
+        <field>Update_Categories_Function__c</field>
+        <value xsi:type="xsd:string">core_course_update_categories</value>
+    </values>
+    <values>
+        <field>Update_Courses_Function__c</field>
+        <value xsi:type="xsd:string">core_course_update_courses</value>
+    </values>
+    <values>
+        <field>Update_Groups_Function__c</field>
+        <value xsi:type="xsd:string">core_group_update_groups</value>
+    </values>
+    <values>
+        <field>Update_Users_Function__c</field>
+        <value xsi:type="xsd:string">core_user_update_users</value>
+    </values>
+</CustomMetadata>

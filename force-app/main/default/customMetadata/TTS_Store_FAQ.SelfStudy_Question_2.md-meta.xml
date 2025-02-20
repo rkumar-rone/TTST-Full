@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>SelfStudy Question 2</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">Once you have logged in to the website you can change your personal information by clicking on the icon of a person in the upper right corner to access My Account. Under My Account, you will be able to access your personal information including your name, billing addresses, courses, and order history.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">selfStudyLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">How do I change my personal information?</value>
+    </values>
+</CustomMetadata>

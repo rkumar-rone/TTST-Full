@@ -59,6 +59,10 @@ export default class SibNavigationMenuCustom extends NavigationMixin(LightningEl
     interviewPrepLabel = Labels.SIB_InterviewPrep;
     interviewPrepInfoLabel = Labels.SIB_InterviewPrep_Info;
     interviewFundamentalsLabel = Labels.SIB_InterviewFundamentals;
+    interviewprepAiLabel = Labels.SIB_InterviewprepAi;
+    interviewprepAiProLabel = Labels.SIB_InterviewSmartprepAi_Pro;
+    additionalMinutesLabel = Labels.SIB_AdditionalMinutes;
+    upgradeToAIPlusLabel = Labels.SIB_UpgradeToAIPlus;
     ibInterviewPrepLabel = Labels.SIB_IBInterviewPrep;
     peInterviewPrepLabel = Labels.SIB_PEInterviePrep;
     hedgeFundInterviewPrepLabel = Labels.SIB_HedgeFundInterviewPrep;
@@ -284,6 +288,22 @@ export default class SibNavigationMenuCustom extends NavigationMixin(LightningEl
 
     get pythonCoreDataAnalysisUrl() {
         return this.appendBasePath(this.menuItemConfig?.SIB_PythonCoreDataAnalysis);
+    }
+
+    get interviewprepAiUrl() {
+        return this.appendBasePath(this.menuItemConfig?.SIB_InterviewprepAi);
+    }
+
+    get interviewprepAiProUrl() {
+        return this.appendBasePath(this.menuItemConfig?.SIB_InterviewSmartprepAi_Pro);
+    }
+
+    get upgradedToAiPlusUrl() {
+        return this.appendBasePath(this.menuItemConfig?.SIB_UpgradeToAIPlus);
+    }
+
+    get additionalMinutesUrl() {
+        return this.appendBasePath(this.menuItemConfig?.SIB_AdditionalMinutes);
     }
     
     get oneOnOneMentoringUrl() {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>General Question 3</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">Financial modeling and valuation are the essential building blocks of Wall Street finance. You can learn the basics of this in business school, but that’s largely theory. The entire key to modeling and valuation is to know how to apply what you’ve learned in a real-world situation. There are simply too many tools, strategies, and variables for you to know what to use in a given transaction. And working on transactions is how you learn financial modeling and corporate valuation. Ask any finance professional: These technical skills come from experience-based learning. That’s where we come in. Through fun yet intensive structured courses, we give you an accelerated feel for deal flow that would otherwise take you months, if not years, to acquire, allowing participants in TTS courses to better hit the ground running when they start at their desk.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">generalLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Why is the work TTS does so beneficial to the Street?</value>
+    </values>
+</CustomMetadata>

@@ -21,7 +21,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.Date_Shift_Notification_to_Accounting</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <decisions>

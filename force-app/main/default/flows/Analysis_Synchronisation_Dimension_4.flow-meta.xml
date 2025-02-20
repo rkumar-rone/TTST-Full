@@ -99,7 +99,6 @@
             </value>
         </inputParameters>
         <nameSegment>fferpcore__MessagingActionDeliverNow</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

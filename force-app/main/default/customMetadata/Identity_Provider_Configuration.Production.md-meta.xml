@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Production</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Audience__c</field>
+        <value xsi:type="xsd:string">https://tts.mrooms3.net/auth/saml2/sp/metadata.php</value>
+    </values>
+    <values>
+        <field>Certificate_Developer_Name__c</field>
+        <value xsi:type="xsd:string">TTS_SAML_2022</value>
+    </values>
+    <values>
+        <field>Certificate__c</field>
+        <value xsi:type="xsd:string">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
+8wq3y5leyhYMwd+1TJQZ6FNlAu+/4A==</value>
+    </values>
+    <values>
+        <field>Destination__c</field>
+        <value xsi:type="xsd:string">https://tts.mrooms3.net/auth/saml2/sp/saml2-acs.php/tts.mrooms3.net</value>
+    </values>
+    <values>
+        <field>Entity_Id__c</field>
+        <value xsi:type="xsd:string">https://portal.trainingthestreet.com</value>
+    </values>
+    <values>
+        <field>Issuer__c</field>
+        <value xsi:type="xsd:string">https://tts.mrooms3.net/auth/saml2/sp/metadata.php</value>
+    </values>
+    <values>
+        <field>Public_Key__c</field>
+        <value xsi:type="xsd:string">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx+xqEHj8w7TE4tvPV/cG+ZazDz8vqxpk84o3DD9+9Uo7lVQe/PFfz5kKTk7333UP4/gKxWRiroZLf3S06JO7h1VzeYvE2Plj0HaEj9T+lip5WcKa8nB+g9HyuGjiL0Yi0C6Oll8NgXS7Y0IA+FCV53GBCYmu3EPIqBBYLxNRqqiznwy9Ld72y+xtkDk/eBIXdHnWtpHgtLLLCBTZZqJQTV4ziG439S0idjZfqkdR7UARXFXOavvXYZanIz+LR5F98AeO9ZuJcxjhDV+UK+5fNROfcxFgTmAhtwzJGa5fI9I5T5+g0c7UJ4wfZY2Sr2IrQGRgLsXGNb4TiMEm6ERfnwIDAQAB</value>
+    </values>
+    <values>
+        <field>Service_URL__c</field>
+        <value xsi:type="xsd:string">https://portal.trainingthestreet.com/IdentityProviderPost</value>
+    </values>
+</CustomMetadata>

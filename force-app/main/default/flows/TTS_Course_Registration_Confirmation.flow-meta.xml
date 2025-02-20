@@ -309,10 +309,11 @@ With Dynamic Domain
 added a LWC scroll cmp</description>
     <environments>Default</environments>
     <formulas>
-        <description>{!Get_TTS_Event_Info.Seats_Available__c}  changing it to  {!Get_TTS_Event_Info.Seats_Remaining__c}</description>
+        <description>{!Get_TTS_Event_Info.Seats_Available__c}  changing it to  {!Get_TTS_Event_Info.Seats_Remaining__c}
+undoing change on 04-feb-2025</description>
         <name>availability</name>
         <dataType>Number</dataType>
-        <expression>{!Get_TTS_Event_Info.Seats_Remaining__c} - {!Get_TTS_Event_Info.Registered__c}</expression>
+        <expression>{!Get_TTS_Event_Info.Seats_Available__c} - {!Get_TTS_Event_Info.Registered__c}</expression>
         <scale>2</scale>
     </formulas>
     <formulas>

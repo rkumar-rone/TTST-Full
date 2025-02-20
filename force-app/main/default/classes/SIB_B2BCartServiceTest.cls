@@ -15,6 +15,7 @@ public class SIB_B2BCartServiceTest {
         
         System.runAs(adminUser) {
           
+            Test.startTest();
             SIB_CartConfiguration testData = new SIB_CartConfiguration();
 
             testData.id = 'cart123';
@@ -102,8 +103,9 @@ public class SIB_B2BCartServiceTest {
             cartRequest.cartId = testWebCart.Id;
             cartRequest.cartItems = cartItemRequests;
             cartRequest.couponCode = 'Test Coupon';
-            
-            Test.startTest();
+            // Test.stopTest();
+
+            // Test.startTest();
             SIB_B2BCartService cartService = new SIB_B2BCartService();
             SIB_CartResponse createCart = cartService.createCart(cartRequest);
             SIB_CartResponse cartResponse = cartService.getCartSummary(cartRequest);

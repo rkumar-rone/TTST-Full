@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Strivacity Profile Update</label>
+    <protected>false</protected>
+    <values>
+        <field>Account_API_Endpoint__c</field>
+        <value xsi:type="xsd:string">https://stage-login.trainingthestreet.com/admin/api/v1/identityStores/TTSUAT/accounts/</value>
+    </values>
+    <values>
+        <field>Account_API_Suffix__c</field>
+        <value xsi:type="xsd:string">/personal</value>
+    </values>
+    <values>
+        <field>Auth_Audience_Target__c</field>
+        <value xsi:type="xsd:string">https://stage-login.trainingthestreet.com</value>
+    </values>
+    <values>
+        <field>Self_Service_Client__c</field>
+        <value xsi:type="xsd:string">19e222cd820944dc9f9228cb9ff75640</value>
+    </values>
+</CustomMetadata>

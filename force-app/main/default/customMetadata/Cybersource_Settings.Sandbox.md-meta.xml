@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Sandbox</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Endpoint__c</field>
+        <value xsi:type="xsd:string">https://ICS2WSTESTa.IC3.COM/commerce/1.x/transactionProcessor</value>
+    </values>
+    <values>
+        <field>Host__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Key__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Merchant_Id__c</field>
+        <value xsi:type="xsd:string">theStreetsb</value>
+    </values>
+    <values>
+        <field>Secret__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Target_Origins__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Token__c</field>
+        <value xsi:type="xsd:string">QOmcmWMk5Z/eGutAgSEhdb/70NRPALpbGD1LHJeImHUZOz2LJJXEaqFNGu6Hg9suJx2DRPG6OQm7qUHb/ZHAN5DYd/wkFZy7DiJ9bFCsc2yDHOwwkQMqaw9CZzAr9+3577TV2gE+oZq4tSf2TlmLNMIA56zgJR9ekWo4otvoQAjWQSrUFpp8dI6pN9N1LeUMGeg1Pv8rUv9mtO/hrxim43To1NqCj1/XiFDO1mQ/HWu5IEi+xiC8SmiEgfkhQVErCoK5WNJ4baZrQ6xs/alMzd8awbCVUdzLWKMXzycEN67a4q26bMgDGWO+lX26amS1mkYG3bDqYaxfm9zA9Atydg==</value>
+    </values>
+    <values>
+        <field>Username__c</field>
+        <value xsi:type="xsd:string">theStreetsb</value>
+    </values>
+</CustomMetadata>

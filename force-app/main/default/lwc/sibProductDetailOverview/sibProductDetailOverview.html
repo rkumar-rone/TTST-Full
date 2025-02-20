@@ -7,8 +7,8 @@
 -->
 <template lwc:render-mode="light">
 
-    <div lwc:if={showDetails}>
-        <div lwc:if={whyTakeThisCourse} class="section-padding">
+    <!-- <div lwc:if={showDetails}> -->
+        <!-- <div lwc:if={whyTakeThisCourse} class="section-padding">
             <div class="info-heading">Why take this course?</div>
     
             <div class="background-white">
@@ -16,9 +16,9 @@
                     value={whyTakeThisCourse}
                 ></lightning-formatted-rich-text>
             </div>
-        </div>
-    
-        <div lwc:if={productOverviewUrl} class="section-padding">
+        </div> -->
+        
+        <!-- <div lwc:if={productOverviewUrl} class="section-padding">
             <div class="iframe-container">
                 <iframe 
                     src={productOverviewUrl}
@@ -28,9 +28,10 @@
                     title={productName}
                 ></iframe>
             </div>
-        </div>
-    
-        <div lwc:if={whoIsThisCourseFor} class="section-padding">
+        </div> -->
+        
+        
+        <!-- <div lwc:if={whoIsThisCourseFor} class="section-padding">
             <div class="info-heading">Who is this course for?</div>
             
             <div>
@@ -38,7 +39,18 @@
                     value={whoIsThisCourseFor}
                 ></lightning-formatted-rich-text>
             </div>
-        </div>
-    </div>
+        </div> -->
+        <slot name="slot1"></slot>
+        <slot name="slot2"></slot>
+        <slot name="slot3"></slot>
+        <slot name="slot4"></slot>
+        <slot name="slot5"></slot>
+        <slot name="slot6"></slot>
+        <slot name="slot7"></slot>
+        <slot name="slot8"></slot>
+        <slot name="slot9"></slot>
+        <slot name="slot10"></slot>
+
+    <!-- </div> -->
 
 </template>

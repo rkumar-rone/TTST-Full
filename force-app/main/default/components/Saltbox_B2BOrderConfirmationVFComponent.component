@@ -2,6 +2,7 @@
     <apex:attribute name="orderSummaryRecordId" type="String" description="Order Summary record Id" assignTo="{!orderSummaryId}" />
     <apex:attribute name="OwnerName" type="String" description="Order Summary record owner name" assignTo="{!recipientName}" />
 <html>
+  
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"> </meta>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
@@ -132,7 +133,23 @@
         <apex:param value="{!item.unitPrice}"></apex:param>
       </apex:outputText>
     </td></tr></apex:repeat>
-    </table><h2 style="color:#202020;font-family:Arial,helvetica,sans-serif;font-size:22px;font-style:normal;font-weight:bold;line-height:1;">
+    </table>
+    
+    <apex:outputPanel rendered="{!isSelfStudyOrder}">
+      <br/>
+      <table>
+      <tr >
+        <td>
+          <span>
+            Click this link to view our suggested course competition order and start your <br/> learning journey: <a href="https://trainingthestreet.com/self-study-completion-order/">Click Here</a>
+          </span>
+        </td>
+      </tr>
+      </table>
+      
+    </apex:outputPanel>
+
+    <h2 style="color:#202020;font-family:Arial,helvetica,sans-serif;font-size:22px;font-style:normal;font-weight:bold;line-height:1;">
  Order Summary</h2><table border="0" cellpadding="0" cellspacing="0" style="width:59%;">
  
   <tr>
@@ -189,15 +206,6 @@
                                       </tr></table></td></tr></table></td></tr></table>
                                 </td>
                               </tr>
-                              <apex:outputPanel rendered="{!isSelfStudyOrder}">
-                              <tr >
-                                <td>
-                                  <span>
-                                    Click this link to view our suggested course competition order and start your learning journey: <a href="https://trainingthestreet.com/self-study-completion-order/">Click Here</a>
-                                  </span>
-                                </td>
-                              </tr>
-                            </apex:outputPanel>
                               <tr>
                                 <td align="left" class="" valign="top">
                                   <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="border: 0px solid transparent; background-color: transparent; min-width: 100%; " class="slot-styling"><tr><td style="padding: 10px 0px; " class="slot-styling camarker-inner"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="min-width: 100%; " class="stylingblock-content-wrapper"><tr><td class="stylingblock-content-wrapper camarker-inner"><table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation"><tr><td align="center"><table border="0" cellspacing="0" cellpadding="0" role="presentation"><tr><td class="innertd buttonblock" bgcolor="#1D4697" style=" border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; background-color: #1D4697;"><apex:outputlink value="{!SiteURL}" target="_blank" style=" font-size: 16px; font-family: Arial, helvetica, sans-serif; color: #FFFFFF; text-align: center; text-decoration: none; display: block; background-color: #1D4697; border: 1px solid #1D4697; padding: 10px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;" title="">View Order</apex:outputlink></td></tr></table></td></tr></table></td></tr></table></td></tr></table>

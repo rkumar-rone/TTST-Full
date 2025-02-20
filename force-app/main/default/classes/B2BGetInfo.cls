@@ -141,15 +141,23 @@ public without sharing class B2BGetInfo {
     }
 
     public static void updateSelectedSessionsOnCart(Id cartId, String selectedSessions) {
+        system.debug('selectedSessions : '+ selectedSessions);
         try {
             WebCart cart = [SELECT Id, Selected_Sessions__c FROM WebCart WHERE Id = :cartId LIMIT 1];
             String selectedItems;
             if (cart.Selected_Sessions__c == null) {
                 selectedItems = selectedSessions.removeStart('{').removeEnd('}');
-            } else {
-                selectedItems = cart.Selected_Sessions__c.removeStart('{').removeEnd('}') + ' , ' + selectedSessions.removeStart('{').removeEnd('}');
+            } else if(String.isNotBlank(selectedSessions)) {
+                String selectedSessionsChk = selectedSessions.removeStart('{').removeEnd('}');
+                if(String.isNotBlank(selectedSessionsChk)){
+                    selectedItems = cart.Selected_Sessions__c.removeStart('{').removeEnd('}') + ' , ' + selectedSessions.removeStart('{').removeEnd('}');
+                }
             }
-            update new WebCart(Id = cartId, Selected_Sessions__c = '{' + selectedItems + '}', CartId__c = cartId);
+            system.debug('selectedItems : '+ selectedItems);
+            if(selectedItems != null && String.isNotBlank(selectedItems))
+            {
+                update new WebCart(Id = cartId, Selected_Sessions__c = '{' + selectedItems + '}', CartId__c = cartId);
+            }
         } catch (Exception e) {
             System.debug(e);
         }
@@ -450,7 +458,7 @@ public without sharing class B2BGetInfo {
     @AuraEnabled
     public static List<CartItem> getCartItems(Id cartId) {
         try {
-            return [SELECT Id, Name, Quantity, Product2.TTS_Event__c, Product2Id, Product2.Name, Product2.TTS_Event__r.Seats_Available__c, Product2.Product_Group__c, Product2.Start_Date__c, Product2.Training_Location_City_formula__c, CartItem_Selected_Sessions__c FROM CartItem WHERE CartId = :cartId];
+            return [SELECT Id, Name, Quantity, Product2.TTS_Event__c, Product2Id, Product2.Name, Product2.Colleva_Product__c, Product2.Colleva_Base_Product__c, Product2.TTS_Event__r.Seats_Available__c, Product2.Product_Group__c, Product2.Start_Date__c, Product2.Training_Location_City_formula__c, CartItem_Selected_Sessions__c FROM CartItem WHERE CartId = :cartId];
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

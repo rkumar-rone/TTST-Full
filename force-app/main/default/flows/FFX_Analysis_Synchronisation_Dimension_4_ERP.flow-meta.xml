@@ -22,7 +22,6 @@
         </inputParameters>
         <nameSegment>fferpcore__MessagingActionDeliverNow</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>51.0</apiVersion>
     <description>ERP Integration (Process previously configured in Analysis Synchronisation: Dimension 4 DEPRECATED Process Builder).</description>

@@ -40,4 +40,19 @@ public with sharing class SIB_CheckoutControllerTest {
             SIB_CheckoutController.updateCartAndCartItems(requestMap);
         Test.stopTest();
     }
+
+    @isTest
+    static void checkEmailIsAlreadyOnColleva(){
+        requestMap = new Map<String, Object>();
+        
+        Test.startTest();
+            SIB_CheckoutController.checkEmailIsAlreadyOnColleva(requestMap);
+
+            List<String> cartIds = new List<String>();
+            requestMap.put(SIB_Constants.PARAM_CARTTOUPDATE, cartIds);
+            SIB_CheckoutController.checkEmailIsAlreadyOnColleva(requestMap);
+        Test.stopTest();
+    }
+
+    
 }

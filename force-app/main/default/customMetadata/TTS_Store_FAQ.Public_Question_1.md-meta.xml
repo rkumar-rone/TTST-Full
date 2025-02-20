@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Public Question 1</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">Cancellations up to 14 calendar days before the first day of class will receive a full refund. Cancellation within 14 calendar days of the first day of class will not be refunded. Registration fees cannot be applied to other classes, on-line materials or other services. TTS reserves the right, at its sole discretion, to cancel a course. If TTS cancels a course, payments are refunded in full.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">publicLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">What is the cancellation policy for Training The Street Public Courses?</value>
+    </values>
+</CustomMetadata>

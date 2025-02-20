@@ -24,7 +24,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.Portal_Send_Registration_Link_to_Instructor</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -56,7 +55,6 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -88,7 +86,6 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -124,7 +121,6 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -156,7 +152,6 @@
             </value>
         </inputParameters>
         <nameSegment>chatterPost</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

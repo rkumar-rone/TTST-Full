@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>SelfStudy Question 8</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">Let&apos;s try a few things and see if we can figure out what&apos;s going on.  First, please try clearing your cache and restarting your browser:  https://www.wikihow.com/Clear-Your-Browser%27s-Cache We use Vimeo as our video player on this site.  We find that some customers based in another country may find issues running Vimeo.  You are also only able to view videos on one device at a time.  If you are logged into your account on another device, please log out from that device.  Also, if using a work device, your company may have Vimeo blocked.  Vimeo provides a sample video for people to use to test.  You can try their video here:  https://vimeo.com/253989945 If the above test video doesn&apos;t work for you, please try using a personal device to see if you are able to view anything there instead. Although Vimeo is compatible on most browsers, you can also try another browser or check to see if your browser has any updates are available:  https://browsehappy.com/.  If you are still having issues, please let us know by emailing at selfstudy@trainingthestreet.com.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">selfStudyLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">I am having problems with the videos-on-demand.</value>
+    </values>
+</CustomMetadata>

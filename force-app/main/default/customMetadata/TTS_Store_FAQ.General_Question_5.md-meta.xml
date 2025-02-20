@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>General Question 5</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:type="xsd:string">Was live training offered in the last 12 months, and where?
+What services did they provide during these live events?
+Who were the participants? Interns, full-time analysts, and full-time associates or just on-line participants?
+Can the firm make references from these live events available?</value>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">Unlike some other firms, we use a very conservative approach to counting and listing our clients. This is part of our philosophy of “under promising and over-delivering.” Some competitors have no topflight corporate clients, yet they include a firm in their client list after making just cursory e-learning contact with them. By contrast, TTS lists clients only upon providing live instruction and training. Our client list doesn’t include companies whose employees merely took a self-study course or attended a TTS class while at school. When comparing our services to others’, ask:</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">generalLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">You claim to be the market leader of these training services, yet some of your competitors claim they have an expansive client list, or that they have the same clients as TTS. What should I believe?</value>
+    </values>
+</CustomMetadata>

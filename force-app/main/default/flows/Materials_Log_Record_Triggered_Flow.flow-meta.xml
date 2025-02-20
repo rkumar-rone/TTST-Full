@@ -15,7 +15,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.REMINDER_checklist_requested</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Materials_Assigned_to</name>
@@ -32,7 +31,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Logistics_Confirmed_MatLog</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Materials_Assigned_to_1</name>
@@ -49,7 +47,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Parent_Opp_Logistics_Confirmed_MatLog</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <decisions>

@@ -488,7 +488,7 @@ When async invocable actions complete, they change session.isProcessing to false
             <targetReference>Get_Or_Create_Session_Subflow</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <subflows>
         <description>Calls the cartToOrderAction invocable action to convert a cart to a draft order.</description>
         <name>Cart_To_Order_Subflow</name>

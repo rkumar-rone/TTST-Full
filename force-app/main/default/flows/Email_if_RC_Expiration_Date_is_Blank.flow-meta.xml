@@ -20,7 +20,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.RC_Email_Instructor_RM_if_Date_RC_Access_Ends_is_BLANK</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <assignments>

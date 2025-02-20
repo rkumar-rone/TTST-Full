@@ -16,7 +16,6 @@
         </inputParameters>
         <nameSegment>Product2.Product_creation_notification</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>61.0</apiVersion>
     <environments>Default</environments>

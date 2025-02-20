@@ -21,7 +21,6 @@
             </value>
         </inputParameters>
         <nameSegment>CampaignMember.PORTAL_Paid_Course_with_RC_NoSessions</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

@@ -74,7 +74,12 @@
                                                 </svg>
                                             </div>
                                             <div>
-                                                <span>{child.SIB_Hours_to_Complete__c} hours to complete</span>
+                                                <template lwc:if={isCollevaProduct}>
+                                                    <span>{child.SIB_Hours_to_Complete__c} hours of simulation use</span>
+                                                </template>
+                                                <template lwc:else>
+                                                    <span>{child.SIB_Hours_to_Complete__c} hours to complete</span>
+                                                </template>
                                             </div>
                                             
                                         </div>
@@ -135,7 +140,12 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <span>{hoursToComplete} hours to complete</span>
+                                        <template lwc:if={isCollevaProduct}>
+                                            <span>{hoursToComplete} hours of simulation use</span>
+                                        </template>
+                                        <template lwc:else>
+                                            <span>{hoursToComplete} hours to complete</span>
+                                        </template>
                                     </div>
                                 </div>
                             </div>

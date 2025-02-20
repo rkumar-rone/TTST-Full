@@ -7,6 +7,7 @@ import selfStudyLabel from '@salesforce/label/c.SIB_Self_Study_Option';
 import trainingProgramLabel from '@salesforce/label/c.SIB_Training_Programs_Option';
 import activeInactiveLabel from '@salesforce/label/c.SIB_Active_and_Inactive_Option';
 import activeLabel from '@salesforce/label/c.SIB_Active_Option';
+import collevaProdOnlineName from '@salesforce/label/c.SIB_Colleva_Prod_Online_Name';
 import inactiveLabel from '@salesforce/label/c.SIB_Inactive_Option';
 import lmsSuffixUrl from '@salesforce/label/c.SIB_LmsSuffixUrl';
 import { NavigationMixin } from 'lightning/navigation';
@@ -22,7 +23,8 @@ export default class SibSchedule extends NavigationMixin(LightningElement) {
         trainingProgramLabel,
         activeInactiveLabel,
         activeLabel,
-        inactiveLabel
+        inactiveLabel,
+        collevaProdOnlineName
     };
 
     courseCards = Array.from({ length: 6 });
@@ -80,13 +82,40 @@ export default class SibSchedule extends NavigationMixin(LightningElement) {
             courseType: this.selectedtype,
             courseStudyType: this.selectedstudytype
         })
-        .then((response) => {
+        .then(async (response) => {
             if (response) {
                 if (response.success) {
                     this.courses = response?.scheds;
                     this.hasonline = response?.hasonline;
                     this.moodleURL = response?.moodleURL;
                     this.noCourses = this.courses?.length > 0 ? false : true;
+
+                    // if(response?.scheds){
+                    //     this.courses = [];
+                    //     response?.scheds.forEach(courseItem => {
+                    //         if(courseItem.cm.Contact.Colleva_Id__c == response.collevaResp.collevaId
+                    //             && courseItem.product && courseItem.product.ProductCode == response.collevaResp.productCode){
+                    //             courseItem.isActive = response?.collevaResp?.isProductActive;
+                    //             courseItem.cm.Campaign.Online_Event_Name__c = this.labels.collevaProdOnlineName;
+                    //         }else if(courseItem.product && courseItem.product.Colleva_Product__c){
+                    //             courseItem.isActive = false;
+                    //         }
+                    //     });
+                    //     if(this.selectedtype == 'Active Only'){
+                    //         this.courses = response?.scheds.filter((item) => item?.isActive == true && item?.product?.ProductCode !== 'TTS_additionalMinutes');
+                    //     }
+                    //     // else if(this.selectedtype == 'Inactive Only')
+                    //     // {
+                    //     //     this.courses = response?.scheds.filter((item) => item?.isActive == false && item?.product?.ProductCode !== 'TTS_additionalMinutes');
+                    //     // }
+                    //     else if(this.selectedtype == 'Active and Inactive')
+                    //     {
+                    //         this.courses = response?.scheds.filter((item) => item?.isActive == true && item?.product?.ProductCode !== 'TTS_additionalMinutes');
+                    //     }
+                    //     this.hasonline = response?.hasonline;
+                    //     this.moodleURL = response?.moodleURL;
+                    //     this.noCourses = response?.scheds?.length > 0 ? false : true;
+                    // }
                 } else {
                     this.noCourses = true;
                 }
@@ -104,6 +133,56 @@ export default class SibSchedule extends NavigationMixin(LightningElement) {
             this.isSkeletonLoading = false;
         });
     }
+
+    // validateCollevaProduct from colleva
+    // validateCollevaProduct(courses) {
+    //     this.isSkeletonLoading = true;
+    //     let courseData = courses;
+    //     let courseDataArr = [];
+    //     courses.forEach(item => {
+    //         if(item.product.Colleva_Product__c && item.product.Colleva_Base_Product__c){
+    //             if(item.cm.Contact.Colleva_Id__c != null && item.product.ProductCode != null){
+    //                 getCollevaProductStatus({
+    //                     collevaId: item.cm.Contact.Colleva_Id__c,
+    //                     productCode: item.product.ProductCode
+    //                 })
+    //                 .then(async(response) => {
+    //                     if (response) {
+    //                         if (response.success) { 
+    //                             courseData.forEach(courseItem => {
+    //                                 if(courseItem.cm.Contact.Colleva_Id__c == response.collevaId && courseItem.product.ProductCode == response.productCode){
+    //                                     courseItem.isActive = response.isProductActive;
+    //                                 }else if(courseItem.product.Colleva_Product__c){
+    //                                     courseItem.isActive = false;
+    //                                 }
+    //                             });
+    //                             console.log('courseData : '+courseData);
+    //                             // this.courses = courseData;
+    //                             this.courses= courseData;
+    //                         } else {
+    //                         }
+    //                     }
+    //                     else {
+    //                     }
+    //                     this.isSkeletonLoading = false;
+    //                 })
+    //                 .catch((error) => {
+    //                     if (error && error?.body && error?.body?.message) {
+    //                         console.log(error?.body?.message);
+    //                     }          
+    //                     this.isSkeletonLoading = false;
+    //                 });
+    //             }
+    //         }
+    //         // else if(item.product.Colleva_Base_Product__c){
+    //         //     this.courses = courseData;
+    //         // }
+    //     });
+    //     // if(courseDataArr.length > 1)
+    //     // {
+    //     //     // this.courses = courseDataArr;
+    //     // }
+    // }
 
     get moodleLink() {
         return his.moodleURL + this.labels.lmsSuffixUrl;

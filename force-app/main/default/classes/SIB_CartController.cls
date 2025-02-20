@@ -124,6 +124,28 @@ public with sharing class SIB_CartController {
     }
 
     @AuraEnabled
+    public static Map<String,Object> checkCollevaProductExistOnCart(Map<String,Object> mapParams){
+        String methodName = 'checkCollevaProductExistOnCart';
+        String supportData = '';
+        try{
+            SIB_Logger.log(LoggingLevel.DEBUG , CLASSNAME , methodName , SIB_LoggingConstant.MESSAGING_ENTRY , 'Started');
+            SIB_Logger.log(LoggingLevel.DEBUG , CLASSNAME , methodName , SIB_LoggingConstant.MESSAGING_ENTRY , 'Request Param');
+            SIB_Logger.log(LoggingLevel.DEBUG , CLASSNAME , methodName , SIB_LoggingConstant.MESSAGING_ENTRY , JSON.serialize(mapParams));
+            SIB_CartService.checkCollevaProductExistOnCart(mapParams);
+            SIB_Logger.log(LoggingLevel.DEBUG , CLASSNAME , methodName , SIB_LoggingConstant.MESSAGING_EXIT , 'End');
+        }catch (Exception ex) {
+            mapParams = mapParams==null ? new Map<String,Object>() : mapParams ;
+            mapParams.put(SIB_Constants.IS_SUCCESS,false);
+            mapParams.put(SIB_Constants.PARAM_MESSAGE,ex.getMessage());
+            SIB_ExceptionLog.storeExceptionLog(ex, STOREFRONT, MODULE_NAME, CLASSNAME, methodName, supportData);
+        }finally
+        {
+            SIB_Logger.handleApplicationLogging(mapParams);
+        }
+        return mapParams;
+    }
+
+    @AuraEnabled
     public static Map<String,Object> addCartItem(Map<String,Object> mapParams){
         String methodName = 'addCartItem';
         String supportData = '';

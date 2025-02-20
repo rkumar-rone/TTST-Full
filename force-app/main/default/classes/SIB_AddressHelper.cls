@@ -98,8 +98,12 @@ public with sharing class SIB_AddressHelper {
                 cart.BillingPostalCode = cpa.PostalCode;
                 cart.Id = cartId;
                 cart.CartId__c = cartId;
+                System.debug('Cart to update Address : '+ JSON.serialize(cart));
                 update cart;
             }
+            List<WebCart> lstWebCart2 = [SELECT Id,WebStoreId , AccountId , BillingStreet, BillingCity, CartId__c,
+                    BillingStateCode, BillingState, BillingCountry, BillingCountryCode FROM WebCart WHERE Id=:cartId];
+            System.debug('Cart to after update Address lstWebCart 2 : '+ JSON.serialize(lstWebCart2));
             dataMap.put(SIB_Constants.BILLING_ACCOUNT_ID,cpa.ParentId);
             dataMap.put(SIB_Constants.ADDRESS,cpa);
             dataMap.put(SIB_Constants.ADDRESS_TYPE, SIB_Constants.ADDRESS_TYPE_BILLING);

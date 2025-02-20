@@ -23,7 +23,6 @@
             </value>
         </inputParameters>
         <nameSegment>Case.Send_Macro_Files_Windows_5_0</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -48,7 +47,6 @@
             </value>
         </inputParameters>
         <nameSegment>Case.Send_Macro_Files_Mac_2011_v5_0</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -73,7 +71,6 @@
             </value>
         </inputParameters>
         <nameSegment>Case.Send_Macro_Files_Mac_2016_v5_0</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <assignments>

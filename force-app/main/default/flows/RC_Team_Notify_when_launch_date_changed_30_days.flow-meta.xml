@@ -21,7 +21,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.RC_notify_when_portal_launch_date_ISCHANGED_30_days</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

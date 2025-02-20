@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>General Question 4</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">TTS was founded in 1999 and has grown exponentially ever since. Training The Street has established strong relationships with a distinguished list of global clients. Our ability to address the learning and development needs of a diverse audience—from the inquisitive student exploring a career in finance, to corporate clients seeking comprehensive training for an entry-level class, to the lateral hire seeking an expansion of his/her skill set—reflects the fundamental passion and focus TTS has in preparing clients for success as skilled finance professionals.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">generalLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">How long has TTS been around? Who are your primary clients?</value>
+    </values>
+</CustomMetadata>

@@ -22,7 +22,6 @@ Scheduling@amttraining.com</description>
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Opportunity_Closed_Lost</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>scheduling@amttraining.com</description>
@@ -43,7 +42,6 @@ Scheduling@amttraining.com</description>
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Dates_Conf</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>scheduling@amttraining.com</description>
@@ -64,7 +62,6 @@ Scheduling@amttraining.com</description>
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Dates_Requested</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>User: Claudine Sauvetre
@@ -83,7 +80,6 @@ User: Materials Team</description>
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Checklist_Requested_EDD_Changed</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>Group: Materials Team
@@ -105,7 +101,6 @@ scheduling@amttraining.com</description>
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Final_Outline_Ready</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>Group: Materials Team
@@ -127,7 +122,6 @@ scheduling@amttraining.com</description>
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Logistics_Confirmed</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>User: Carmen Li</description>
@@ -148,7 +142,6 @@ scheduling@amttraining.com</description>
             </value>
         </inputParameters>
         <nameSegment>Opportunity.Opportunity_Handover_to_CSM</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <decisions>

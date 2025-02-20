@@ -326,4 +326,7 @@ public with sharing class SIB_Constants {
     public static final String CART_STATUS_CHECKOUT = 'Checkout';
     public static final String ORDER_REFERENCE_NUMBER = 'orderReferenceNumber';
 
+    public static final String IS_INDIVIDUAL_ORDER_ALLOWED = 'isIndividualOrderAllowed';
+    public static final String COLLEVA_PRODUCT_QTY = 'collevaProdQty';
+
 }

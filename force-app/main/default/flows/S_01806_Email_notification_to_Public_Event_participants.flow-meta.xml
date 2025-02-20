@@ -23,7 +23,6 @@
             </value>
         </inputParameters>
         <nameSegment>Registration__c.S_01806_Email_notification_to_Public_Event_participants</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <assignments>

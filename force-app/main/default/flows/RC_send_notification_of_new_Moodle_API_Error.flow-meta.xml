@@ -20,7 +20,6 @@
             </value>
         </inputParameters>
         <nameSegment>Moodle_API_Error__c.RC_Team_notification_of_new_Moodle_API_Error</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>
