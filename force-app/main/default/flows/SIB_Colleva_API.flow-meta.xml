@@ -38,7 +38,7 @@
         <inputParameters>
             <name>userId</name>
             <value>
-                <elementReference>Get_Contact_Info.Colleva_Id__pc</elementReference>
+                <elementReference>CollevaIDFormula</elementReference>
             </value>
         </inputParameters>
         <nameSegment>SIB_CollevaAPIService</nameSegment>
@@ -163,13 +163,13 @@
         <inputParameters>
             <name>resetBillingPeriod</name>
             <value>
-                <booleanValue>false</booleanValue>
+                <booleanValue>true</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
             <name>userId</name>
             <value>
-                <elementReference>Get_Contact_Info.Colleva_Id__pc</elementReference>
+                <elementReference>CollevaIDFormula</elementReference>
             </value>
         </inputParameters>
         <nameSegment>SIB_CollevaAPIService</nameSegment>
@@ -203,7 +203,7 @@
         <inputParameters>
             <name>resetBillingPeriod</name>
             <value>
-                <booleanValue>false</booleanValue>
+                <booleanValue>true</booleanValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -1657,6 +1657,17 @@
         <expression>(TEXT(YEAR(TODAY())) &amp;&quot;-&quot; &amp;   TEXT(MONTH(TODAY()))  &amp;&quot;-&quot; &amp;   TEXT(DAY(TODAY())) )</expression>
     </formulas>
     <formulas>
+        <name>CollevaIDFormula</name>
+        <dataType>String</dataType>
+        <expression>
+TRIM(MID(TEXT({!Get_Contact_Info.Colleva_Id__pc}),FIND(&quot;,&quot;,TEXT({!Get_Contact_Info.Colleva_Id__pc}))+1,255))</expression>
+    </formulas>
+    <formulas>
+        <name>GroupCollevaIdFormula</name>
+        <dataType>String</dataType>
+        <expression>TRIM(MID(TEXT({!GroupRecipient.Colleva_Id__c}),FIND(&quot;,&quot;,TEXT({!GroupRecipient.Colleva_Id__c}))+1,255))</expression>
+    </formulas>
+    <formulas>
         <name>QtyToMins</name>
         <dataType>Number</dataType>
         <expression>({!get_colleva_Product.Quantity} * {!get_colleva_Product.Product2.SIB_Hours_of_Video_Content__c} * 60)</expression>
@@ -2215,7 +2226,7 @@
         <inputAssignments>
             <field>SupportData__c</field>
             <value>
-                <stringValue>Method Name : CreateUserDetail</stringValue>
+                <elementReference>CreateUserDetail_SupportData</elementReference>
             </value>
         </inputAssignments>
         <object>SIBCaptureApplicationLog__c</object>
@@ -2604,11 +2615,24 @@
         <text>{!Order_Summary_Record.BillToContact.Id}__{!ResponseData.id}__{!userActiveCollevaProduct.externalId}</text>
     </textTemplates>
     <textTemplates>
+        <name>CreateUserDetail_SupportData</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Action Name : CreateUserDetail
+OrderSummaryId : {!OrderSummaryId}
+Order Summary Status -  {!Order_Summary_Record.Status}
+Colleva Provisioned - {!Order_Summary_Record.Colleva_Provisioned__c}</text>
+    </textTemplates>
+    <textTemplates>
         <name>failResponse</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>Response - {!ResponseData}
 Errors - {!errors}
 Response Code - {!ResponseCode}</text>
+    </textTemplates>
+    <textTemplates>
+        <name>RequestCollevaId</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!Get_Contact_Info.Colleva_Id__pc}</text>
     </textTemplates>
     <textTemplates>
         <name>RequestParams</name>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>General Question 8</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">Yes. You’ve come to the right place. We offer Public Courses for individuals who want to develop their finance knowledge outside of formal academic or corporate sponsorship. In addition to our offering of core competencies courses, we provide targeted training in continuing development and advanced topics. Our course curriculum focusing on core competencies enables individuals new to the industry to grasp the required fundamentals, while the advanced Public Course curriculum allows more seasoned professionals to gain that competitive edge.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">generalLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">My company/university doesn’t plan to offer TTS courses any time soon. Or, I missed the TTS course they recently offered. Are TTS’s courses open to the public at large?</value>
+    </values>
+</CustomMetadata>

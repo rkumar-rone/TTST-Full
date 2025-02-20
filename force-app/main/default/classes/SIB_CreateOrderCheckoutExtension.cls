@@ -303,24 +303,3 @@ public class SIB_CreateOrderCheckoutExtension extends CartExtension.CheckoutCrea
     }
 
 }
-
-/**
- 
-
-List<OrderSummary> osList = new List<OrderSummary>();
-List<OrderDeliveryGroupSummary> odgList = [select id, DeliverToCountry, DeliverToCity, DeliverToStreet, DeliverToState, DeliverToStateCode, DeliverToPostalCode, OrderSummaryId,OrderSummary.BillingCountry, OrderSummary.BillingCity, OrderSummary.BillingStreet, OrderSummary.BillingState, OrderSummary.BillingPostalCode from OrderDeliveryGroupSummary  where OrderSummary.BillingStreet =null AND OrderSummary.Payment_Method__c != 'Credit Card' AND ordersummaryId !='1OsS60000002QODKA2' order by CreatedDate DESC];
-for(OrderDeliveryGroupSummary odg: odgList)
-{
-    OrderSummary os = new OrderSummary();
-    os.Id = odg.OrderSummaryId;
-    os.BillingStreet = odg.DeliverToStreet;
-    os.BillingCity = odg.DeliverToCity;
-    os.BillingState = odg.DeliverToState;
-    os.BillingCountry = odg.DeliverToCountry;
-    os.BillingPostalCode = odg.DeliverToPostalCode;
-    osList.add(os);
-}
-system.debug(osList);
-system.debug('size : '+osList.size());
-update osList;
- */

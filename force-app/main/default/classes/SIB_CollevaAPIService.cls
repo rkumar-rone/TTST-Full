@@ -26,7 +26,6 @@ public with sharing class SIB_CollevaAPIService {
                 else if(request.actionName == 'fetchUserDetails')
                 {
                     request.actionName = null;
-                    Integer.valueOf(request.userId);
                     apiResponse = SIB_CollevaAPIHelper.fetchUserDetails(request);
                 }
                 else if(request.actionName == 'fetchUserAllowedUsage')

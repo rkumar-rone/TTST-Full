@@ -210,7 +210,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_Colleva_Order</name>
-            <conditionLogic>(1 AND 2 AND (3 OR 4))</conditionLogic>
+            <conditionLogic>(1 AND 2 AND 3 )</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Colleva_Order__c</leftValueReference>
                 <operator>EqualTo</operator>
@@ -230,13 +230,6 @@
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Processing</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Status</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Completed</stringValue>
                 </rightValue>
             </conditions>
             <connector>

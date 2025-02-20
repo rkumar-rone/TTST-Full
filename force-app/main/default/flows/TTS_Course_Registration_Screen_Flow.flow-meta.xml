@@ -263,7 +263,7 @@ added Scroll LWC CMp</description>
     <formulas>
         <name>availability</name>
         <dataType>Number</dataType>
-        <expression>{!Get_TTS_Event_Info.Seats_Available__c} - {!Get_TTS_Event_Info.Registered__c} - {!Get_TTS_Event_Info.Reserved_Seats__c}</expression>
+        <expression>{!Get_TTS_Event_Info.Seats_Available__c} - {!Get_TTS_Event_Info.Registered__c}</expression>
         <scale>2</scale>
     </formulas>
     <formulas>

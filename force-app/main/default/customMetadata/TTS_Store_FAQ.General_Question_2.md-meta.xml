@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>General Question 2</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">It’s no secret that most investment bankers like to close deals. Business school professors, on the other hand, are often excellent teachers, but they sometimes lack the practical, hands-on emphasis bankers have. Training The Street (TTS) combines these two skill sets. We know banking. But we’re also born teachers. We’ve had years of experience doing both. Our established teaching reputation speaks for itself. In addition to our experience and knowledge, we have the passion and demonstrated classroom teaching experience to deliver topics in an insightful way, allowing for discussions and exercises to come alive.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">generalLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Don’t Wall Street investment banks have excellent in-house training programs for people coming in? What’s the purpose or value of outsourcing this function to you? What makes your instructors especially well-qualified?</value>
+    </values>
+</CustomMetadata>

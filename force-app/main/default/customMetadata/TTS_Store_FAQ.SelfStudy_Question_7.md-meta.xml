@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>SelfStudy Question 7</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">No. When you download the Excel files, we ask that you first choose &apos;Read Only&apos; to access/review the information; a password won’t be necessary. Then, you may choose &apos;Save As&apos; to save the information on your hard drive. Once it is saved on your hard drive, you can edit as you see fit. This is so there will always be an original copy that you can refer back to if something were to happen to the edited copy.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">selfStudyLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">Do I need password for the excel files?</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Sandbox</label>
+    <protected>false</protected>
+    <values>
+        <field>Active__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Audience__c</field>
+        <value xsi:type="xsd:string">https://ttsdev.mrooms3.net/auth/saml2/sp/metadata.php</value>
+    </values>
+    <values>
+        <field>Certificate_Developer_Name__c</field>
+        <value xsi:type="xsd:string">TTS_SAML_2021</value>
+    </values>
+    <values>
+        <field>Certificate__c</field>
+        <value xsi:type="xsd:string">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</value>
+    </values>
+    <values>
+        <field>Destination__c</field>
+        <value xsi:type="xsd:string">https://ttsdev.mrooms3.net/auth/saml2/sp/saml2-acs.php/ttsdev.mrooms3.net</value>
+    </values>
+    <values>
+        <field>Entity_Id__c</field>
+        <value xsi:type="xsd:string">https://trainingthestreet--fullcopy.sandbox.my.site.com</value>
+    </values>
+    <values>
+        <field>Issuer__c</field>
+        <value xsi:type="xsd:string">https://ttsdev.mrooms3.net/auth/saml2/sp/metadata.php</value>
+    </values>
+    <values>
+        <field>Public_Key__c</field>
+        <value xsi:type="xsd:string">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0ECkjvKlOZixgXs2wgZBtnpLVx+8EsLSsySYx4XWKAMzfSTWGj1t77+1IXZwTWlZO7UbOjw8WrEpgyk9vnuNatPYbTvFpCyDZJAkEWvu8i2PhykwbTv3tb8VkbV6YzhuhFwyhmDcukGl1qpe0uyDh7v+yK8vurcnfXWzPqUyIZ0OcS1P0R0HS8Ms/XSXehEW+904AsjQ4E4H/mNzWoRG+FEdZa/yoHpmaty1RV2sARCY61RFLySt+FvyPf9AWOEzEb6enYLYcFXH4DNiVYqjQoe1dqlvyyqnzyL3SGIijCmhf0sBCbvW7axt1Qk1uOziAY37B+ejZdZDuweZcbebVQIDAQAB</value>
+    </values>
+    <values>
+        <field>Service_URL__c</field>
+        <value xsi:type="xsd:string">https://trainingthestreet--fullcopy.sandbox.my.site.com/IdentityProviderPost</value>
+    </values>
+</CustomMetadata>

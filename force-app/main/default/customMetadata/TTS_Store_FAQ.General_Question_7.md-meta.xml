@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>General Question 7</label>
+    <protected>false</protected>
+    <values>
+        <field>Answer_List__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Answer__c</field>
+        <value xsi:type="xsd:string">First of all – thank you! Now to the easy part… To start, you should check to make sure that we don’t already offer training at your company or university. Check with your training and human resources departments if employed at a company or services such as the finance club, career center or student services if you are a student. If we don’t, email us at info@trainingthestreet.com. Propose a set of dates and what you’d like us to help you with. A TTS representative will contact you to discuss training options.</value>
+    </values>
+    <values>
+        <field>Category__c</field>
+        <value xsi:type="xsd:string">generalLabels</value>
+    </values>
+    <values>
+        <field>Question__c</field>
+        <value xsi:type="xsd:string">I’d like to invite TTS to lead instruction at our company/university. How do I do this?</value>
+    </values>
+</CustomMetadata>
