@@ -643,7 +643,7 @@
             <targetReference>Get_Cart</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <subflows>
         <description>Sets the next state</description>
         <name>Set_State</name>

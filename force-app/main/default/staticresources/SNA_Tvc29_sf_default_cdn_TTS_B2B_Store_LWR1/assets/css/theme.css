@@ -70,3 +70,24 @@ b2c_lite_commerce-my-account-menu-ui .slds-dropdown__header {
 b2c_lite_commerce-my-account-menu-ui lightning-menu-subheader {
   border-bottom: 1px solid var(--dxp-g-root-1);
 }
+
+commerce_builder-order-confirmation-error-message .slds-icon {
+  width: 4rem;
+  height: 4rem;
+  fill: var(--com-c-order-confirmation-error-icon-color, #707275);
+}
+
+/* Required to override cart items css in order confirmation items*/
+commerce_builder-order-confirmation-items ul article li.li-layout {
+  border-bottom: none;
+  padding: 0.75rem 0 0.25rem 0 !important;
+}
+
+commerce_builder-order-confirmation-items ul article:last-child li.li-layout {
+  border-bottom: none;
+  padding: 0.75rem 0 0 0 !important;
+}
+
+commerce_builder-order-confirmation-items ul {
+  padding-bottom: 0rem !important;
+}

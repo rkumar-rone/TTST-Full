@@ -6,7 +6,6 @@
 public with sharing class AccountHierarchyTestData{
 	
 	/**
-     * 
 	* Set the necesary attributes used during test
 	*/
     public static void createTestHierarchy(){

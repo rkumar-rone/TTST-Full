@@ -15,7 +15,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.Number_of_TAs_changed_notify_Ophelia</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_email_to_APAC_team</name>
@@ -32,7 +31,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.Number_of_TAs_changed_notify_APAC_ME</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_email_to_Europe_team</name>
@@ -49,7 +47,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.Number_of_TAs_changed_notify_Europe_Africa</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <decisions>

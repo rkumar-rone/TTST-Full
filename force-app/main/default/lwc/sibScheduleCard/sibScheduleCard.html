@@ -45,10 +45,17 @@
                 </span>
                 <div class="back" onclick={toggleBack}>←</div>
                 <div class="topline"></div>
-
-                <a class="item" href={courseDetailUrl}>
-                    <div>{labels.courseDetailsOrStatus}</div>
-                </a>
+                <template lwc:if={isCollevaProduct}>
+                    <a class="item" href={CollevaCourseDetailUrl}>
+                        <div>{labels.courseDetailsOrStatus}</div>
+                    </a>
+                </template>
+                <template lwc:else>
+                    <a class="item" href={courseDetailUrl}>
+                        <div>{labels.courseDetailsOrStatus}</div>
+                    </a>
+                </template>
+                
 
                 <template lwc:if={course.hasSessionsToReg}>
                     <div class="item seession-sec" onclick={addSessions} data-value={course.cm.CampaignId}>

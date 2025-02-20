@@ -24,6 +24,7 @@ public class SIB_CartControllerTest {
         Map<String, Object> resultPreserveGuestCart = SIB_CartController.preserveGuestCart(mapParams);
         Map<String, Object> resultClearCart = SIB_CartController.clearCart(mapParams);
         Map<String, Object> resultDeleteCartItem = SIB_CartController.deleteCartItem(mapParams);
+        Map<String, Object> checkCollevaProductExistOnCart = SIB_CartController.checkCollevaProductExistOnCart(mapParams);
         
         Test.stopTest();
         System.assertNotEquals(null, result, 'Passed');

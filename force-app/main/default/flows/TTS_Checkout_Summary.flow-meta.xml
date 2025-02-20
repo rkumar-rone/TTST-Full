@@ -65,7 +65,7 @@
             <targetReference>Cart_to_Order_Summary</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <subflows>
         <description>This subflow sets the next state field of the current checkout session object.</description>
         <name>Set_State</name>

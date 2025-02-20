@@ -21,7 +21,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.Zoom_Large_Meeting_Add_On</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>50.0</apiVersion>
     <decisions>

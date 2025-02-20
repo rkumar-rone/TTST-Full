@@ -195,7 +195,7 @@ public without sharing class SIB_CartService {
                     FROM Session__c
                     WHERE Event__c = :itemToDelete.Product2.TTS_Event__c
             ];
-
+            system.debug('sessionList : '+sessionList);
             String selectedSessions = itemToDelete.Cart.Selected_Sessions__c;
             String sessionString; // This will store the updated sessions
 
@@ -212,7 +212,8 @@ public without sharing class SIB_CartService {
                             }
                         }
                     }
-
+                    system.debug('selectedList : '+selectedList);
+                    system.debug('sessionString : '+sessionString);
                     if (selectedList.size() > 0) {
                         sessionString = '{' + String.join(selectedList, ',') + '}';
                     }
@@ -291,6 +292,164 @@ public without sharing class SIB_CartService {
         return mapParams;
     }
 
+    public static Map<String,Object> checkCollevaProductExistOnCart(Map<String,Object> mapParams){
+        Boolean isSuccess = false;
+        Boolean productAlreadyExist = false;
+        String message = '';
+        if(mapParams != null &&
+                mapParams.containsKey(SIB_Constants.PRODUCT_ID) && mapParams.get(SIB_Constants.PRODUCT_ID) != null  
+        )
+        {
+            String productId = (String)mapParams.get(SIB_Constants.PRODUCT_ID);
+            List<Product2> productList = [select id, ProductCode, Colleva_Base_Product__c from Product2 where Id =: productId AND Colleva_Product__c = true];
+            Id currentUserId = UserInfo.getUserId();
+            User currentUser = [SELECT ContactId, contact.Colleva_Id__c FROM User WHERE Id = :currentUserId];
+            if(!productList.isEmpty() && productList != null && productList.size() > 0)
+            {
+                if(!productList[0].Colleva_Base_Product__c)
+                {
+                    if(currentUser.Contact.Colleva_Id__c == null)
+                    {
+                        message = System.label.SIB_Buy_Colleva_Base_Product;
+                        isSuccess = true;
+                        productAlreadyExist = true;
+                        mapParams.put(SIB_SetupConstants.IS_SUCCESS, isSuccess);
+                        mapParams.put(SIB_SetupConstants.PRODUCT_ALREADY_EXIST, productAlreadyExist);
+                        mapParams.put(SIB_SetupConstants.RESPONSE_MESSAGE, message);
+                        return mapParams;
+                    }
+                    else
+                    {
+                        Map<String, Object> params = new Map<String, Object>();
+                        params.put('CollevaId', String.valueOf(currentUser.Contact.Colleva_Id__c));
+                        // SIB_CollevaAPIDataVO collevaApiDataVO;
+                        // Instantiate and start the Flow
+                        Flow.Interview.Colleva_API_Allowed_Usage collevaApiCall = new Flow.Interview.Colleva_API_Allowed_Usage(params);
+                        collevaApiCall.start();
+                        System.debug('collevaApiCall : '+ collevaApiCall);
+                        System.debug('collevaApiCall : '+ collevaApiCall.responsecode);
+                        System.debug('collevaApiCall : '+ collevaApiCall.responsedata);
+                        System.debug('collevaApiCall : '+ collevaApiCall.responseerrors);
+                        SIB_CollevaAPIDataVO collevaApiDataVO = (SIB_CollevaAPIDataVO) collevaApiCall.responsedata;
+                        if(collevaApiDataVO != null){
+                            List<SIB_CollevaAPIActiveProductsVO> activeProducts =(List<SIB_CollevaAPIActiveProductsVO>) collevaApiDataVO.activeProducts;
+                            System.debug('collevaApiCall : activeProducts '+ activeProducts);
+                            System.debug('collevaApiCall : collevaApiDataVO.minutesLeft '+ collevaApiDataVO.minutesLeft);
+                            Boolean isProductMatched = false;
+                            for(SIB_CollevaAPIActiveProductsVO activeProduct : activeProducts)
+                            {
+                                System.debug('collevaApiCall : validUntil '+ activeProduct.validUntil);
+                                System.debug('collevaApiCall : '+ Date.valueOf(activeProduct.validUntil).format());
+                                // Date myDate = Date.valueOf(activeProduct.validUntil);
+                                // date validUntilDate = date.newInstance(myDate.year(), myDate.month(), myDate.day());
+                                // System.debug(validUntilDate);
+                                if(Date.valueOf(activeProduct.validUntil) >= System.today() && collevaApiDataVO.minutesLeft == 0)
+                                {
+                                    System.debug('collevaApiCall : IN');
+                                    isProductMatched = false;
+                                }
+                                else{
+                                    isProductMatched = true;
+                                }
+                            }
+                            System.debug('collevaApiCall : '+isProductMatched);
+                            if(isProductMatched)
+                            {
+                                message = System.Label.SIB_Active_Colleva_Prod_Already_Avl;
+                                isSuccess = true;
+                                productAlreadyExist = true;
+                                mapParams.put(SIB_SetupConstants.IS_SUCCESS, isSuccess);
+                                mapParams.put(SIB_SetupConstants.PRODUCT_ALREADY_EXIST, productAlreadyExist);
+                                mapParams.put(SIB_SetupConstants.RESPONSE_MESSAGE, message);
+                                return mapParams;
+                            }
+                        }
+                    }
+                    //Else call get request to check active Product and let user add Additional minutes
+                }
+                // logic moved to checkout level which checks if user already bought this product/not.
+                // else
+                // {
+                //     Map<String, Object> params = new Map<String, Object>();
+                //     params.put('CollevaId', String.valueOf(currentUser.Contact.Colleva_Id__c));
+                    
+                //     // Instantiate and start the Flow
+                //     Flow.Interview.Colleva_API_Allowed_Usage collevaApiCall = new Flow.Interview.Colleva_API_Allowed_Usage(params);
+                //     collevaApiCall.start();
+                //     System.debug('collevaApiCall : '+ collevaApiCall);
+                //     System.debug('collevaApiCall : '+ collevaApiCall.responsecode);
+                //     System.debug('collevaApiCall : '+ collevaApiCall.responsedata);
+                //     System.debug('collevaApiCall : '+ collevaApiCall.responseerrors);
+                //     SIB_CollevaAPIDataVO collevaApiDataVO = (SIB_CollevaAPIDataVO) collevaApiCall.responsedata;
+                //     List<SIB_CollevaAPIActiveProductsVO> activeProducts =(List<SIB_CollevaAPIActiveProductsVO>) collevaApiDataVO?.activeProducts;
+                //     System.debug('collevaApiCall : activeProducts '+ activeProducts);
+                //     // System.debug('collevaApiCall : collevaApiDataVO.minutesLeft '+ collevaApiDataVO.minutesLeft);
+                //     Boolean isProductMatched = false;
+                //     if(activeProducts != null && !activeProducts.isEmpty()){
+                //         for(SIB_CollevaAPIActiveProductsVO activeProduct : activeProducts)
+                //         {
+                //             System.debug('collevaApiCall : validUntil '+ activeProduct.validUntil);
+                //             System.debug('collevaApiCall : '+ Date.valueOf(activeProduct.validUntil).format());
+                //             // Date myDate = Date.valueOf(activeProduct.validUntil);
+                //             // date validUntilDate = date.newInstance(myDate.year(), myDate.month(), myDate.day());
+                //             // System.debug(validUntilDate);
+                //             if(
+                //                 activeProduct.externalId == productList[0].ProductCode
+                //                 && Date.valueOf(activeProduct.validUntil) >= System.today() 
+                //                 && collevaApiDataVO.minutesLeft >= 0
+                //                 )
+                //             {
+                //                 System.debug('collevaApiCall : IN');
+                //                 isProductMatched = true;
+                //             }
+                //         }
+                //     }
+                //     System.debug('collevaApiCall : '+isProductMatched);
+                //     if(isProductMatched)
+                //     {
+                //         message = System.Label.SIB_Active_Colleva_Prod_Already_Avl;
+                //         isSuccess = true;
+                //         productAlreadyExist = true;
+                //         mapParams.put(SIB_SetupConstants.IS_SUCCESS, isSuccess);
+                //         mapParams.put(SIB_SetupConstants.PRODUCT_ALREADY_EXIST, productAlreadyExist);
+                //         mapParams.put(SIB_SetupConstants.RESPONSE_MESSAGE, message);
+                //         return mapParams;
+                //     }
+                    
+                // }
+                if(mapParams.containsKey(SIB_Constants.CART_ID) && mapParams.get(SIB_Constants.CART_ID) != null)
+                {
+                    Id oldCartId = (Id)mapParams.get(SIB_Constants.CART_ID);
+                
+                    if(oldCartId != null)
+                    {
+                        List<CartItem> cartItemList = [SELECT Id,  Quantity, Product2Id, Product2.Colleva_Product__c, 
+                                            Product2.Colleva_Base_Product__c, CreatedById FROM CartItem Where cartId =:oldCartId 
+                                            AND Product2.Colleva_Product__c = true];
+                        if(cartItemList != null && !cartItemList.isEmpty() && cartItemList.size() > 0
+                        && cartItemList[0].Product2Id != productId 
+                        )
+                        {
+                            productAlreadyExist = true;
+                            message = System.Label.Colleva_Prod_Already_Exist_On_Cart;
+                        }    
+                    }
+                }
+                   
+                isSuccess = true;
+            }
+            else
+            {
+                isSuccess = true;
+                productAlreadyExist = false;
+            }
+            mapParams.put(SIB_SetupConstants.IS_SUCCESS, isSuccess);
+            mapParams.put(SIB_SetupConstants.PRODUCT_ALREADY_EXIST, productAlreadyExist);
+            mapParams.put(SIB_SetupConstants.RESPONSE_MESSAGE, message);
+        }
+        return mapParams;
+    }
+
     public static Map<String,Object> addCartItem(Map<String,Object> mapParams){
         Boolean isSuccess = false;
         String message = '';
@@ -325,7 +484,7 @@ public without sharing class SIB_CartService {
             mapParams.put(SIB_Constants.PARAM_RES, cartResponse);
 
             //TTS code
-            B2BGetInfo.updateSelectedSessionsOnCart(cartResponse.cartId, selectedSessions);
+            updateSelectedSessionsOnCart(cartResponse.cartId, selectedSessions);
             SIB_GetInfo.updateSessionPricesOnCartItems(cartResponse.cartId, productId, selectedSessionNumber, true, selectedSessions);
             isSuccess = true;
         }else{
@@ -655,5 +814,28 @@ public without sharing class SIB_CartService {
             }
         }
         return mapParams;
+    }
+
+    public static void updateSelectedSessionsOnCart(Id cartId, String selectedSessions) {
+        system.debug('selectedSessions : '+ selectedSessions);
+        try {
+            WebCart cart = [SELECT Id, Selected_Sessions__c FROM WebCart WHERE Id = :cartId LIMIT 1];
+            String selectedItems;
+            if (cart.Selected_Sessions__c == null) {
+                selectedItems = selectedSessions.removeStart('{').removeEnd('}');
+            } else if(String.isNotBlank(selectedSessions)) {
+                String selectedSessionsChk = selectedSessions.removeStart('{').removeEnd('}');
+                if(String.isNotBlank(selectedSessionsChk)){
+                    selectedItems = cart.Selected_Sessions__c.removeStart('{').removeEnd('}') + ' , ' + selectedSessions.removeStart('{').removeEnd('}');
+                }
+            }
+            system.debug('selectedItems : '+ selectedItems);
+            if(selectedItems != null && String.isNotBlank(selectedItems))
+            {
+                update new WebCart(Id = cartId, Selected_Sessions__c = '{' + selectedItems + '}', CartId__c = cartId);
+            }
+        } catch (Exception e) {
+            System.debug(e);
+        }
     }
 }

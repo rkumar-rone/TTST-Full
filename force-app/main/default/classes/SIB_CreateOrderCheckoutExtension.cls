@@ -77,6 +77,11 @@ public class SIB_CreateOrderCheckoutExtension extends CartExtension.CheckoutCrea
 
             this.order.Original_Card_Type__c = (String) this.cart?.getCustomField(SIB_Constants.PARAM_ORGINALCARDTYPE_FIELD_NAME);
         }
+        if(getCollevaItemsInOrder(this.orderGraph.getOrderItems()))      //get any colleva products in order);)
+        {
+            System.debug('isCollevaProductAvailable : ');
+            this.order.Colleva_Order__c = true;
+        }
     }
 
     /**
@@ -225,6 +230,32 @@ public class SIB_CreateOrderCheckoutExtension extends CartExtension.CheckoutCrea
         }
 
         return this.dataWrapper;
+    }
+
+     /**
+     * @description Method to instantiate datawrapper and create order item product id list
+     */
+    @TestVisible 
+    private Boolean getCollevaItemsInOrder(List<OrderItem> orderItems) {
+
+        Boolean isCollevaProductAdded = false;
+        System.debug('isCollevaProductAvailable : size '+ orderItems.size());
+        System.debug('isCollevaProductAvailable : size '+ orderItems);
+        System.debug('isCollevaProductAvailable : size '+ orderItems.get(0));
+        System.debug('isCollevaProductAvailable : size '+ this.order);
+        System.debug('isCollevaProductAvailable : orderId '+ orderItems.get(0).OrderId);
+        Set<String> productIds = new Set<String>();
+        for(OrderItem orderItemObject : orderItems)
+        {
+            productIds.add(orderItemObject.Product2Id);
+        }
+        List<Product2> lstProducts = [SELECT Id,Colleva_Product__c FROM Product2 WHERE Id IN : productIds AND Colleva_Product__c = TRUE];
+        if(lstProducts!=null && lstProducts.size()>0)
+        {
+            isCollevaProductAdded = true;
+        }
+        System.debug('isCollevaProductAvailable : '+ isCollevaProductAdded);
+        return isCollevaProductAdded;
     }
 
     @TestVisible

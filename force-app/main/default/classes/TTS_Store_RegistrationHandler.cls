@@ -66,11 +66,15 @@ global class TTS_Store_RegistrationHandler implements Auth.RegistrationHandler{
                 {
                     //Setup the account
                     Id personId = handleAccountCreation(data, idMap);
+                    Boolean collevaAccess = false;
                     SobjectType objType = personId.getSobjectType();
                     //Get fresh account record to retrieve the PersonContactId if the Id returned is an Accoung
                     if (String.valueOf(objType) == 'Account') {
-                        Account newAcc = [SELECT Id, FirstName, LastName, PersonContactId FROM Account WHERE Id = :personId];
+                        Account newAcc = [SELECT Id, FirstName, LastName, PersonContactId,PersonContact.Colleva_Id__c FROM Account WHERE Id = :personId];
                         personId = newAcc.PersonContactId;
+                        if(newAcc.PersonContact.Colleva_Id__c > 0){
+                            collevaAccess = true;
+                        }
                     }
                     
                     //Prep and assign the user information, including Profile and Permission Set assignments
@@ -97,6 +101,10 @@ global class TTS_Store_RegistrationHandler implements Auth.RegistrationHandler{
                     u.profileId = p.Id;
                     u.FederationIdentifier = data.identifier;
                     u.contactId = personId;
+                    if(collevaAccess)
+                    {
+                        u.CollevaAccess__c = true;
+                    }
                     //insert u;
                     //Add Permission Set Assignments
                     if (!Test.isRunningTest()) {
@@ -225,6 +233,7 @@ global class TTS_Store_RegistrationHandler implements Auth.RegistrationHandler{
             //Handle creation of new Person Account if not found   
             } else {
                 try {
+                    List<Group_Recepient__c> grpRecep = [select id, Name, Colleva_Id__c, Recepient_Email__c from Group_Recepient__c where Recepient_Email__c =: data.attributeMap.get('email') AND Colleva_Id__c != null limit 1];
                     Account newPA = new Account();
                     newPA.RecordTypeId = recordTypeId;
                     newPA.FirstName = data.firstName;
@@ -237,12 +246,18 @@ global class TTS_Store_RegistrationHandler implements Auth.RegistrationHandler{
                     newPA.Company__pc = data.attributeMap.get('company');
                     newPA.How_did_you_hear_about_us__pc = data.attributeMap.get('source');
                     newPA.Country_of_Residence__pc = data.attributeMap.get('country');
-
+                    if(grpRecep != null && !grpRecep.isEmpty()) {
+                        newPA.Colleva_Id__pc = grpRecep[0].Colleva_Id__c;
+                    }
                     insert newPA;
     
                     if(newPA.Id != null) {
                         handleBuyerSetup(newPA);
                     }  
+                    if(newPA.Id != null && grpRecep != null && !grpRecep.isEmpty() && String.isNotBlank(grpRecep[0].Recepient_Email__c) ) {
+                        //update contact on  Colleva Detail
+                        updateContactOnColleva(newPA.Id , grpRecep[0].Recepient_Email__c);
+                    }
                     return newPA.Id;
                 } catch (Exception e) {
                     System.debug('@@@@@@@@@@@@ Failure in HandleAccountCreation: ' + e.getMessage());
@@ -437,6 +452,22 @@ global class TTS_Store_RegistrationHandler implements Auth.RegistrationHandler{
 
         if (!Test.isRunningTest()) {
             insert usersToInsert;
+        }
+
+    }
+
+    
+    global static void updateContactOnColleva(String accountId, String email) {
+        List<SIB_Colleva_Details__c> collevaDetailList = [select id,name,Contact__c,Colleva_Id__c from SIB_Colleva_Details__c where Email__c  =: email];
+        System.debug('collevaDetailList : '+collevaDetailList);
+        System.debug('collevaDetailList : accountId '+accountId);
+        System.debug('collevaDetailList : email '+email);
+        if(collevaDetailList != null && !collevaDetailList.isEmpty() && String.isNotBlank(accountId))
+        {
+            List<Account> newAccList = [SELECT Id, FirstName, LastName, PersonContactId,PersonContact.Colleva_Id__c FROM Account WHERE Id = :accountId];
+            if(newAccList!= null && !newAccList.isEmpty() && String.isNotBlank(newAccList[0].PersonContactId) )
+            collevaDetailList[0].Contact__c = newAccList[0].PersonContactId;
+            update collevaDetailList;
         }
 
     }

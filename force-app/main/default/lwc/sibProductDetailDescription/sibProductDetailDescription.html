@@ -2,7 +2,7 @@
   @description       : 
   @author            : Gaurav Setia
   @group             : 
-  @last modified on  : 11-26-2024
+  @last modified on  : 10-10-2024
   @last modified by  : Gaurav Setia
 -->
 <template lwc:render-mode="light">
@@ -116,7 +116,12 @@
                         title="Courses Pending">
                     </lightning-icon>
 
-                    {hoursOfVideoContent} hours of video content
+                    <template lwc:if={isCollevaProduct}>
+                        {hoursOfVideoContent} hours of simulation use
+                    </template>
+                    <template lwc:else>
+                        {hoursOfVideoContent} hours of video content
+                    </template>
                 </div>
                     
     
@@ -129,7 +134,12 @@
                         title="Courses Pending">
                     </lightning-icon>
 
-                    {hoursToComplete} hours to complete
+                    <template lwc:if={isCollevaProduct}>
+                        {hoursToComplete} hours of simulation use
+                    </template>
+                    <template lwc:else>
+                        {hoursToComplete} hours to complete
+                    </template>
                 </div>
     
                 <div lwc:if={totalDays} class="bottom-spacing">
@@ -143,6 +153,22 @@
 
                     {totalDays}
                 </div>
+                
+                <template lwc:if={isCollevaProduct}>
+                </template>
+                <template lwc:else>
+                    <div  class="bottom-spacing">
+                        <lightning-icon 
+                            class="icon-color-green right-spacing"
+                            icon-name="utility:contract_doc" 
+                            alternative-text="contract_doc" 
+                            size="small" 
+                            title="Courses Pending">
+                        </lightning-icon>
+
+                        Certificate upon completion
+                    </div>
+                </template>
 
                 <template lwc:if={isNonParent}>
                 </template>
@@ -159,39 +185,6 @@
                     {totalDaysForPc} 
                     </div>
                 </template>
-                
-                <div class="bottom-spacing">
-                    <lightning-icon 
-                        class="icon-color-green right-spacing"
-                        icon-name="utility:contract_doc" 
-                        alternative-text="contract_doc" 
-                        size="small" 
-                        title="Courses Pending">
-                    </lightning-icon>
-
-                    Certificate upon completion
-                </div>
-
-                <template for:each={productAttachments} for:item="attachment">
-                    <div lwc:if={productAttachments} class="bottom-spacing" key={attachment.id}>
-                        <lightning-icon 
-                            class="icon-color-green right-spacing"
-                            icon-name="utility:file" 
-                            alternative-text={attachment.alternateText} 
-                            size="small" 
-                            title={attachment.title}>
-                        </lightning-icon>
-
-                        <span 
-                            data-name={attachment.title}
-                            data-url={attachment.url}
-                            class="attachments"  
-                            onclick={handleFile}>
-                            {attachment.title}
-                        </span>
-                    </div>
-                </template>   
-               
             </div>
         </div>
 

@@ -63,7 +63,6 @@
             </value>
         </inputParameters>
         <nameSegment>FFX_FAMInheritBookAndMethod</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

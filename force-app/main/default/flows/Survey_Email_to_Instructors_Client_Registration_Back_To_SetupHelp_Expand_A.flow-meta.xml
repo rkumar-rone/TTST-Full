@@ -23,7 +23,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.Send_Survey_Link_to_Instructor</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <assignments>

@@ -24,7 +24,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.RC_Enroll_Scorecard_Team_in_Course</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>51.0</apiVersion>
     <assignments>

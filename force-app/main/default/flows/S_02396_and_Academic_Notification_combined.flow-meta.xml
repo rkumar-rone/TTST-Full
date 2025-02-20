@@ -23,7 +23,6 @@
             </value>
         </inputParameters>
         <nameSegment>Registration__c.X2_Hour_Notification_after_Registration</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -48,7 +47,6 @@
             </value>
         </inputParameters>
         <nameSegment>Registration__c.S_02396_As_an_instructor_I_need_MBA_Pre_FM_to_have_an_email_automagically_sent_t</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <assignments>

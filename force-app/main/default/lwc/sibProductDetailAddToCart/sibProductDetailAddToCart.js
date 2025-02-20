@@ -10,6 +10,7 @@ import getProductDetails from '@salesforce/apex/SIB_ProductDetailController.getP
 import updateBuyerAndAccountCurrency from '@salesforce/apex/SIB_ProductDetailController.updateBuyerAndAccountCurrency';
 import getProductCurrency from '@salesforce/apex/SIB_ProductDetailController.getProductCurrency';
 import addCartItem from '@salesforce/apex/SIB_CartController.addCartItem';
+import checkCollevaProductExistOnCart from '@salesforce/apex/SIB_CartController.checkCollevaProductExistOnCart';
 import calculateCart from '@salesforce/apex/SIB_CartController.calculateCart';
 import clearCart from '@salesforce/apex/SIB_CartController.clearCart';
 import CommonModal from 'c/sibCommonModal';
@@ -40,6 +41,8 @@ export default class SibProductDetailAddToCart extends LightningElement {
     effectiveAccountId;
     webstoreId;
     totalProductCount = 0;
+    existingCartId = '';
+    isCollevaProductExist = false;
     cartCurrency;
     eventSessions;
     isShowSpinner = false;
@@ -125,6 +128,7 @@ export default class SibProductDetailAddToCart extends LightningElement {
         if (!this.isInSitePreview()){
             if (data) {
                 this.totalProductCount = parseInt(data?.totalProductCount); 
+                this.existingCartId = data?.cartId;
                 this.cartCurrency = data?.currencyIsoCode;
             } else if (error) {
                 this.totalProductCount = 0;
@@ -359,43 +363,126 @@ export default class SibProductDetailAddToCart extends LightningElement {
         let productId = this.product?.productId ;
         let productQuantity = parseInt(this.qty);
         if (productId && productQuantity && productQuantity > 0) {
-
-            let mapParams = {
-                webstoreId: this.webstoreId,
-                effectiveAccountId: this.effectiveAccountId,
-                selectedSessions: this.selectedSessionsJson,
-                selectedSessionNumber: this.selectedSessionNumber,
-                productId: productId,
-                quantity: productQuantity,
-                currencyISOCode: this.product?.price?.currencyCode
-            };
-            addCartItem({
-                'mapParams' : mapParams
-            }).then(async (result) => {
-                consoleLogging('addToCartAction result ->' + result);
-                if (result.isSuccess)
-                {
-                    if(this.couponCode && this.cartCouponId) {
-                        this.hasCoupon = true;
-                        this.oldCouponValue = this.couponCode;
-                        this.deleteCouponFromCart(this.cartCouponId, result.res.cartId);
-                    } else {
-                        this.clearCoupon(result.res.cartId);
+            // if(this.existingCartId)
+            // {
+                let mapParams = {
+                    CartId: this.existingCartId,                
+                    productId: productId,
+                    quantity: productQuantity,
+                };
+                await checkCollevaProductExistOnCart({
+                    'mapParams' : mapParams
+                }).then(async (result) => {
+                    consoleLogging('checkCollevaProductExistOnCart result ->' + result);
+                    if (result.isSuccess)
+                    {
+                        if(result.productAlreadyExist) 
+                        {
+                            this.isCollevaProductExist = true;
+                            this.isShowSpinner = false;
+                            this.sendIsSpinnerOnEvent(false);
+                            this.sendBubbledToastMessage(result.message, 'error', 5000);
+                        }
+                        if (result && result.log) 
+                        {
+                            applicationLogging(result.log);
+                        }
+                    } 
+                    else 
+                    {
+                        this.isShowSpinner = false;
+                        this.sendIsSpinnerOnEvent(false);
+                        this.sendBubbledToastMessage('There is Error On Cart', 'error', 5000);
                     }
-                    
-
-                    if (result && result.log) {
-                        applicationLogging(result.log);
-                    }
-                } else {
+                }).catch((err) => {
                     this.isShowSpinner = false;
                     this.sendIsSpinnerOnEvent(false);
-                    this.sendBubbledToastMessage(Labels.productCouldNotBeAddedToCart.replace('{0}', this.product?.name), 'error', 5000);
+                    this.sendBubbledToastMessage('There is Error On Cart', 'error', 5000);
+                    console.error(err);
+                });
+            // }
+            if(!this.isCollevaProductExist)
+            {
+                let mapParams = {
+                    webstoreId: this.webstoreId,
+                    effectiveAccountId: this.effectiveAccountId,
+                    selectedSessions: this.selectedSessionsJson,
+                    selectedSessionNumber: this.selectedSessionNumber,
+                    productId: productId,
+                    quantity: productQuantity,
+                    currencyISOCode: this.product?.price?.currencyCode
+                };
+                addCartItem({
+                    'mapParams' : mapParams
+                }).then(async (result) => {
+                    consoleLogging('addToCartAction result ->' + result);
+                    if (result.isSuccess)
+                    {
+                        if(this.couponCode && this.cartCouponId) {
+                            this.hasCoupon = true;
+                            this.oldCouponValue = this.couponCode;
+                            this.deleteCouponFromCart(this.cartCouponId, result.res.cartId);
+                        } else {
+                            this.clearCoupon(result.res.cartId);
+                        }
+                        
+
+                        if (result && result.log) {
+                            applicationLogging(result.log);
+                        }
+                    } else {
+                        this.isShowSpinner = false;
+                        this.sendIsSpinnerOnEvent(false);
+                        this.sendBubbledToastMessage(Labels.productCouldNotBeAddedToCart.replace('{0}', this.product?.name), 'error', 5000);
+                    }
+                }).catch((err) => {
+                    this.isShowSpinner = false;
+                    this.sendIsSpinnerOnEvent(false);
+                    this.sendBubbledToastMessage(Labels.productCouldNotBeAddedToCart.replace('{0}', this.product?.name),'error',5000);
+                    console.error(err);
+                });
+            }
+        }
+    }
+
+    async checkCollevaProductExist() {
+        let productId = this.product?.productId ;
+        let productQuantity = parseInt(this.qty);
+        if (productId && productQuantity && productQuantity > 0) {
+
+            let mapParams = {
+                CartId: this.existingCartId,                
+                productId: productId,
+                quantity: productQuantity,
+            };
+            await checkCollevaProductExistOnCart({
+                'mapParams' : mapParams
+            }).then(async (result) => {
+                consoleLogging('checkCollevaProductExistOnCart result ->' + result);
+                if (result.isSuccess)
+                {
+                    if(result.productAlreadyExist) 
+                    {
+                        this.isCollevaProductExist = true;
+                        this.isShowSpinner = false;
+                        this.sendIsSpinnerOnEvent(false);
+                        this.sendBubbledToastMessage('Colleva Product Already Exist On Cart', 'error', 5000);
+                    }
+                    if (result && result.log) 
+                    {
+                        applicationLogging(result.log);
+                    }
+                } 
+                else 
+                {
+                    this.isShowSpinner = false;
+                    this.sendIsSpinnerOnEvent(false);
+                    this.sendBubbledToastMessage('There is Error On Cart', 'error', 5000);
                 }
             }).catch((err) => {
                 this.isShowSpinner = false;
                 this.sendIsSpinnerOnEvent(false);
-                this.sendBubbledToastMessage(Labels.productCouldNotBeAddedToCart.replace('{0}', this.product?.name),'error',5000);
+                this.sendBubbledToastMessage('There is Error On Cart', 'error', 5000);
                 console.error(err);
             });
         }

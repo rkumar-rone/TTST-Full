@@ -15,7 +15,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Parent_Opp_Checklist_Checked_by</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Checklist_Checked_by_Contact</name>
@@ -32,7 +31,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Checklist_Checked_by</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Checklist_Prepared_by_Contact</name>
@@ -49,7 +47,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Checklist_Requested</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Checklist_Prepared_by_Related_Contact</name>
@@ -66,7 +63,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Parent_Opp_Checklist_Requested</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_DELTA_Class_Built_by</name>
@@ -83,7 +79,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.DELTA_Class_Built_by</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Materials_Assigned_to</name>
@@ -103,7 +98,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Checklist_Received</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Materials_Assigned_to_Contact</name>
@@ -123,7 +117,6 @@
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Parent_Opp_Checklist_Received</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>User: Materials Team
@@ -143,7 +136,6 @@ Related User: Opportunity Owner</description>
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Materials_Uploaded_on_DELTA</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Materials_Team_Lead_Trainer_Opp_Owner_1</name>
@@ -160,7 +152,6 @@ Related User: Opportunity Owner</description>
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Parent_Opp_Materials_Uploaded_on_DELTA</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Opportunity_Owner</name>
@@ -177,7 +168,6 @@ Related User: Opportunity Owner</description>
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Checklist_Received_CSM</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Opportunity_Owner_1</name>
@@ -194,7 +184,6 @@ Related User: Opportunity Owner</description>
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Parent_Opp_Checklist_Received_CSM</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Opportunity_Owner_2</name>
@@ -211,7 +200,6 @@ Related User: Opportunity Owner</description>
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Materials_Sent_to_Printer</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Opportunity_Owner_3</name>
@@ -228,7 +216,6 @@ Related User: Opportunity Owner</description>
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Parent_Opp_Materials_Sent_to_Printer</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Email_to_Opportunity_Owner_4</name>
@@ -245,7 +232,6 @@ Related User: Opportunity Owner</description>
             </value>
         </inputParameters>
         <nameSegment>Materials_Log__c.Publications_Ordered</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <decisions>

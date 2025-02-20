@@ -15,7 +15,6 @@
             </value>
         </inputParameters>
         <nameSegment>B25__Reservation__c.Reservation_day_count_change_notification</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>New_reservation_confirmation</name>
@@ -32,7 +31,6 @@
             </value>
         </inputParameters>
         <nameSegment>B25__Reservation__c.New_reservation_confirmation</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Reservation_Cancellation_notification</name>
@@ -49,7 +47,6 @@
             </value>
         </inputParameters>
         <nameSegment>B25__Reservation__c.Reservation_Cancellation</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Reservation_Updated</name>
@@ -66,7 +63,6 @@
             </value>
         </inputParameters>
         <nameSegment>B25__Reservation__c.Reservation_Updated</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <decisions>

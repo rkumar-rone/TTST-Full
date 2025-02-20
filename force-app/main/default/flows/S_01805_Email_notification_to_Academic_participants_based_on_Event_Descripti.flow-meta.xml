@@ -23,7 +23,6 @@
             </value>
         </inputParameters>
         <nameSegment>Registration__c.S_01805_Email_notification_to_Academic_participants_based_on_Event_Description</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <assignments>

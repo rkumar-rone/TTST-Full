@@ -33,7 +33,6 @@
             </value>
         </inputParameters>
         <nameSegment>NewTask</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>eLearning_Material_Assigned</name>
@@ -71,7 +70,6 @@
             </value>
         </inputParameters>
         <nameSegment>NewTask</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>eLearning_Request_LMSPortal_Assigned</name>
@@ -109,7 +107,6 @@
             </value>
         </inputParameters>
         <nameSegment>NewTask</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>59.0</apiVersion>
     <decisions>

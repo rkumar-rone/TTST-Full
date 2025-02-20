@@ -4,7 +4,7 @@
         <name>Copy_1_of_Send_Notification_to_Queue</name>
         <label>Copy 1 of Send Notification to Queue</label>
         <locationX>842</locationX>
-        <locationY>755</locationY>
+        <locationY>708</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -40,13 +40,12 @@
         </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Copy_1_of_Send_Order_Confirmation_Email</name>
         <label>Copy 1 of Send Order Confirmation Email</label>
         <locationX>578</locationX>
-        <locationY>431</locationY>
+        <locationY>384</locationY>
         <actionName>OrderSummary.Order_Summary_Confirmation_Alert</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -61,13 +60,12 @@
         </inputParameters>
         <nameSegment>OrderSummary.Order_Summary_Confirmation_Alert</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Generate_PDF_Apex</name>
         <label>Generate PDF Apex</label>
         <locationX>1106</locationX>
-        <locationY>431</locationY>
+        <locationY>384</locationY>
         <actionName>InvoicePDFController</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -107,13 +105,12 @@
         <nameSegment>InvoicePDFController</nameSegment>
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Notification_to_Queue</name>
         <label>Send Notification to Queue</label>
         <locationX>578</locationX>
-        <locationY>863</locationY>
+        <locationY>816</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -149,13 +146,12 @@
         </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Send_Order_Confirmation_Email</name>
         <label>Send Order Confirmation Email</label>
         <locationX>50</locationX>
-        <locationY>431</locationY>
+        <locationY>384</locationY>
         <actionName>OrderSummary.Order_Summary_Confirmation_Alert</actionName>
         <actionType>emailAlert</actionType>
         <connector>
@@ -170,7 +166,6 @@
         </inputParameters>
         <nameSegment>OrderSummary.Order_Summary_Confirmation_Alert</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>54.0</apiVersion>
     <assignments>
@@ -178,7 +173,7 @@
         <name>Copy_1_of_Set_GroupId</name>
         <label>Copy 1 of Set GroupId</label>
         <locationX>842</locationX>
-        <locationY>647</locationY>
+        <locationY>600</locationY>
         <assignmentItems>
             <assignToReference>GroupID</assignToReference>
             <operator>Add</operator>
@@ -195,7 +190,7 @@
         <name>Set_GroupId</name>
         <label>Set GroupId</label>
         <locationX>578</locationX>
-        <locationY>755</locationY>
+        <locationY>708</locationY>
         <assignmentItems>
             <assignToReference>GroupID</assignToReference>
             <operator>Add</operator>
@@ -208,10 +203,53 @@
         </connector>
     </assignments>
     <decisions>
+        <name>Check_Colleva_Order</name>
+        <label>Check Colleva Order</label>
+        <locationX>1766</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Colleva_Order</name>
+            <conditionLogic>(1 AND 2 AND (3 OR 4))</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Colleva_Order__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Colleva_Provisioned__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Processing</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Completed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Call_Colleva_API</targetReference>
+            </connector>
+            <label>Is Colleva Order</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_Group_Order</name>
         <label>Is Group Order</label>
         <locationX>534</locationX>
-        <locationY>1163</locationY>
+        <locationY>1116</locationY>
         <defaultConnector>
             <targetReference>Trigger_Course_Registration_Platform_Event</targetReference>
         </defaultConnector>
@@ -236,7 +274,7 @@
         <name>Payment_Status</name>
         <label>Payment Status</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>492</locationY>
         <defaultConnector>
             <targetReference>Update_Status_to_Processing</targetReference>
         </defaultConnector>
@@ -268,7 +306,7 @@
         <name>Status</name>
         <label>Status</label>
         <locationX>534</locationX>
-        <locationY>323</locationY>
+        <locationY>276</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>In_Review</name>
@@ -387,7 +425,7 @@ Added condition to trigger only when Status Changed</description>
         <name>Trigger_Course_Registration_Platform_Event</name>
         <label>Trigger Course Registration Platform Event</label>
         <locationX>666</locationX>
-        <locationY>1271</locationY>
+        <locationY>1224</locationY>
         <inputAssignments>
             <field>ContactID__c</field>
             <value>
@@ -407,7 +445,7 @@ Added condition to trigger only when Status Changed</description>
         <name>Trigger_Group_Order_Platform_Event_Flow</name>
         <label>Trigger Group Order Platform Event Flow</label>
         <locationX>402</locationX>
-        <locationY>1271</locationY>
+        <locationY>1224</locationY>
         <inputAssignments>
             <field>Order_Summary_ID__c</field>
             <value>
@@ -421,7 +459,7 @@ Added condition to trigger only when Status Changed</description>
         <name>Copy_1_of_Get_Notification_Type</name>
         <label>Copy 1 of Get Notification Type</label>
         <locationX>842</locationX>
-        <locationY>431</locationY>
+        <locationY>384</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_1_of_Get_Queue</targetReference>
@@ -442,7 +480,7 @@ Added condition to trigger only when Status Changed</description>
         <name>Copy_1_of_Get_Queue</name>
         <label>Copy 1 of Get Queue</label>
         <locationX>842</locationX>
-        <locationY>539</locationY>
+        <locationY>492</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Copy_1_of_Set_GroupId</targetReference>
@@ -472,7 +510,7 @@ Added condition to trigger only when Status Changed</description>
         <name>Get_Notification_Type</name>
         <label>Get Notification Type</label>
         <locationX>578</locationX>
-        <locationY>539</locationY>
+        <locationY>492</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Queue</targetReference>
@@ -493,7 +531,7 @@ Added condition to trigger only when Status Changed</description>
         <name>Get_Queue</name>
         <label>Get Queue</label>
         <locationX>578</locationX>
-        <locationY>647</locationY>
+        <locationY>600</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Set_GroupId</targetReference>
@@ -523,7 +561,7 @@ Added condition to trigger only when Status Changed</description>
         <name>Update_Status_to_Processing</name>
         <label>Update Status to Processing</label>
         <locationX>138</locationX>
-        <locationY>647</locationY>
+        <locationY>600</locationY>
         <connector>
             <targetReference>Is_Group_Order</targetReference>
         </connector>
@@ -536,7 +574,7 @@ Added condition to trigger only when Status Changed</description>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>408</locationX>
+        <locationX>1024</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Status</targetReference>
@@ -551,9 +589,28 @@ Added condition to trigger only when Status Changed</description>
         </filters>
         <object>OrderSummary</object>
         <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <connector>
+                <targetReference>Check_Colleva_Order</targetReference>
+            </connector>
+            <pathType>AsyncAfterCommit</pathType>
+        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <subflows>
+        <name>Call_Colleva_API</name>
+        <label>Call Colleva API</label>
+        <locationX>1634</locationX>
+        <locationY>384</locationY>
+        <flowName>SIB_Colleva_API</flowName>
+        <inputAssignments>
+            <name>OrderSummaryId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
     <textTemplates>
         <name>NotificationBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>

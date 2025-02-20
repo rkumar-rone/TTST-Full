@@ -16,7 +16,6 @@
         </inputParameters>
         <nameSegment>Opportunity.TTS_Event_Creation_from_an_Opportunity</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Corporate_Event_Email_Alert</name>
@@ -34,7 +33,6 @@
         </inputParameters>
         <nameSegment>Opportunity.TTS_Event_Creation_from_an_Opportunity</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Public_Event_Email_Alert</name>
@@ -52,7 +50,6 @@
         </inputParameters>
         <nameSegment>Opportunity.TTS_Event_Creation_from_an_Opportunity</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Self_Study_Event_Email_Alert</name>
@@ -70,7 +67,6 @@
         </inputParameters>
         <nameSegment>Opportunity.TTS_Event_Creation_from_an_Opportunity</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <decisions>

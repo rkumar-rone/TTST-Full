@@ -62,7 +62,12 @@
                         title="Courses Pending">
                     </lightning-icon>
 
-                    {hoursToComplete} hours to complete
+                    <template lwc:if={isCollevaProduct}>
+                        {hoursToComplete} hours of simulation use
+                    </template>
+                    <template lwc:else>
+                        {hoursToComplete} hours to complete
+                    </template>
                 </div>
 
                 <div lwc:if={totalDays} class="side-spacing">

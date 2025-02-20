@@ -18,7 +18,6 @@
             </value>
         </inputParameters>
         <nameSegment>Pre_work_Session__c.Pre_work_Course_Built_on_AMTO</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Course_Built_on_DELTA_to_Opp_Owner</name>
@@ -38,7 +37,6 @@
             </value>
         </inputParameters>
         <nameSegment>Pre_work_Session__c.Pre_work_Course_Built_on_DELTA</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Notification_to_Lucy_Martin_Harvey</name>
@@ -58,7 +56,6 @@
             </value>
         </inputParameters>
         <nameSegment>Pre_work_Session__c.Pre_work_Participant_List_to_Update</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>User: Meera Patel
@@ -81,7 +78,6 @@ User: Cherie Huang</description>
             </value>
         </inputParameters>
         <nameSegment>Pre_work_Session__c.Pre_work_Session_Requested</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <name>Session_Actioned_to_Opp_Owner</name>
@@ -101,7 +97,6 @@ User: Cherie Huang</description>
             </value>
         </inputParameters>
         <nameSegment>Pre_work_Session__c.Pre_work_Session_Actioned</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>56.0</apiVersion>
     <decisions>

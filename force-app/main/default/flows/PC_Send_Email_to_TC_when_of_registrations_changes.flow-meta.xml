@@ -21,7 +21,6 @@
             </value>
         </inputParameters>
         <nameSegment>CampaignMember.Send_email_to_TC_for_new_registrations</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <processMetadataValues>
@@ -44,7 +43,6 @@
             </value>
         </inputParameters>
         <nameSegment>CampaignMember.Send_Email_to_TC_when_of_registrations_changes</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

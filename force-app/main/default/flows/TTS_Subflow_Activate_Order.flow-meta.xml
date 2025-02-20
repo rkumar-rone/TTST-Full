@@ -27,7 +27,6 @@
             </value>
         </inputParameters>
         <nameSegment>activateOrderAction</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <actionCalls>
         <description>Calls the updateCheckoutState invocable action and sets the value of the next state field for the current checkout session object. The action is only used in asynchronous subflows.</description>
@@ -65,7 +64,6 @@
         </inputParameters>
         <nameSegment>updateCheckoutSessionStateAction</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <assignments>
@@ -392,7 +390,7 @@
             <targetReference>Get_Order_Items</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <subflows>
         <name>Show_Error</name>
         <label>Show Error</label>

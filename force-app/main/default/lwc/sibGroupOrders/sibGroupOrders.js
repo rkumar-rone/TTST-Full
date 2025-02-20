@@ -6,6 +6,7 @@ import createGroupRecepients from '@salesforce/apex/SIB_GetInfo.createGroupRecep
 import deleteRecipientsFromCheckout from '@salesforce/apex/B2BGetInfo.deleteRecipientsFromCheckout';
 import getGroupOrderInfo from '@salesforce/apex/SIB_CheckoutController.getGroupOrderInformation';
 import updateCartAndCartItems from '@salesforce/apex/SIB_CheckoutController.updateCartAndCartItems';
+import checkEmailIsAlreadyOnColleva from '@salesforce/apex/SIB_CheckoutController.checkEmailIsAlreadyOnColleva';
 
 //labels
 import B2B_LBL_GROUPORDERS from '@salesforce/label/c.SIB_GroupOrders';
@@ -71,6 +72,7 @@ export default class SibGroupOrders extends LightningElement {
     isGroupOrderReadOnly = false;
     iswaitlistError = false;
     isMarkCartAsWaitListed = false;
+    isNextStepAvailable = true;
     
 
     //arrays
@@ -91,9 +93,10 @@ export default class SibGroupOrders extends LightningElement {
     cartSummaryGTM = {};
     loadedRecipientsMap = {};
     cartGroupRecipients;
-
+    checkCollevaCourse = false;
     //messagechannel objects
     subscription = null;
+    isEmailValidOnColleva = false;
 
     //Maps
     emailValidationMap = new Map();
@@ -271,7 +274,10 @@ export default class SibGroupOrders extends LightningElement {
                 this.cartGroupRecipients = result?.groupRecipients;
                 this.isGroupOrderCart = result?.cartSummary?.isGroupOrder;
                 this.waitListInfo = result?.waitlist;
-                
+                this.collevaResponse = result?.collevaResponse;
+                if(this.collevaResponse && this.collevaResponse?.collevaProdQty == 1){
+                    this.checkCollevaCourse = true;
+                }
                 this.checkWaitListInfo(this.waitListInfo).then(result => {
                     this.processGroupOrderData();
                 }).catch(error => {
@@ -342,71 +348,77 @@ export default class SibGroupOrders extends LightningElement {
             const cartItemsArr = this.cartItems;
             for(let item = 0; item < cartItemsLength ; item++) {
                 let cartItem = this.cartItems[item];
-                let lineItem = {}; 
-                
-                const cartItemId = cartItem?.Id;
-                if(!this.finalInputMap[cartItemId]) this.finalInputMap[cartItemId] = {};
+                if(cartItem.Product2.Colleva_Base_Product__c)
+                {                
+                    let lineItem = {}; 
+                    
+                    const cartItemId = cartItem?.Id;
+                    if(!this.finalInputMap[cartItemId]) this.finalInputMap[cartItemId] = {};
 
-                let isSessionAvailable = false
-                let sessionsList = [];
-                if(cartItem && cartItem?.CartItem_Selected_Sessions__c &&
-                    cartItem?.CartItem_Selected_Sessions__c !== '' &&
-                    cartItem?.Product2 && cartItem?.Product2?.Product_Group__c &&
-                    cartItem?.Product2?.Product_Group__c === 'Public Course')
-                {
-                    isSessionAvailable = true;
-                    sessionsList = Object.values(JSON.parse(cartItem?.CartItem_Selected_Sessions__c));
+                    let isSessionAvailable = false
+                    let sessionsList = [];
+                    if(cartItem && cartItem?.CartItem_Selected_Sessions__c &&
+                        cartItem?.CartItem_Selected_Sessions__c !== '' &&
+                        cartItem?.Product2 && cartItem?.Product2?.Product_Group__c &&
+                        cartItem?.Product2?.Product_Group__c === 'Public Course')
+                    {
+                        isSessionAvailable = true;
+                        sessionsList = Object.values(JSON.parse(cartItem?.CartItem_Selected_Sessions__c));
+                    }
+                    //build a json for header info
+                    lineItem =  {productname: cartItem?.Product2.Name,
+                                cartItemId: cartItemId, 
+                                cartId: cartId,
+                                nextCourse: counter < cartItemsLength && counter +1 < cartItemsLength ? this.cartItems[counter + 1]?.Product2?.Name : '',
+                                nextCourseId: counter < cartItemsLength && counter +1 < cartItemsLength? this.cartItems[counter + 1]?.Id: '', 
+                                islast: counter === cartItemsLength - 1,
+                                isFirst: item === 0,
+                                displaySectionId: 'recipient-data-section-'+cartItemId,
+                                displayClass:  counter === 0 ? 'recipient-data-section-expanded' : 'recipient-data-section-hidden',
+                                displayRecipientsClass: 'recipient-data-section-hidden',
+                                isSessionPresent: isSessionAvailable,
+                                city: cartItem?.Product2 && cartItem?.Product2?.Training_Location_City_formula__c ?
+                                                    cartItem?.Product2?.Training_Location_City_formula__c  : '',
+                                sessions: sessionsList,
+                                displayCitySessionData : !!((cartItem?.Product2 && cartItem?.Product2?.Training_Location_City_formula__c &&
+                                    cartItem?.Product2?.Training_Location_City_formula__c !== '') || (sessionsList && sessionsList?.length > 0)),
+                            }; 
+                    
+                    this.cartIdProductMap[cartItemId] = cartItem?.Product2;
+                    let recipientsList = [];
+
+                    //build an array for recipient list
+                    
+                    for(let i=0; i < cartItem?.Quantity ; i++) {
+                        let data = {}; 
+                        const dataIdPrefix = cartItemId + '-' + counter + '-' + i + '-'; 
+                        data = {
+                            firstname: '',
+                            firstNameId: dataIdPrefix + 'firstname', 
+                            firstNameErrorId: dataIdPrefix + 'firstnameError',
+                            lastname: '',
+                            lastNameId: dataIdPrefix + 'lastname', 
+                            lastNameErrorId: dataIdPrefix + 'lastnameError',
+                            email:'',
+                            emailId: dataIdPrefix + 'email', 
+                            emailErrorId: dataIdPrefix + 'emailError',
+                            counter: i+1, 
+                            id: crypto.randomUUID, 
+                            rowId:(cartItemId + '-' +i)
+                        };
+                        recipientsList.push(data);
+                    }
+                    lineItem = { ...lineItem, recipients: recipientsList};
+                    this.finalInputMap[cartItemId] = recipientsList;
+
+                    processedList.push(lineItem);
+                    this.itemsToDisplay = processedList;
+                    
+                    counter += 1;
                 }
-                //build a json for header info
-                lineItem =  {productname: cartItem?.Product2.Name,
-                            cartItemId: cartItemId, 
-                            cartId: cartId,
-                            nextCourse: counter < cartItemsLength && counter +1 < cartItemsLength ? this.cartItems[counter + 1]?.Product2?.Name : '',
-                            nextCourseId: counter < cartItemsLength && counter +1 < cartItemsLength? this.cartItems[counter + 1]?.Id: '', 
-                            islast: counter === cartItemsLength - 1,
-                            isFirst: item === 0,
-                            displaySectionId: 'recipient-data-section-'+cartItemId,
-                            displayClass:  counter === 0 ? 'recipient-data-section-expanded' : 'recipient-data-section-hidden',
-                            displayRecipientsClass: 'recipient-data-section-hidden',
-                            isSessionPresent: isSessionAvailable,
-                            city: cartItem?.Product2 && cartItem?.Product2?.Training_Location_City_formula__c ?
-                                                cartItem?.Product2?.Training_Location_City_formula__c  : '',
-                            sessions: sessionsList,
-                            displayCitySessionData : !!((cartItem?.Product2 && cartItem?.Product2?.Training_Location_City_formula__c &&
-                                cartItem?.Product2?.Training_Location_City_formula__c !== '') || (sessionsList && sessionsList?.length > 0)),
-                        }; 
-                
-                this.cartIdProductMap[cartItemId] = cartItem?.Product2;
-                let recipientsList = [];
-
-                //build an array for recipient list
-                
-                for(let i=0; i < cartItem?.Quantity ; i++) {
-                    let data = {}; 
-                    const dataIdPrefix = cartItemId + '-' + counter + '-' + i + '-'; 
-                    data = {
-                        firstname: '',
-                        firstNameId: dataIdPrefix + 'firstname', 
-                        firstNameErrorId: dataIdPrefix + 'firstnameError',
-                        lastname: '',
-                        lastNameId: dataIdPrefix + 'lastname', 
-                        lastNameErrorId: dataIdPrefix + 'lastnameError',
-                        email:'',
-                        emailId: dataIdPrefix + 'email', 
-                        emailErrorId: dataIdPrefix + 'emailError',
-                        counter: i+1, 
-                        id: crypto.randomUUID, 
-                        rowId:(cartItemId + '-' +i)
-                    };
-                    recipientsList.push(data);
+                else{
+                    this.isGroupOrderCart = true;
                 }
-                lineItem = { ...lineItem, recipients: recipientsList};
-                this.finalInputMap[cartItemId] = recipientsList;
-
-                processedList.push(lineItem);
-                this.itemsToDisplay = processedList;
-                
-                counter += 1;
             }
 
             // If the user refreshes the page, load Group Recipients from the server and display them on the UI
@@ -604,18 +616,78 @@ export default class SibGroupOrders extends LightningElement {
     validateEmailAddress(event) {
         const email = event.target.value;
         const eventId = event.currentTarget.dataset.id;
-        
+        let field = this.querySelector('[data-id="'+eventId+'"]');
+        field.classList.remove(this.styles.inputerror);
 
         if(this.validateEmail(email, eventId)){
-            if(this.validateEmailUniqueness(email, eventId)) {
-                
-                this.handleRecipientInfoChange(event);
+            //call server method to check if email is entered before.
+            if(this.checkEmailIsAlreadyExistOnColleva(email, eventId).then()) {
+            if(this.validateEmailUniqueness(email, eventId)) { 
+                    this.handleRecipientInfoChange(event);
+                }
             }
             
         } else {
             return;
         }
         
+    }
+
+    async checkEmailIsAlreadyExistOnColleva(email, eventId) {
+        // this.isDataLoaded = true;
+        // this.isStencilLoading = true;
+        // this.isNextStepAvailable = false;
+        document.querySelector(".cta-btn").setAttribute("disabled","");
+        document.querySelector(".cta-btn").style.cursor = 'no-drop';
+        let isEmailValid = true;
+        setTimeout(() => {
+        let field = this.querySelector('[data-id="'+eventId+'"]');
+        let errorField = this.querySelector('[data-id="'+eventId+'Error"]');
+        let requestMap =
+        {
+            email: email,
+            cartId: this.cartId
+            
+        }
+         checkEmailIsAlreadyOnColleva({requestMap: requestMap}).then(result =>
+        {
+            field = this.querySelector('[data-id="'+eventId+'"]');
+            errorField = this.querySelector('[data-id="'+eventId+'Error"]');
+            if(result && result?.isSuccess  && result.msg != '')
+            {
+                // field.classList.remove(this.styles.inputerror);
+                errorField.textContent = result.msg;
+                field.classList.add(this.styles.inputerror);
+                errorField.classList.remove(this.styles.hidecomponent);
+                isEmailValid = false;
+                this.isEmailValidOnColleva = isEmailValid;   
+            } else 
+            {
+                field?.classList?.remove(this.styles.inputerror);
+                this.isEmailValidOnColleva = true;
+            }
+            document.querySelector(".cta-btn").removeAttribute("disabled");
+            document.querySelector(".cta-btn").style.cursor = 'pointer';
+            // this.isStencilLoading = false;
+            // this.isNextStepAvailable = true;
+        }).catch(error => {
+            //  send toast message
+            consoleLogging('fetchGroupOrderInfo : Error : '+JSON.stringify(error));
+            this.showToastMessage(this.labels.B2B_LBL_SOMETHINGWENTWRONG, 'error');
+        });
+    },1000);
+        return isEmailValid;
+    }
+
+    checkErrorVisibility(){
+        let errorDiv = document.getElementsByClassName("sib-error-text");
+        let isError = false;
+        for(let i = 0; i < errorDiv.length ; i++) {
+            if(errorDiv[i].checkVisibility()){
+                return true;    
+            }
+        }
+        return isError;
     }
 
     validateEmailUniqueness(email, eventId) {
@@ -882,7 +954,10 @@ export default class SibGroupOrders extends LightningElement {
         let overallValidationResult = true;
         let counter = 0;
         this.emailValidationMap = new Map();
-
+        if(!this.isEmailValidOnColleva || this.checkErrorVisibility()){
+            overallValidationResult = false;
+            return overallValidationResult;
+        }
         this.cartItems.forEach( cartItem => {
             
             const cartItemId = cartItem?.Id;
@@ -901,6 +976,11 @@ export default class SibGroupOrders extends LightningElement {
         
         try{
             let result = false;
+            if(this.checkCollevaCourse && !this.collevaResponse.isIndividualOrderAllowed 
+                && !this.isOrderForSomeoneElse ){
+                this.showToastMessage('you already have same SmartPrep Product Active. ', 'error');
+                return;
+            }
             if(this.isGroupOrder && !this.isOrderForSomeoneElse && !this.isMarkCartAsWaitListed){
                 
                 this.publishProceedToNextStep();

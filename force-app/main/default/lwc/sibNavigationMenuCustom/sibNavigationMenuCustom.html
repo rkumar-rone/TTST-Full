@@ -250,14 +250,24 @@
                                                         {interviewFundamentalsLabel}
                                                     </a>
                                                 </div>
-                                                <div class="course-name" lwc:if={ibInterviewPrepUrl}>
-                                                    <a href={ibInterviewPrepUrl} onclick={handleUrlNavigation} data-url={ibInterviewPrepUrl}>
-                                                        {ibInterviewPrepLabel}
+                                                <div class="course-name" lwc:if={interviewprepAiUrl}>
+                                                    <a href={interviewprepAiUrl} onclick={handleUrlNavigation} data-url={interviewprepAiUrl}>
+                                                        {interviewprepAiLabel}
                                                     </a>
                                                 </div>
-                                                <div class="course-name" lwc:if={peInterviewPrepUrl}>
-                                                    <a href={peInterviewPrepUrl} onclick={handleUrlNavigation} data-url={peInterviewPrepUrl}>
-                                                        {peInterviewPrepLabel}
+                                                <div class="course-name" lwc:if={interviewprepAiProUrl}>
+                                                    <a href={interviewprepAiProUrl} onclick={handleUrlNavigation} data-url={interviewprepAiProUrl}>
+                                                        {interviewprepAiProLabel}
+                                                    </a>
+                                                </div>
+                                                <div class="course-name" lwc:if={additionalMinutesUrl}>
+                                                    <a href={additionalMinutesUrl} onclick={handleUrlNavigation} data-url={additionalMinutesUrl}>
+                                                        {additionalMinutesLabel}
+                                                    </a>
+                                                </div>
+                                                <div class="course-name" lwc:if={upgradedToAiPlusUrl}>
+                                                    <a href={upgradedToAiPlusUrl} onclick={handleUrlNavigation} data-url={upgradedToAiPlusUrl}>
+                                                        {upgradeToAIPlusLabel}
                                                     </a>
                                                 </div>
                                                 <div class="course-name" lwc:if={hedgeFundInterviewPrepUrl}>

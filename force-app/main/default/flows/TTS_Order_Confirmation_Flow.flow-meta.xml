@@ -35,7 +35,6 @@
         </inputParameters>
         <nameSegment>updateCheckoutSessionStateAction</nameSegment>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
     <assignments>
@@ -296,7 +295,7 @@
             <targetReference>Get_Newest_Cart</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <subflows>
         <name>Show_Error</name>
         <label>Show Error</label>

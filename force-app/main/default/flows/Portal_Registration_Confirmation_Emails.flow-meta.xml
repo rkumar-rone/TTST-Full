@@ -20,7 +20,6 @@
             </value>
         </inputParameters>
         <nameSegment>CampaignMember.PORTAL_Event_Member_Confirmation_No_LMS_Access</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

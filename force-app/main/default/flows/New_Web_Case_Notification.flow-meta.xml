@@ -21,7 +21,6 @@
             </value>
         </inputParameters>
         <nameSegment>Case.New_Web_Case_Assignment</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <decisions>

@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import LocationLabel from '@salesforce/label/c.SIB_Location';
 import VirtualEventLabel from '@salesforce/label/c.SIB_Virtual_Event';
+import getEventRelationshipChildNames from '@salesforce/apex/SIB_ProductDetailController.getEventRelationshipChildNames';
 
 export default class SibProductDetailDescription extends LightningElement {
 
@@ -22,7 +23,7 @@ export default class SibProductDetailDescription extends LightningElement {
     }
 
     get isNonParent(){
-        return this.productDetail?.productClass !='VariationParent';
+        return this.productDetail?.productClass !='VariationParent' 
     } 
 
     get parentPrice(){
@@ -43,6 +44,10 @@ export default class SibProductDetailDescription extends LightningElement {
 
     get isSelfStudyProduct(){
         return this.productDetail?.fields?.Product_Group__c == 'Self-Study';
+    }
+
+    get isCollevaProduct(){
+        return this.productDetail?.fields?.Colleva_Product__c;
     }
 
     get showDetails() {
@@ -157,31 +162,10 @@ export default class SibProductDetailDescription extends LightningElement {
         return null;
     }
 
-    get productAttachments() {
-        let attachments = [];
-        let mediaGroups = this.productDetail?.mediaGroups;
-        mediaGroups?.forEach(element => {
-            if(element?.developerName === 'attachment') {
-                attachments = element?.mediaItems; 
-            }
-        });
-        return attachments;
-    }
-
-    handleFile(event) {
-        let name = event.target.dataset.name;
-        let url = event.target.dataset.url;
-
-        const downloadLink = document.createElement("a");
-        downloadLink.href = url;
-        downloadLink.target = '_blank';
-        downloadLink.download = name + '.pdf';
-        downloadLink.click();
-    }
-
     connectedCallback() {
         window.addEventListener('productdata', this.handleProductData.bind(this));
         window.addEventListener('sendChildNames', this.handleChildNames.bind(this));
+
     }
 
     disconnectedCallback() {

@@ -51,6 +51,10 @@ export default class SibProductDetailWhatsIncluded extends LightningElement {
         return this.productDetail?.fields?.Product_Group__c == 'Bundle' ;
     }
 
+    get isCollevaProduct(){
+        return this.productDetail?.fields?.Colleva_Product__c;
+    }
+
     get isSelfStudy(){
         return this.productDetail?.fields?.Product_Group__c == 'Self-Study' ;
     }

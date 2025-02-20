@@ -17,7 +17,7 @@ export default class SibProductDetailHeader extends LightningElement {
     }
 
     get productName(){
-        return this.productDetail?.fields?.Online_Event_Name_formula__c;
+        return this.productDetail?.fields?.Name;
     }
 
     get shortDescription(){
@@ -26,6 +26,10 @@ export default class SibProductDetailHeader extends LightningElement {
 
     get description(){
         return this.productDetail?.fields?.Description;
+    }
+
+    get isCollevaProduct(){
+        return this.productDetail?.fields?.Colleva_Product__c;
     }
 
     get defaultImage() {

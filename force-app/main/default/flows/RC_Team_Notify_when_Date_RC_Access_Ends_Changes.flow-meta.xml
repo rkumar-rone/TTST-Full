@@ -20,7 +20,6 @@
             </value>
         </inputParameters>
         <nameSegment>Campaign.RC_Team_Notify_when_Date_RC_Access_Ends_Changes</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

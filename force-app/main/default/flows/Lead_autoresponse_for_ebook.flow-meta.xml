@@ -15,7 +15,6 @@
             </value>
         </inputParameters>
         <nameSegment>Lead.Lead_autoresponse_for_ebook</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <description>Lead autoresponse for ebook</description>

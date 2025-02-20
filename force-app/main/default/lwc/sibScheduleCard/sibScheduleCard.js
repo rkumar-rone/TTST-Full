@@ -121,6 +121,14 @@ export default class SibScheduleCard extends NavigationMixin(LightningElement) {
         return basePath +  `/course-detail?CourseCode=${this.course?.cm?.Campaign?.Class_Code__c}&CourseId=${this.course?.cm?.CampaignId}`;
     }
 
+    get CollevaCourseDetailUrl(){
+        return  `https://dev.my.colleva.com/`;
+    }
+
+    get isCollevaProduct(){
+        return this.course?.product?.Colleva_Product__c ;
+    }
+
     get canShowSessions() {
         return this.course?.cm?.Campaign?.Only_Show_Sessions__c && this.course?.cm?.Attendee_Status__c !== 'Cancelled';
     }

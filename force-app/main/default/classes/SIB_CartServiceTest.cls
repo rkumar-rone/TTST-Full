@@ -21,6 +21,7 @@ public class SIB_CartServiceTest {
         User adminUser = SIB_TestDataFactory.createAdminUser(true);
         
         System.runAs(adminUser) {
+            Test.startTest();
             SIB_StorefrontConfiguration__c testConfig = new SIB_StorefrontConfiguration__c();
             testConfig.ConfigurationType__c = 'CART';
             testConfig.Active__c = true;
@@ -33,27 +34,29 @@ public class SIB_CartServiceTest {
             Campaign ttsEvent = new Campaign();
             ttsEvent.Account__c  = testAccount.Id;
             ttsEvent.Name = 'Testtts Event';
-            insert ttsEvent;
+            //insert ttsEvent;
             
-            Event_Relationship__c testEventRel = new Event_Relationship__c();
-            testEventRel.Parent__c = ttsEvent.Id;
-            insert testEventRel;
+            // Event_Relationship__c testEventRel = new Event_Relationship__c();
+            //testEventRel.Parent__c = ttsEvent.Id;
+            //insert testEventRel;
             product2 testProduct =  createProducts.get('74CBTLV1G125DBVRQ1');
-            testProduct.TTS_Event__c = ttsEvent.Id;
+            testProduct.Colleva_Base_Product__c = false;
+            testProduct.Colleva_Product__c = true;
+            //testProduct.TTS_Event__c = ttsEvent.Id;
             update testProduct;
             WebStore testWebStore = SIB_TestDataFactory.createWebStore(true);
             
            
             Contact testContact = SIB_TestDataFactory.createContact(testAccount,true);
-            Session__c testSession = new Session__c();
-            testSession.Event__c = ttsEvent.Id;
-            insert testSession;
-            Session__c testSession2 = new Session__c();
-            testSession2.Event__c = ttsEvent.Id;
-            insert testSession2;
+            // Session__c testSession = new Session__c();
+            // testSession.Event__c = ttsEvent.Id;
+            // insert testSession;
+            // Session__c testSession2 = new Session__c();
+            // testSession2.Event__c = ttsEvent.Id;
+            // insert testSession2;
             WebCart testWebCart = SIB_TestDataFactory.createCart(testContact,adminUser,testWebStore,true);
-            testWebCart.Selected_Sessions__c =  '{' + testSession.Id + ',' + testSession2.Id + '}';
-            update testWebCart;
+            // testWebCart.Selected_Sessions__c =  '{' + testSession.Id + ',' + testSession2.Id + '}';
+            // update testWebCart;
             CartDeliveryGroup testCDG = SIB_TestDataFactory.createCartDeliveryGroup(testWebCart,true);
             List<CartItem> testCartItems =  SIB_TestDataFactory.createCartItems(testWebCart,new List<Product2>{testProduct}, testCDG,true);
 
@@ -68,9 +71,10 @@ public class SIB_CartServiceTest {
             mockParams.put(SIB_Constants.PARAM_CURRENCYISOCODE,'USD');
             mockParams.put(SIB_Constants.IS_CHECKOUT_PAGE,true);
             mockParams.put(SIB_Constants.PARAM_ISORDERFORSOMEONEELSE,'true');
+            mockParams.put(SIB_Constants.PRODUCT_ID,testProduct.Id);
 
             
-            Test.startTest();        
+                    
             Map<String,Object> result = SIB_CartService.getCartConfiguration(mockParams);
             Map<String,Object> resultGetCartDetails = SIB_CartService.getCartDetails(mockParams);
             Map<String,Object> compareCurrency = SIB_CartService.compareCurrency(mockParams);   
@@ -83,7 +87,8 @@ public class SIB_CartServiceTest {
             Map<String,Object> resultAddCartItem= SIB_CartService.addCartItem(mockParams);
             Map<String,Object> resultPreserveGuestCart= SIB_CartService.preserveGuestCart(mockParams); 
             Map<String,Object> resultDeleteCartItem= SIB_CartService.deleteCartItem(mockParams);
-            Map<String,Object> resultClearCart= SIB_CartService.clearCart(mockParams);         
+            Map<String,Object> resultClearCart= SIB_CartService.clearCart(mockParams);   
+            Map<String,Object> checkCollevaProductExistOnCart= SIB_CartService.checkCollevaProductExistOnCart(mockParams);         
             
             System.assertNotEquals(null, result, 'Result should not be null');        
             Test.stopTest();

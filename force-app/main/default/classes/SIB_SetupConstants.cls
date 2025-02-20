@@ -198,6 +198,8 @@ public with sharing class SIB_SetupConstants {
     public static final String FOOTER_CONFIG_NOT_FOUND = 'Footer Config JSON not found.';
 
     public static final String IS_SUCCESS = 'isSuccess';
+    
+    public static final String PRODUCT_ALREADY_EXIST = 'productAlreadyExist';
 
     public static final String CONFIG_TYPE = 'FOOTER';
 

@@ -20,7 +20,6 @@
             </value>
         </inputParameters>
         <nameSegment>Event_Schedule__c.Notify_RM_Instructor_RC_Admins_change_Earliest_Date_Time</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <decisions>

@@ -325,6 +325,7 @@ private with sharing class TTS_Store_RegistrationHandlerTest {
         // Call the method
         Test.startTest();
         TTS_Store_RegistrationHandler.updateAccountInfo(aId, email, phone, firstName, lastName, company, source, country, idMap);
+        TTS_Store_RegistrationHandler.updateContactOnColleva(aId,email);
         Test.stopTest();
 
         // Verify the results

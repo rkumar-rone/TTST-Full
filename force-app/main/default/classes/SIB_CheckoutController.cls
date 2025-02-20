@@ -47,6 +47,29 @@ public with sharing class SIB_CheckoutController {
     }
 
     /**
+     * @description this method fetches data required for checkEmailIsAlreadyOnColleva
+     * @author Rajesh Kumar
+     * @created 03 feb 25
+     */
+    @AuraEnabled 
+    public static Map<String, Object> checkEmailIsAlreadyOnColleva(Map<String, Object> requestMap){
+        String methodName = 'checkEmailIsAlreadyOnColleva';
+
+        Map<String, Object> responseMap = new Map<String, Object>();
+        responseMap.put(SIB_Constants.IS_SUCCESS, false);
+        try{
+            responseMap.putAll(SIB_CheckoutService.checkEmailIsAlreadyOnColleva(requestMap));
+            // responseMap.put(SIB_Constants.IS_SUCCESS, true);
+        }catch (Exception e) {
+    
+            responseMap.put(SIB_Constants.MESSAGE, System.Label.B2B_GenericExceptionMessage);
+            responseMap.put(SIB_Constants.PARAM_EXCEPTION, e);
+        }
+        
+        return responseMap;
+    }
+
+    /**
      * @description this method updates cart to mark as waitlisted
      * @author vramachandran@rafter.one
      * @created 16 Sep 24
